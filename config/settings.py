@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     'blog',
     'ilan',
     'takvim',
+    'yerler',
+    'linkler',
 ]
 
 MIDDLEWARE = [

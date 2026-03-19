@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}{{ yer.ad }}{% endblock %}
+{% block content %}
+<div class="container mt-4" style="max-width:720px">
+  <a href="{% url 'yerler:liste' %}" class="btn btn-sm btn-outline-secondary mb-3"><i class="bi bi-arrow-left me-1"></i>Geri</a>
+  <div class="card">
+    <div class="card-body p-4">
+      <span class="badge bg-secondary mb-2">{{ yer.get_kategori_display }}</span>
+      <h4>{{ yer.ad }}</h4>
+      <p class="text-muted"><i class="bi bi-map-pin me-1"></i>{{ yer.adres }}, {{ yer.sehir }}</p>
+      {% if yer.telefon %}<p><i class="bi bi-telephone me-1 text-primary"></i>{{ yer.telefon }}</p>{% endif %}
+      {% if yer.aciklama %}<div class="mt-3">{{ yer.aciklama|linebreaks }}</div>{% endif %}
+      <div class="d-flex gap-2 mt-3 flex-wrap">
+        {% if yer.maps_url %}<a href="{{ yer.maps_url }}" target="_blank" class="btn btn-primary"><i class="bi bi-map me-1"></i>Google Maps</a>{% endif %}
+        {% if yer.website %}<a href="{{ yer.website }}" target="_blank" class="btn btn-outline-secondary"><i class="bi bi-globe me-1"></i>Web Sitesi</a>{% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

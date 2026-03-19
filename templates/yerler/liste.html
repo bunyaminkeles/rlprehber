@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Yerler & Mekanlar — Mainz{% endblock %}
+{% block content %}
+<div class="container mt-4">
+  <h4 class="mb-4"><i class="bi bi-geo-alt me-2 text-primary"></i>Mainz'da Önemli Yerler</h4>
+
+  <!-- Kategori filtreleri -->
+  <div class="d-flex flex-wrap gap-2 mb-4">
+    <a href="{% url 'yerler:liste' %}" class="btn btn-sm {% if not secili %}btn-primary{% else %}btn-outline-secondary{% endif %}">Tümü</a>
+    {% for k, v in tum_kategoriler %}
+    {% if kategoriler|length %}
+    <a href="?kategori={{ k }}" class="btn btn-sm {% if secili == k %}btn-primary{% else %}btn-outline-secondary{% endif %}">{{ v }}</a>
+    {% endif %}
+    {% endfor %}
+  </div>
+
+  {% for k, grup in kategoriler.items %}
+  <h6 class="text-uppercase text-muted small fw-bold mt-4 mb-2">{{ grup.ad }}</h6>
+  <div class="row g-3 mb-3">
+    {% for yer in grup.yerler %}
+    <div class="col-md-4 col-sm-6">
+      <div class="card h-100">
+        <div class="card-body">
+          <h6 class="card-title mb-1">{{ yer.ad }}</h6>
+          <p class="small text-muted mb-2"><i class="bi bi-map-pin me-1"></i>{{ yer.adres }}</p>
+          {% if yer.telefon %}<p class="small mb-1"><i class="bi bi-telephone me-1 text-primary"></i>{{ yer.telefon }}</p>{% endif %}
+          <div class="d-flex gap-2 mt-2 flex-wrap">
+            {% if yer.maps_url %}<a href="{{ yer.maps_url }}" target="_blank" class="btn btn-sm btn-outline-primary"><i class="bi bi-map me-1"></i>Harita</a>{% endif %}
+            {% if yer.website %}<a href="{{ yer.website }}" target="_blank" class="btn btn-sm btn-outline-secondary"><i class="bi bi-globe me-1"></i>Web</a>{% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

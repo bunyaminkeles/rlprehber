@@ -8,3 +8,6 @@ crispy-bootstrap5
 django-allauth
 python-decouple
 Pillow
+requests
+beautifulsoup4
+feedparser

@@ -14,4 +14,6 @@ urlpatterns = [
     path('ilan/', include('ilan.urls')),
     path('takvim/', include('takvim.urls')),
     path('', include('accounts.urls')),
+    path('yerler/', include('yerler.urls')),
+    path('linkler/', include('linkler.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

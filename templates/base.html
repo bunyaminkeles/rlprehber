@@ -41,6 +41,12 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'ilan:liste' %}"><i class="bi bi-grid me-1"></i>İlanlar</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'yerler:liste' %}"><i class="bi bi-geo-alt me-1"></i>Yerler</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'linkler:liste' %}"><i class="bi bi-link-45deg me-1"></i>Linkler</a>
+        </li>
       </ul>
       <ul class="navbar-nav ms-auto gap-1">
         {% if user.is_authenticated %}
