@@ -23,7 +23,7 @@ YERLER = [
         'adres': 'Valenciaplatz 3, 55118 Mainz',
         'telefon': '+49 6131 12-0',
         'website': 'https://www.mainz.de/leben-in-mainz/buergerservice/auslaenderwesen.php',
-        'maps_url': 'https://maps.app.goo.gl/auslaenderbehoerde-mainz',
+        'maps_url': '',
         'aciklama': 'Oturma izni, çalışma izni ve yabancılar yasası ile ilgili tüm işlemler bu birimde yapılır. Randevu almak için web sitesini ziyaret edin.',
     },
     {
@@ -32,7 +32,7 @@ YERLER = [
         'adres': 'Rheinstraße 97, 55116 Mainz',
         'telefon': '+49 911 943-0',
         'website': 'https://www.bamf.de',
-        'maps_url': 'https://maps.app.goo.gl/bamf-mainz',
+        'maps_url': '',
         'aciklama': 'Federal Göç ve Mülteciler Dairesi. Vatandaşlığa geçiş, entegrasyon kursları ve tanıma işlemleri.',
     },
     {
@@ -41,7 +41,7 @@ YERLER = [
         'adres': 'Parcusstraße 2, 55116 Mainz',
         'telefon': '+49 800 4 5555 00',
         'website': 'https://www.arbeitsagentur.de',
-        'maps_url': 'https://maps.app.goo.gl/agentur-arbeit-mainz',
+        'maps_url': '',
         'aciklama': 'İş bulma, işsizlik parası (ALG I), mesleki eğitim ve kariyer danışmanlığı hizmetleri.',
     },
     {
@@ -50,7 +50,7 @@ YERLER = [
         'adres': 'Isaac-Fulda-Allee 2, 55124 Mainz',
         'telefon': '+49 6131 2536-0',
         'website': 'https://www.jobcenter-mainz.de',
-        'maps_url': 'https://maps.app.goo.gl/jobcenter-mainz',
+        'maps_url': '',
         'aciklama': 'Bürgergeld (eski Hartz IV), konut yardımı ve uzun süreli işsizler için destek hizmetleri.',
     },
     {
@@ -59,7 +59,7 @@ YERLER = [
         'adres': 'Friedberger Anlage 1, 60316 Frankfurt am Main',
         'telefon': '+49 69 29 91 58 0',
         'website': 'https://frankfurt.bk.mfa.gov.tr',
-        'maps_url': 'https://maps.app.goo.gl/tc-konsolosluk-frankfurt',
+        'maps_url': '',
         'aciklama': 'Mainz bölgesi için yetkili Türk konsolosluğu. Pasaport yenileme, apostil, nüfus cüzdanı ve e-devlet işlemleri. Randevu zorunlu.',
     },
     {
@@ -68,7 +68,7 @@ YERLER = [
         'adres': 'Valenciaplatz 3, 55118 Mainz',
         'telefon': '+49 6131 12-0',
         'website': 'https://www.mainz.de/leben-in-mainz/buergerservice/fuehrerschein.php',
-        'maps_url': 'https://maps.app.goo.gl/fuhrerscheinstelle-mainz',
+        'maps_url': '',
         'aciklama': 'Türk ehliyetini Alman ehliyetine dönüştürme, yeni ehliyet başvurusu. Randevu gereklidir.',
     },
     {
@@ -77,7 +77,7 @@ YERLER = [
         'adres': 'Stadthaus Rheinufer, Rheinstraße 55, 55116 Mainz',
         'telefon': '+49 6131 12-0',
         'website': 'https://www.mainz.de',
-        'maps_url': 'https://maps.app.goo.gl/einwohnermeldeamt-mainz',
+        'maps_url': '',
         'aciklama': 'İkamet adresi kayıt (Anmeldung) ve adres değişikliği (Ummeldung) işlemleri. Taşınmaktan itibaren 2 hafta içinde yapılması zorunludur.',
     },
     {
@@ -86,7 +86,7 @@ YERLER = [
         'adres': 'Löwenhofstraße 1, 55116 Mainz',
         'telefon': '+49 6131 488-0',
         'website': 'https://www.finanzamt.rlp.de/mainz',
-        'maps_url': 'https://maps.app.goo.gl/finanzamt-mainz',
+        'maps_url': '',
         'aciklama': 'Vergi numarası (Steuernummer) alma, yıllık vergi beyannamesi (Steuererklärung) işlemleri.',
     },
 
@@ -97,7 +97,7 @@ YERLER = [
         'adres': 'Binger Straße 44, 55131 Mainz',
         'telefon': '+49 800 8484-000',
         'website': 'https://www.tuv.com',
-        'maps_url': 'https://maps.app.goo.gl/tuv-mainz-binger',
+        'maps_url': '',
         'aciklama': 'Araç muayenesi (HU/AU), teknik inceleme. Muayene için randevu almanız önerilir.',
     },
     {
@@ -106,7 +106,7 @@ YERLER = [
         'adres': 'Rheinallee 3, 55116 Mainz',
         'telefon': '+49 800 333-5274',
         'website': 'https://www.dekra.de',
-        'maps_url': 'https://maps.app.goo.gl/dekra-mainz',
+        'maps_url': '',
         'aciklama': 'Araç teknik muayene (HU), hasar tespiti ve değerlendirme.',
     },
     {
@@ -115,7 +115,7 @@ YERLER = [
         'adres': 'Hechtsheimer Straße 12, 55131 Mainz',
         'telefon': '+49 6131 970-0',
         'website': 'https://www.gtue.de',
-        'maps_url': 'https://maps.app.goo.gl/gtue-mainz',
+        'maps_url': '',
         'aciklama': 'Araç muayene istasyonu. TÜV\'e alternatif, genellikle randevu daha kolay bulunur.',
     },
 
@@ -149,7 +149,7 @@ YERLER = [
         'adres': 'Boppstraße 20, 55118 Mainz',
         'telefon': '',
         'website': 'https://ditib.de',
-        'maps_url': 'https://maps.app.goo.gl/ditib-mainz',
+        'maps_url': '',
         'aciklama': 'Mainz merkez camii. Cuma namazı, Kuran kursu, cenaze hizmetleri.',
     },
     {
@@ -181,7 +181,7 @@ YERLER = [
         'kategori': 'alisveris',
         'adres': 'Schusterstraße 8, 55116 Mainz',
         'website': 'https://www.roemerpassage-mainz.de',
-        'maps_url': 'https://maps.app.goo.gl/roemerpassage-mainz',
+        'maps_url': '',
         'aciklama': 'Mainz şehir merkezindeki en büyük alışveriş merkezi. Zara, H&M, Galeria ve daha fazlası.',
     },
     {
@@ -196,7 +196,7 @@ YERLER = [
         'kategori': 'alisveris',
         'adres': 'August-Bebel-Straße 3, 65203 Wiesbaden (Mainz-Kastel yakını)',
         'sehir': 'Mainz-Kastel',
-        'maps_url': 'https://maps.app.goo.gl/huma-mainz-kastel',
+        'maps_url': '',
         'aciklama': 'Mainz-Kastel ve Wiesbaden sınırında büyük alışveriş merkezi. Mediamarkt, IKEA yakını.',
     },
     {
@@ -204,7 +204,7 @@ YERLER = [
         'kategori': 'alisveris',
         'adres': 'Wiesbadener Straße 300, 65203 Wiesbaden',
         'website': 'https://www.ikea.com/de/de/stores/wiesbaden/',
-        'maps_url': 'https://maps.app.goo.gl/ikea-wiesbaden',
+        'maps_url': '',
         'aciklama': 'Mainz\'a yakın IKEA. Ev eşyası, mobilya. Otobüs veya araçla kolayca ulaşılabilir.',
     },
 
@@ -214,7 +214,7 @@ YERLER = [
         'kategori': 'gezi',
         'adres': 'Domstraße 3, 55116 Mainz',
         'website': 'https://www.bistum-mainz.de/dom',
-        'maps_url': 'https://maps.app.goo.gl/mainzer-dom',
+        'maps_url': '',
         'aciklama': 'Mainz\'ın simgesi, 1000 yıllık Romanesque katedrali. Ziyaret ücretsiz.',
     },
     {
@@ -223,21 +223,21 @@ YERLER = [
         'adres': 'Liebfrauenplatz 5, 55116 Mainz',
         'telefon': '+49 6131 122-640',
         'website': 'https://www.gutenberg-museum.de',
-        'maps_url': 'https://maps.app.goo.gl/gutenberg-museum-mainz',
+        'maps_url': '',
         'aciklama': 'Johannes Gutenberg\'in matbaa icadına adanmış dünya müzesi. Orijinal Gutenberg İncilini görebilirsiniz.',
     },
     {
         'ad': 'Rheinpromenade Mainz',
         'kategori': 'gezi',
         'adres': 'Rheinufer, 55116 Mainz',
-        'maps_url': 'https://maps.app.goo.gl/rheinpromenade-mainz',
+        'maps_url': '',
         'aciklama': 'Ren nehri kıyısında yürüyüş ve bisiklet yolu. Akşamları çok güzel manzara.',
     },
     {
         'ad': 'Zitadelle Mainz',
         'kategori': 'gezi',
         'adres': 'Obentrautstraße 1, 55118 Mainz',
-        'maps_url': 'https://maps.app.goo.gl/zitadelle-mainz',
+        'maps_url': '',
         'aciklama': 'Tarihi kale. Yaz aylarında çeşitli etkinlikler ve festivaller düzenlenir. Manzarası muhteşem.',
     },
     {
@@ -245,7 +245,7 @@ YERLER = [
         'kategori': 'gezi',
         'adres': 'Große Bleiche 49-51, 55116 Mainz',
         'website': 'https://landesmuseum-mainz.de',
-        'maps_url': 'https://maps.app.goo.gl/landesmuseum-mainz',
+        'maps_url': '',
         'aciklama': 'Rheinland-Pfalz eyalet müzesi. Antik Roma döneminden günümüze sanat ve tarih eserleri.',
     },
     {
@@ -253,21 +253,21 @@ YERLER = [
         'kategori': 'gezi',
         'adres': 'Anselm-Franz-von-Bentzel-Weg 9a, 55128 Mainz',
         'website': 'https://www.botgarten.uni-mainz.de',
-        'maps_url': 'https://maps.app.goo.gl/botanischer-garten-mainz',
+        'maps_url': '',
         'aciklama': 'Johannes Gutenberg Üniversitesi botanik bahçesi. Ücretsiz giriş.',
     },
     {
         'ad': 'Weinberge Nierstein / Oppenheim',
         'kategori': 'gezi',
         'adres': 'Nierstein, Rheinhessen',
-        'maps_url': 'https://maps.app.goo.gl/nierstein-weinberge',
+        'maps_url': '',
         'aciklama': 'Mainz\'ın güneyindeki Rheinhessen bağ bölgesi. Şarap turu ve yürüyüş rotaları.',
     },
     {
         'ad': 'Burg Rheinfels (St. Goar)',
         'kategori': 'gezi',
         'adres': 'Schlossberg 47, 56329 St. Goar',
-        'maps_url': 'https://maps.app.goo.gl/burg-rheinfels',
+        'maps_url': '',
         'aciklama': 'Mainz\'a 1 saat mesafede Ren üzerindeki en büyük kale kalıntısı. Muhteşem manzara.',
     },
 ]
@@ -775,6 +775,10 @@ class Command(BaseCommand):
         self.stdout.write('\nYerler yükleniyor...')
         eklendi = 0
         for veri in YERLER:
+            # maps_url boşsa adrese göre Google Maps arama linki üret
+            if not veri.get('maps_url') and veri.get('adres'):
+                q = (veri['adres'] + ' ' + veri.get('sehir', '')).strip().replace(' ', '+')
+                veri = {**veri, 'maps_url': f'https://maps.google.com/?q={q}'}
             _, created = Yer.objects.get_or_create(
                 ad=veri['ad'],
                 defaults=veri
