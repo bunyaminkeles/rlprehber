@@ -29,6 +29,12 @@ LINKLER = [
     dict(ad='Mainz Bürgeramt — Randevu', url='https://termine-reservieren.de/termine/buergeramt.mainz/',
          kategori='resmi', sira=4,
          aciklama='Mainz Vatandaşlık Dairesi online randevu — Anmeldung, pasaport, kimlik işlemleri.'),
+    dict(ad='Mietbescheinigung — Kira Belgesi (PDF)', url='https://www.jobcenter-mainz.de/wp-content/uploads/2021/05/Mietbescheinigung.pdf',
+         kategori='is', sira=3,
+         aciklama='Jobcenter Mainz için kira belgesi formu — ev sahibine imzalatılır.'),
+    dict(ad='KdU Mainz 2025 — Kira Üst Limitleri (PDF)', url='https://harald-thome.de/files/pdf/KdU%20New/KdU%20Mainz%20-%2001.01.2025.pdf',
+         kategori='is', sira=4,
+         aciklama='Mainz Jobcenter tarafından kabul edilen maksimum kira miktarları (01.01.2025).'),
 ]
 
 # ── Rehber Kaynakları ────────────────────────────────────────────
@@ -55,6 +61,14 @@ REHBER = [
          url='https://termine-reservieren.de/termine/buergeramt.mainz/',
          kategori='resmi', icon='bi-calendar-check', sira=4, yayinda=True,
          ozet='Anmeldung, pasaport ve kimlik işlemleri için online randevu sistemi.'),
+    dict(baslik='Mietbescheinigung — Kira Belgesi (PDF)', tip='link',
+         url='https://www.jobcenter-mainz.de/wp-content/uploads/2021/05/Mietbescheinigung.pdf',
+         kategori='konut', icon='bi-file-earmark-pdf', sira=1, yayinda=True,
+         ozet='Jobcenter Mainz kira belgesi formu — ev sahibine imzalatılır.'),
+    dict(baslik='KdU Mainz 2025 — Kira Üst Limitleri (PDF)', tip='link',
+         url='https://harald-thome.de/files/pdf/KdU%20New/KdU%20Mainz%20-%2001.01.2025.pdf',
+         kategori='konut', icon='bi-file-earmark-text', sira=2, yayinda=True,
+         ozet='Mainz Jobcenter tarafından kabul edilen maksimum kira miktarları (01.01.2025).'),
 ]
 
 eklendi = 0
