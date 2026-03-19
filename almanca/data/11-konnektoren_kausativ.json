@@ -1,0 +1,377 @@
+[
+  {
+    "id": 2100,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Es regnet stark draußen, ___ nehme ich einen Regenschirm mit.\n\n___ ich nicht nass werden möchte, bleibe ich lieber zu Hause.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "deshalb / Weil",
+      "B": "trotzdem / Dass",
+      "C": "weil / Deshalb",
+      "D": "dass / Denn"
+    },
+    "antwort": "A",
+    "erklaerung": "'Deshalb' zeigt die Folge (Hauptsatz) + 'weil' gibt den Grund an (Nebensatz)."
+  },
+  {
+    "id": 2101,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Ich bin sehr müde, ___ ich habe letzte Nacht kaum geschlafen.\n\n___ gehe ich heute früher ins Bett und erhole mich.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "weil / Trotzdem",
+      "B": "denn / Deshalb",
+      "C": "dass / Deswegen",
+      "D": "trotzdem / Weil"
+    },
+    "antwort": "B",
+    "erklaerung": "'Denn' gibt Grund an (Hauptsatz, Position 0) + 'deshalb' zeigt Folge (Hauptsatz mit Inversion)."
+  },
+  {
+    "id": 2102,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Das Wetter ist schlecht, ___ gehen wir spazieren.\n\nWir haben gesagt, ___ wir jeden Tag Sport machen wollen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "deshalb / weil",
+      "B": "trotzdem / dass",
+      "C": "weil / deshalb",
+      "D": "deswegen / trotzdem"
+    },
+    "antwort": "B",
+    "erklaerung": "'Trotzdem' zeigt Kontrast (Hauptsatz) + 'dass' leitet indirekten Satz ein (Nebensatz)."
+  },
+  {
+    "id": 2103,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "___ er krank ist, muss er zu Hause bleiben.\n\nEr kann nicht arbeiten, ___ das Fieber ist zu hoch.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Dass / deshalb",
+      "B": "Weil / denn",
+      "C": "Trotzdem / weil",
+      "D": "Deshalb / dass"
+    },
+    "antwort": "B",
+    "erklaerung": "'Weil' am Satzanfang (Nebensatz) + 'denn' gibt zusätzlichen Grund (Hauptsatz, Position 0)."
+  },
+  {
+    "id": 2104,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Ich weiß, ___ du Recht hast.\n\nIch bin anderer Meinung. ___ respektiere ich deinen Standpunkt.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "weil / Deshalb",
+      "B": "dass / Trotzdem",
+      "C": "deshalb / Dass",
+      "D": "denn / Weil"
+    },
+    "antwort": "B",
+    "erklaerung": "'Dass' leitet Objektsatz ein (Nebensatz) + 'trotzdem' zeigt Kontrast (Hauptsatz)."
+  },
+  {
+    "id": 2105,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Sie lernt viel für die Prüfung, ___ sie eine gute Note bekommen möchte.\n\n___ ist sie sehr nervös vor dem Test.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "trotzdem / Dass",
+      "B": "weil / Trotzdem",
+      "C": "dass / Deshalb",
+      "D": "deshalb / Weil"
+    },
+    "antwort": "B",
+    "erklaerung": "'Weil' gibt Grund an (Nebensatz) + 'trotzdem' zeigt Kontrast (Hauptsatz)."
+  },
+  {
+    "id": 2106,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Er kommt heute nicht zur Arbeit, ___ er einen Arzttermin hat.\n\nEr hat gesagt, ___ er morgen wieder da sein wird.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "trotzdem / weil",
+      "B": "denn / dass",
+      "C": "weil / deshalb",
+      "D": "dass / trotzdem"
+    },
+    "antwort": "B",
+    "erklaerung": "'Denn' gibt Grund an (Hauptsatz) + 'dass' leitet indirekten Satz ein (Nebensatz)."
+  },
+  {
+    "id": 2107,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Der Zug hatte Verspätung, ___ sind wir zu spät zur Besprechung gekommen.\n\nWir haben uns entschuldigt, ___ wir konnten nichts dafür.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "trotzdem / weil",
+      "B": "deshalb / denn",
+      "C": "weil / dass",
+      "D": "dass / trotzdem"
+    },
+    "antwort": "B",
+    "erklaerung": "'Deshalb' zeigt Folge (Hauptsatz) + 'denn' gibt Grund an (Hauptsatz, Position 0)."
+  },
+  {
+    "id": 2108,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "___ das Restaurant sehr voll war, haben wir einen Tisch bekommen.\n\nWir hatten Glück, ___ wir hatten vorher reserviert.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Weil / deshalb",
+      "B": "Obwohl / denn",
+      "C": "Dass / trotzdem",
+      "D": "Deshalb / weil"
+    },
+    "antwort": "B",
+    "erklaerung": "'Obwohl' zeigt Kontrast (Nebensatz) + 'denn' gibt Erklärung (Hauptsatz, Position 0)."
+  },
+  {
+    "id": 2109,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Ich glaube, ___ er heute nicht kommen kann.\n\nEr hat viel zu tun, ___ muss er länger im Büro bleiben.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "weil / trotzdem",
+      "B": "dass / deshalb",
+      "C": "trotzdem / dass",
+      "D": "deshalb / weil"
+    },
+    "antwort": "B",
+    "erklaerung": "'Dass' leitet Objektsatz ein (Nebensatz) + 'deshalb' zeigt Folge (Hauptsatz)."
+  },
+  {
+    "id": 2110,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Wir müssen uns beeilen, ___ der Film beginnt in zwanzig Minuten.\n\n___ nehmen wir ein Taxi statt der Straßenbahn.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "weil / Trotzdem",
+      "B": "denn / Deshalb",
+      "C": "dass / Denn",
+      "D": "trotzdem / Dass"
+    },
+    "antwort": "B",
+    "erklaerung": "'Denn' gibt Grund an (Hauptsatz) + 'deshalb' zeigt Folge (Hauptsatz mit Inversion)."
+  },
+  {
+    "id": 2111,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Es ist sehr kalt draußen, ___ gehen die Kinder zum Spielen in den Park.\n\nSie sagen, ___ ihnen die Kälte nichts ausmacht.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "deshalb / weil",
+      "B": "trotzdem / dass",
+      "C": "weil / trotzdem",
+      "D": "dass / deshalb"
+    },
+    "antwort": "B",
+    "erklaerung": "'Trotzdem' zeigt Kontrast (Hauptsatz) + 'dass' leitet indirekten Satz ein (Nebensatz)."
+  },
+  {
+    "id": 2112,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "___ ich morgen früh aufstehen muss, gehe ich jetzt schlafen.\n\nIch bin müde, ___ ich hatte einen anstrengenden Tag.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Dass / trotzdem",
+      "B": "Weil / denn",
+      "C": "Trotzdem / dass",
+      "D": "Deshalb / weil"
+    },
+    "antwort": "B",
+    "erklaerung": "'Weil' gibt Grund (Nebensatz am Anfang) + 'denn' gibt weiteren Grund (Hauptsatz)."
+  },
+  {
+    "id": 2113,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Der Chef hat angekündigt, ___ es nächste Woche eine Besprechung gibt.\n\n___ müssen alle Mitarbeiter ihre Berichte vorbereiten.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "weil / Trotzdem",
+      "B": "dass / Deshalb",
+      "C": "trotzdem / Dass",
+      "D": "deshalb / Weil"
+    },
+    "antwort": "B",
+    "erklaerung": "'Dass' leitet indirekten Satz ein (Nebensatz) + 'deshalb' zeigt Folge (Hauptsatz)."
+  },
+  {
+    "id": 2114,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Sie fährt mit dem Fahrrad zur Arbeit, ___ das umweltfreundlich ist.\n\nEs regnet oft, ___ fährt sie jeden Tag.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "trotzdem / deshalb",
+      "B": "weil / trotzdem",
+      "C": "dass / denn",
+      "D": "deshalb / weil"
+    },
+    "antwort": "B",
+    "erklaerung": "'Weil' gibt Grund an (Nebensatz) + 'trotzdem' zeigt Kontrast (Hauptsatz)."
+  },
+  {
+    "id": 2115,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Ich kann nicht kommen, ___ ich habe keine Zeit.\n\n___ ich so viel zu tun habe, muss ich absagen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "weil / Trotzdem",
+      "B": "denn / Weil",
+      "C": "dass / Deshalb",
+      "D": "trotzdem / Dass"
+    },
+    "antwort": "B",
+    "erklaerung": "'Denn' gibt Grund (Hauptsatz) + 'weil' gibt Grund (Nebensatz am Anfang)."
+  },
+  {
+    "id": 2116,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Er hat mir versprochen, ___ er pünktlich kommt.\n\nEr kommt aber oft zu spät, ___ muss ich immer auf ihn warten.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "weil / trotzdem",
+      "B": "dass / deshalb",
+      "C": "trotzdem / dass",
+      "D": "deshalb / denn"
+    },
+    "antwort": "B",
+    "erklaerung": "'Dass' leitet indirekten Satz ein (Nebensatz) + 'deshalb' zeigt Folge (Hauptsatz)."
+  },
+  {
+    "id": 2117,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Das Geschäft ist geschlossen, ___ heute Sonntag ist.\n\n___ fahren wir morgen hin und kaufen ein.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "trotzdem / Weil",
+      "B": "weil / Deshalb",
+      "C": "dass / Trotzdem",
+      "D": "deshalb / Dass"
+    },
+    "antwort": "B",
+    "erklaerung": "'Weil' gibt Grund an (Nebensatz) + 'deshalb' zeigt Folge (Hauptsatz)."
+  },
+  {
+    "id": 2118,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Ich hoffe, ___ das Wetter morgen besser wird.\n\nHeute regnet es stark, ___ bleiben wir zu Hause.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "weil / trotzdem",
+      "B": "dass / deshalb",
+      "C": "trotzdem / dass",
+      "D": "deshalb / denn"
+    },
+    "antwort": "B",
+    "erklaerung": "'Dass' leitet indirekten Satz ein (Nebensatz) + 'deshalb' zeigt Folge (Hauptsatz)."
+  },
+  {
+    "id": 2119,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "___ er fleißig lernt, hat er die Prüfung nicht bestanden.\n\nEr war sehr enttäuscht, ___ er hatte sich gut vorbereitet.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Weil / trotzdem",
+      "B": "Obwohl / denn",
+      "C": "Dass / deshalb",
+      "D": "Deshalb / weil"
+    },
+    "antwort": "B",
+    "erklaerung": "'Obwohl' zeigt Kontrast (Nebensatz) + 'denn' gibt Grund an (Hauptsatz)."
+  },
+  {
+    "id": 2120,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Sie arbeitet hart, ___ sie Karriere machen möchte.\n\nIhr Chef hat gesagt, ___ sie gute Chancen auf eine Beförderung hat.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "trotzdem / weil",
+      "B": "weil / dass",
+      "C": "dass / deshalb",
+      "D": "deshalb / trotzdem"
+    },
+    "antwort": "B",
+    "erklaerung": "'Weil' gibt Grund an (Nebensatz) + 'dass' leitet indirekten Satz ein (Nebensatz)."
+  },
+  {
+    "id": 2121,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Wir haben keine Tickets mehr bekommen, ___ waren wir sehr enttäuscht.\n\nDas Konzert war ausverkauft, ___ wir zu spät gebucht haben.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "trotzdem / dass",
+      "B": "deshalb / weil",
+      "C": "weil / deshalb",
+      "D": "dass / trotzdem"
+    },
+    "antwort": "B",
+    "erklaerung": "'Deshalb' zeigt Folge (Hauptsatz) + 'weil' gibt Grund an (Nebensatz)."
+  },
+  {
+    "id": 2122,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Ich denke, ___ wir mehr Zeit brauchen.\n\nDas Projekt ist kompliziert, ___ müssen wir sorgfältig arbeiten.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "weil / trotzdem",
+      "B": "dass / deshalb",
+      "C": "trotzdem / dass",
+      "D": "deshalb / weil"
+    },
+    "antwort": "B",
+    "erklaerung": "'Dass' leitet Objektsatz ein (Nebensatz) + 'deshalb' zeigt Folge (Hauptsatz)."
+  },
+  {
+    "id": 2123,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Die Straßen sind glatt, ___ es heute Nacht geschneit hat.\n\n___ sollte man vorsichtig fahren und mehr Zeit einplanen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "trotzdem / Dass",
+      "B": "weil / Deshalb",
+      "C": "dass / Trotzdem",
+      "D": "deshalb / Weil"
+    },
+    "antwort": "B",
+    "erklaerung": "'Weil' gibt Grund an (Nebensatz) + 'deshalb' zeigt Folge (Hauptsatz)."
+  },
+  {
+    "id": 2124,
+    "thema": "Konnektoren (deshalb, trotzdem, weil, dass, denn)",
+    "format": "Text",
+    "kontext": "Er ist sehr beschäftigt, ___ macht er Sport.\n\nEr weiß, ___ Bewegung wichtig für die Gesundheit ist.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "deshalb / weil",
+      "B": "trotzdem / dass",
+      "C": "weil / deshalb",
+      "D": "dass / trotzdem"
+    },
+    "antwort": "B",
+    "erklaerung": "'Trotzdem' zeigt Kontrast (Hauptsatz) + 'dass' leitet indirekten Satz ein (Nebensatz)."
+  }
+]

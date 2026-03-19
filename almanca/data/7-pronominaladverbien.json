@@ -1,0 +1,753 @@
+[
+  {
+    "id": 1600,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Ich freue mich sehr auf den Sommerurlaub am Meer.\n\n___ freue ich mich schon seit Wochen und habe bereits alles ___ vorbereitet.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Dafür / dazu",
+      "B": "Darauf / dafür",
+      "C": "Darüber / damit",
+      "D": "Davon / darauf"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich freuen + auf → darauf + vorbereiten + für → dafür."
+  },
+  {
+    "id": 1601,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Wir haben lange über das Problem gesprochen und ___ intensiv diskutiert.\n\n___ haben wir mehr als zwei Stunden gebraucht, um eine Lösung zu finden.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "damit / Dafür",
+      "B": "darüber / Dazu",
+      "C": "daran / Damit",
+      "D": "dafür / Darauf"
+    },
+    "antwort": "B",
+    "erklaerung": "Sprechen/diskutieren + über → darüber + für Zeit/Zweck → dazu."
+  },
+  {
+    "id": 1602,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Er interessiert sich sehr für moderne Kunst und ___ stundenlang reden.\n\n___ besucht er auch regelmäßig Ausstellungen und Museen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "dafür / Dazu",
+      "B": "darüber / Dafür",
+      "C": "daran / Damit",
+      "D": "davon / Darauf"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich interessieren + für → dafür (reden über etwas) + zusätzliche Information → dazu."
+  },
+  {
+    "id": 1603,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Sie ärgert sich täglich über die Verspätungen der Bahn.\n\n___ ärgert sie sich schon seit Monaten und hat sich bereits mehrmals ___ beschwert.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Darauf / dafür",
+      "B": "Dafür / damit",
+      "C": "Darüber / darüber",
+      "D": "Daran / daran"
+    },
+    "antwort": "C",
+    "erklaerung": "Sich ärgern + über → darüber + sich beschweren + über → darüber."
+  },
+  {
+    "id": 1604,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Die Kinder denken oft an ihren Opa und erinnern sich gerne ___ ihm.\n\n___ denken sie besonders, wenn sie alte Fotos aus ihrer Kindheit ansehen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "daran / Daran",
+      "B": "darauf / Darauf",
+      "C": "an / Daran",
+      "D": "darüber / Darüber"
+    },
+    "antwort": "C",
+    "erklaerung": "Sich erinnern + an → an + Person (nicht Pronominaladverb) + denken + an → daran."
+  },
+  {
+    "id": 1605,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Wir warten seit einer Stunde auf den Bus und können nicht mehr länger ___ warten.\n\n___ ärgern wir uns sehr und werden uns beim Verkehrsbetrieb beschweren.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "damit / Dafür",
+      "B": "darauf / Darüber",
+      "C": "daran / Daran",
+      "D": "dafür / Davon"
+    },
+    "antwort": "B",
+    "erklaerung": "Warten + auf → darauf + sich ärgern + über → darüber."
+  },
+  {
+    "id": 1606,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Meine Schwester hat sich für das Studium in Berlin entschieden.\n\n___ hat sie lange nachgedacht und sich schließlich ___ entschieden.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Daran / daran",
+      "B": "Darüber / dafür",
+      "C": "Dafür / damit",
+      "D": "Damit / darauf"
+    },
+    "antwort": "B",
+    "erklaerung": "Nachdenken + über → darüber + sich entscheiden + für → dafür."
+  },
+  {
+    "id": 1607,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Der Chef hat uns um mehr Engagement gebeten und ___ auch ausdrücklich hingewiesen.\n\nWir müssen ___ in den nächsten Wochen besonders bemühen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "dafür / dazu",
+      "B": "darauf / darum",
+      "C": "darüber / damit",
+      "D": "daran / daran"
+    },
+    "antwort": "B",
+    "erklaerung": "Hinweisen + auf → darauf + sich bemühen + um → darum."
+  },
+  {
+    "id": 1608,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Ich habe mich bei meiner Nachbarin für ihre Hilfe bedankt.\n\n___ war ich sehr dankbar und habe ihr ___ einen Blumenstrauß geschenkt.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Damit / darauf",
+      "B": "Dafür / dafür",
+      "C": "Darüber / dazu",
+      "D": "Daran / damit"
+    },
+    "antwort": "B",
+    "erklaerung": "Dankbar + für → dafür + schenken + für (Grund) → dafür."
+  },
+  {
+    "id": 1609,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Die Studenten bereiten sich intensiv auf die Prüfung vor.\n\n___ lernen sie jeden Tag mehrere Stunden und haben extra Lerngruppen ___ gebildet.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Daran / daran",
+      "B": "Dafür / dafür",
+      "C": "Dazu / dafür",
+      "D": "Darauf / damit"
+    },
+    "antwort": "C",
+    "erklaerung": "Für diesen Zweck → dazu + bilden + für (Zweck) → dafür."
+  },
+  {
+    "id": 1610,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Wir haben über die neuen Pläne gesprochen und sind uns alle ___ einig.\n\n___ werden wir in der nächsten Sitzung abstimmen und eine Entscheidung treffen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "damit / Dafür",
+      "B": "darüber / Darüber",
+      "C": "daran / Dazu",
+      "D": "dafür / Damit"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich einig sein + über → darüber + abstimmen + über → darüber."
+  },
+  {
+    "id": 1611,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Mein Bruder träumt von einem eigenen Restaurant.\n\n___ träumt er schon seit seiner Jugend und spart jeden Monat Geld ___.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Daran / daran",
+      "B": "Davon / dafür",
+      "C": "Darauf / dazu",
+      "D": "Darüber / damit"
+    },
+    "antwort": "B",
+    "erklaerung": "Träumen + von → davon + sparen + für (Zweck) → dafür."
+  },
+  {
+    "id": 1612,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Er hat sich um die Stelle als Projektleiter beworben.\n\n___ hat er sich sehr viel Mühe gegeben und extra eine ausführliche Bewerbungsmappe ___erstellt.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Damit / damit",
+      "B": "Dafür / dafür",
+      "C": "Darum / dafür",
+      "D": "Darauf / dazu"
+    },
+    "antwort": "C",
+    "erklaerung": "Sich bewerben + um → darum + erstellen + für → dafür."
+  },
+  {
+    "id": 1613,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Die Firma kümmert sich gut um ihre Mitarbeiter und bietet ihnen viele Benefits.\n\n___ gehören flexible Arbeitszeiten und ___ auch ein modernes Büro mit guter Ausstattung.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Daran / daran",
+      "B": "Dazu / dazu",
+      "C": "Damit / damit",
+      "D": "Darüber / darüber"
+    },
+    "antwort": "B",
+    "erklaerung": "Gehören + zu → dazu (beide Male: zusätzliche Elemente aufzählen)."
+  },
+  {
+    "id": 1614,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Ich habe lange über das Angebot nachgedacht.\n\n___ habe ich mehrere Tage gebraucht und habe mich dann schließlich ___ entschieden.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Dafür / dazu",
+      "B": "Darüber / dafür",
+      "C": "Daran / damit",
+      "D": "Damit / daran"
+    },
+    "antwort": "B",
+    "erklaerung": "Nachdenken + über → darüber + sich entscheiden + für → dafür."
+  },
+  {
+    "id": 1615,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Sie hat sich sehr über das Geschenk gefreut.\n\n___ hat sie sich wirklich gefreut und hat sich sofort ___ bedankt.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Damit / damit",
+      "B": "Darüber / dafür",
+      "C": "Daran / daran",
+      "D": "Darauf / darauf"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich freuen + über → darüber + sich bedanken + für → dafür."
+  },
+  {
+    "id": 1616,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Wir haben mit dem Chef über eine Gehaltserhöhung gesprochen.\n\n___ haben wir lange diskutiert, aber er hat ___ leider nicht zugestimmt.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Damit / dafür",
+      "B": "Darüber / dem",
+      "C": "Darüber / ihr",
+      "D": "Dafür / damit"
+    },
+    "antwort": "B",
+    "erklaerung": "Sprechen + über → darüber + zustimmen + Dativ 'dem' (der Erhöhung)."
+  },
+  {
+    "id": 1617,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Die Lehrerin hat die Schüler an die Hausaufgaben erinnert.\n\n___ hat sie mehrmals hingewiesen und um mehr Sorgfalt ___ gebeten.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Daran / dabei",
+      "B": "Darauf / darin",
+      "C": "Daran / dabei",
+      "D": "Darauf / dafür"
+    },
+    "antwort": "A",
+    "erklaerung": "Erinnern + an → daran + hinweisen + auf (implizit) + dabei (bei dieser Sache)."
+  },
+  {
+    "id": 1618,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Er hat sich auf das Vorstellungsgespräch vorbereitet.\n\n___ hat er sich eine Woche lang intensiv vorbereitet und ___ viele Informationen über die Firma gesammelt.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Damit / damit",
+      "B": "Darauf / dafür",
+      "C": "Daran / dazu",
+      "D": "Dafür / darauf"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich vorbereiten + auf → darauf + sammeln + für (Zweck) → dafür."
+  },
+  {
+    "id": 1619,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Wir interessieren uns sehr für Geschichte und beschäftigen ___ auch in unserer Freizeit intensiv ___.\n\nWir lesen viele Bücher und besuchen regelmäßig Museen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "uns / dafür",
+      "B": "sich / damit",
+      "C": "uns / damit",
+      "D": "euch / daran"
+    },
+    "antwort": "C",
+    "erklaerung": "Sich beschäftigen + mit → reflexiv 'uns' + damit."
+  },
+  {
+    "id": 1620,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Die Politiker diskutieren über die neuen Gesetze.\n\n___ wird seit Wochen heftig diskutiert und es gibt viele unterschiedliche Meinungen ___.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Damit / damit",
+      "B": "Darüber / dazu",
+      "C": "Daran / dabei",
+      "D": "Dafür / darauf"
+    },
+    "antwort": "B",
+    "erklaerung": "Diskutieren + über → darüber + Meinungen + zu → dazu."
+  },
+  {
+    "id": 1621,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Meine Eltern haben mich vor den Gefahren gewarnt.\n\n___ haben sie mich eindringlich gewarnt und mich ___ aufmerksam gemacht.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Damit / damit",
+      "B": "Davor / darauf",
+      "C": "Daran / dafür",
+      "D": "Darüber / dazu"
+    },
+    "antwort": "B",
+    "erklaerung": "Warnen + vor → davor + aufmerksam machen + auf → darauf."
+  },
+  {
+    "id": 1622,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Sie streiten sich ständig über Kleinigkeiten.\n\n___ streiten sie sich jeden Tag und können sich einfach nicht ___ einigen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Damit / damit",
+      "B": "Darüber / darauf",
+      "C": "Daran / dabei",
+      "D": "Dafür / darin"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich streiten + über → darüber + sich einigen + auf → darauf."
+  },
+  {
+    "id": 1623,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Der Arzt hat mich über die Behandlungsmöglichkeiten informiert.\n\n___ hat er mich ausführlich informiert und mir verschiedene Optionen ___ vorgestellt.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Damit / damit",
+      "B": "Darüber / dazu",
+      "C": "Daran / dabei",
+      "D": "Dafür / darauf"
+    },
+    "antwort": "B",
+    "erklaerung": "Informieren + über → darüber + Optionen + zu (gehörend) → dazu."
+  },
+  {
+    "id": 1624,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Ich habe mich mit meinem Kollegen über das Projekt unterhalten.\n\n___ haben wir lange gesprochen und sind uns schließlich ___ einig geworden.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Damit / damit",
+      "B": "Darüber / darüber",
+      "C": "Daran / darin",
+      "D": "Dafür / dafür"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich unterhalten + über → darüber + sich einig werden + über → darüber."
+  },
+  
+  {
+    "id": 4600,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Ich warte schon seit einer Stunde auf den Bus. ___ wartest du? Auch ___?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Worauf / darauf",
+      "B": "Auf wen / dafür",
+      "C": "Wofür / damit",
+      "D": "Woran / daran"
+    },
+    "antwort": "A",
+    "erklaerung": "'Warten auf' (nesne: otobüs). Soru: Worauf? (Neyi bekliyorsun?). Cevap: Darauf (Onu/Bunu)."
+  },
+  {
+    "id": 4601,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Mein Bruder interessiert sich sehr für Autos. ___ interessiert sich deine Schwester? Auch ___?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Wofür / dafür",
+      "B": "Für wen / damit",
+      "C": "Worüber / darüber",
+      "D": "Woran / daran"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich interessieren für' (nesne: arabalar). Wofür (neye ilgi duyuyor) / Dafür (buna)."
+  },
+  {
+    "id": 4602,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Wir freuen uns schon auf den Urlaub. ___ freut ihr euch? Habt ihr ___ auch Lust?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Worauf / darauf",
+      "B": "Wovon / davon",
+      "C": "Worüber / darüber",
+      "D": "Woran / daran"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich freuen auf' (gelecek zaman). Worauf (neye seviniyorsunuz) / Darauf (buna)."
+  },
+  {
+    "id": 4603,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Bist du zufrieden mit deinem neuen Job? Ja, ich bin sehr zufrieden ___, aber ___ meinen Chef ärgere ich mich manchmal.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "damit / über",
+      "B": "womit / auf",
+      "C": "daran / für",
+      "D": "davon / mit"
+    },
+    "antwort": "A",
+    "erklaerung": "1. Boşluk (İş/Nesne): 'Zufrieden mit' -> Damit. 2. Boşluk (İnsan/Şef): 'Ärgern über' -> Über den Chef (İnsan olduğu için 'darüber' olmaz, edat kalır)."
+  },
+  {
+    "id": 4604,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Der Nachbar beschwert sich ständig über den Lärm. ___ beschwert er sich? Hat er schon mit dem Vermieter ___ gesprochen?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Worüber / darüber",
+      "B": "Über wen / damit",
+      "C": "Wofür / dafür",
+      "D": "Woran / daran"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich beschweren über' (nesne: gürültü). Worüber (ne hakkında) / Darüber (bunun hakkında)."
+  },
+  {
+    "id": 4605,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Denkst du bitte an den Termin morgen? Ja, ich denke ___. Aber denkst du auch an Oma? Ja, ich denke oft ___.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "daran / an sie",
+      "B": "woran / daran",
+      "C": "damit / mit ihr",
+      "D": "dafür / für sie"
+    },
+    "antwort": "A",
+    "erklaerung": "1. Boşluk (Nesne: Termin) -> Daran. 2. Boşluk (İnsan: Oma) -> An sie (İnsanlarda da-wo kullanılmaz)."
+  },
+  {
+    "id": 4606,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Ich träume von einer Weltreise. ___ träumst du? Träumst du auch ___?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Wovon / davon",
+      "B": "Von wem / damit",
+      "C": "Wovor / davor",
+      "D": "Worüber / darüber"
+    },
+    "antwort": "A",
+    "erklaerung": "'Träumen von' (nesne: seyahat). Wovon (neyin hayalini) / Davon (bunun hayalini)."
+  },
+  {
+    "id": 4607,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Hast du Angst vor Spinnen? Ja, ich habe große Angst ___. Und ___ hast du Angst?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "davor / wovor",
+      "B": "davon / wovon",
+      "C": "daran / woran",
+      "D": "dafür / wofür"
+    },
+    "antwort": "A",
+    "erklaerung": "'Angst haben vor'. Davor (bundan/onlardan) / Wovor (neden korkarsın)."
+  },
+  {
+    "id": 4608,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Ich kann mich nicht an das Wort erinnern. Erinnerst du dich ___? Nein, ich habe keine Ahnung ___.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "daran / davon",
+      "B": "woran / daran",
+      "C": "daran / davon",
+      "D": "darüber / worüber"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich erinnern an' (nesne). Daran (bunu hatırlamak). 'Ahnung haben von'. Davon (bunun hakkında fikrim yok)."
+  },
+  {
+    "id": 4609,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Wir haben gestern lange über Politik diskutiert. ___ habt ihr genau gesprochen? Habt ihr euch ___ gestritten?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Worüber / darüber",
+      "B": "Über wen / damit",
+      "C": "Wovon / davon",
+      "D": "Woran / daran"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sprechen/Streiten über' (nesne/konu). Worüber (ne hakkında) / Darüber (bunun hakkında)."
+  },
+  {
+    "id": 4610,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Meine Gesundheit hängt vom Sport ab. ___ hängt deine Gesundheit ab? Auch ___?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Wovon / davon",
+      "B": "Womit / damit",
+      "C": "Woran / daran",
+      "D": "Worüber / darüber"
+    },
+    "antwort": "A",
+    "erklaerung": "'Abhängen von' (bir şeye bağlı olmak). Wovon (neye) / Davon (buna)."
+  },
+  {
+    "id": 4611,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Ich brauche einen Hammer. ___ brauchst du den? Ich will ein Bild ___ aufhängen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Wofür / damit",
+      "B": "Worüber / davon",
+      "C": "Wogegen / dafür",
+      "D": "Woran / daran"
+    },
+    "antwort": "A",
+    "erklaerung": "'Brauchen für' -> Wofür (ne için?). 'Aufhängen mit' (bir araç ile) -> Damit (onunla)."
+  },
+  {
+    "id": 4612,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Ich lade dich zu meiner Party ein. Danke ___! Ich freue mich sehr ___.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dafür / darauf",
+      "B": "dazu / darüber",
+      "C": "davon / daran",
+      "D": "dagegen / damit"
+    },
+    "antwort": "A",
+    "erklaerung": "DİKKAT: 'Danke für' -> Dafür (bunun için teşekkürler - Einladung). 'Freuen auf' -> Darauf (gelecek partiye sevinmek)."
+  },
+  {
+    "id": 4613,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Wir haben viel über den Witz gelacht. ___ habt ihr gelacht? ___ kann man doch nicht lachen!",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Worüber / Darüber",
+      "B": "Woran / Daran",
+      "C": "Womit / Damit",
+      "D": "Wofür / Dafür"
+    },
+    "antwort": "A",
+    "erklaerung": "'Lachen über' (nesne/konu). Worüber / Darüber."
+  },
+  {
+    "id": 4614,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Ich gratuliere dir zum neuen Job! Danke ___! Ich habe gar nicht ___ gerechnet.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dafür / damit",
+      "B": "dazu / damit",
+      "C": "davon / darauf",
+      "D": "daran / davor"
+    },
+    "antwort": "B",
+    "erklaerung": "DİKKAT: 'Gratulieren zu' -> Dazu (bunun için tebrikleri kabul etmek). 'Rechnen mit' (beklemek/ummak) -> Damit."
+  },
+  {
+    "id": 4615,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Ich muss dich um einen Gefallen bitten. ___ geht es? Es geht ___ mein Auto.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Worum / um",
+      "B": "Worüber / über",
+      "C": "Wofür / für",
+      "D": "Woran / an"
+    },
+    "antwort": "A",
+    "erklaerung": "'Es geht um' (konu şudur). Worum (konu ne?). İkinci kısımda isim (Auto) geldiği için 'darum' denmez, edat 'um' kullanılır."
+  },
+  {
+    "id": 4616,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Ich zweifle an seiner Geschichte. ___ zweifelst du? Zweifelst du auch ___?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Woran / daran",
+      "B": "Worüber / darüber",
+      "C": "Wovon / davon",
+      "D": "Womit / damit"
+    },
+    "antwort": "A",
+    "erklaerung": "'Zweifeln an' (şüphe etmek). Woran (neyden) / Daran (bundan)."
+  },
+  {
+    "id": 4617,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Nimmst du an dem Treffen teil? Ja, ich nehme ___ teil. Hast du auch Interesse ___?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "daran / daran",
+      "B": "dazu / dafür",
+      "C": "davon / davon",
+      "D": "dafür / dazu"
+    },
+    "antwort": "A",
+    "erklaerung": "'Teilnehmen an' -> Daran. 'Interesse haben an' -> Daran."
+  },
+  {
+    "id": 4618,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "In meiner Freizeit beschäftige ich mich mit Malerei. ___ beschäftigst du dich? Hast du auch Spaß ___?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Womit / daran",
+      "B": "Wovon / damit",
+      "C": "Worüber / dafür",
+      "D": "Woran / davon"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich beschäftigen mit' -> Womit. 'Spaß haben an' -> Daran."
+  },
+  {
+    "id": 4619,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Ich habe keine Lust auf Kino. ___ hast du denn Lust? ___ Theater?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Worauf / Auf",
+      "B": "Woran / An",
+      "C": "Wofür / Für",
+      "D": "Wozu / Zu"
+    },
+    "antwort": "A",
+    "erklaerung": "'Lust haben auf'. Worauf (neye?). İkinci kısımda isim (Theater) olduğu için 'Darauf' değil, edat 'Auf' kullanılır."
+  },
+  {
+    "id": 4620,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Markus hat sich verliebt. ___ denn? In Julia? Ja, er hat sich sehr ___ verliebt.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "In wen / in sie",
+      "B": "Worin / darin",
+      "C": "Womit / mit ihr",
+      "D": "Woran / an sie"
+    },
+    "antwort": "A",
+    "erklaerung": "İnsanlar söz konusu olduğunda (Julia) Pronominaladverb (worin/darin) KULLANILMAZ. Edat + Zamir kullanılır: In wen? / In sie."
+  },
+  {
+    "id": 4621,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Pass bitte auf meine Tasche auf! Ja, ich passe ___ auf. Du kannst dich ___ verlassen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "darauf / darauf",
+      "B": "daran / daran",
+      "C": "dafür / dafür",
+      "D": "damit / damit"
+    },
+    "antwort": "A",
+    "erklaerung": "'Aufpassen auf' (nesne: çanta) -> Darauf. 'Sich verlassen auf' (bir şeye güvenmek) -> Darauf."
+  },
+  {
+    "id": 4622,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Der Drucker gehört zur Ausstattung. Er gehört einfach ___. Wir können ___ nicht arbeiten.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dazu / ohne ihn",
+      "B": "dafür / ohne den",
+      "C": "daran / damit",
+      "D": "davon / dafür"
+    },
+    "antwort": "A",
+    "erklaerung": "'Gehören zu' (ait olmak/parçası olmak) -> Dazu. 'Ohne' (onsuz) edatı Akkusativ zamir alır -> Ohne ihn (Drucker)."
+  },
+  {
+    "id": 4623,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Ich möchte dir für das Geschenk danken. ___? Ach, ___ nicht der Rede wert.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Wofür / das ist",
+      "B": "Dafür / es ist",
+      "C": "Worüber / das war",
+      "D": "Woran / es war"
+    },
+    "antwort": "A",
+    "erklaerung": "'Danken für' -> Wofür (ne için?). İkinci kısım kalıplaşmış ifadedir: 'Das ist nicht der Rede wert' (Lafı bile olmaz)."
+  },
+  {
+    "id": 4624,
+    "thema": "Pronominaladverbien",
+    "format": "Text",
+    "kontext": "Der Lehrer spricht mit den Schülern über die Prüfung. Er spricht ___ ___.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mit ihnen / darüber",
+      "B": "damit / worüber",
+      "C": "mit denen / davon",
+      "D": "womit / darauf"
+    },
+    "antwort": "A",
+    "erklaerung": "İnsanlar (Schüler) -> mit ihnen. Konu (Prüfung) -> darüber. Bu soru insan/nesne ayrımını tam olarak test eder."
+  }
+]

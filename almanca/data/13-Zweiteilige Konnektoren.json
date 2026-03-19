@@ -1,0 +1,752 @@
+[
+  {
+    "id": 2000,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Wir suchen für unsere Firma einen neuen Mitarbeiter im Verkauf. Der ideale Kandidat sollte ___ Deutsch ___ Englisch fließend sprechen, da wir viele internationale Kunden haben.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "sowohl / als auch",
+      "B": "entweder / noch",
+      "C": "zwar / oder",
+      "D": "weder / sondern"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sowohl ... als auch' bedeutet eine Aufzählung (A und B). Beide Sprachen sind erforderlich."
+  },
+  {
+    "id": 2001,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Mein Bruder ist Vegetarier und sehr wählerisch beim Essen. Er isst ___ Fleisch ___ Fisch, sondern ernährt sich ausschließlich von Gemüse und Obst.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "weder / noch",
+      "B": "nicht nur / aber",
+      "C": "entweder / oder",
+      "D": "sowohl / als auch"
+    },
+    "antwort": "A",
+    "erklaerung": "'Weder ... noch' ist eine doppelte Verneinung (nicht A und nicht B)."
+  },
+  {
+    "id": 2002,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Wir haben heute Abend nicht viel Zeit. Wir können ___ ins Kino gehen ___ gemütlich zu Hause essen, aber beides schaffen wir zeitlich nicht.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "entweder / oder",
+      "B": "weder / noch",
+      "C": "zwar / aber",
+      "D": "nicht nur / sondern auch"
+    },
+    "antwort": "A",
+    "erklaerung": "'Entweder ... oder' drückt eine Alternative aus (nur eine Option ist möglich)."
+  },
+  {
+    "id": 2003,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Die neue Wohnung gefällt mir eigentlich ganz gut. Sie ist ___ sehr klein, ___ die Lage im Stadtzentrum ist perfekt und die Miete ist günstig.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "zwar / aber",
+      "B": "entweder / oder",
+      "C": "weder / noch",
+      "D": "sowohl / als auch"
+    },
+    "antwort": "A",
+    "erklaerung": "'Zwar ... aber' drückt einen Gegensatz oder eine Einschränkung aus."
+  },
+  {
+    "id": 2004,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Lisa ist sehr sportlich und aktiv. Sie spielt ___ Tennis, ___ sie geht auch dreimal pro Woche ins Fitnessstudio, um fit zu bleiben.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "nicht nur / sondern auch",
+      "B": "einerseits / noch",
+      "C": "entweder / aber",
+      "D": "weder / oder"
+    },
+    "antwort": "A",
+    "erklaerung": "'Nicht nur ... sondern auch' verstärkt eine Aufzählung."
+  },
+  {
+    "id": 2005,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Ich kann mich nicht entscheiden, ob ich das Jobangebot annehmen soll. ___ ist das Gehalt sehr gut, ___ müsste ich jeden Tag zwei Stunden pendeln.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Einerseits / andererseits",
+      "B": "Sowohl / als auch",
+      "C": "Weder / noch",
+      "D": "Entweder / sondern"
+    },
+    "antwort": "A",
+    "erklaerung": "'Einerseits ... andererseits' stellt zwei verschiedene Aspekte (Pro und Contra) gegenüber."
+  },
+  {
+    "id": 2006,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Der öffentliche Nahverkehr hier ist eine Katastrophe. Am Wochenende fährt ___ ein Bus ___ eine Bahn, deshalb brauche ich unbedingt ein Auto.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "weder / noch",
+      "B": "zwar / aber",
+      "C": "entweder / und",
+      "D": "nicht nur / oder"
+    },
+    "antwort": "A",
+    "erklaerung": "Beide Transportmittel fehlen, daher doppelte Verneinung 'weder ... noch'."
+  },
+  {
+    "id": 2007,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Für das Abendessen müssen wir noch einkaufen. Wir brauchen ___ Getränke für die Gäste ___ Zutaten für den Salat.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "sowohl / als auch",
+      "B": "entweder / noch",
+      "C": "zwar / oder",
+      "D": "einerseits / aber"
+    },
+    "antwort": "A",
+    "erklaerung": "Wir brauchen beides. 'Sowohl ... als auch' passt hier."
+  },
+  {
+    "id": 2008,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Sie können die Rechnung sofort bezahlen. Sie können ___ mit Bargeld ___ bequem mit Ihrer Kreditkarte zahlen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "entweder / oder",
+      "B": "weder / noch",
+      "C": "zwar / aber",
+      "D": "nicht / sondern"
+    },
+    "antwort": "A",
+    "erklaerung": "Es gibt zwei Möglichkeiten zur Auswahl, daher 'entweder ... oder'."
+  },
+  {
+    "id": 2009,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Unser neuer Kollege ist wirklich toll. Er ist ___ sehr freundlich und hilfsbereit, ___ er ist fachlich äußerst kompetent.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "nicht nur / sondern auch",
+      "B": "entweder / noch",
+      "C": "weder / oder",
+      "D": "zwar / sondern"
+    },
+    "antwort": "A",
+    "erklaerung": "Er hat beide positiven Eigenschaften, die zweite wird hervorgehoben."
+  },
+  {
+    "id": 2010,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Mein Auto ist schon sehr alt. Es fährt ___ noch ganz gut, ___ es verbraucht viel zu viel Benzin und die Reparaturen sind teuer.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "zwar / aber",
+      "B": "entweder / oder",
+      "C": "weder / noch",
+      "D": "sowohl / als auch"
+    },
+    "antwort": "A",
+    "erklaerung": "Gegensatz: Es fährt gut (positiv), aber verbraucht viel (negativ)."
+  },
+  {
+    "id": 2011,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Der Umzug nach Berlin ist eine schwere Entscheidung. ___ freue ich mich auf den neuen Job, ___ werde ich meine Freunde hier sehr vermissen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Einerseits / andererseits",
+      "B": "Nicht nur / sondern auch",
+      "C": "Entweder / oder",
+      "D": "Weder / noch"
+    },
+    "antwort": "A",
+    "erklaerung": "Zwei Gefühle stehen im Konflikt (Freude vs. Vermissen)."
+  },
+  {
+    "id": 2012,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Für unseren Sommerurlaub müssen wir uns entscheiden. Wir fliegen ___ nach Spanien ans Meer ___ wir machen eine Wandertour in den Alpen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "entweder / oder",
+      "B": "sowohl / als auch",
+      "C": "zwar / aber",
+      "D": "weder / noch"
+    },
+    "antwort": "A",
+    "erklaerung": "Wir müssen uns für eine der beiden Optionen entscheiden."
+  },
+  {
+    "id": 2013,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Ich habe versucht, Hans zu erreichen, aber es ist unmöglich. Er antwortet ___ auf meine Anrufe ___ reagiert er auf meine E-Mails.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "weder / noch",
+      "B": "nicht nur / sondern",
+      "C": "entweder / aber",
+      "D": "sowohl / oder"
+    },
+    "antwort": "A",
+    "erklaerung": "Er macht beides nicht (keine Antwort)."
+  },
+  {
+    "id": 2014,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Dieses Restaurant ist mein Lieblingslokal in der Stadt. Das Essen ist dort ___ unglaublich lecker ___ auch noch sehr gesund.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "sowohl / als",
+      "B": "weder / noch",
+      "C": "entweder / oder",
+      "D": "einerseits / aber"
+    },
+    "antwort": "A",
+    "erklaerung": "Zwei positive Eigenschaften werden aufgezählt."
+  },
+  {
+    "id": 2015,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Morgen ist der große Frühjahrsputz. Wir müssen ___ die Fenster putzen, ___ wir müssen den ganzen Keller aufräumen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "nicht nur / sondern auch",
+      "B": "zwar / oder",
+      "C": "entweder / noch",
+      "D": "weder / aber"
+    },
+    "antwort": "A",
+    "erklaerung": "Es kommt noch eine weitere Aufgabe dazu (Verstärkung)."
+  },
+  {
+    "id": 2016,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Das Wetter ist heute etwas seltsam. Die Sonne scheint ___ den ganzen Tag, ___ es ist trotzdem extrem kalt und windig.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "zwar / aber",
+      "B": "entweder / oder",
+      "C": "sowohl / als auch",
+      "D": "weder / noch"
+    },
+    "antwort": "A",
+    "erklaerung": "Einschränkung: Sonne (positiv), aber kalt (negativ)."
+  },
+  {
+    "id": 2017,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Wir überlegen, ein Haus zu kaufen. ___ ist das eine sichere Geldanlage für die Zukunft, ___ müssen wir dafür einen hohen Kredit aufnehmen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Einerseits / andererseits",
+      "B": "Weder / noch",
+      "C": "Entweder / oder",
+      "D": "Nicht nur / sondern"
+    },
+    "antwort": "A",
+    "erklaerung": "Abwägung von Vor- und Nachteilen."
+  },
+  {
+    "id": 2018,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Der Termin muss diese Woche stattfinden. Können Sie ___ heute Nachmittag kommen ___ haben Sie morgen früh Zeit?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "entweder / oder",
+      "B": "weder / noch",
+      "C": "zwar / aber",
+      "D": "sowohl / sondern"
+    },
+    "antwort": "A",
+    "erklaerung": "Auswahl zwischen zwei Zeitpunkten."
+  },
+  {
+    "id": 2019,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Ich kann dir bei der Renovierung leider nicht helfen. Ich habe momentan ___ Zeit ___ habe ich Lust, am Wochenende zu arbeiten.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "weder / noch",
+      "B": "sowohl / als auch",
+      "C": "einerseits / aber",
+      "D": "entweder / und"
+    },
+    "antwort": "A",
+    "erklaerung": "Beides fehlt: Keine Zeit und keine Lust."
+  },
+  {
+    "id": 2020,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Zu meiner Geburtstagsparty habe ich viele Leute eingeladen. ___ meine Kollegen aus dem Büro ___ meine alten Schulfreunde kommen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Sowohl / als auch",
+      "B": "Entweder / noch",
+      "C": "Zwar / oder",
+      "D": "Weder / aber"
+    },
+    "antwort": "A",
+    "erklaerung": "Beide Gruppen kommen zur Party."
+  },
+  {
+    "id": 2021,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Zum Muttertag möchte ich etwas Besonderes schenken. Ich kaufe ___ einen großen Blumenstrauß, ___ ich backe auch ihren Lieblingskuchen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "nicht nur / sondern",
+      "B": "weder / noch",
+      "C": "entweder / aber",
+      "D": "einerseits / oder"
+    },
+    "antwort": "A",
+    "erklaerung": "Ich mache beides, das Zweite wird hervorgehoben."
+  },
+  {
+    "id": 2022,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Deutsch zu lernen ist eine Herausforderung. Die Grammatik ist ___ kompliziert, ___ es macht Spaß, eine neue Kultur kennenzulernen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "zwar / aber",
+      "B": "entweder / oder",
+      "C": "weder / noch",
+      "D": "sowohl / als auch"
+    },
+    "antwort": "A",
+    "erklaerung": "Einschränkung: Schwer (negativ), aber spaßig (positiv)."
+  },
+  {
+    "id": 2023,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Wie kommst du morgen zur Arbeit? Fährst du ___ mit dem Fahrrad ___ nimmst du bei diesem Regen lieber den Bus?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "entweder / oder",
+      "B": "weder / noch",
+      "C": "zwar / aber",
+      "D": "nicht nur / und"
+    },
+    "antwort": "A",
+    "erklaerung": "Alternative Frage: Option A oder Option B?"
+  },
+  {
+    "id": 2024,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Das Wetter war im Urlaub furchtbar. Wir konnten ___ im Meer schwimmen ___ konnten wir in den Bergen wandern, weil es nur geregnet hat.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "weder / noch",
+      "B": "sowohl / als auch",
+      "C": "zwar / aber",
+      "D": "entweder / sondern"
+    },
+    "antwort": "A",
+    "erklaerung": "Beides war wegen des Regens nicht möglich."
+  },
+  {
+    "id": 2125,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Max spricht drei Sprachen fließend. Er spricht ___ Deutsch ___ Französisch und Spanisch.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "nicht nur / sondern auch",
+      "B": "entweder / oder",
+      "C": "weder / noch",
+      "D": "zwar / aber"
+    },
+    "antwort": "A",
+    "erklaerung": "Üç dil de var, 'sadece o değil, aynı zamanda bu da' anlamında ekleme yapıyor."
+  },
+  {
+    "id": 2126,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Ich habe keine Ahnung, wo meine Brille ist. Sie ist ___ im Wohnzimmer ___ in der Küche zu finden.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "weder / noch",
+      "B": "sowohl / als auch",
+      "C": "entweder / oder",
+      "D": "einerseits / andererseits"
+    },
+    "antwort": "A",
+    "erklaerung": "Gözlük yok, iki yerde de bulunamıyor (Olumsuzluk: Ne orada ne burada)."
+  },
+  {
+    "id": 2127,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Wir können uns nicht entscheiden. Wir fahren im Urlaub ___ nach Italien ___ wir bleiben in Deutschland.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "entweder / oder",
+      "B": "nicht nur / sondern auch",
+      "C": "weder / noch",
+      "D": "zwar / aber"
+    },
+    "antwort": "A",
+    "erklaerung": "İki seçenekten biri (Alternatif)."
+  },
+  {
+    "id": 2128,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Das neue Auto ist wirklich toll. Es ist ___ sehr schnell, ___ es verbraucht leider viel Benzin.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "zwar / aber",
+      "B": "sowohl / als auch",
+      "C": "entweder / oder",
+      "D": "weder / noch"
+    },
+    "antwort": "A",
+    "erklaerung": "Olumlu özellik (hızlı) ama olumsuz durum (çok yakıyor) -> Zıtlık."
+  },
+  {
+    "id": 2129,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Mein Kollege ist sehr unzuverlässig. Er kommt ___ pünktlich zur Arbeit, ___ erledigt er seine Aufgaben richtig.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "weder / noch",
+      "B": "sowohl / als auch",
+      "C": "entweder / oder",
+      "D": "nicht nur / sondern auch"
+    },
+    "antwort": "A",
+    "erklaerung": "İki olumsuz durum: Ne zamanında geliyor ne de işini yapıyor."
+  },
+  {
+    "id": 2130,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Ich möchte fit werden. Deshalb werde ich ab jetzt ___ joggen gehen ___ mich im Fitnessstudio anmelden.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "sowohl / als auch",
+      "B": "zwar / aber",
+      "C": "entweder / noch",
+      "D": "weder / oder"
+    },
+    "antwort": "A",
+    "erklaerung": "Her ikisini de yapacağım (Ekleme)."
+  },
+  {
+    "id": 2131,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Das Restaurant war eine Enttäuschung. Das Essen war ___ lecker ___ war der Service gut.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "weder / noch",
+      "B": "entweder / oder",
+      "C": "nicht nur / sondern auch",
+      "D": "zwar / aber"
+    },
+    "antwort": "A",
+    "erklaerung": "Her iki özellik de kötüydü (Yemek lezzetli değildi, servis de iyi değildi)."
+  },
+  {
+    "id": 2132,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Dieser Job hat Vor- und Nachteile. ___ verdient man sehr gut, ___ hat man kaum Freizeit.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Einerseits / andererseits",
+      "B": "Weder / noch",
+      "C": "Sowohl / als auch",
+      "D": "Entweder / oder"
+    },
+    "antwort": "A",
+    "erklaerung": "İki zıt yönün karşılaştırılması."
+  },
+  {
+    "id": 2133,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Wir brauchen für die Party noch vieles. Wir müssen ___ Getränke kaufen, ___ Snacks besorgen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "nicht nur / sondern auch",
+      "B": "entweder / oder",
+      "C": "zwar / aber",
+      "D": "weder / noch"
+    },
+    "antwort": "A",
+    "erklaerung": "İhtiyaç listesini güçlendirerek sayma."
+  },
+  {
+    "id": 2134,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Du musst dich entscheiden. Du kannst ___ den roten Pullover nehmen ___ den blauen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "entweder / oder",
+      "B": "weder / noch",
+      "C": "sowohl / als auch",
+      "D": "zwar / aber"
+    },
+    "antwort": "A",
+    "erklaerung": "Seçim zorunluluğu (Ya o ya bu)."
+  },
+  {
+    "id": 2135,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Thomas ist ein Multitalent. Er kann ___ Klavier spielen, ___ er spielt auch hervorragend Gitarre.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "nicht nur / sondern",
+      "B": "weder / noch",
+      "C": "entweder / oder",
+      "D": "zwar / aber"
+    },
+    "antwort": "A",
+    "erklaerung": "Yetenekleri vurgulama (Sadece o değil, bu da)."
+  },
+  {
+    "id": 2136,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Der Film war ___ sehr spannend, ___ er war am Ende etwas zu lang.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "zwar / aber",
+      "B": "weder / noch",
+      "C": "entweder / oder",
+      "D": "sowohl / als auch"
+    },
+    "antwort": "A",
+    "erklaerung": "Olumlu başlangıç (heyecanlı), olumsuz bitiş (çok uzun) -> Kısıtlama."
+  },
+  {
+    "id": 2137,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Ich habe ___ Zeit für einen Kaffee ___ für ein langes Gespräch. Ich muss sofort los.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "weder / noch",
+      "B": "sowohl / als auch",
+      "C": "entweder / oder",
+      "D": "zwar / aber"
+    },
+    "antwort": "A",
+    "erklaerung": "Hiç vaktim yok (Ne kahveye ne sohbete)."
+  },
+  {
+    "id": 2138,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Meine Eltern kommen zu Besuch. Sie bleiben ___ am Samstag ___ am Sonntag bei uns.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "sowohl / als auch",
+      "B": "entweder / oder",
+      "C": "weder / noch",
+      "D": "zwar / aber"
+    },
+    "antwort": "A",
+    "erklaerung": "Her iki günde de kalacaklar."
+  },
+  {
+    "id": 2139,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "___ hast du jetzt sofort Zeit für mich, ___ ich gehe alleine einkaufen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Entweder / oder",
+      "B": "Weder / noch",
+      "C": "Sowohl / als auch",
+      "D": "Nicht nur / sondern"
+    },
+    "antwort": "A",
+    "erklaerung": "Rest çekme durumu: Ya şimdi gel ya da ben gidiyorum."
+  },
+  {
+    "id": 2140,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Das Hotel liegt sehr günstig. Es ist ___ strandnah, ___ zentral gelegen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "sowohl / als auch",
+      "B": "weder / noch",
+      "C": "entweder / oder",
+      "D": "zwar / aber"
+    },
+    "antwort": "A",
+    "erklaerung": "İki avantajın birleşimi."
+  },
+  {
+    "id": 2141,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Ich habe ___ Lust auf Pizza ___ auf Pasta. Ich möchte heute Salat essen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "weder / noch",
+      "B": "sowohl / als auch",
+      "C": "entweder / oder",
+      "D": "nicht nur / sondern auch"
+    },
+    "antwort": "A",
+    "erklaerung": "İkisini de istemiyorum."
+  },
+  {
+    "id": 2142,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Der Student ist sehr fleißig. Er lernt ___ in der Bibliothek, ___ er arbeitet auch am Wochenende zu Hause.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "nicht nur / sondern",
+      "B": "entweder / oder",
+      "C": "weder / noch",
+      "D": "zwar / aber"
+    },
+    "antwort": "A",
+    "erklaerung": "Çalışkanlığını vurgulayan ekleme (Sadece orada değil, burada da)."
+  },
+  {
+    "id": 2143,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Wir haben ein Problem. Das Auto springt ___ an, ___ funktioniert das Licht.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "weder / noch",
+      "B": "sowohl / als auch",
+      "C": "entweder / oder",
+      "D": "zwar / aber"
+    },
+    "antwort": "A",
+    "erklaerung": "Araba çalışmıyor, ışık da yanmıyor (İki olumsuzluk)."
+  },
+  {
+    "id": 2144,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Ich weiß nicht, was ich kochen soll. ___ mache ich eine Suppe, ___ wir bestellen uns etwas.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Entweder / oder",
+      "B": "Weder / noch",
+      "C": "Sowohl / als auch",
+      "D": "Zwar / aber"
+    },
+    "antwort": "A",
+    "erklaerung": "İki seçenek arasında karar verme."
+  },
+  {
+    "id": 2145,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Der Ausflug war anstrengend. Wir sind ___ 20 Kilometer gewandert, ___ wir sind auch noch auf einen Berg geklettert.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "nicht nur / sondern",
+      "B": "weder / noch",
+      "C": "entweder / oder",
+      "D": "zwar / aber"
+    },
+    "antwort": "A",
+    "erklaerung": "Zorluğu pekiştirmek için ekleme yapıyor."
+  },
+  {
+    "id": 2146,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Ich mag meine Wohnung. Sie ist ___ etwas klein, ___ sie hat einen wunderschönen Balkon.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "zwar / aber",
+      "B": "entweder / oder",
+      "C": "weder / noch",
+      "D": "sowohl / als auch"
+    },
+    "antwort": "A",
+    "erklaerung": "Olumsuz (küçük) ve olumlu (balkon) özellik dengesi."
+  },
+  {
+    "id": 2147,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Für die Bewerbung brauche ich ___ meinen Lebenslauf ___ meine Zeugnisse.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "sowohl / als auch",
+      "B": "entweder / oder",
+      "C": "weder / noch",
+      "D": "zwar / aber"
+    },
+    "antwort": "A",
+    "erklaerung": "Her iki belge de gerekli."
+  },
+  {
+    "id": 2148,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Der Politiker verspricht viel. ___ will er die Steuern senken, ___ will er mehr Geld für Schulen ausgeben.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Einerseits / andererseits",
+      "B": "Weder / noch",
+      "C": "Entweder / oder",
+      "D": "Nicht nur / aber"
+    },
+    "antwort": "A",
+    "erklaerung": "İki farklı vaadin sunulması."
+  },
+  {
+    "id": 2149,
+    "thema": "Zweiteilige Konnektoren",
+    "format": "Text",
+    "kontext": "Mein Handy ist kaputt. Ich kann damit ___ telefonieren ___ Nachrichten schreiben.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "weder / noch",
+      "B": "sowohl / als auch",
+      "C": "entweder / oder",
+      "D": "zwar / aber"
+    },
+    "antwort": "A",
+    "erklaerung": "Fonksiyonların hiçbiri çalışmıyor."
+  }
+]

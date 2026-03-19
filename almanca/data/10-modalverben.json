@@ -1,0 +1,753 @@
+[
+  {
+    "id": 1900,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Entschuldigung, ___ Sie mir bitte sagen, wie spät es ist?",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "können",
+      "B": "müssen",
+      "C": "wollen",
+      "D": "sollen"
+    },
+    "antwort": "A",
+    "erklaerung": "'Können' drückt hier eine höfliche Bitte oder Fähigkeit aus."
+  },
+  {
+    "id": 1901,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Hier ist ein Parkverbot. Sie ___ hier nicht parken!",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "müssen",
+      "B": "können",
+      "C": "dürfen",
+      "D": "mögen"
+    },
+    "antwort": "C",
+    "erklaerung": "'Nicht dürfen' drückt ein Verbot aus."
+  },
+  {
+    "id": 1902,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Ich bin krank. Der Arzt sagt, ich ___ drei Tage im Bett bleiben.",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "soll",
+      "B": "darf",
+      "C": "will",
+      "D": "kann"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sollen' wird oft verwendet, um den Rat oder Befehl einer anderen Person (hier: der Arzt) wiederzugeben."
+  },
+  {
+    "id": 1903,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Morgen habe ich eine wichtige Prüfung. Deshalb ___ ich heute viel lernen.",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "darf",
+      "B": "muss",
+      "C": "kann",
+      "D": "mag"
+    },
+    "antwort": "B",
+    "erklaerung": "'Müssen' drückt eine Notwendigkeit oder Verpflichtung aus."
+  },
+  {
+    "id": 1904,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Wir ___ am Wochenende gerne ins Kino gehen. Kommst du mit?",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "müssen",
+      "B": "sollen",
+      "C": "dürfen",
+      "D": "möchten"
+    },
+    "antwort": "D",
+    "erklaerung": "'Möchten' drückt einen Wunsch aus."
+  },
+  {
+    "id": 1905,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "___ du gut kochen?",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "Kannst",
+      "B": "Musst",
+      "C": "Darfst",
+      "D": "Sollst"
+    },
+    "antwort": "A",
+    "erklaerung": "'Können' fragt hier nach einer Fähigkeit oder einem Talent."
+  },
+  {
+    "id": 1906,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Als Kind ___ ich jeden Abend um 20 Uhr ins Bett gehen.",
+    "frage": "Welches Verb passt? (Präteritum)",
+    "optionen": {
+      "A": "muss",
+      "B": "musste",
+      "C": "müsste",
+      "D": "müssen"
+    },
+    "antwort": "B",
+    "erklaerung": "'Musste' ist die Präteritum-Form von 'müssen' (Verpflichtung in der Vergangenheit)."
+  },
+  {
+    "id": 1907,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Herr Müller, ___ Sie bitte das Fenster öffnen?",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "könnten",
+      "B": "müssen",
+      "C": "dürfen",
+      "D": "wollen"
+    },
+    "antwort": "A",
+    "erklaerung": "'Könnten' (Konjunktiv II) ist eine sehr höfliche Form, um eine Bitte zu formulieren."
+  },
+  {
+    "id": 1908,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Ich habe keinen Hunger. Ich ___ nichts essen.",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "mag",
+      "B": "darf",
+      "C": "kann",
+      "D": "will"
+    },
+    "antwort": "D",
+    "erklaerung": "'Wollen' (oder die Verneinung davon) drückt eine Absicht oder einen Willen aus."
+  },
+  {
+    "id": 1909,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Lisa ___ keinen Fisch. Sie isst lieber Fleisch.",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "mag",
+      "B": "möchtet",
+      "C": "willt",
+      "D": "kanne"
+    },
+    "antwort": "A",
+    "erklaerung": "'Mögen' drückt Vorliebe oder Geschmack aus. 'Mag' ist die korrekte Konjugation für 3. Person Singular."
+  },
+  {
+    "id": 1910,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Du ___ dich nicht beeilen, wir haben noch viel Zeit.",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "musst",
+      "B": "darfst",
+      "C": "kannst",
+      "D": "willst"
+    },
+    "antwort": "A",
+    "erklaerung": "'Nicht müssen' bedeutet, dass keine Notwendigkeit besteht (es ist nicht nötig)."
+  },
+  {
+    "id": 1911,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Gestern war Feiertag, deshalb ___ wir nicht arbeiten.",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "mussten",
+      "B": "durften",
+      "C": "wollten",
+      "D": "mochten"
+    },
+    "antwort": "A",
+    "erklaerung": "Im Kontext 'Feiertag' passt 'mussten wir nicht arbeiten' (keine Verpflichtung) am besten."
+  },
+  {
+    "id": 1912,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "___ ich Sie etwas fragen?",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "Darf",
+      "B": "Muss",
+      "C": "Soll",
+      "D": "Mag"
+    },
+    "antwort": "A",
+    "erklaerung": "'Darf ich...?' ist die Standardformulierung, um um Erlaubnis zu bitten."
+  },
+  {
+    "id": 1913,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Meine Tochter ist erst drei Jahre alt, aber sie ___ schon bis zehn zählen.",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "kann",
+      "B": "darf",
+      "C": "muss",
+      "D": "will"
+    },
+    "antwort": "A",
+    "erklaerung": "'Können' bezieht sich hier auf eine erlernte Fähigkeit."
+  },
+  {
+    "id": 1914,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "___ ihr heute Abend Pizza essen?",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "Wollt",
+      "B": "Willt",
+      "C": "Wollen",
+      "D": "Wollst"
+    },
+    "antwort": "A",
+    "erklaerung": "Die korrekte Konjugation von 'wollen' für 'ihr' ist 'wollt'."
+  },
+  {
+    "id": 1915,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Man ___ im Bus nicht laut telefonieren. Das stört die anderen.",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "sollte",
+      "B": "musste",
+      "C": "wollte",
+      "D": "mochte"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sollte' wird oft für Ratschläge oder allgemeine Regeln der Höflichkeit verwendet."
+  },
+  {
+    "id": 1916,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Früher ___ ich kein Deutsch sprechen, aber jetzt kann ich es gut.",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "konnte",
+      "B": "kannte",
+      "C": "könnte",
+      "D": "kann"
+    },
+    "antwort": "A",
+    "erklaerung": "'Konnte' ist das Präteritum von 'können' (Fähigkeit in der Vergangenheit)."
+  },
+  {
+    "id": 1917,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Du siehst müde aus. ___ ich dir einen Kaffee machen?",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "Soll",
+      "B": "Muss",
+      "C": "Will",
+      "D": "Darf"
+    },
+    "antwort": "A",
+    "erklaerung": "'Soll ich...?' wird verwendet, um jemandem ein Angebot oder eine Hilfeleistung vorzuschlagen."
+  },
+  {
+    "id": 1918,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Chef: 'Frau Meier, Sie ___ diesen Bericht bis morgen fertig haben.'",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "müssen",
+      "B": "dürfen",
+      "C": "können",
+      "D": "mögen"
+    },
+    "antwort": "A",
+    "erklaerung": "'Müssen' drückt hier eine Arbeitsanweisung/Verpflichtung aus."
+  },
+  {
+    "id": 1919,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Wir haben kein Brot mehr. Einer von uns ___ einkaufen gehen.",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "muss",
+      "B": "darf",
+      "C": "kann",
+      "D": "mag"
+    },
+    "antwort": "A",
+    "erklaerung": "Es ist eine Notwendigkeit, deshalb 'muss'."
+  },
+  {
+    "id": 1920,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "In der Bibliothek ___ man leise sein.",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "muss",
+      "B": "darf",
+      "C": "kann",
+      "D": "will"
+    },
+    "antwort": "A",
+    "erklaerung": "'Müssen' beschreibt hier eine Regel/Vorschrift."
+  },
+  {
+    "id": 1921,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "___ ihr am Samstag mit uns Fußball spielen?",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "Könnt",
+      "B": "Kannt",
+      "C": "Können",
+      "D": "Kannst"
+    },
+    "antwort": "A",
+    "erklaerung": "Die korrekte Konjugation von 'können' für 'ihr' ist 'könnt'."
+  },
+  {
+    "id": 1922,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Als Teenager ___ ich nicht lange ausgehen. Meine Eltern waren streng.",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "durfte",
+      "B": "musste",
+      "C": "wollte",
+      "D": "mochte"
+    },
+    "antwort": "A",
+    "erklaerung": "'Durfte' (Präteritum von dürfen) zeigt an, dass die Erlaubnis fehlte."
+  },
+  {
+    "id": 1923,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Ich ___ gerne ein neues Auto, aber ich habe kein Geld.",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "hätte",
+      "B": "würde",
+      "C": "wäre",
+      "D": "habe"
+    },
+    "antwort": "A",
+    "erklaerung": "Hier wird der Konjunktiv II von haben 'hätte gerne' verwendet, um einen irrealen Wunsch auszudrücken. (Oft in Kombination mit Modalverben gelehrt)."
+  },
+  {
+    "id": 1924,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Der Lehrer sagt: 'Ihr ___ die Hausaufgaben machen, sonst lernt ihr nichts.'",
+    "frage": "Welches Verb passt?",
+    "optionen": {
+      "A": "müsst",
+      "B": "dürft",
+      "C": "könnt",
+      "D": "wollt"
+    },
+    "antwort": "A",
+    "erklaerung": "'Müssen' drückt hier eine starke Empfehlung bzw. Notwendigkeit für den Lernerfolg aus."
+  },
+
+  {
+    "id": 1925,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Mein Sohn ist krank und hat Fieber. Er ___ heute nicht zur Schule gehen, sondern ___ im Bett bleiben.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "darf / muss",
+      "B": "kann / will",
+      "C": "soll / darf",
+      "D": "muss / kann"
+    },
+    "antwort": "A",
+    "erklaerung": "'Nicht dürfen' (yasak/izin yok) veya bağlama göre 'hastalık izni' (darf nicht). 'Müssen' (zorunluluk)."
+  },
+  {
+    "id": 1926,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Wir haben morgen eine sehr wichtige Prüfung. Deshalb ___ wir heute Abend nicht feiern, sondern wir ___ lernen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "können / müssen",
+      "B": "dürfen / wollen",
+      "C": "mögen / sollen",
+      "D": "wollen / dürfen"
+    },
+    "antwort": "A",
+    "erklaerung": "Zaman/imkan yokluğu (können nicht). Zorunluluk (müssen)."
+  },
+  {
+    "id": 1927,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Entschuldigung, ___ Sie mir bitte helfen? Ich ___ den Bahnhof nicht finden.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "können / kann",
+      "B": "müssen / darf",
+      "C": "wollen / muss",
+      "D": "sollen / will"
+    },
+    "antwort": "A",
+    "erklaerung": "Nezaket sorusu (Können Sie). Yetenek/İmkan (kann nicht finden)."
+  },
+  {
+    "id": 1928,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Hier im Museum ___ man nicht fotografieren. Sie ___ Ihre Kamera in die Tasche stecken.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "darf / müssen",
+      "B": "kann / wollen",
+      "C": "muss / dürfen",
+      "D": "soll / mögen"
+    },
+    "antwort": "A",
+    "erklaerung": "Yasak (darf nicht). Talimat/Zorunluluk (müssen)."
+  },
+  {
+    "id": 1929,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Ich ___ gerne italienisch essen, aber mein Mann ___ lieber chinesisch essen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "möchte / will",
+      "B": "muss / darf",
+      "C": "kann / soll",
+      "D": "darf / muss"
+    },
+    "antwort": "A",
+    "erklaerung": "İstek/Arzu (möchte). İrade/İstek (will)."
+  },
+  {
+    "id": 1930,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Der Arzt sagt, ich ___ mehr Sport machen. Ich ___ mich im Fitnessstudio anmelden.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "soll / will",
+      "B": "darf / muss",
+      "C": "kann / darf",
+      "D": "muss / kann"
+    },
+    "antwort": "A",
+    "erklaerung": "Tavsiye aktarımı (soll). Niyet (will)."
+  },
+  {
+    "id": 1931,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "___ du gut schwimmen? Wir ___ am Wochenende an den See fahren.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Kannst / wollen",
+      "B": "Musst / dürfen",
+      "C": "Darfst / müssen",
+      "D": "Willst / sollen"
+    },
+    "antwort": "A",
+    "erklaerung": "Yetenek (Kannst). Plan/İstek (wollen)."
+  },
+  {
+    "id": 1932,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Es ist schon spät. Wir ___ jetzt nach Hause gehen, sonst ___ wir den letzten Bus.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "müssen / verpassen",
+      "B": "können / bekommen",
+      "C": "dürfen / nehmen",
+      "D": "wollen / fahren"
+    },
+    "antwort": "A",
+    "erklaerung": "Zorunluluk (müssen). İkinci kısım geniş zaman fiil (verpassen)."
+  },
+  {
+    "id": 1933,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Meine Tochter ist erst fünf, aber sie ___ schon lesen. Sie ___ später Lehrerin werden.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "kann / möchte",
+      "B": "muss / will",
+      "C": "darf / soll",
+      "D": "soll / kann"
+    },
+    "antwort": "A",
+    "erklaerung": "Yetenek (kann). Arzu/Hayal (möchte)."
+  },
+  {
+    "id": 1934,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Im Flugzeug ___ man das Handy ausschalten. Man ___ es während des Fluges nicht benutzen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "muss / darf",
+      "B": "kann / muss",
+      "C": "darf / soll",
+      "D": "will / kann"
+    },
+    "antwort": "A",
+    "erklaerung": "Kural/Zorunluluk (muss). Yasak (darf nicht)."
+  },
+  {
+    "id": 1935,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "___ ich Sie zu einem Kaffee einladen? Oder ___ Sie lieber Tee trinken?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Darf / möchten",
+      "B": "Muss / wollen",
+      "C": "Kann / müssen",
+      "D": "Soll / dürfen"
+    },
+    "antwort": "A",
+    "erklaerung": "Nezaket/İzin (Darf). Tercih (möchten)."
+  },
+  {
+    "id": 1936,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Du ___ nicht so viel Süßigkeiten essen. Das ___ schlecht für die Zähne sein.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "solltest / kann",
+      "B": "musst / will",
+      "C": "darfst / muss",
+      "D": "willst / darf"
+    },
+    "antwort": "A",
+    "erklaerung": "Tavsiye (solltest). İhtimal (kann)."
+  },
+  {
+    "id": 1937,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Wir ___ leider nicht zur Party kommen. Wir ___ an diesem Tag arbeiten.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "können / müssen",
+      "B": "wollen / dürfen",
+      "C": "dürfen / können",
+      "D": "müssen / wollen"
+    },
+    "antwort": "A",
+    "erklaerung": "İmkan yokluğu (können nicht). Zorunluluk (müssen)."
+  },
+  {
+    "id": 1938,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Chef, ___ ich heute früher gehen? Ich ___ noch zum Arzt.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "darf / muss",
+      "B": "kann / will",
+      "C": "muss / kann",
+      "D": "soll / darf"
+    },
+    "antwort": "A",
+    "erklaerung": "İzin isteme (Darf). Zorunluluk (muss)."
+  },
+  {
+    "id": 1939,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Früher ___ ich kein Deutsch sprechen, aber jetzt ___ ich es ganz gut.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "konnte / kann",
+      "B": "musste / muss",
+      "C": "durfte / darf",
+      "D": "wollte / will"
+    },
+    "antwort": "A",
+    "erklaerung": "Geçmiş yetenek (konnte). Şimdiki yetenek (kann)."
+  },
+  {
+    "id": 1940,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Ihr ___ eure Hausaufgaben machen, bevor ihr fernsehen ___.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "müsst / dürft",
+      "B": "könnt / müsst",
+      "C": "wollt / könnt",
+      "D": "dürft / wollt"
+    },
+    "antwort": "A",
+    "erklaerung": "Zorunluluk (müsst). İzin (dürft)."
+  },
+  {
+    "id": 1941,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Lisa ___ sehr gut Klavier spielen. Sie ___ später Musikerin werden.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "kann / will",
+      "B": "muss / darf",
+      "C": "darf / kann",
+      "D": "soll / muss"
+    },
+    "antwort": "A",
+    "erklaerung": "Yetenek (kann). Kararlı istek/niyet (will)."
+  },
+  {
+    "id": 1942,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "___ wir uns morgen treffen? Ich ___ dir etwas Wichtiges erzählen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Sollen / möchte",
+      "B": "Müssen / darf",
+      "C": "Dürfen / kann",
+      "D": "Können / muss"
+    },
+    "antwort": "A",
+    "erklaerung": "Öneri (Sollen wir...?). İstek (möchte)."
+  },
+  {
+    "id": 1943,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "In der Bibliothek ___ man leise sein. Man ___ dort nicht laut telefonieren.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "muss / darf",
+      "B": "kann / will",
+      "C": "darf / muss",
+      "D": "will / soll"
+    },
+    "antwort": "A",
+    "erklaerung": "Kural (muss). Yasak (darf nicht)."
+  },
+  {
+    "id": 1944,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Ich habe kein Auto. Deshalb ___ ich jeden Tag mit dem Bus zur Arbeit fahren. Das ___ manchmal nervig sein.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "muss / kann",
+      "B": "kann / muss",
+      "C": "will / darf",
+      "D": "darf / soll"
+    },
+    "antwort": "A",
+    "erklaerung": "Zorunluluk (muss). İhtimal (kann)."
+  },
+  {
+    "id": 1945,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Wenn du abnehmen ___, ___ du weniger Zucker essen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "willst / solltest",
+      "B": "musst / darfst",
+      "C": "kannst / willst",
+      "D": "darfst / kannst"
+    },
+    "antwort": "A",
+    "erklaerung": "İstek/Şart (willst). Tavsiye (solltest)."
+  },
+  {
+    "id": 1946,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Papa, ___ ich heute Abend ins Kino gehen? Ich ___ auch meine Hausaufgaben schon gemacht.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "darf / habe",
+      "B": "kann / bin",
+      "C": "muss / werde",
+      "D": "soll / habe"
+    },
+    "antwort": "A",
+    "erklaerung": "İzin (darf). Perfekt zaman (habe gemacht)."
+  },
+  {
+    "id": 1947,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Dieser Koffer ist viel zu schwer. ___ Sie mir bitte helfen? Ich ___ ihn nicht tragen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Könnten / kann",
+      "B": "Müssen / will",
+      "C": "Dürfen / muss",
+      "D": "Wollen / darf"
+    },
+    "antwort": "A",
+    "erklaerung": "Nezaket (Könnten). Fiziksel imkansızlık (kann nicht)."
+  },
+  {
+    "id": 1948,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Wir ___ uns beeilen. Der Zug fährt in zehn Minuten ab und wir ___ noch Tickets kaufen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "müssen / müssen",
+      "B": "können / dürfen",
+      "C": "wollen / können",
+      "D": "dürfen / wollen"
+    },
+    "antwort": "A",
+    "erklaerung": "Aciliyet/Zorunluluk (müssen). Gereklilik (müssen)."
+  },
+  {
+    "id": 1949,
+    "thema": "Modalverben",
+    "format": "Text",
+    "kontext": "Meine Oma ___ sehr gut kochen. Früher ___ wir jeden Sonntag bei ihr essen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "kann / durften",
+      "B": "muss / mussten",
+      "C": "will / wollten",
+      "D": "soll / sollten"
+    },
+    "antwort": "A",
+    "erklaerung": "Yetenek (kann). Geçmişte izin/olanak (durften/konnten - şıklarda durften en uygunu)."
+  }
+]

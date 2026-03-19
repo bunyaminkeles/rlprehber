@@ -1,0 +1,753 @@
+[
+  {
+    "id": 1500,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Mein Bruder träumt schon seit seiner Kindheit ___ einem eigenen Haus mit großem Garten und ___ dafür jeden Monat viel Geld.\n\nEr hofft, dass er sich diesen Traum in etwa fünf Jahren erfüllen kann.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "für / spart",
+      "B": "von / spart",
+      "C": "an / spare",
+      "D": "über / sparen"
+    },
+    "antwort": "B",
+    "erklaerung": "Träumen + von (Dativ) + Verb 'spart' (3. Person Singular)."
+  },
+  {
+    "id": 1501,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Die Schüler beschweren ___ regelmäßig ___ die vielen Hausaufgaben.\n\nSie haben fast keine Freizeit mehr und können sich nicht mit Freunden treffen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "uns / für",
+      "B": "euch / an",
+      "C": "sich / über",
+      "D": "mich / von"
+    },
+    "antwort": "C",
+    "erklaerung": "Sich beschweren + über (Akkusativ) - reflexives Verb mit 'sich' (3. Person Plural)."
+  },
+  {
+    "id": 1502,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Ich denke in letzter Zeit sehr oft ___ meine Kindheit und ___ gerne an die schönen Sommerferien bei meinen Großeltern.\n\nDas waren wirklich unbeschwerte und glückliche Zeiten.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "über / denke",
+      "B": "an / erinnere mich",
+      "C": "für / erinnere",
+      "D": "von / denke mich"
+    },
+    "antwort": "B",
+    "erklaerung": "Denken + an (Akkusativ) + sich erinnern + an (reflexiv mit 'mich')."
+  },
+  {
+    "id": 1503,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Wir warten schon seit einer halben Stunde ___ den Bus und ärgern ___ sehr über die ständigen Verspätungen.\n\nHoffentlich kommt er bald, sonst verpassen wir unseren wichtigen Termin.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "für / sich",
+      "B": "auf / uns",
+      "C": "an / euch",
+      "D": "über / mich"
+    },
+    "antwort": "B",
+    "erklaerung": "Warten + auf (Akkusativ) + sich ärgern (reflexiv mit 'uns' für 'wir')."
+  },
+  {
+    "id": 1504,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Meine Kollegin hat sich gestern ___ ihren Traumjob bei einem internationalen Unternehmen beworben und hofft ___ eine positive Antwort.\n\nSie hat alle erforderlichen Unterlagen eingereicht und wartet gespannt auf die Rückmeldung.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "für / an",
+      "B": "um / auf",
+      "C": "an / für",
+      "D": "über / von"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich bewerben + um (Akkusativ) + hoffen + auf (Akkusativ)."
+  },
+  {
+    "id": 1505,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Die Touristen informieren ___ vor ihrer Reise gründlich ___ die kulturellen Besonderheiten des Landes.\n\nSie möchten gut vorbereitet sein und keine peinlichen Fehler machen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "uns / für",
+      "B": "euch / an",
+      "C": "sich / über",
+      "D": "mich / von"
+    },
+    "antwort": "C",
+    "erklaerung": "Sich informieren + über (Akkusativ) - reflexiv mit 'sich' (3. Person Plural)."
+  },
+  {
+    "id": 1506,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Er interessiert sich sehr ___ moderne Kunst und geht deshalb regelmäßig ___ Ausstellungen und Museen.\n\nEr kann stundenlang vor einem Gemälde stehen und es betrachten.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "für / zu",
+      "B": "an / in",
+      "C": "über / nach",
+      "D": "von / bei"
+    },
+    "antwort": "A",
+    "erklaerung": "Sich interessieren + für (Akkusativ) + gehen + zu (Dativ bei Veranstaltungen)."
+  },
+  {
+    "id": 1507,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Die Kinder freuen ___ schon seit Wochen riesig ___ die Sommerferien und den geplanten Urlaub am Meer.\n\nSie haben bereits ihre Koffer gepackt und können es kaum erwarten.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "uns / für",
+      "B": "euch / an",
+      "C": "sich / auf",
+      "D": "mich / über"
+    },
+    "antwort": "C",
+    "erklaerung": "Sich freuen + auf (Akkusativ, Zukunft) - reflexiv mit 'sich' (3. Person Plural)."
+  },
+  {
+    "id": 1508,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Ich habe mich gestern ___ meinen alten Schulfreund getroffen und wir haben lange ___ unsere gemeinsame Schulzeit gesprochen.\n\nEs war ein sehr schönes und emotionales Wiedersehen nach so vielen Jahren.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "an / für",
+      "B": "mit / über",
+      "C": "bei / an",
+      "D": "zu / von"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich treffen + mit (Dativ) + sprechen + über (Akkusativ)."
+  },
+  {
+    "id": 1509,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Sie ärgert sich jeden Morgen ___ die unpünktlichen Züge und beschwert ___ regelmäßig beim Kundenservice.\n\nTrotzdem ändert sich nichts an der Situation mit den Verspätungen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "an / uns",
+      "B": "über / sich",
+      "C": "für / mich",
+      "D": "von / euch"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich ärgern + über (Akkusativ) + sich beschweren (beide reflexiv mit 'sich')."
+  },
+  {
+    "id": 1510,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Wir diskutieren seit Stunden ___ das Problem und können ___ einfach nicht auf eine Lösung einigen.\n\nJeder hat eine andere Meinung und besteht auf seinem Standpunkt.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "für / sich",
+      "B": "über / uns",
+      "C": "an / euch",
+      "D": "von / mich"
+    },
+    "antwort": "B",
+    "erklaerung": "Diskutieren + über (Akkusativ) + sich einigen (reflexiv mit 'uns')."
+  },
+  {
+    "id": 1511,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Der Student bereitet ___ intensiv ___ die schwierige Abschlussprüfung vor.\n\nEr lernt jeden Tag mehrere Stunden und wiederholt alle wichtigen Themen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "ihm / für",
+      "B": "sich / auf",
+      "C": "ihn / an",
+      "D": "sein / über"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich vorbereiten + auf (Akkusativ) - reflexiv mit 'sich' (3. Person Singular)."
+  },
+  {
+    "id": 1512,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Meine Mutter kümmert ___ liebevoll ___ ihre alten Eltern und besucht sie jeden Tag.\n\nSie hilft ihnen im Haushalt und bei allen wichtigen Angelegenheiten.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "ihr / für",
+      "B": "sich / um",
+      "C": "sie / an",
+      "D": "es / über"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich kümmern + um (Akkusativ) - reflexiv mit 'sich' (3. Person Singular)."
+  },
+  {
+    "id": 1513,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Ich habe lange ___ dieses Angebot nachgedacht und habe ___ schließlich dafür entschieden.\n\nEs war keine leichte Entscheidung, aber ich glaube, es ist die richtige Wahl.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "an / mir",
+      "B": "über / mich",
+      "C": "für / mein",
+      "D": "von / meinen"
+    },
+    "antwort": "B",
+    "erklaerung": "Nachdenken + über (Akkusativ) + sich entscheiden + für (reflexiv mit 'mich')."
+  },
+  {
+    "id": 1514,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Die Firma sucht dringend ___ qualifizierten Mitarbeitern und bietet ___ verschiedene attraktive Benefits.\n\nSie haben bereits mehrere Stellenanzeigen in verschiedenen Zeitungen geschaltet.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "für / ihnen",
+      "B": "nach / denen",
+      "C": "über / sie",
+      "D": "an / deren"
+    },
+    "antwort": "B",
+    "erklaerung": "Suchen + nach (Dativ) + bieten + Dativ 'denen' (Relativpronomen Dativ Plural)."
+  },
+  {
+    "id": 1515,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Er hat sich herzlich ___ der Frau bedankt, die ___ geholfen hat.\n\nOhne ihre Unterstützung hätte er das Problem nicht lösen können.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "an / ihn",
+      "B": "bei / ihm",
+      "C": "für / sein",
+      "D": "mit / seinen"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich bedanken + bei (Dativ) + helfen + Dativ 'ihm' (3. Person Singular)."
+  },
+  {
+    "id": 1516,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Die Nachbarn streiten ___ seit Monaten ___ die Höhe des Gartenzauns.\n\nJeder hat eine andere Vorstellung und niemand will nachgeben.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "uns / für",
+      "B": "euch / an",
+      "C": "sich / über",
+      "D": "mich / von"
+    },
+    "antwort": "C",
+    "erklaerung": "Sich streiten + über (Akkusativ) - reflexiv mit 'sich' (3. Person Plural)."
+  },
+  {
+    "id": 1517,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Wir haben uns gestern ausführlich ___ unsere berufliche Zukunft unterhalten und ___ viele wichtige Punkte besprochen.\n\nDas Gespräch war sehr produktiv und hilfreich für unsere Planung.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "für / sind",
+      "B": "über / haben",
+      "C": "an / waren",
+      "D": "von / hatten"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich unterhalten + über (Akkusativ) + haben (Perfekt mit 'besprochen')."
+  },
+  {
+    "id": 1518,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Der Patient erholt ___ langsam ___ der schweren Operation.\n\nDie Ärzte sind mit dem Heilungsverlauf sehr zufrieden und optimistisch.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "ihm / für",
+      "B": "sich / von",
+      "C": "ihn / an",
+      "D": "sein / über"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich erholen + von (Dativ) - reflexiv mit 'sich' (3. Person Singular)."
+  },
+  {
+    "id": 1519,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Ich kann ___ leider nicht mehr genau ___ den Namen des Restaurants erinnern.\n\nEs war irgendwo in der Altstadt, aber die genaue Adresse habe ich vergessen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "mir / für",
+      "B": "mich / an",
+      "C": "mein / über",
+      "D": "meinen / von"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich erinnern + an (Akkusativ) - reflexiv mit 'mich' (1. Person Singular)."
+  },
+  {
+    "id": 1520,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Du solltest ___ besser ___ deine Prüfung konzentrieren, sonst machst du zu viele Fehler.\n\nSchalte bitte dein Handy aus und such dir einen ruhigen Arbeitsplatz.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "dir / für",
+      "B": "dich / auf",
+      "C": "dein / an",
+      "D": "deinen / über"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich konzentrieren + auf (Akkusativ) - reflexiv mit 'dich' (2. Person Singular)."
+  },
+  {
+    "id": 1521,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Die Studenten haben ___ bis Ende des Monats ___ das Wintersemester angemeldet.\n\nAlle erforderlichen Unterlagen wurden rechtzeitig eingereicht.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "ihnen / an",
+      "B": "sich / für",
+      "C": "sie / über",
+      "D": "ihr / von"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich anmelden + für (Akkusativ) - reflexiv mit 'sich' (3. Person Plural)."
+  },
+  {
+    "id": 1522,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Mein Chef hat ___ sehr ___ meine gute Arbeit gefreut und mir eine Gehaltserhöhung gegeben.\n\nIch war sehr überrascht und glücklich über diese Anerkennung.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "ihm / für",
+      "B": "sich / über",
+      "C": "ihn / an",
+      "D": "sein / von"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich freuen + über (Akkusativ, Vergangenheit) - reflexiv mit 'sich' (3. Person Singular)."
+  },
+  {
+    "id": 1523,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Wir bitten Sie höflich ___ etwas Geduld und entschuldigen ___ für die Unannehmlichkeiten.\n\nWir arbeiten bereits an einer schnellen Lösung des Problems.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "für / sich",
+      "B": "um / uns",
+      "C": "an / euch",
+      "D": "über / mich"
+    },
+    "antwort": "B",
+    "erklaerung": "Bitten + um (Akkusativ) + sich entschuldigen (reflexiv mit 'uns')."
+  },
+  {
+    "id": 1524,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Die Lehrerin hat die Schüler ___ ihre Hausaufgaben erinnert und sie ___ mehr Sorgfalt gebeten.\n\nViele Schüler hatten in letzter Zeit nachlässig gearbeitet.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "für / an",
+      "B": "an / um",
+      "C": "über / für",
+      "D": "von / über"
+    },
+    "antwort": "B",
+    "erklaerung": "Erinnern + an (Akkusativ) + bitten + um (Akkusativ)."
+  },
+  
+  {
+    "id": 4500,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Ich stehe schon seit 20 Minuten an der Haltestelle und warte ___ ___ Bus.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "auf / den",
+      "B": "an / dem",
+      "C": "für / das",
+      "D": "über / die"
+    },
+    "antwort": "A",
+    "erklaerung": "'Warten auf' (birini/bir şeyi beklemek) her zaman Akkusativ gerektirir (auf den Bus)."
+  },
+  {
+    "id": 4501,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "In den Ferien denke ich oft ___ meine Arbeit, obwohl ich ___ Entspannung suche.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "an / nach",
+      "B": "über / zu",
+      "C": "auf / bei",
+      "D": "für / mit"
+    },
+    "antwort": "A",
+    "erklaerung": "'Denken an' (bir şeyi/birini düşünmek) Akkusativ gerektirir. 'Suchen nach' (bir şeyi aramak) Dativ gerektirir."
+  },
+  {
+    "id": 4502,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Mein Sohn interessiert sich sehr ___ Fußball. Er spricht den ganzen Tag ___ nichts anderes.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "für / über",
+      "B": "an / von",
+      "C": "auf / mit",
+      "D": "um / bei"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich interessieren für' (ilgi duymak) Akkusativ alır. 'Sprechen über' (bir şey hakkında konuşmak) Akkusativ alır."
+  },
+  {
+    "id": 4503,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Viele Menschen träumen ___ einem großen Haus am Meer und hoffen ___ ein besseres Leben.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "von / auf",
+      "B": "über / für",
+      "C": "zu / an",
+      "D": "bei / in"
+    },
+    "antwort": "A",
+    "erklaerung": "'Träumen von' (hayal etmek) Dativ gerektirir. 'Hoffen auf' (ummak) Akkusativ gerektirir."
+  },
+  {
+    "id": 4504,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Ich muss morgen ___ meinem Chef ___ eine Gehaltserhöhung sprechen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mit / über",
+      "B": "bei / für",
+      "C": "von / an",
+      "D": "zu / auf"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sprechen mit' (biriyle - Dativ) ve 'sprechen über' (bir şey hakkında - Akkusativ)."
+  },
+  {
+    "id": 4505,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Wir freuen uns schon sehr ___ den nächsten Urlaub, aber wir ärgern uns ___ die hohen Preise.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "auf / über",
+      "B": "über / auf",
+      "C": "für / mit",
+      "D": "an / bei"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich freuen auf' (gelecekteki bir şeye sevinmek - Akkusativ). 'Sich ärgern über' (bir şeye kızmak - Akkusativ)."
+  },
+  {
+    "id": 4506,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Kannst du dich bitte am Wochenende ___ den Hund kümmern? Ich habe Angst ___ Hunden.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "um / vor",
+      "B": "für / an",
+      "C": "über / auf",
+      "D": "mit / über"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich kümmern um' (ilgilenmek - Akkusativ). 'Angst haben vor' (korkmak - Dativ)."
+  },
+  {
+    "id": 4507,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Ob wir morgen grillen, hängt ___ Wetter ab. Wir müssen ___ Sonnenschein warten.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "vom / auf",
+      "B": "am / für",
+      "C": "beim / an",
+      "D": "über / zu"
+    },
+    "antwort": "A",
+    "erklaerung": "'Abhängen von' (bağlı olmak - Dativ -> von dem -> vom). 'Warten auf' (Akkusativ)."
+  },
+  {
+    "id": 4508,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Dieses Buch gehört ___ mir. Ich habe es gestern ___ einer Freundin bekommen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "zu / von",
+      "B": "bei / zu",
+      "C": "an / mit",
+      "D": "für / aus"
+    },
+    "antwort": "A",
+    "erklaerung": "'Gehören zu' (ait olmak - Dativ) [Not: Sadece 'gehören' + Dativ de olabilir ama 'zu' ile kullanıldığında parça/bütün ilişkisi veya aidiyet vurgulanır]. 'Bekommen von' (birinden almak - Dativ)."
+  },
+  {
+    "id": 4509,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Wir haben gestern Abend viel ___ den lustigen Film gelacht. Er handelte ___ zwei Clowns.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "über / von",
+      "B": "an / über",
+      "C": "auf / mit",
+      "D": "um / bei"
+    },
+    "antwort": "A",
+    "erklaerung": "'Lachen über' (bir şeye gülmek - Akkusativ). 'Handeln von' (konusu ... olmak - Dativ)."
+  },
+  {
+    "id": 4510,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Möchten Sie ___ diesem Sprachkurs teilnehmen? Dann müssen Sie sich ___ dem Sekretariat anmelden.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "an / bei",
+      "B": "in / an",
+      "C": "bei / zu",
+      "D": "auf / mit"
+    },
+    "antwort": "A",
+    "erklaerung": "'Teilnehmen an' (katılmak - Dativ). 'Sich anmelden bei' (bir yere/kişiye kayıt olmak - Dativ)."
+  },
+  {
+    "id": 4511,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Der Gast beschwert sich ___ dem Kellner ___ die kalte Suppe.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "bei / über",
+      "B": "an / auf",
+      "C": "mit / für",
+      "D": "zu / um"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich beschweren bei' (biri nezdinde - Dativ) ... 'über' (bir şey hakkında - Akkusativ)."
+  },
+  {
+    "id": 4512,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Ich zweifle ___ seiner Ehrlichkeit. Ich glaube, er hat sich ___ der Uhrzeit geirrt.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "an / in",
+      "B": "auf / bei",
+      "C": "bei / an",
+      "D": "für / mit"
+    },
+    "antwort": "A",
+    "erklaerung": "'Zweifeln an' (şüphe etmek - Dativ). 'Sich irren in' (bir konuda yanılmak - Dativ)."
+  },
+  {
+    "id": 4513,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Sie bewirbt sich ___ einer großen Firma ___ eine Stelle als Managerin.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "bei / um",
+      "B": "an / für",
+      "C": "in / auf",
+      "D": "zu / an"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich bewerben bei' (bir kurumda - Dativ) ... 'um' (bir pozisyon için - Akkusativ)."
+  },
+  {
+    "id": 4514,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Ein Tourist fragt ___ dem Weg zum Bahnhof. Er bittet mich ___ Hilfe.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "nach / um",
+      "B": "an / für",
+      "C": "zu / an",
+      "D": "bei / über"
+    },
+    "antwort": "A",
+    "erklaerung": "'Fragen nach' (bir şeyi sormak - Dativ). 'Bitten um' (bir şey rica etmek - Akkusativ)."
+  },
+  {
+    "id": 4515,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Ich gratuliere dir herzlich ___ Geburtstag und danke dir ___ die Einladung.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "zum / für",
+      "B": "am / an",
+      "C": "für / über",
+      "D": "beim / zu"
+    },
+    "antwort": "A",
+    "erklaerung": "'Gratulieren zu' (kutlamak - Dativ). 'Danken für' (teşekkür etmek - Akkusativ)."
+  },
+  {
+    "id": 4516,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Darf ich dich ___ einem Kaffee einladen? Ich möchte mit dir ___ das Projekt reden.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "zu / über",
+      "B": "für / von",
+      "C": "auf / an",
+      "D": "bei / mit"
+    },
+    "antwort": "A",
+    "erklaerung": "'Einladen zu' (davet etmek - Dativ). 'Reden über' (konuşmak - Akkusativ)."
+  },
+  {
+    "id": 4517,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Wir diskutieren oft ___ Politik. Aber meine Meinung unterscheidet sich ___ deiner.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "über / von",
+      "B": "von / mit",
+      "C": "mit / an",
+      "D": "an / bei"
+    },
+    "antwort": "A",
+    "erklaerung": "'Diskutieren über' (tartışmak - Akkusativ). 'Sich unterscheiden von' (farklı olmak - Dativ)."
+  },
+  {
+    "id": 4518,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Kannst du dich noch ___ unseren Urlaub erinnern? Ich denke oft ___ diese schöne Zeit zurück.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "an / an",
+      "B": "über / für",
+      "C": "auf / zu",
+      "D": "bei / mit"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich erinnern an' (hatırlamak - Akkusativ). 'Denken an' (düşünmek - Akkusativ)."
+  },
+  {
+    "id": 4519,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Er hat sich ___ seine neue Kollegin verliebt. Sie treffen sich heute ___ einem Abendessen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "in / zu",
+      "B": "an / mit",
+      "C": "auf / bei",
+      "D": "über / für"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich verlieben in' (aşık olmak - Akkusativ). 'Sich treffen zu' (bir amaç/etkinlik için buluşmak - Dativ)."
+  },
+  {
+    "id": 4520,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Könnten Sie kurz ___ meinen Koffer aufpassen? Ich muss ___ die Toilette gehen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "auf / auf",
+      "B": "an / in",
+      "C": "über / an",
+      "D": "für / zu"
+    },
+    "antwort": "A",
+    "erklaerung": "'Aufpassen auf' (göz kulak olmak - Akkusativ). 'Gehen auf' (WCs için yaygın kullanım - Akkusativ)."
+  },
+  {
+    "id": 4521,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Oma erzählt den Kindern gerne ___ früher. Die Kinder hören ___ großem Interesse zu.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "von / mit",
+      "B": "über / an",
+      "C": "an / bei",
+      "D": "auf / zu"
+    },
+    "antwort": "A",
+    "erklaerung": "'Erzählen von' (anlatmak/bahsetmek - Dativ). 'Mit' (tarz bildirir - Dativ)."
+  },
+  {
+    "id": 4522,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Ich fange jetzt ___ der Arbeit an. Ich muss mich ___ den Bericht konzentrieren.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mit / auf",
+      "B": "an / an",
+      "C": "bei / für",
+      "D": "zu / über"
+    },
+    "antwort": "A",
+    "erklaerung": "'Anfangen mit' (başlamak - Dativ). 'Sich konzentrieren auf' (odaklanmak - Akkusativ)."
+  },
+  {
+    "id": 4523,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Es riecht hier ___ frischem Kaffee. Das schmeckt sicher gut ___ Kuchen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "nach / zu",
+      "B": "an / mit",
+      "C": "für / bei",
+      "D": "über / an"
+    },
+    "antwort": "A",
+    "erklaerung": "'Riechen nach' (... gibi kokmak - Dativ). 'Gut schmecken zu' (yanında iyi gitmek - Dativ)."
+  },
+  {
+    "id": 4524,
+    "thema": "Verben mit Präpositionen",
+    "format": "Text",
+    "kontext": "Wir verabschieden uns ___ unseren Gästen. Wir hoffen ___ ein baldiges Wiedersehen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "von / auf",
+      "B": "bei / an",
+      "C": "mit / über",
+      "D": "zu / für"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich verabschieden von' (vedalaşmak - Dativ). 'Hoffen auf' (ummak - Akkusativ)."
+  }
+]

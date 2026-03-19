@@ -1,0 +1,752 @@
+[
+  {
+    "id": 1100,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Familie Schmidt fährt im Sommer nach Italien.\n___ fahren sie mit dem Auto, weil das am bequemsten ist.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Dorthin",
+      "B": "Nach Italien",
+      "C": "Sie",
+      "D": "Im Sommer"
+    },
+    "antwort": "A",
+    "erklaerung": "Position 1 im Satz kann mit einem Adverb besetzt werden. 'Dorthin' bezieht sich auf 'nach Italien'."
+  },
+  {
+    "id": 1101,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Gestern ___ ich meinen alten Schulfreund in der Stadt getroffen.\nWir haben uns lange nicht mehr gesehen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "habe",
+      "B": "bin",
+      "C": "hatte",
+      "D": "war"
+    },
+    "antwort": "A",
+    "erklaerung": "Perfektbildung: 'haben' an Position 2, Partizip II am Ende."
+  },
+  {
+    "id": 1102,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Ich kann heute Abend nicht kommen, ___ ich noch arbeiten muss.\nMein Chef hat mir noch viele Aufgaben gegeben.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "denn",
+      "B": "weil",
+      "C": "dass",
+      "D": "deshalb"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach dem Komma ist ein Nebensatz nötig. 'Weil' ist eine Konjunktion, die einen Nebensatz einleitet (Verb am Ende)."
+  },
+  {
+    "id": 1103,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Meine Schwester kommt morgen ___ Besuch.\nSie ___ drei Tage bei uns bleiben.",
+    "frage": "Welche Kombination ist richtig?",
+    "optionen": {
+      "A": "zu / wird",
+      "B": "zum / wird",
+      "C": "zu / werden",
+      "D": "zum / werden"
+    },
+    "antwort": "A",
+    "erklaerung": "'Zu Besuch kommen' ist die richtige Präposition. 'Wird' ist die 3. Person Singular von 'werden'."
+  },
+  {
+    "id": 1104,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Wir haben das Problem endlich gelöst, ___ wir lange daran gearbeitet haben.\nJetzt können wir mit dem Projekt weitermachen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "denn",
+      "B": "nachdem",
+      "C": "obwohl",
+      "D": "damit"
+    },
+    "antwort": "B",
+    "erklaerung": "'Nachdem' drückt eine zeitliche Abfolge aus und passt hier am besten."
+  },
+  {
+    "id": 1105,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Morgen ___ ins Museum gehen.\nDort gibt es eine neue interessante Ausstellung über moderne Kunst.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "gehen wir",
+      "B": "wir gehen",
+      "C": "werden wir",
+      "D": "wir werden"
+    },
+    "antwort": "C",
+    "erklaerung": "Im Hauptsatz steht das konjugierte Verb auf Position 2, gefolgt vom Subjekt (Inversion)."
+  },
+  {
+    "id": 1106,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Er hat mir erzählt, ___ er letztes Jahr in Japan war.\nDie Reise war ein unvergessliches Erlebnis für ihn.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "dass",
+      "B": "denn",
+      "C": "weil",
+      "D": "deshalb"
+    },
+    "antwort": "A",
+    "erklaerung": "Nach 'erzählen' folgt oft ein 'dass'-Satz (Verb am Ende)."
+  },
+  {
+    "id": 1107,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Ich rufe dich an, ___ ich zu Hause bin.\nDas wird wahrscheinlich gegen 18 Uhr sein.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "wenn",
+      "B": "wann",
+      "C": "als",
+      "D": "dann"
+    },
+    "antwort": "A",
+    "erklaerung": "'Wenn' leitet einen temporalen Nebensatz ein (Gegenwart/Zukunft)."
+  },
+  {
+    "id": 1108,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Letztes Jahr ___ wir einen schönen Urlaub in Griechenland gemacht.\nWir haben dort viele antike Sehenswürdigkeiten besichtigt.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sind",
+      "B": "haben",
+      "C": "hatten",
+      "D": "waren"
+    },
+    "antwort": "B",
+    "erklaerung": "Perfektbildung: Hilfsverb 'haben' auf Position 2, Partizip 'gemacht' am Ende."
+  },
+  {
+    "id": 1109,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Sie ist müde, ___ sie hat die ganze Nacht gearbeitet.\nHeute kann sie sich endlich ausruhen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "weil",
+      "B": "denn",
+      "C": "dass",
+      "D": "obwohl"
+    },
+    "antwort": "B",
+    "erklaerung": "'Denn' verbindet zwei Hauptsätze (Position 0). Nach 'denn' folgt normaler Hauptsatz mit Verb auf Position 2."
+  },
+  {
+    "id": 1110,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "___ ich Zeit habe, lese ich gerne Bücher.\nLeider habe ich momentan sehr viel zu tun.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Wann",
+      "B": "Wenn",
+      "C": "Als",
+      "D": "Ob"
+    },
+    "antwort": "B",
+    "erklaerung": "'Wenn' leitet einen Nebensatz ein und steht hier am Anfang des Satzes."
+  },
+  {
+    "id": 1111,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Ich weiß nicht, ___ der Zug pünktlich kommt.\nIch hoffe es, sonst verpasse ich meinen Anschlusszug.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "dass",
+      "B": "ob",
+      "C": "wenn",
+      "D": "wann"
+    },
+    "antwort": "B",
+    "erklaerung": "'Ob' leitet einen indirekten Fragesatz ein (Ja/Nein-Frage)."
+  },
+  {
+    "id": 1112,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Am Wochenende ___ ich gerne lange aus.\nDas ist für mich die beste Erholung nach der stressigen Arbeitswoche.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "schlafe",
+      "B": "schläfst",
+      "C": "schlafen",
+      "D": "geschlafen"
+    },
+    "antwort": "A",
+    "erklaerung": "Bei trennbaren Verben im Hauptsatz: Verb auf Position 2, Präfix (aus) am Satzende."
+  },
+  {
+    "id": 1113,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Er hat vergessen, das Licht auszumachen, ___ er das Haus verlassen hat.\nJetzt muss er zurückgehen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "wenn",
+      "B": "als",
+      "C": "wann",
+      "D": "bevor"
+    },
+    "antwort": "D",
+    "erklaerung": "'Bevor' drückt eine zeitliche Reihenfolge aus (etwas passiert vor etwas anderem)."
+  },
+  {
+    "id": 1114,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Weißt du, ___ der nächste Bus kommt?\nIch möchte nicht zu lange warten müssen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "dass",
+      "B": "ob",
+      "C": "wann",
+      "D": "wenn"
+    },
+    "antwort": "C",
+    "erklaerung": "'Wann' leitet einen indirekten Fragesatz ein (W-Frage nach Zeit)."
+  },
+  {
+    "id": 1115,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Obwohl es stark regnet, ___ die Kinder draußen spielen.\nSie haben keine Angst vor dem schlechten Wetter.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "wollen",
+      "B": "sie wollen",
+      "C": "wollen sie",
+      "D": "sie wollen nicht"
+    },
+    "antwort": "A",
+    "erklaerung": "Nach einem Nebensatz am Anfang folgt direkt das Verb, dann das Subjekt (Inversion)."
+  },
+  {
+    "id": 1116,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Ich gehe ins Fitness-Studio, ___ ich fit bleiben möchte.\nGesundheit ist mir sehr wichtig.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "denn",
+      "B": "weil",
+      "C": "deshalb",
+      "D": "trotzdem"
+    },
+    "antwort": "B",
+    "erklaerung": "'Weil' leitet einen Nebensatz ein (Verb am Ende) und gibt einen Grund an."
+  },
+  {
+    "id": 1117,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Kannst du mir sagen, ___ die Post ist?\nIch muss dringend ein Paket abholen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "wo",
+      "B": "wohin",
+      "C": "was",
+      "D": "wie"
+    },
+    "antwort": "A",
+    "erklaerung": "'Wo' fragt nach dem Ort (Position) in einem indirekten Fragesatz."
+  },
+  {
+    "id": 1118,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "___ ich ein Kind war, habe ich oft mit meinen Großeltern gespielt.\nDas waren wirklich schöne Zeiten.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Wenn",
+      "B": "Wann",
+      "C": "Als",
+      "D": "Ob"
+    },
+    "antwort": "C",
+    "erklaerung": "'Als' wird für einmalige Ereignisse in der Vergangenheit verwendet."
+  },
+  {
+    "id": 1119,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Ich habe das Buch gekauft, ___ du mir empfohlen hast.\nEs ist wirklich sehr interessant und spannend geschrieben.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "das",
+      "B": "dass",
+      "C": "was",
+      "D": "wenn"
+    },
+    "antwort": "A",
+    "erklaerung": "Relativpronomen 'das' bezieht sich auf 'das Buch' (neutral, Akkusativ)."
+  },
+  {
+    "id": 1120,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Sie lernt Deutsch, ___ sie in Deutschland arbeiten kann.\nIhr Traum ist es, in Berlin zu leben.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "denn",
+      "B": "weil",
+      "C": "damit",
+      "D": "dass"
+    },
+    "antwort": "C",
+    "erklaerung": "'Damit' drückt eine Absicht oder ein Ziel aus (Nebensatz mit Verb am Ende)."
+  },
+  {
+    "id": 1121,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Heute Morgen ___ ich verschlafen.\nDeshalb bin ich zu spät zur Arbeit gekommen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "habe",
+      "B": "bin",
+      "C": "hatte",
+      "D": "war"
+    },
+    "antwort": "A",
+    "erklaerung": "Perfekt: Hilfsverb (habe) auf Position 2, Partizip (verschlafen) am Satzende."
+  },
+  {
+    "id": 1122,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Er sagt, ___ er morgen nicht kommen kann.\nEr hat einen wichtigen Termin beim Arzt.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "dass",
+      "B": "ob",
+      "C": "wenn",
+      "D": "weil"
+    },
+    "antwort": "A",
+    "erklaerung": "Nach 'sagen' folgt ein 'dass'-Satz (indirekte Rede)."
+  },
+  {
+    "id": 1123,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Zuerst machen wir die Hausaufgaben, ___ gehen wir spielen.\nSo haben wir den Rest des Tages frei.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "dann",
+      "B": "denn",
+      "C": "danach",
+      "D": "später"
+    },
+    "antwort": "C",
+    "erklaerung": "'Danach' ist ein Temporaladverb und zeigt die zeitliche Abfolge. Es steht auf Position 1, dann folgt das Verb."
+  },
+  {
+    "id": 1124,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Ich frage mich, ___ er die Prüfung bestanden hat.\nEr hat sich nicht sehr gut vorbereitet.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "dass",
+      "B": "ob",
+      "C": "wenn",
+      "D": "weil"
+    },
+    "antwort": "B",
+    "erklaerung": "'Sich fragen, ob' leitet einen indirekten Fragesatz ein (Ja/Nein-Frage)."
+  },
+  {
+    "id": 4100,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Ich kann heute leider nicht zur Arbeit kommen. Rufen Sie mich bitte an, ___ es Probleme mit dem Computer ___.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "wenn / gibt",
+      "B": "als / geben",
+      "C": "ob / gibt",
+      "D": "wann / geben"
+    },
+    "antwort": "A",
+    "erklaerung": "'Wenn' (eğer/ne zaman) bir yan cümle (Nebensatz) başlatır, bu yüzden fiil (gibt) cümlenin en sonunda yer alır."
+  },
+  {
+    "id": 4101,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Können Sie mir vielleicht sagen, ___ der Zug nach München am Gleis 5 ___?",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "wann / abfährt",
+      "B": "dass / abfahren",
+      "C": "ob / abfährt",
+      "D": "weil / abgefahren"
+    },
+    "antwort": "A",
+    "erklaerung": "Bu bir dolaylı sorudur (Indirekte Frage). Soru kelimesi (Wann) bağlaç görevi görür ve fiil (abfährt) sona gider."
+  },
+  {
+    "id": 4102,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Gestern war das Wetter sehr schlecht, ___ sind wir den ganzen Tag zu Hause ___.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "deshalb / geblieben",
+      "B": "weil / blieben",
+      "C": "trotzdem / bleiben",
+      "D": "denn / geblieben"
+    },
+    "antwort": "A",
+    "erklaerung": "'Deshalb' bir ana cümle (Hauptsatz) başlatır ancak Pozisyon 1'i kaplar, bu yüzden fiil (sind) hemen ardından gelir (Inversion) ve esas fiil (geblieben) en sondadır."
+  },
+  {
+    "id": 4103,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Ich freue mich sehr, ___ du die Prüfung bestanden hast und wir bald ___ können.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "dass / feiern",
+      "B": "weil / gefeiert",
+      "C": "ob / feiern",
+      "D": "wenn / feiern"
+    },
+    "antwort": "A",
+    "erklaerung": "'Dass' yan cümlesi. İkinci kısımda 'und' ile bağlanan cümle de 'dass'a bağlı olduğu için fiil (feiern + können -> feiern können) sonda olur."
+  },
+  {
+    "id": 4104,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Wir gehen am Wochenende gerne spazieren, ___ es nicht regnet und wir Zeit ___.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "wenn / haben",
+      "B": "als / hatten",
+      "C": "wann / haben",
+      "D": "ob / hätten"
+    },
+    "antwort": "A",
+    "erklaerung": "Koşul bildiren 'wenn' (eğer) yan cümlesi. Fiil (haben) sonda yer alır."
+  },
+  {
+    "id": 4105,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Herr Müller ist sehr müde, ___ er hat gestern bis spät in die Nacht ___.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "denn / gearbeitet",
+      "B": "weil / arbeitete",
+      "C": "deshalb / arbeiten",
+      "D": "obwohl / arbeitet"
+    },
+    "antwort": "A",
+    "erklaerung": "'Denn' Pozisyon 0 bağlacıdır. Cümle dizilimi değişmez (Özne + Fiil + ...). 'Er hat ... gearbeitet'."
+  },
+  {
+    "id": 4106,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Ich weiß noch nicht genau, ___ ich dieses Jahr in den Urlaub ___ werde.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "ob / fahren",
+      "B": "dass / fahre",
+      "C": "weil / gefahren",
+      "D": "als / fuhr"
+    },
+    "antwort": "A",
+    "erklaerung": "Belirsizlik ifade eden durumlarda (weiß nicht) 'ob' (olup olmadığı) kullanılır. Fiil grubu (fahren werde) sonda yer alır."
+  },
+  {
+    "id": 4107,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Peter hat eine neue Arbeit gefunden, ___ muss er jeden Morgen sehr früh ___.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "trotzdem / aufstehen",
+      "B": "weil / aufsteht",
+      "C": "denn / aufstehen",
+      "D": "obwohl / aufsteht"
+    },
+    "antwort": "A",
+    "erklaerung": "Burada bir zıtlık veya beklenmedik durum var gibi görünse de cümle yapısına bakmalıyız. 'Muss' (fiil) 2. sırada. Öncesinde Pozisyon 1'de bir bağlaç olmalı. 'Trotzdem' (buna rağmen) buraya uyar ve devrik yapı (Inversion) kurar."
+  },
+  {
+    "id": 4108,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "___ ich gestern nach Hause kam, ___ meine Kinder schon im Bett.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Als / waren",
+      "B": "Wenn / sind",
+      "C": "Wann / waren",
+      "D": "Ob / sind"
+    },
+    "antwort": "A",
+    "erklaerung": "Geçmişte tek seferlik olaylar için 'Als' kullanılır. Yan cümle (Als...kam) bittiğinde ana cümle fiil (waren) ile başlar."
+  },
+  {
+    "id": 4109,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Morgen habe ich einen wichtigen Termin. Ich stehe früh auf, ___ ich nicht zu spät ___.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "damit / komme",
+      "B": "um / kommen",
+      "C": "dass / komme",
+      "D": "weil / kam"
+    },
+    "antwort": "A",
+    "erklaerung": "'Damit' (böylece/amacıyla) özneler farklı veya aynı olduğunda kullanılabilir ve fiili sona atar. 'Um...zu' için özne aynı olmalı ama 'zu spät zu kommen' yapısı buradaki olumsuzlukla (nicht) 'damit' kadar akıcı olmaz."
+  },
+  {
+    "id": 4110,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Lisa lernt fleißig Deutsch, ___ sie später in Deutschland studieren ___.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "weil / möchte",
+      "B": "denn / will",
+      "C": "deshalb / mag",
+      "D": "trotzdem / möchte"
+    },
+    "antwort": "A",
+    "erklaerung": "Sebep bildiren yan cümle. 'Weil' fiili (modal verb: möchte) en sona atar."
+  },
+  {
+    "id": 4111,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Wir fahren dieses Jahr nach Italien. Wir haben schon gebucht, ___ es im August dort sehr voll ___.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "obwohl / ist",
+      "B": "weil / war",
+      "C": "dass / sei",
+      "D": "trotzdem / ist"
+    },
+    "antwort": "A",
+    "erklaerung": "Zıtlık bildiren yan cümle (Konzessivsatz). 'Obwohl' (rağmen) fiili sona atar."
+  },
+  {
+    "id": 4112,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "___ du mit dem Essen fertig bist, ___ du bitte die Küche aufräumen?",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Nachdem / kannst",
+      "B": "Bevor / musst",
+      "C": "Während / sollst",
+      "D": "Seit / darfst"
+    },
+    "antwort": "A",
+    "erklaerung": "Zaman sıralaması: Önce yemek bitecek, sonra temizlik. 'Nachdem' (daha sonra) yan cümlesi bitince ana cümle fiille (kannst) başlar."
+  },
+  {
+    "id": 4113,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Ich warte hier auf dich, ___ du mit deinem Arztgespräch fertig ___.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "bis / bist",
+      "B": "seit / warst",
+      "C": "wenn / bist",
+      "D": "als / warst"
+    },
+    "antwort": "A",
+    "erklaerung": "'Bis' (...-e kadar) süreklilik bildirir ve fiili sona atar."
+  },
+  {
+    "id": 4114,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Er hat mir nicht gesagt, ___ er gestern Abend so spät nach Hause ___ ist.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "warum / gekommen",
+      "B": "wann / kam",
+      "C": "dass / kommen",
+      "D": "ob / kommt"
+    },
+    "antwort": "A",
+    "erklaerung": "Dolaylı soru (Warum...). Perfekt zaman yapısında yardımcı fiil (ist) en sonda, Partizip II (gekommen) ondan önce gelir."
+  },
+  {
+    "id": 4115,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "___ wir in Berlin waren, haben wir das Brandenburger Tor ___.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Als / besichtigt",
+      "B": "Wenn / gesehen",
+      "C": "Wann / besucht",
+      "D": "Ob / besichtigen"
+    },
+    "antwort": "A",
+    "erklaerung": "Geçmiş zaman (waren) ve tekil olay -> 'Als'. Ana cümlede Perfekt yapı (haben ... besichtigt)."
+  },
+  {
+    "id": 4116,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Du musst dich beeilen, ___ der Bus fährt in fünf Minuten ___.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "denn / ab",
+      "B": "weil / abfährt",
+      "C": "deshalb / weg",
+      "D": "trotzdem / los"
+    },
+    "antwort": "A",
+    "erklaerung": "Ana cümle yapısı (Verb pozisyon 2). 'Denn' pozisyon 0'dadır. Fiil 'abfahren' ayrılır (fährt ... ab)."
+  },
+  {
+    "id": 4117,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Ich finde es toll, ___ du so schnell Deutsch gelernt ___.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "dass / hast",
+      "B": "ob / habe",
+      "C": "weil / hattest",
+      "D": "wenn / hast"
+    },
+    "antwort": "A",
+    "erklaerung": "Düşünce/duygu bildiren 'finde es toll' sonrası 'dass' (ki) gelir. Fiil (hast) sonda."
+  },
+  {
+    "id": 4118,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "___ es regnet, gehen wir im Park spazieren. Wir haben keine Angst vor Wasser.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Obwohl / --",
+      "B": "Weil / --",
+      "C": "Dass / --",
+      "D": "Damit / --"
+    },
+    "antwort": "A",
+    "erklaerung": "Zıtlık durumu (Yağmura rağmen yürümek). 'Obwohl' cümlesi başa gelirse, ana cümle fiille başlar (gehen wir)."
+  },
+  {
+    "id": 4119,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "___ mehr man übt, ___ besser spricht man eine Fremdsprache.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Je / desto",
+      "B": "Zwar / aber",
+      "C": "Entweder / oder",
+      "D": "Nicht / sondern"
+    },
+    "antwort": "A",
+    "erklaerung": "Çift bağlaç 'Je ... desto' (Ne kadar ... o kadar). 'Je' yan cümle (fiil sonda: übt), 'desto' ana cümle (fiil hemen sonra: spricht) yapar."
+  },
+  {
+    "id": 4120,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Bitte schließen Sie die Fenster, ___ Sie das Haus ___.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "bevor / verlassen",
+      "B": "nachdem / verließen",
+      "C": "während / verlässt",
+      "D": "seit / verlassen"
+    },
+    "antwort": "A",
+    "erklaerung": "Zaman sıralaması: Önce pencereyi kapat, sonra çık. 'Bevor' (önce) yan cümlesi."
+  },
+  {
+    "id": 4121,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Ich habe gehört, ___ morgen ein Streik bei der Bahn ___ soll.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "dass / stattfinden",
+      "B": "ob / sein",
+      "C": "wenn / machen",
+      "D": "weil / passieren"
+    },
+    "antwort": "A",
+    "erklaerung": "Bilgi aktarımı 'habe gehört, dass...'. Modal verb (soll) en sonda, esas fiil (stattfinden) ondan önce."
+  },
+  {
+    "id": 4122,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Wir haben heute keine Zeit für Kino. Wir bleiben zu Hause, ___ wir müssen noch Koffer ___.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "denn / packen",
+      "B": "weil / packen",
+      "C": "deshalb / gepackt",
+      "D": "obwohl / packt"
+    },
+    "antwort": "A",
+    "erklaerung": "Burada 'denn' (çünkü) kullanılmıştır. 'Denn' pozisyon 0'dadır, bu yüzden özne (wir) ve fiil (müssen) normal sıralamada kalır."
+  },
+  {
+    "id": 4123,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Seitdem er in Deutschland lebt, ___ er viel besser Deutsch ___.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "-- / spricht",
+      "B": "-- / sprechen",
+      "C": "-- / sprach",
+      "D": "-- / gesprochen"
+    },
+    "antwort": "A",
+    "erklaerung": "'Seitdem' (den beri) yan cümlesi bittikten sonra ana cümle fiille başlar: 'spricht er'."
+  },
+  {
+    "id": 4124,
+    "thema": "Satzbau",
+    "format": "Text",
+    "kontext": "Meine Freundin kommt später, ___ sie muss noch lange arbeiten und hat den Bus ___.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "denn / verpasst",
+      "B": "weil / verpassen",
+      "C": "deshalb / verpasste",
+      "D": "trotzdem / verpasst"
+    },
+    "antwort": "A",
+    "erklaerung": "'Denn' ana cümle başlatır. 'Sie muss ... arbeiten' (Hauptsatz 1) 'und' (bağlaç) 'hat ... verpasst' (Hauptsatz 2 - özne ortak)."
+  }
+]

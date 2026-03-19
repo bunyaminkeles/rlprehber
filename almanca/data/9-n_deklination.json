@@ -1,0 +1,753 @@
+[
+  {
+    "id": 1800,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Ich habe gestern einen ___ im Park getroffen und mit ___ lange über seine Heimat gesprochen.\n\nEr hat mir viel von seiner Familie und seinen Traditionen erzählt.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Student / ihm",
+      "B": "Studenten / ihm",
+      "C": "Student / ihn",
+      "D": "Studenten / ihn"
+    },
+    "antwort": "B",
+    "erklaerung": "N-Deklination: 'der Student' → Akkusativ: 'den Studenten' + mit + Dativ 'ihm'."
+  },
+  {
+    "id": 1801,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Das Auto gehört unserem ___ von nebenan und ___ hat es erst vor einer Woche gekauft.\n\nEs ist ein sehr modernes und teures Fahrzeug.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Nachbar / er",
+      "B": "Nachbarn / er",
+      "C": "Nachbar / ihn",
+      "D": "Nachbarn / ihm"
+    },
+    "antwort": "B",
+    "erklaerung": "N-Deklination: 'der Nachbar' → Dativ: 'dem Nachbarn' + Pronomen Nominativ 'er'."
+  },
+  {
+    "id": 1802,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Die Firma hat einen neuen ___ eingestellt und ___ soll die Marketing-Abteilung leiten.\n\nEr hat viel Erfahrung und kommt von einem großen internationalen Unternehmen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Kollege / er",
+      "B": "Kollegen / er",
+      "C": "Kollege / ihm",
+      "D": "Kollegen / ihn"
+    },
+    "antwort": "B",
+    "erklaerung": "N-Deklination: 'der Kollege' → Akkusativ: 'den Kollegen' + Pronomen Nominativ 'er'."
+  },
+  {
+    "id": 1803,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Wir haben dem ___ für seine Hilfe gedankt und ___ ein kleines Geschenk gegeben.\n\nEr hat uns in einer sehr schwierigen Situation unterstützt.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Herr / er",
+      "B": "Herrn / ihm",
+      "C": "Herr / ihn",
+      "D": "Herren / er"
+    },
+    "antwort": "B",
+    "erklaerung": "N-Deklination: 'der Herr' → Dativ: 'dem Herrn' + Pronomen Dativ 'ihm'."
+  },
+  {
+    "id": 1804,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Der Name des ___ steht auf dem Klingelschild und ___ wohnt schon seit zehn Jahren hier.\n\nAlle Bewohner im Haus kennen ihn und mögen ihn sehr.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Präsident / er",
+      "B": "Präsidenten / er",
+      "C": "Präsident / ihn",
+      "D": "Präsidentes / ihm"
+    },
+    "antwort": "B",
+    "erklaerung": "N-Deklination: 'der Präsident' → Genitiv: 'des Präsidenten' + Pronomen Nominativ 'er'."
+  },
+  {
+    "id": 1805,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Ich habe einen interessanten ___ auf der Konferenz kennengelernt und mit ___ meine Visitenkarte ausgetauscht.\n\nWir wollen in Zukunft zusammenarbeiten und gemeinsame Projekte entwickeln.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Journalist / ihm",
+      "B": "Journalisten / ihn",
+      "C": "Journalist / ihn",
+      "D": "Journalisten / ihm"
+    },
+    "antwort": "D",
+    "erklaerung": "N-Deklination: 'der Journalist' → Akkusativ: 'den Journalisten' + mit + Dativ 'ihm'."
+  },
+  {
+    "id": 1806,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Die Mutter des kleinen ___ wartet vor der Schule und ___ abholen.\n\nDer Junge kommt jeden Tag fröhlich aus dem Unterricht.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Junge / will ihn",
+      "B": "Jungen / will ihn",
+      "C": "Junge / will ihm",
+      "D": "Junges / will er"
+    },
+    "antwort": "B",
+    "erklaerung": "N-Deklination: 'der Junge' → Genitiv: 'des Jungen' + Pronomen Akkusativ 'ihn'."
+  },
+  {
+    "id": 1807,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Der Arzt hat den ___ gründlich untersucht und ___ eine neue Behandlung empfohlen.\n\nDer Patient muss jetzt regelmäßig zur Kontrolle kommen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Patient / ihm",
+      "B": "Patienten / ihm",
+      "C": "Patient / ihn",
+      "D": "Patienten / er"
+    },
+    "antwort": "B",
+    "erklaerung": "N-Deklination: 'der Patient' → Akkusativ: 'den Patienten' + Pronomen Dativ 'ihm'."
+  },
+  {
+    "id": 1808,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Wir haben unserem ___ zum Geburtstag gratuliert und ___ ein schönes Buch geschenkt.\n\nEr hat sich sehr über das Geschenk und unseren Besuch gefreut.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Kunde / ihm",
+      "B": "Kunden / ihm",
+      "C": "Kunde / ihn",
+      "D": "Kunden / er"
+    },
+    "antwort": "B",
+    "erklaerung": "N-Deklination: 'der Kunde' → Dativ: 'dem Kunden' + Pronomen Dativ 'ihm'."
+  },
+  {
+    "id": 1809,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Die Polizei hat einen ___ verhaftet und ___ zur Wache gebracht.\n\nEr wird jetzt von den Beamten ausführlich befragt.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Zeuge / ihm",
+      "B": "Zeugen / ihn",
+      "C": "Zeuge / ihn",
+      "D": "Zeugen / er"
+    },
+    "antwort": "B",
+    "erklaerung": "N-Deklination: 'der Zeuge' → Akkusativ: 'den Zeugen' + Pronomen Akkusativ 'ihn'."
+  },
+  {
+    "id": 1810,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Das Büro des ___ liegt im dritten Stock und ___ arbeitet meist bis spät abends.\n\nEr ist sehr engagiert und kümmert sich persönlich um wichtige Projekte.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Architekt / er",
+      "B": "Architekten / er",
+      "C": "Architekt / ihm",
+      "D": "Architektes / ihn"
+    },
+    "antwort": "B",
+    "erklaerung": "N-Deklination: 'der Architekt' → Genitiv: 'des Architekten' + Pronomen Nominativ 'er'."
+  },
+  {
+    "id": 1811,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Ich habe mit einem erfahrenen ___ gesprochen und ___ um Rat gebeten.\n\nEr konnte mir viele wertvolle Tipps für mein Problem geben.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Experte / ihm",
+      "B": "Experten / ihn",
+      "C": "Experte / ihn",
+      "D": "Experten / ihm"
+    },
+    "antwort": "B",
+    "erklaerung": "N-Deklination: mit + Dativ 'einem Experten' + Pronomen Akkusativ 'ihn' (um Rat bitten)."
+  },
+  {
+    "id": 1812,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Die Lehrerin hat den ___ für seine gute Leistung gelobt und ___ eine Eins gegeben.\n\nEr hat sich sehr über die Anerkennung gefreut.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Schüler / ihm",
+      "B": "Schülern / ihn",
+      "C": "Schüler / ihn",
+      "D": "Schülers / ihm"
+    },
+    "antwort": "A",
+    "erklaerung": "KEINE N-Deklination: 'der Schüler' → Akkusativ: 'den Schüler' (bleibt gleich) + Dativ 'ihm'."
+  },
+  {
+    "id": 1813,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Der Trainer hat seinem ___ neue Übungen gezeigt und ___ motiviert, härter zu trainieren.\n\nDer Sportler möchte bei der nächsten Meisterschaft gewinnen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Athlet / ihn",
+      "B": "Athleten / ihn",
+      "C": "Athlet / ihm",
+      "D": "Athleten / ihm"
+    },
+    "antwort": "B",
+    "erklaerung": "N-Deklination: 'der Athlet' → Dativ: 'dem Athleten' + Pronomen Akkusativ 'ihn'."
+  },
+  {
+    "id": 1814,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Wir haben einen freundlichen ___ nach dem Weg gefragt und ___ hat uns sehr gut geholfen.\n\nEr hat uns den kürzesten Weg zum Bahnhof erklärt.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Mensch / er",
+      "B": "Menschen / er",
+      "C": "Mensch / ihm",
+      "D": "Menschen / ihn"
+    },
+    "antwort": "B",
+    "erklaerung": "N-Deklination: 'der Mensch' → Akkusativ: 'einen Menschen' + Pronomen Nominativ 'er'."
+  },
+  {
+    "id": 1815,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Die Sekretärin hat dem ___ einen Termin gegeben und ___ an die nötigen Unterlagen erinnert.\n\nEr soll alle Dokumente zur Besprechung mitbringen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Herr / ihm",
+      "B": "Herrn / ihn",
+      "C": "Herr / ihn",
+      "D": "Herren / ihm"
+    },
+    "antwort": "B",
+    "erklaerung": "N-Deklination: 'der Herr' → Dativ: 'dem Herrn' + Pronomen Akkusativ 'ihn'."
+  },
+  {
+    "id": 1816,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Das Auto des ___ steht vor dem Haus und gehört ___.\n\nEr hat es erst gestern gekauft und ist sehr stolz darauf.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Neffe / ihm",
+      "B": "Neffen / ihm",
+      "C": "Neffe / ihn",
+      "D": "Neffes / er"
+    },
+    "antwort": "B",
+    "erklaerung": "N-Deklination: 'der Neffe' → Genitiv: 'des Neffen' + gehören + Dativ 'ihm'."
+  },
+  {
+    "id": 1817,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Ich habe einem talentierten ___ bei seiner Arbeit zugesehen und war von ___ beeindruckt.\n\nSeine künstlerische Technik ist wirklich außergewöhnlich.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Fotograf / ihm",
+      "B": "Fotografen / ihm",
+      "C": "Fotograf / ihn",
+      "D": "Fotografen / ihn"
+    },
+    "antwort": "B",
+    "erklaerung": "N-Deklination: einem + Dativ 'Fotografen' + beeindruckt sein + von + Dativ 'ihm'."
+  },
+  {
+    "id": 1818,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Die Firma sucht einen erfahrenen ___ und möchte ___ ein attraktives Gehalt bieten.\n\nDie Stelle ist ab sofort zu besetzen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Praktikant / ihm",
+      "B": "Praktikanten / ihm",
+      "C": "Praktikant / ihn",
+      "D": "Praktikanten / ihn"
+    },
+    "antwort": "B",
+    "erklaerung": "N-Deklination: 'der Praktikant' → Akkusativ: 'einen Praktikanten' + Pronomen Dativ 'ihm'."
+  },
+  {
+    "id": 1819,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Das Gepäck des ___ wurde am Flughafen kontrolliert und ___ musste lange warten.\n\nDie Sicherheitskontrolle dauerte fast eine Stunde.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Passagier / er",
+      "B": "Passagiers / er",
+      "C": "Passagieren / ihm",
+      "D": "Passagier / ihm"
+    },
+    "antwort": "A",
+    "erklaerung": "KEINE N-Deklination: 'der Passagier' → Genitiv: 'des Passagiers' + Pronomen Nominativ 'er'."
+  },
+  {
+    "id": 1820,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Wir haben den neuen ___ in der Kantine getroffen und mit ___ über seine Eindrücke gesprochen.\n\nEr fühlt sich in der Firma schon sehr wohl.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Praktikant / ihm",
+      "B": "Praktikanten / ihm",
+      "C": "Praktikant / ihn",
+      "D": "Praktikanten / ihn"
+    },
+    "antwort": "B",
+    "erklaerung": "N-Deklination: 'der Praktikant' → Akkusativ: 'den Praktikanten' + mit + Dativ 'ihm'."
+  },
+  {
+    "id": 1821,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Der Chef hat einem engagierten ___ mehr Verantwortung gegeben und ___ befördert.\n\nEr leitet jetzt ein wichtiges Projekt mit einem großen Team.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Mitarbeiter / ihn",
+      "B": "Mitarbeitern / ihm",
+      "C": "Mitarbeiter / ihm",
+      "D": "Mitarbeiters / ihn"
+    },
+    "antwort": "A",
+    "erklaerung": "KEINE N-Deklination: 'der Mitarbeiter' → Dativ: 'einem Mitarbeiter' + Pronomen Akkusativ 'ihn'."
+  },
+  {
+    "id": 1822,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Ich bin einem alten ___ aus meiner Schulzeit begegnet und habe ___ sofort erkannt.\n\nWir haben uns seit zwanzig Jahren nicht mehr gesehen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Bekannte / ihm",
+      "B": "Bekannten / ihn",
+      "C": "Bekannte / ihn",
+      "D": "Bekanntes / er"
+    },
+    "antwort": "B",
+    "erklaerung": "N-Deklination: 'der Bekannte' → Dativ: 'einem Bekannten' + Pronomen Akkusativ 'ihn'."
+  },
+  {
+    "id": 1823,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Die Universität hat einen renommierten ___ eingeladen und ___ gebeten, einen Vortrag zu halten.\n\nEr ist ein international anerkannter Experte auf seinem Gebiet.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Wissenschaftler / ihn",
+      "B": "Wissenschaftlern / ihm",
+      "C": "Wissenschaftler / ihm",
+      "D": "Wissenschaftlers / ihn"
+    },
+    "antwort": "A",
+    "erklaerung": "KEINE N-Deklination: 'der Wissenschaftler' → Akkusativ: 'einen Wissenschaftler' + Pronomen Akkusativ 'ihn'."
+  },
+  {
+    "id": 1824,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Das Haus meines ___ liegt am Stadtrand und ___ hat dort einen großen Garten.\n\nEr lädt uns oft zum Grillen und zu Gartenpartys ein.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "Cousin / er",
+      "B": "Cousins / er",
+      "C": "Cousinen / ihm",
+      "D": "Cousin / ihm"
+    },
+    "antwort": "B",
+    "erklaerung": "KEINE N-Deklination: 'der Cousin' → Genitiv: 'meines Cousins' + Pronomen Nominativ 'er'."
+  },
+  
+  {
+    "id": 4800,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Ich habe gestern mit unserem neuen ___ gesprochen. Er ist ein sehr netter ___.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Nachbarn / Mensch",
+      "B": "Nachbar / Menschen",
+      "C": "Nachbarn / Menschen",
+      "D": "Nachbar / Mensch"
+    },
+    "antwort": "A",
+    "erklaerung": "1. boşluk: 'Mit' (Dativ) -> N-Deklination 'Nachbarn'. 2. boşluk: 'Ein' (Nominativ/Özne) -> Yalın hal 'Mensch' (Ek almaz)."
+  },
+  {
+    "id": 4801,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Entschuldigung, kennen Sie den ___ dort drüben? Ja, das ist ein berühmter ___.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Herrn / Fotograf",
+      "B": "Herr / Fotografen",
+      "C": "Herrn / Fotografen",
+      "D": "Herr / Fotograf"
+    },
+    "antwort": "A",
+    "erklaerung": "1. boşluk: 'Kennen' (Akkusativ) -> 'Herrn'. 2. boşluk: 'Das ist' (Nominativ) -> 'Fotograf' (Ek almaz)."
+  },
+  {
+    "id": 4802,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Der Arzt untersucht den ___. Er verschreibt dem ___ ein Medikament.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Patienten / Patienten",
+      "B": "Patient / Patient",
+      "C": "Patienten / Patient",
+      "D": "Patient / Patienten"
+    },
+    "antwort": "A",
+    "erklaerung": "'Patient' N-Deklination ismidir. Akkusativ (den Patienten) ve Dativ (dem Patienten) hallerinde -en alır."
+  },
+  {
+    "id": 4803,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Wir haben einen neuen ___ in der Firma. Ich zeige dem ___ das Büro.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Kollegen / Kollegen",
+      "B": "Kollege / Kollege",
+      "C": "Kollegen / Kollege",
+      "D": "Kollege / Kollegen"
+    },
+    "antwort": "A",
+    "erklaerung": "'Kollege' N-Deklination ismidir. Akkusativ (einen Kollegen) ve Dativ (dem Kollegen) hallerinde -n alır."
+  },
+  {
+    "id": 4804,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Ich habe den ___ leider vergessen. Wie war noch mal der ___ von Ihrem Mann?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Namen / Name",
+      "B": "Name / Namen",
+      "C": "Namen / Namen",
+      "D": "Name / Name"
+    },
+    "antwort": "A",
+    "erklaerung": "1. boşluk: Akkusativ (den Namen). 2. boşluk: Nominativ (der Name)."
+  },
+  {
+    "id": 4805,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Der kleine ___ spielt mit einem ___ im Garten.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Junge / Löwen",
+      "B": "Jungen / Löwe",
+      "C": "Junge / Löwe",
+      "D": "Jungen / Löwen"
+    },
+    "antwort": "A",
+    "erklaerung": "1. boşluk: Nominativ (der Junge - ek yok). 2. boşluk: Dativ (einem Löwen - 'Löwe' oyuncak aslan anlamında da olsa N-Deklination)."
+  },
+  {
+    "id": 4806,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Der ___ bedient den ___. Beide sind sehr freundlich.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Praktikant / Kunden",
+      "B": "Praktikanten / Kunde",
+      "C": "Praktikant / Kunde",
+      "D": "Praktikanten / Kunden"
+    },
+    "antwort": "A",
+    "erklaerung": "1. boşluk: Nominativ (Praktikant). 2. boşluk: Akkusativ (den Kunden)."
+  },
+  {
+    "id": 4807,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Ein ___ fragt einen ___ nach dem Weg.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Tourist / Polizisten",
+      "B": "Touristen / Polizist",
+      "C": "Tourist / Polizist",
+      "D": "Touristen / Polizisten"
+    },
+    "antwort": "A",
+    "erklaerung": "1. boşluk: Nominativ (Tourist). 2. boşluk: Akkusativ (einen Polizisten)."
+  },
+  {
+    "id": 4808,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Ich schreibe einen Brief an den ___. Ich hoffe, der ___ antwortet mir.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Präsidenten / Präsident",
+      "B": "Präsident / Präsidenten",
+      "C": "Präsidenten / Präsidenten",
+      "D": "Präsident / Präsident"
+    },
+    "antwort": "A",
+    "erklaerung": "1. boşluk: Akkusativ (an den Präsidenten). 2. boşluk: Nominativ (der Präsident)."
+  },
+  {
+    "id": 4809,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Das Auto des ___ steht vor der Tür. Der ___ ist gerade zu Hause.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Nachbarn / Nachbar",
+      "B": "Nachbar / Nachbarn",
+      "C": "Nachbarn / Nachbarn",
+      "D": "Nachbar / Nachbar"
+    },
+    "antwort": "A",
+    "erklaerung": "1. boşluk: Genitiv (des Nachbarn). 2. boşluk: Nominativ (der Nachbar)."
+  },
+  {
+    "id": 4810,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Die Universität hat viele ___. Jeder ___ muss viel lernen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Studenten / Student",
+      "B": "Student / Studenten",
+      "C": "Studenten / Studenten",
+      "D": "Student / Student"
+    },
+    "antwort": "A",
+    "erklaerung": "1. boşluk: Çoğul/Plural (viele Studenten). 2. boşluk: Nominativ Tekil (jeder Student)."
+  },
+  {
+    "id": 4811,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Ich habe ein Problem mit meinem ___. Der ___ funktioniert nicht richtig.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Automaten / Automat",
+      "B": "Automat / Automaten",
+      "C": "Automaten / Automaten",
+      "D": "Automat / Automat"
+    },
+    "antwort": "A",
+    "erklaerung": "'Automat' cansız bir N-Deklination ismidir. Dativ (mit meinem Automaten). Nominativ (der Automat)."
+  },
+  {
+    "id": 4812,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Der Journalist interviewt den ___. Der ___ gibt bereitwillig Auskunft.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Zeugen / Zeuge",
+      "B": "Zeuge / Zeugen",
+      "C": "Zeugen / Zeugen",
+      "D": "Zeuge / Zeuge"
+    },
+    "antwort": "A",
+    "erklaerung": "'Zeuge' (tanık) N-Deklination'dır. Akkusativ (den Zeugen). Nominativ (der Zeuge)."
+  },
+  {
+    "id": 4813,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Hast du schon den neuen ___ gesehen? Er ist ein Verwandter des ___.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Praktikanten / Chefs",
+      "B": "Praktikant / Chef",
+      "C": "Praktikanten / Cheffen",
+      "D": "Praktikant / Chefs"
+    },
+    "antwort": "A",
+    "erklaerung": "Akkusativ (den Praktikanten). 'Chef' N-Deklination DEĞİLDİR, normal Genitiv alır (des Chefs)."
+  },
+  {
+    "id": 4814,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Im Zoo sehen wir einen ___. Der ___ schläft in der Sonne.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Bären / Bär",
+      "B": "Bär / Bären",
+      "C": "Bären / Bären",
+      "D": "Bär / Bär"
+    },
+    "antwort": "A",
+    "erklaerung": "Akkusativ (einen Bären). Nominativ (der Bär)."
+  },
+  {
+    "id": 4815,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Herr Müller, ich muss Sie bitten, Ihren ___ hier unten hinzuschreiben.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Namen",
+      "B": "Name",
+      "C": "Namens",
+      "D": "Namer"
+    },
+    "antwort": "A",
+    "erklaerung": "Akkusativ (Ihren Namen). Soru formatı tek boşluklu olsa da bağlam gereği Akkusativ kullanımı açıktır."
+  },
+  {
+    "id": 4816,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Der ___ hilft dem ___. Das ist sehr nett von ihm.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Mensch / Menschen",
+      "B": "Menschen / Mensch",
+      "C": "Mensch / Mensch",
+      "D": "Menschen / Menschen"
+    },
+    "antwort": "A",
+    "erklaerung": "Nominativ (der Mensch). Dativ (dem Menschen)."
+  },
+  {
+    "id": 4817,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Mein ___ studiert in Berlin. Ich besuche meinen ___ am Wochenende.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Neffe / Neffen",
+      "B": "Neffen / Neffe",
+      "C": "Neffe / Neffe",
+      "D": "Neffen / Neffen"
+    },
+    "antwort": "A",
+    "erklaerung": "'Neffe' (Yeğen-erkek) N-Deklination'dır. Nominativ (mein Neffe). Akkusativ (meinen Neffen)."
+  },
+  {
+    "id": 4818,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Wir folgen dem ___ durch die Ausstellung. Der ___ erklärt alles sehr gut.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Experten / Experte",
+      "B": "Experte / Experten",
+      "C": "Experten / Experten",
+      "D": "Experte / Experte"
+    },
+    "antwort": "A",
+    "erklaerung": "Dativ (dem Experten). Nominativ (der Experte)."
+  },
+  {
+    "id": 4819,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Ich habe Schmerzen im ___. Der Arzt sagt, mein ___ ist gesund.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Herzen / Herz",
+      "B": "Herz / Herzen",
+      "C": "Herzen / Herzen",
+      "D": "Herz / Herz"
+    },
+    "antwort": "A",
+    "erklaerung": "İstisna: 'Das Herz' (Nötr). Dativ (im Herzen) -> -en alır. Nominativ (mein Herz) -> ek almaz. Genitiv ise 'des Herzens' şeklindedir."
+  },
+  {
+    "id": 4820,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Der ___ kauft frische Milch beim ___.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Kunde / Bauern",
+      "B": "Kunden / Bauer",
+      "C": "Kunde / Bauer",
+      "D": "Kunden / Bauern"
+    },
+    "antwort": "A",
+    "erklaerung": "Nominativ (der Kunde). Dativ (beim Bauern). 'Bauer' (çiftçi) N-Deklination'dır."
+  },
+  {
+    "id": 4821,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Ich spreche mit ___ Müller. ___ Müller ist mein Chef.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Herrn / Herr",
+      "B": "Herr / Herrn",
+      "C": "Herrn / Herrn",
+      "D": "Herr / Herr"
+    },
+    "antwort": "A",
+    "erklaerung": "Dativ (mit Herrn Müller). Nominativ (Herr Müller)."
+  },
+  {
+    "id": 4822,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Der ___ hält eine Rede vor vielen ___.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Diplomat / Menschen",
+      "B": "Diplomaten / Mensch",
+      "C": "Diplomat / Mensch",
+      "D": "Diplomaten / Menschen"
+    },
+    "antwort": "A",
+    "erklaerung": "Nominativ (der Diplomat). Dativ Çoğul (vor vielen Menschen)."
+  },
+  {
+    "id": 4823,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Glaubst du an den ___ auf Erden? Jeder ___ wünscht sich Frieden.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Frieden / Mensch",
+      "B": "Friede / Menschen",
+      "C": "Frieden / Menschen",
+      "D": "Friede / Mensch"
+    },
+    "antwort": "A",
+    "erklaerung": "'Der Friede' (Barış) özel bir isimdir, genellikle N-Deklination gibi davranır ancak Nominativ hali bazen 'Frieden' olarak da kullanılır. Burada Akkusativ (an den Frieden) kesindir."
+  },
+  {
+    "id": 4824,
+    "thema": "N-Deklination",
+    "format": "Text",
+    "kontext": "Dieser ___ ist sehr interessant. Ich habe diesen ___ noch nie gehört.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Gedanke / Gedanken",
+      "B": "Gedanken / Gedanke",
+      "C": "Gedanke / Gedanke",
+      "D": "Gedanken / Gedanken"
+    },
+    "antwort": "A",
+    "erklaerung": "'Der Gedanke' (Düşünce) özel bir zayıf isimdir. Nominativ (der Gedanke). Akkusativ (diesen Gedanken)."
+  }
+]

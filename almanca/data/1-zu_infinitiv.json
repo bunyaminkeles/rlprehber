@@ -1,0 +1,752 @@
+[
+  {
+    "id": 1000,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Maria möchte ihre Deutschkenntnisse verbessern.\nSie plant deshalb, jeden Tag mindestens eine Stunde ___.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "lernt",
+      "B": "lernen",
+      "C": "zu lernen",
+      "D": "gelernt"
+    },
+    "antwort": "C",
+    "erklaerung": "Nach 'planen' folgt 'zu + Infinitiv'."
+  },
+  {
+    "id": 1001,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Thomas hat morgen eine wichtige Prüfung.\nEr hofft, alle Fragen richtig ___.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "beantworten",
+      "B": "zu beantworten",
+      "C": "beantwortet",
+      "D": "beantwortend"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'hoffen' verwendet man 'zu + Infinitiv'."
+  },
+  {
+    "id": 1002,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Die Kinder haben vergessen, ihre Hausaufgaben ___.\nDie Lehrerin war deshalb nicht sehr zufrieden mit ihnen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "machen",
+      "B": "zu machen",
+      "C": "gemacht",
+      "D": "macht"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'vergessen' steht 'zu + Infinitiv'."
+  },
+  {
+    "id": 1003,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Sabine hat keine Lust, heute Abend ins Kino ___.\nSie ist zu müde nach der langen Arbeitswoche.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "gehen",
+      "B": "geht",
+      "C": "zu gehen",
+      "D": "gegangen"
+    },
+    "antwort": "C",
+    "erklaerung": "Nach 'Lust haben' folgt 'zu + Infinitiv'."
+  },
+  {
+    "id": 1004,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Herr Weber beginnt nächste Woche, in der neuen Firma ___.\nEr freut sich sehr auf die neue Herausforderung.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "arbeiten",
+      "B": "zu arbeiten",
+      "C": "gearbeitet",
+      "D": "arbeitend"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'beginnen' verwendet man 'zu + Infinitiv'."
+  },
+  {
+    "id": 1005,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Es ist wichtig, jeden Tag genug Wasser ___.\nDie Ärzte empfehlen mindestens zwei Liter täglich.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "trinken",
+      "B": "zu trinken",
+      "C": "getrunken",
+      "D": "trinkt"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'es ist wichtig' folgt 'zu + Infinitiv'."
+  },
+  {
+    "id": 1006,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Die Firma versucht, neue Kunden ___.\nDeshalb investiert sie viel Geld in Werbung und Marketing.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "gewinnen",
+      "B": "zu gewinnen",
+      "C": "gewonnen",
+      "D": "gewinnt"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'versuchen' steht 'zu + Infinitiv'."
+  },
+  {
+    "id": 1007,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Mein Vater hat beschlossen, mit dem Rauchen ___.\nSein Arzt hat ihm das dringend geraten.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "aufhören",
+      "B": "aufzuhören",
+      "C": "aufgehört",
+      "D": "hört auf"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'beschließen' verwendet man 'zu + Infinitiv'. Bei trennbaren Verben steht 'zu' zwischen Präfix und Verb."
+  },
+  {
+    "id": 1008,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Es macht mir Spaß, am Wochenende lange ___.\nIch muss in der Woche immer so früh aufstehen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "schlafen",
+      "B": "zu schlafen",
+      "C": "geschlafen",
+      "D": "schlafe"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'Spaß machen' folgt 'zu + Infinitiv'."
+  },
+  {
+    "id": 1009,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Sie hat mir versprochen, pünktlich ___.\nIch hoffe, dass sie ihr Versprechen dieses Mal hält.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "kommen",
+      "B": "zu kommen",
+      "C": "gekommen",
+      "D": "kommt"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'versprechen' steht 'zu + Infinitiv'."
+  },
+  {
+    "id": 1010,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Wir haben die Absicht, nächstes Jahr nach Spanien ___.\nWir wollen dort zwei Wochen Urlaub machen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "reisen",
+      "B": "zu reisen",
+      "C": "gereist",
+      "D": "reist"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'die Absicht haben' verwendet man 'zu + Infinitiv'."
+  },
+  {
+    "id": 1011,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Er empfiehlt uns, dieses Restaurant ___.\nDas Essen dort soll ausgezeichnet sein.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "besuchen",
+      "B": "zu besuchen",
+      "C": "besucht",
+      "D": "besuchend"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'empfehlen' folgt 'zu + Infinitiv'."
+  },
+  {
+    "id": 1012,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Es ist schwierig, eine neue Sprache ___.\nMan braucht viel Zeit und Geduld dafür.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "lernen",
+      "B": "zu lernen",
+      "C": "gelernt",
+      "D": "lernt"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'es ist schwierig' steht 'zu + Infinitiv'."
+  },
+  {
+    "id": 1013,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Die Schüler haben vor, nach der Schule studieren ___.\nViele von ihnen möchten an der Universität weitermachen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "gehen",
+      "B": "zu gehen",
+      "C": "gegangen",
+      "D": "geht"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'vorhaben' verwendet man 'zu + Infinitiv'."
+  },
+  {
+    "id": 1014,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Ich rate dir, mehr Sport ___.\nDas ist gut für die Gesundheit und hilft beim Stressabbau.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "treiben",
+      "B": "zu treiben",
+      "C": "getrieben",
+      "D": "treibt"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'raten' folgt 'zu + Infinitiv'."
+  },
+  {
+    "id": 1015,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Es ist verboten, in diesem Gebäude ___.\nEs gibt draußen einen speziellen Bereich für Raucher.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "rauchen",
+      "B": "zu rauchen",
+      "C": "geraucht",
+      "D": "raucht"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'es ist verboten' steht 'zu + Infinitiv'."
+  },
+  {
+    "id": 1016,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Meine Schwester hat mir angeboten, mir bei der Prüfungsvorbereitung ___.\nIch bin ihr sehr dankbar für die Unterstützung.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "helfen",
+      "B": "zu helfen",
+      "C": "geholfen",
+      "D": "hilft"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'anbieten' verwendet man 'zu + Infinitiv'."
+  },
+  {
+    "id": 1017,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Er behauptet, die Wahrheit ___.\nAber ich glaube ihm nicht, weil seine Geschichte unlogisch klingt.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sagen",
+      "B": "zu sagen",
+      "C": "gesagt",
+      "D": "sagt"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'behaupten' folgt 'zu + Infinitiv'."
+  },
+  {
+    "id": 1018,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Wir brauchen nicht so früh ___.\nDie Veranstaltung beginnt erst um 20 Uhr.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "kommen",
+      "B": "zu kommen",
+      "C": "gekommen",
+      "D": "kommend"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'brauchen' (in negativer Form) steht 'zu + Infinitiv'."
+  },
+  {
+    "id": 1019,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Es fällt mir schwer, früh am Morgen ___.\nIch bin eher ein Nachtmensch und arbeite abends besser.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "aufstehen",
+      "B": "aufzustehen",
+      "C": "aufgestanden",
+      "D": "steht auf"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'schwer fallen' verwendet man 'zu + Infinitiv'. Bei trennbaren Verben: 'aufzustehen'."
+  },
+  {
+    "id": 1020,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Der Chef erlaubt uns, flexibel ___.\nWir können unsere Arbeitszeiten selbst einteilen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "arbeiten",
+      "B": "zu arbeiten",
+      "C": "gearbeitet",
+      "D": "arbeitend"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'erlauben' folgt 'zu + Infinitiv'."
+  },
+  {
+    "id": 1021,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Es macht keinen Sinn, sich über kleine Probleme ___.\nMan sollte lieber gelassen bleiben und nach Lösungen suchen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "aufregen",
+      "B": "aufzuregen",
+      "C": "aufgeregt",
+      "D": "regt auf"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'Sinn machen' steht 'zu + Infinitiv'. Bei trennbaren Verben: 'aufzuregen'."
+  },
+  {
+    "id": 1022,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Sie hat Zeit, uns heute Abend ___.\nWir freuen uns schon sehr auf ihren Besuch.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "besuchen",
+      "B": "zu besuchen",
+      "C": "besucht",
+      "D": "besuchend"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'Zeit haben' verwendet man 'zu + Infinitiv'."
+  },
+  {
+    "id": 1023,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Er scheint krank ___.\nEr sieht sehr blass aus und hustet ständig.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sein",
+      "B": "zu sein",
+      "C": "gewesen",
+      "D": "ist"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'scheinen' folgt 'zu + Infinitiv'."
+  },
+  {
+    "id": 1024,
+    "thema": "zu+Infinitiv",
+    "format": "Text",
+    "kontext": "Es ist gefährlich, bei diesem Wetter Auto ___.\nDie Straßen sind sehr glatt und die Sicht ist schlecht.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "fahren",
+      "B": "zu fahren",
+      "C": "gefahren",
+      "D": "fährt"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach 'es ist gefährlich' steht 'zu + Infinitiv'."
+  },
+  {
+    "id": 4000,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Ich lerne jeden Tag fleißig Deutsch, ___ meine Chancen auf dem Arbeitsmarkt ___ verbessern.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "um / zu",
+      "B": "ohne / zu",
+      "C": "statt / zu",
+      "D": "damit / --"
+    },
+    "antwort": "A",
+    "erklaerung": "'Um ... zu' yapısı bir amaç (Ziel/Zweck) belirtir. (İş şansımı iyileştirmek için)."
+  },
+  {
+    "id": 4001,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Es ist bei diesem starken Regen wirklich gefährlich, ___ Licht Fahrrad ___ fahren.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "ohne / zu",
+      "B": "um / zu",
+      "C": "anstatt / zu",
+      "D": "kein / --"
+    },
+    "antwort": "A",
+    "erklaerung": "'Ohne ... zu' yapısı bir şeyin yapılmadığını belirtir. (Işıksız / Işık olmadan bisiklet sürmek)."
+  },
+  {
+    "id": 4002,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Herr Müller hat heute keine Zeit, ___ den Kunden persönlich ___ sprechen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mit / zu",
+      "B": "um / --",
+      "C": "für / zu",
+      "D": "über / --"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sprechen mit' (biriyle konuşmak). İkinci boşlukta fiilden önce 'zu' gereklidir (zu sprechen)."
+  },
+  {
+    "id": 4003,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Wir haben uns fest vorgenommen, dieses Jahr ___ Urlaub in Spanien ___ machen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "einen / zu",
+      "B": "dem / --",
+      "C": "einem / zu",
+      "D": "den / --"
+    },
+    "antwort": "A",
+    "erklaerung": "'Einen Urlaub' (Akkusativ nesne). 'Sich vornehmen' yapısı 'zu + Infinitiv' gerektirir."
+  },
+  {
+    "id": 4004,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Findest du es nicht langweilig, den ganzen Tag ___ Hause ___ sitzen?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "zu / zu",
+      "B": "nach / --",
+      "C": "im / zu",
+      "D": "bei / --"
+    },
+    "antwort": "A",
+    "erklaerung": "Yer bildiren 'zu Hause' (evde) kalıbı ve fiilden önceki mastar eki 'zu sitzen'."
+  },
+  {
+    "id": 4005,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Der Chef bittet die Mitarbeiter, pünktlich zum Meeting ___ erscheinen und die Handys ___.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "zu / auszuschalten",
+      "B": "zu / ausschalten",
+      "C": "-- / auszuschalten",
+      "D": "-- / ausschalten"
+    },
+    "antwort": "A",
+    "erklaerung": "'Bitten' fiili zu+Infinitiv gerektirir. Ayrılabilen fiillerde (ausschalten) 'zu' araya girer (auszuschalten)."
+  },
+  {
+    "id": 4006,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Anstatt ___ die Prüfung ___ lernen, spielt der Junge den ganzen Tag Computerspiele.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "für / zu",
+      "B": "um / --",
+      "C": "über / zu",
+      "D": "auf / --"
+    },
+    "antwort": "A",
+    "erklaerung": "'Lernen für' (bir şeye çalışmak) ve 'Anstatt ... zu' (yerine) kalıbı."
+  },
+  {
+    "id": 4007,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Ich habe leider vergessen, ___ Brief zur Post ___ bringen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "den / zu",
+      "B": "dem / --",
+      "C": "einen / --",
+      "D": "der / zu"
+    },
+    "antwort": "A",
+    "erklaerung": "'Den Brief' (Akkusativ). 'Vergessen' fiili zu+Infinitiv ile kullanılır."
+  },
+  {
+    "id": 4008,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Es ist verboten, in öffentlichen Gebäuden ___ Zigaretten ___ rauchen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "-- / zu",
+      "B": "die / --",
+      "C": "eine / zu",
+      "D": "den / --"
+    },
+    "antwort": "A",
+    "erklaerung": "Burada genel bir ifade var, artikel gerekmez (Zigaretten rauchen). Yasak bildiren sıfatlar zu+Infinitiv alır."
+  },
+  {
+    "id": 4009,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Haben Sie vielleicht Lust, heute Abend ___ uns ins Kino ___ gehen?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mit / zu",
+      "B": "bei / --",
+      "C": "zu / zu",
+      "D": "für / --"
+    },
+    "antwort": "A",
+    "erklaerung": "'Mit uns' (bizimle). 'Lust haben' kalıbı zu+Infinitiv gerektirir."
+  },
+  {
+    "id": 4010,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Er ging aus dem Haus, ___ die Tür richtig ___ schließen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "ohne / zu",
+      "B": "um / zu",
+      "C": "anstatt / --",
+      "D": "damit / zu"
+    },
+    "antwort": "A",
+    "erklaerung": "Kapıyı kapatmadan çıktı. Olumsuz durum 'ohne...zu' ile ifade edilir."
+  },
+  {
+    "id": 4011,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Meine Eltern erlauben mir nicht, am Wochenende ___ spät nach Hause ___ kommen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "so / zu",
+      "B": "zu / --",
+      "C": "sehr / zu",
+      "D": "viel / --"
+    },
+    "antwort": "A",
+    "erklaerung": "'So spät' (bu kadar geç). 'Erlauben' fiili zu+Infinitiv gerektirir."
+  },
+  {
+    "id": 4012,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Ich fange morgen an, ___ eine neue Arbeitsstelle ___ suchen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mir / zu",
+      "B": "mich / zu",
+      "C": "ich / --",
+      "D": "mein / --"
+    },
+    "antwort": "A",
+    "erklaerung": "'Suchen' burada kendine bir iş aramak anlamında Dativ (mir) alır: 'Ich suche mir eine Stelle'. 'Anfangen' zu+Infinitiv gerektirir."
+  },
+  {
+    "id": 4013,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Es ist wichtig für Ihre Gesundheit, ___ Stress ___ vermeiden.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "den / zu",
+      "B": "dem / --",
+      "C": "ein / zu",
+      "D": "der / --"
+    },
+    "antwort": "A",
+    "erklaerung": "'Den Stress' (belirli bir durum/kavram Akkusativ). Sıfat yapıları (wichtig sein) zu+Infinitiv gerektirir."
+  },
+  {
+    "id": 4014,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Der Arzt hat mir geraten, weniger Süßigkeiten ___ essen und mehr Sport ___ treiben.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "zu / zu",
+      "B": "-- / zu",
+      "C": "zu / --",
+      "D": "-- / --"
+    },
+    "antwort": "A",
+    "erklaerung": "'Raten' (tavsiye etmek) zu+Infinitiv gerektirir. İki eylem varsa her ikisi için de 'zu' kullanılır."
+  },
+  {
+    "id": 4015,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Wir sparen jeden Monat Geld, ___ uns nächstes Jahr ein neues Auto ___ kaufen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "um / zu",
+      "B": "ohne / zu",
+      "C": "damit / --",
+      "D": "statt / zu"
+    },
+    "antwort": "A",
+    "erklaerung": "Amaç bildiriyor (araba almak için). 'Um ... zu' yapısı."
+  },
+  {
+    "id": 4016,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Ich freue mich sehr darauf, dich bald in Berlin ___ besuchen ___ können.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "-- / zu",
+      "B": "zu / zu",
+      "C": "zu / --",
+      "D": "-- / --"
+    },
+    "antwort": "A",
+    "erklaerung": "Burada bir modal fiil (können) mastar yapısında kullanılmıştır. 'Besuchen' yalın kalır, 'können' fiilinden önce 'zu' gelir (besuchen zu können)."
+  },
+  {
+    "id": 4017,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Hör bitte endlich auf, so laut ___ Musik ___ hören!",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "-- / zu",
+      "B": "zu / zu",
+      "C": "die / --",
+      "D": "eine / zu"
+    },
+    "antwort": "A",
+    "erklaerung": "'Musik hören' kalıbında 'Musik' ve 'hören' arasına bir şey girmez, ancak 'aufhören' (son vermek) fiili 'zu' gerektirir. 'zu' fiilin hemen önüne gelir."
+  },
+  {
+    "id": 4018,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Ich habe die Absicht, noch heute ___ dem Rauchen ___.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mit / aufzuhören",
+      "B": "von / aufhören",
+      "C": "zu / zu aufhören",
+      "D": "bei / aufzuhören"
+    },
+    "antwort": "A",
+    "erklaerung": "'Aufhören mit' (bir şeyi bırakmak). Ayrılabilen fiil olduğu için 'zu' araya girer (aufzuhören)."
+  },
+  {
+    "id": 4019,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Es ist gar nicht so einfach, in einer fremden Stadt ___ eine Wohnung ___ finden.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "schnell / zu",
+      "B": "schnelle / --",
+      "C": "schneller / zu",
+      "D": "schnellsten / --"
+    },
+    "antwort": "A",
+    "erklaerung": "Zarf olarak 'schnell' (hızlıca) ve fiilden önce 'zu' (zu finden)."
+  },
+  {
+    "id": 4020,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Er verließ das Büro, ___ sich bei seinen Kollegen ___ verabschieden.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "ohne / zu",
+      "B": "um / zu",
+      "C": "anstatt / --",
+      "D": "damit / zu"
+    },
+    "antwort": "A",
+    "erklaerung": "Veda etmeden ofisten ayrıldı. 'Ohne ... zu'."
+  },
+  {
+    "id": 4021,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Ich versuche schon seit Stunden, ___ Computer ___ reparieren.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "meinen / zu",
+      "B": "mein / --",
+      "C": "meinem / zu",
+      "D": "meiner / --"
+    },
+    "antwort": "A",
+    "erklaerung": "'Den Computer' (Akkusativ -> meinen). 'Versuchen' fiili zu+Infinitiv gerektirir."
+  },
+  {
+    "id": 4022,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Hast du Angst davor, ___ Fehler ___ machen?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "einen / zu",
+      "B": "ein / --",
+      "C": "dem / zu",
+      "D": "den / --"
+    },
+    "antwort": "A",
+    "erklaerung": "'Einen Fehler' (Akkusativ). 'Angst haben' yapısı zu+Infinitiv ile tamamlanır."
+  },
+  {
+    "id": 4023,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Wir planen, im Sommer ___ die Türkei ___ fliegen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "in / zu",
+      "B": "nach / zu",
+      "C": "zu / --",
+      "D": "bei / --"
+    },
+    "antwort": "A",
+    "erklaerung": "'In die Türkei' (Yön bildirme, Akkusativ). 'Planen' fiili zu+Infinitiv gerektirir."
+  },
+  {
+    "id": 4024,
+    "thema": "zu + Infinitiv",
+    "format": "Text",
+    "kontext": "Ich biete dir an, dich morgen ___ Auto zum Bahnhof ___ fahren.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mit dem / zu",
+      "B": "mit das / --",
+      "C": "bei dem / zu",
+      "D": "durch das / --"
+    },
+    "antwort": "A",
+    "erklaerung": "'Mit dem Auto' (Dativ, araç). 'Anbieten' fiili zu+Infinitiv gerektirir."
+  }
+]

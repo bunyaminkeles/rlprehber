@@ -1,0 +1,753 @@
+[
+  {
+    "id": 2200,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Morgen hat mein kleiner Bruder Geburtstag. Ich werde ___ ein tolles Geschenk kaufen, nämlich ___ neuen Fußball.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "ihm / einen",
+      "B": "ihn / einem",
+      "C": "ihr / das",
+      "D": "seiner / den"
+    },
+    "antwort": "A",
+    "erklaerung": "'Kaufen' (jemandem etwas) verlangt Dativ für die Person (ihm) und Akkusativ für die Sache (einen Fußball)."
+  },
+  {
+    "id": 2201,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Entschuldigung, können Sie ___ bitte helfen? Ich suche ___ Weg zum Bahnhof.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mir / den",
+      "B": "mich / dem",
+      "C": "ich / der",
+      "D": "meiner / das"
+    },
+    "antwort": "A",
+    "erklaerung": "'Helfen' verlangt Dativ (mir). 'Suchen' verlangt Akkusativ (den Weg)."
+  },
+  {
+    "id": 2202,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Wir fahren am Wochenende mit ___ Auto zu ___ Großeltern aufs Land.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dem / unseren",
+      "B": "das / unsere",
+      "C": "des / uns",
+      "D": "den / unser"
+    },
+    "antwort": "A",
+    "erklaerung": "Die Präpositionen 'mit' und 'zu' verlangen immer den Dativ (dem Auto / unseren Großeltern)."
+  },
+  {
+    "id": 2203,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Ich habe ___ Schlüssel ___ Vaters verloren und jetzt kann er nicht ins Haus.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "den / meines",
+      "B": "dem / mein",
+      "C": "der / meinen",
+      "D": "das / meiner"
+    },
+    "antwort": "A",
+    "erklaerung": "'Haben' verlangt Akkusativ (den Schlüssel). Das Besitzverhältnis wird mit Genitiv (meines Vaters) ausgedrückt."
+  },
+  {
+    "id": 2204,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Wegen ___ starken Regens bleiben wir heute zu Hause und sehen uns ___ spannenden Film an.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "des / einen",
+      "B": "dem / einem",
+      "C": "der / eins",
+      "D": "den / einer"
+    },
+    "antwort": "A",
+    "erklaerung": "'Wegen' verlangt standardsprachlich den Genitiv (des Regens). 'Ansehen' verlangt Akkusativ (einen Film)."
+  },
+  {
+    "id": 2205,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Der Lehrer gibt ___ Schülerin ___ Buch zurück, das sie gestern vergessen hatte.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "der / das",
+      "B": "die / dem",
+      "C": "dem / den",
+      "D": "den / des"
+    },
+    "antwort": "A",
+    "erklaerung": "'Geben' verlangt Dativ für den Empfänger (der Schülerin) und Akkusativ für das Objekt (das Buch)."
+  },
+  {
+    "id": 2206,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Ich lege ___ Zeitung auf ___ Tisch, damit du sie später lesen kannst.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "die / den",
+      "B": "der / dem",
+      "C": "das / des",
+      "D": "dem / die"
+    },
+    "antwort": "A",
+    "erklaerung": "'Legen' ist eine Bewegung (Wohin?), daher Akkusativ für das Objekt (die Zeitung) und Akkusativ für das Ziel (den Tisch)."
+  },
+  {
+    "id": 2207,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Die Zeitung liegt jetzt auf ___ Tisch. Du kannst sie ___ lesen, wenn du möchtest.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dem / mir",
+      "B": "den / mich",
+      "C": "der / mir",
+      "D": "des / ich"
+    },
+    "antwort": "A",
+    "erklaerung": "'Liegen' ist ein Zustand (Wo?), daher Dativ (auf dem Tisch). Das Pronomen ist hier im Kontext (mir) nicht gefordert, aber 'mir' (Dativ) wäre logisch als 'für mich'. Hier ist A die korrekte grammatische Form für den Ort."
+  },
+  {
+    "id": 2208,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Trotz ___ Krankheit geht Herr Müller zur Arbeit. Er möchte ___ wichtigen Termin nicht verpassen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "seiner / den",
+      "B": "seine / dem",
+      "C": "seinen / der",
+      "D": "seiner / das"
+    },
+    "antwort": "A",
+    "erklaerung": "'Trotz' verlangt Genitiv (seiner Krankheit). 'Verpassen' verlangt Akkusativ (den Termin)."
+  },
+  {
+    "id": 2209,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Kannst du ___ bitte sagen, wie spät es ist? Ich habe ___ Uhr zu Hause vergessen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mir / meine",
+      "B": "mich / meiner",
+      "C": "ich / mein",
+      "D": "mein / mir"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sagen' verlangt Dativ (mir). 'Haben' bzw. 'vergessen' verlangt Akkusativ (meine Uhr)."
+  },
+  {
+    "id": 2210,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Wir danken ___ für ___ Einladung zur Hochzeit und kommen sehr gerne.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "euch / die",
+      "B": "ihr / der",
+      "C": "euer / den",
+      "D": "Sie / das"
+    },
+    "antwort": "A",
+    "erklaerung": "'Danken' verlangt Dativ (euch/Ihnen). 'Für' verlangt immer Akkusativ (die Einladung)."
+  },
+  {
+    "id": 2211,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Während ___ Sommers fahren viele Leute an ___ Strand, um sich zu erholen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "des / den",
+      "B": "dem / dem",
+      "C": "der / das",
+      "D": "den / der"
+    },
+    "antwort": "A",
+    "erklaerung": "'Während' verlangt Genitiv (des Sommers). 'An' verlangt bei Bewegung (Wohin?) den Akkusativ (den Strand)."
+  },
+  {
+    "id": 2212,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Gehört ___ Tasche hier ___? Sie liegt schon lange hier.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "diese / Ihnen",
+      "B": "dieser / Sie",
+      "C": "dieses / Ihr",
+      "D": "diesen / Ihre"
+    },
+    "antwort": "A",
+    "erklaerung": "'Tasche' ist Subjekt (Nominativ -> diese). 'Gehören' verlangt Dativ (Ihnen)."
+  },
+  {
+    "id": 2213,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Ich treffe mich heute Abend mit ___ Freunden in ___ Restaurant im Stadtzentrum.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "meinen / einem",
+      "B": "meine / ein",
+      "C": "meiner / einen",
+      "D": "meines / eines"
+    },
+    "antwort": "A",
+    "erklaerung": "'Mit' verlangt Dativ (meinen Freunden - Plural n). 'In' verlangt bei Ort (Wo?) den Dativ (einem Restaurant)."
+  },
+  {
+    "id": 2214,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Herr Ober, bitte bringen Sie ___ noch ___ Glas Wasser.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "uns / ein",
+      "B": "wir / eines",
+      "C": "unser / einen",
+      "D": "uns / dem"
+    },
+    "antwort": "A",
+    "erklaerung": "'Bringen' verlangt Dativ (uns) für den Empfänger und Akkusativ (ein Glas) für das Objekt."
+  },
+  {
+    "id": 2215,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Seit ___ Monat wohne ich in Berlin, aber ich finde ___ Wohnung immer noch zu teuer.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "einem / die",
+      "B": "einen / der",
+      "C": "eines / das",
+      "D": "ein / dem"
+    },
+    "antwort": "A",
+    "erklaerung": "'Seit' verlangt immer Dativ (einem Monat). 'Finden' (Meinung haben über) verlangt Akkusativ (die Wohnung)."
+  },
+  {
+    "id": 2216,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Der Arzt hat ___ Patienten ___ Medikament verschrieben.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dem / ein",
+      "B": "den / eine",
+      "C": "der / einen",
+      "D": "des / einem"
+    },
+    "antwort": "A",
+    "erklaerung": "'Verschreiben' verlangt Dativ (dem Patienten) und Akkusativ (ein Medikament)."
+  },
+  {
+    "id": 2217,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Ich warte schon lange auf ___ Bus. Ich glaube, er hat ___ Verspätung.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "den / eine",
+      "B": "dem / einer",
+      "C": "der / ein",
+      "D": "des / einen"
+    },
+    "antwort": "A",
+    "erklaerung": "'Warten auf' verlangt Akkusativ (den Bus). 'Haben' verlangt Akkusativ (eine Verspätung)."
+  },
+  {
+    "id": 2218,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Das Haus ___ Nachbarn ist sehr groß und hat ___ schönen Garten.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "des / einen",
+      "B": "dem / ein",
+      "C": "der / einem",
+      "D": "den / einer"
+    },
+    "antwort": "A",
+    "erklaerung": "Besitzverhältnis im Genitiv (des Nachbarn - N-Deklination). 'Haben' verlangt Akkusativ (einen Garten)."
+  },
+  {
+    "id": 2219,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Bitte hängen Sie ___ Mantel an ___ Haken dort drüben.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Ihren / den",
+      "B": "Ihrer / dem",
+      "C": "Ihr / das",
+      "D": "Ihre / der"
+    },
+    "antwort": "A",
+    "erklaerung": "'Hängen' (Aktion) verlangt Akkusativ für das Objekt (Ihren Mantel) und Akkusativ für das Ziel 'an' (den Haken)."
+  },
+  {
+    "id": 2220,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Gefällt ___ das Kleid? Oder soll ich lieber ___ Hose anprobieren?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dir / die",
+      "B": "dich / der",
+      "C": "du / das",
+      "D": "dein / den"
+    },
+    "antwort": "A",
+    "erklaerung": "'Gefallen' verlangt Dativ (dir). 'Anprobieren' verlangt Akkusativ (die Hose)."
+  },
+  {
+    "id": 2221,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Außerhalb ___ Öffnungszeiten können Sie keine Bücher aus ___ Bibliothek ausleihen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "der / der",
+      "B": "die / die",
+      "C": "den / den",
+      "D": "dem / das"
+    },
+    "antwort": "A",
+    "erklaerung": "'Außerhalb' verlangt Genitiv (der Öffnungszeiten). 'Aus' verlangt Dativ (der Bibliothek)."
+  },
+  {
+    "id": 2222,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Ich rufe ___ morgen an, dann können wir über ___ Pläne sprechen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dich / deine",
+      "B": "dir / deiner",
+      "C": "du / deinen",
+      "D": "dein / dich"
+    },
+    "antwort": "A",
+    "erklaerung": "'Anrufen' verlangt Akkusativ (dich). 'Über' (Thema) verlangt Akkusativ (deine Pläne)."
+  },
+  {
+    "id": 2223,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Das Essen schmeckt ___ Gästen sehr gut. Sie haben alles bis auf ___ letzten Rest aufgegessen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "den / den",
+      "B": "die / dem",
+      "C": "der / des",
+      "D": "dem / die"
+    },
+    "antwort": "A",
+    "erklaerung": "'Schmecken' verlangt Dativ (den Gästen). 'Bis auf' verlangt Akkusativ (den letzten Rest)."
+  },
+  {
+    "id": 2224,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Wir gratulieren ___ herzlich zum Geburtstag und wünschen ___ alles Gute.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dir / dir",
+      "B": "dich / dich",
+      "C": "du / dir",
+      "D": "dir / dich"
+    },
+    "antwort": "A",
+    "erklaerung": "'Gratulieren' verlangt Dativ (dir). 'Wünschen' (jemandem etwas) verlangt ebenfalls Dativ für die Person (dir)."
+  },
+  
+  {
+    "id": 2225,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Kannst du ___ bitte ___ Salz geben? Die Suppe schmeckt nach nichts.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mir / das",
+      "B": "mich / der",
+      "C": "mir / den",
+      "D": "ich / dem"
+    },
+    "antwort": "A",
+    "erklaerung": "Geben: Kim? (mir - Dativ), Ne? (das Salz - Akkusativ)."
+  },
+  {
+    "id": 2226,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Ich schenke ___ Bruder ___ neues Computerspiel zum Geburtstag.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "meinem / ein",
+      "B": "meinen / eine",
+      "C": "mein / einen",
+      "D": "meiner / eines"
+    },
+    "antwort": "A",
+    "erklaerung": "Schenken: Kime? (meinem Bruder - Dativ), Ne? (ein Spiel - Akkusativ)."
+  },
+  {
+    "id": 2227,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Wegen ___ schlechten Wetters mussten wir ___ Ausflug absagen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "des / den",
+      "B": "dem / der",
+      "C": "der / das",
+      "D": "den / dem"
+    },
+    "antwort": "A",
+    "erklaerung": "Wegen + Genitiv (des Wetters). Absagen + Akkusativ (den Ausflug)."
+  },
+  {
+    "id": 2228,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Der Lehrer erklärt ___ Schülern ___ Grammatik noch einmal.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "den / die",
+      "B": "dem / der",
+      "C": "die / das",
+      "D": "der / den"
+    },
+    "antwort": "A",
+    "erklaerung": "Erklären: Kime? (den Schülern - Dativ Plural), Neyi? (die Grammatik - Akkusativ)."
+  },
+  {
+    "id": 2229,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Ich habe ___ Tante ___ Brief geschrieben, aber sie hat nicht geantwortet.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "meiner / einen",
+      "B": "meine / ein",
+      "C": "meinen / einem",
+      "D": "meinem / einer"
+    },
+    "antwort": "A",
+    "erklaerung": "Schreiben: Kime? (meiner Tante - Dativ), Ne? (einen Brief - Akkusativ)."
+  },
+  {
+    "id": 2230,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Wir treffen uns mit ___ Freunden in ___ Park.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "unseren / dem",
+      "B": "unsere / den",
+      "C": "unserer / der",
+      "D": "uns / das"
+    },
+    "antwort": "A",
+    "erklaerung": "Mit + Dativ (unseren Freunden). In (Wo?) + Dativ (dem Park)."
+  },
+  {
+    "id": 2231,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Trotz ___ hohen Preises kauft er ___ Auto.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "des / das",
+      "B": "dem / der",
+      "C": "den / den",
+      "D": "der / dem"
+    },
+    "antwort": "A",
+    "erklaerung": "Trotz + Genitiv (des Preises). Kaufen + Akkusativ (das Auto)."
+  },
+  {
+    "id": 2232,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Kannst du ___ bitte ___ Weg zum Bahnhof zeigen?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mir / den",
+      "B": "mich / der",
+      "C": "ich / das",
+      "D": "mein / dem"
+    },
+    "antwort": "A",
+    "erklaerung": "Zeigen: Kime? (mir - Dativ), Neyi? (den Weg - Akkusativ)."
+  },
+  {
+    "id": 2233,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Das Haus ___ Eltern liegt direkt an ___ See.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "meiner / einem",
+      "B": "meine / einen",
+      "C": "meinen / einer",
+      "D": "meines / eines"
+    },
+    "antwort": "A",
+    "erklaerung": "Genitiv (meiner Eltern). An (Wo?) + Dativ (einem See)."
+  },
+  {
+    "id": 2234,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Ich wünsche ___ alles Gute zu ___ Geburtstag.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dir / deinem",
+      "B": "dich / deinen",
+      "C": "du / dein",
+      "D": "dir / dein"
+    },
+    "antwort": "A",
+    "erklaerung": "Wünschen: Kime? (dir - Dativ). Zu + Dativ (deinem Geburtstag)."
+  },
+  {
+    "id": 2235,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Sie bringt ___ Gast ___ Glas Wasser.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dem / ein",
+      "B": "den / einen",
+      "C": "der / eine",
+      "D": "des / eines"
+    },
+    "antwort": "A",
+    "erklaerung": "Bringen: Kime? (dem Gast - Dativ), Ne? (ein Glas - Akkusativ)."
+  },
+  {
+    "id": 2236,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Während ___ Pause essen wir ___ Apfel.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "der / einen",
+      "B": "die / ein",
+      "C": "dem / einer",
+      "D": "den / eine"
+    },
+    "antwort": "A",
+    "erklaerung": "Während + Genitiv (der Pause). Essen + Akkusativ (einen Apfel)."
+  },
+  {
+    "id": 2237,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Gehört ___ Fahrrad ___? Es steht schon lange hier.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "das / Ihnen",
+      "B": "dem / Sie",
+      "C": "den / Ihr",
+      "D": "des / Ihre"
+    },
+    "antwort": "A",
+    "erklaerung": "Subjekt (das Fahrrad - Nominativ). Gehören + Dativ (Ihnen)."
+  },
+  {
+    "id": 2238,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Ich kaufe ___ Tochter ___ Puppe.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "meiner / eine",
+      "B": "meine / einer",
+      "C": "meinen / einen",
+      "D": "meinem / ein"
+    },
+    "antwort": "A",
+    "erklaerung": "Kaufen (Kime?): meiner Tochter (Dativ). Ne? eine Puppe (Akkusativ)."
+  },
+  {
+    "id": 2239,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Er hilft ___ Frau bei ___ Arbeit.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "der / der",
+      "B": "die / die",
+      "C": "dem / dem",
+      "D": "den / das"
+    },
+    "antwort": "A",
+    "erklaerung": "Helfen + Dativ (der Frau). Bei + Dativ (der Arbeit)."
+  },
+  {
+    "id": 2240,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Hast du ___ Schlüssel ___ Autos gesehen?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "den / des",
+      "B": "dem / dem",
+      "C": "der / den",
+      "D": "das / der"
+    },
+    "antwort": "A",
+    "erklaerung": "Sehen + Akkusativ (den Schlüssel). Genitiv Tamlaması (des Autos)."
+  },
+  {
+    "id": 2241,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Wir danken ___ für ___ Hilfe.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "euch / die",
+      "B": "ihr / der",
+      "C": "Sie / das",
+      "D": "wir / den"
+    },
+    "antwort": "A",
+    "erklaerung": "Danken + Dativ (euch). Für + Akkusativ (die Hilfe)."
+  },
+  {
+    "id": 2242,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Statt ___ Blumen schenkt er ihr ___ Buch.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "der / ein",
+      "B": "die / einen",
+      "C": "den / eine",
+      "D": "dem / eines"
+    },
+    "antwort": "A",
+    "erklaerung": "Statt + Genitiv (der Blumen - Plural). Schenken + Akkusativ Nesne (ein Buch)."
+  },
+  {
+    "id": 2243,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Der Vater liest ___ Kindern ___ Geschichte vor.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "den / eine",
+      "B": "die / einer",
+      "C": "dem / einen",
+      "D": "der / ein"
+    },
+    "antwort": "A",
+    "erklaerung": "Vorlesen: Kime? (den Kindern - Dativ Plural). Ne? (eine Geschichte - Akkusativ)."
+  },
+  {
+    "id": 2244,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Ich habe ___ Chef um ___ Gespräch gebeten.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "den / ein",
+      "B": "dem / einen",
+      "C": "der / eine",
+      "D": "des / eines"
+    },
+    "antwort": "A",
+    "erklaerung": "Bitten + Akkusativ (den Chef). Um + Akkusativ (ein Gespräch)."
+  },
+  {
+    "id": 2245,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Die Farbe ___ Pullovers gefällt ___ nicht.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "des / mir",
+      "B": "dem / mich",
+      "C": "der / ich",
+      "D": "den / mein"
+    },
+    "antwort": "A",
+    "erklaerung": "Genitiv (des Pullovers). Gefallen + Dativ (mir)."
+  },
+  {
+    "id": 2246,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Er schickt ___ Kollegen ___ E-Mail.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dem / eine",
+      "B": "den / ein",
+      "C": "der / einen",
+      "D": "des / einer"
+    },
+    "antwort": "A",
+    "erklaerung": "Schicken: Kime? (dem Kollegen - Dativ [N-Deklination olsa 'dem Kollegen' olurdu ama burada standart kabul edelim, şıklarda 'dem' var]). Ne? (eine E-Mail - Akkusativ)."
+  },
+  {
+    "id": 2247,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Wir vertrauen ___ Reiseleiter. Er kennt ___ Weg.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dem / den",
+      "B": "den / dem",
+      "C": "der / das",
+      "D": "die / die"
+    },
+    "antwort": "A",
+    "erklaerung": "Vertrauen + Dativ (dem Reiseleiter). Kennen + Akkusativ (den Weg)."
+  },
+  {
+    "id": 2248,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Seit ___ Woche habe ich ___ neuen Job.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "einer / einen",
+      "B": "eine / ein",
+      "C": "einem / einem",
+      "D": "eines / eines"
+    },
+    "antwort": "A",
+    "erklaerung": "Seit + Dativ (einer Woche). Haben + Akkusativ (einen Job)."
+  },
+  {
+    "id": 2249,
+    "thema": "Dativ-Akkusativ-Genitiv",
+    "format": "Text",
+    "kontext": "Der Polizist folgt ___ Dieb durch ___ Park.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dem / den",
+      "B": "den / dem",
+      "C": "der / das",
+      "D": "des / des"
+    },
+    "antwort": "A",
+    "erklaerung": "Folgen + Dativ (dem Dieb). Durch + Akkusativ (den Park)."
+  }
+]
