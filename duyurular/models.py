@@ -9,7 +9,7 @@ KATEGORI_SECENEKLERI = [
 ]
 
 class Duyuru(models.Model):
-    baslik      = models.CharField(max_length=200)
+    baslik      = models.CharField(max_length=300)
     icerik      = models.TextField()
     kategori    = models.CharField(max_length=20, choices=KATEGORI_SECENEKLERI, default='genel')
     kaynak_url  = models.URLField(blank=True)
