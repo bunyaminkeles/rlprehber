@@ -49,6 +49,10 @@ REHBER = [
          url='https://www.mainz-bingen.de/default-wAssets/docs/Familie-Jugend-Asyl-Gesundheit-Soziales/Jobcenter/finanzielle-Leistungen-JobCenter/Sonstiges/Uebersicht-angemessene-KdU-2025.pdf',
          kategori='konut', icon='bi-file-earmark-text', sira=3, yayinda=True,
          ozet='Mainz-Bingen Jobcenter tarafından kabul edilen uygun kira miktarları (2025).'),
+    dict(baslik='SCHUFA Datenkopie — Ücretsiz Kredi Raporu', tip='link',
+         url='https://www.meineschufa.de/service/datenkopie',
+         kategori='resmi', icon='bi-file-person', sira=5, yayinda=True,
+         ozet="SCHUFA'dan yılda bir kez ücretsiz alınabilen kişisel kredi ve borç bilgisi raporu."),
 ]
 
 eklendi = 0
