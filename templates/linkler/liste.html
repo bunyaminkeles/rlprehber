@@ -10,18 +10,19 @@
     <div class="col-md-4 col-sm-6">
       <div class="card h-100">
         <div class="card-body">
-          <h6 class="card-title mb-1">{{ link.ad }}</h6>
-          {% if link.aciklama %}<p class="small text-muted mb-2">{{ link.aciklama }}</p>{% endif %}
-          <div class="d-flex gap-2 flex-wrap mt-2">
-            <a href="{{ link.url }}" target="_blank" class="btn btn-sm btn-primary">
-              <i class="bi bi-box-arrow-up-right me-1"></i>Siteye Git
+          <h6 class="card-title mb-1">
+            <a href="{{ link.url }}" target="_blank" rel="noopener" class="stretched-link text-decoration-none text-dark">
+              {{ link.ad }} <i class="bi bi-box-arrow-up-right small text-muted"></i>
             </a>
-            {% if link.randevu_url %}
-            <a href="{{ link.randevu_url }}" target="_blank" class="btn btn-sm btn-accent">
+          </h6>
+          {% if link.aciklama %}<p class="small text-muted mb-2">{{ link.aciklama }}</p>{% endif %}
+          {% if link.randevu_url %}
+          <div class="mt-2" style="position:relative;z-index:2">
+            <a href="{{ link.randevu_url }}" target="_blank" rel="noopener" class="btn btn-sm btn-accent">
               <i class="bi bi-calendar-check me-1"></i>Randevu
             </a>
-            {% endif %}
           </div>
+          {% endif %}
         </div>
       </div>
     </div>
