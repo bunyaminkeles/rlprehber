@@ -10,6 +10,8 @@ def liste(request):
     return render(request, 'rehber/liste.html', {'kategoriler': kategoriler})
 
 def detay(request, slug):
+    if not slug or slug == 'None':
+        return redirect('rehber:liste')
     kaynak = get_object_or_404(Kaynak, slug=slug, yayinda=True)
     if kaynak.tip == 'link':
         return redirect(kaynak.url)
