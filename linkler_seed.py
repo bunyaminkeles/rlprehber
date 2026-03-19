@@ -38,6 +38,9 @@ LINKLER = [
     dict(ad='AOK — Sağlık Sigortası', url='https://www.aok.de/pk/',
          kategori='saglik', sira=3,
          aciklama="Almanya'nın en büyük kamu sağlık sigortası — bilgi ve üyelik başvurusu."),
+    dict(ad='KV RLP — Doktor Arama (Rheinland-Pfalz)', url='https://www.kv-rlp.de/',
+         kategori='saglik', sira=4,
+         aciklama='Rheinland-Pfalz Kassenärztliche Vereinigung — bölgedeki aile hekimi ve uzman doktor arama platformu.'),
 ]
 
 # ── Rehber Kaynakları (sadece PDF ve randevu linkleri) ───────────
