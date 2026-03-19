@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Kaynak, KAYNAK_KATEGORI
 
 def liste(request):
@@ -11,4 +11,6 @@ def liste(request):
 
 def detay(request, slug):
     kaynak = get_object_or_404(Kaynak, slug=slug, yayinda=True)
+    if kaynak.tip == 'link':
+        return redirect(kaynak.url)
     return render(request, 'rehber/detay.html', {'sayfa': kaynak})
