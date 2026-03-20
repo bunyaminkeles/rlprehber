@@ -3,11 +3,10 @@ from .models import Yer, YER_KATEGORI
 
 def liste(request):
     kategori = request.GET.get('kategori', '')
-    qs = Yer.objects.filter(aktif=True)
-    if kategori:
-        qs = qs.filter(kategori=kategori)
     kategoriler = {}
     for k, v in YER_KATEGORI:
+        if kategori and k != kategori:
+            continue
         yerler = Yer.objects.filter(aktif=True, kategori=k)
         if yerler.exists():
             kategoriler[k] = {'ad': v, 'yerler': yerler}

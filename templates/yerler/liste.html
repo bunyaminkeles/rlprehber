@@ -8,9 +8,7 @@
   <div class="d-flex flex-wrap gap-2 mb-4">
     <a href="{% url 'yerler:liste' %}" class="btn btn-sm {% if not secili %}btn-primary{% else %}btn-outline-secondary{% endif %}">Tümü</a>
     {% for k, v in tum_kategoriler %}
-    {% if kategoriler|length %}
     <a href="?kategori={{ k }}" class="btn btn-sm {% if secili == k %}btn-primary{% else %}btn-outline-secondary{% endif %}">{{ v }}</a>
-    {% endif %}
     {% endfor %}
   </div>
 
