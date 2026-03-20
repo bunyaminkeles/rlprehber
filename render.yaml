@@ -10,6 +10,7 @@ services:
     name: mainzer-binger
     runtime: docker
     plan: free
+    branch: main
     dockerfilePath: ./Dockerfile
     envVars:
       - key: SECRET_KEY
