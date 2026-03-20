@@ -1,0 +1,753 @@
+[
+  {
+    "id": 1300,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Herr Schmidt interessiert ___ seit vielen Jahren sehr intensiv für internationale Politik und liest deshalb täglich mehrere Zeitungen.\n\nEr diskutiert auch gerne mit seinen Kollegen in der Mittagspause über aktuelle politische Entwicklungen in Europa und der Welt.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "ihm",
+      "C": "ihn",
+      "D": "sein"
+    },
+    "antwort": "A",
+    "erklaerung": "Sich interessieren + für (reflexives Verb in der 3. Person)."
+  },
+  {
+    "id": 1301,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Ich muss ___ heute besonders beeilen, weil ich einen wichtigen Termin beim Zahnarzt habe und auf keinen Fall zu spät kommen möchte.\n\nDer Bus fährt in genau zehn Minuten ab und die nächste Verbindung kommt erst in einer halben Stunde.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "mich",
+      "C": "mir",
+      "D": "dich"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich beeilen ist ein reflexives Verb. In der 1. Person verwendet man 'mich'."
+  },
+  {
+    "id": 1302,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Die Studenten treffen ___ jeden Freitagnachmittag um 15 Uhr in der Universitätsbibliothek, um gemeinsam für die kommenden Prüfungen zu lernen.\n\nDort haben sie einen ruhigen Raum reserviert, wo sie ungestört arbeiten und sich gegenseitig bei schwierigen Themen helfen können.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "uns",
+      "B": "euch",
+      "C": "sich",
+      "D": "ihnen"
+    },
+    "antwort": "C",
+    "erklaerung": "Sich treffen ist reflexiv. 'Die Studenten' = 3. Person Plural, also 'sich'."
+  },
+  {
+    "id": 1303,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Kannst du ___ eigentlich vorstellen, nach dem Studium für einige Jahre in einem anderen Land zu leben und dort zu arbeiten?\n\nIch persönlich denke oft darüber nach, ins Ausland zu ziehen, weil ich gerne neue Kulturen kennenlernen und meine Sprachkenntnisse verbessern möchte.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "dich",
+      "B": "dir",
+      "C": "sich",
+      "D": "mich"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich etwas vorstellen nimmt Dativ. 'Du' verwendet 'dir'."
+  },
+  {
+    "id": 1304,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Wir müssen ___ in den nächsten Wochen sehr gut auf die wichtige Präsentation vor dem Vorstand vorbereiten.\n\nDer Chef erwartet von unserem Team ein absolut professionelles Ergebnis mit detaillierten Statistiken und überzeugenden Argumenten.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "uns",
+      "C": "euch",
+      "D": "mir"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich vorbereiten ist reflexiv. 'Wir' verwendet 'uns'."
+  },
+  {
+    "id": 1305,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Meine Großmutter erinnert ___ noch sehr genau an ihre Schulzeit in den fünfziger Jahren und erzählt uns Enkeln oft spannende Geschichten aus dieser Zeit.\n\nSie kann sich besonders gut an ihre strenge Mathematiklehrerin und an den langen Schulweg durch den Wald erinnern.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "ihr",
+      "C": "sie",
+      "D": "ihnen"
+    },
+    "antwort": "A",
+    "erklaerung": "Sich erinnern + an (reflexives Verb, 3. Person Singular)."
+  },
+  {
+    "id": 1306,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Nach dem anstrengenden Arbeitstag möchte ich ___ zu Hause erst einmal eine Stunde auf dem Sofa ausruhen und danach vielleicht ein gutes Buch lesen.\n\nIch hatte heute wirklich sehr viel Stress im Büro mit mehreren wichtigen Meetings und komplizierten Kundenanfragen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "mich",
+      "C": "mir",
+      "D": "meinen"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich ausruhen ist reflexiv. 'Ich' verwendet 'mich' (Akkusativ)."
+  },
+  {
+    "id": 1307,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Die junge Frau bewirbt ___ seit drei Monaten bei verschiedenen internationalen Unternehmen um eine Position als Marketing-Managerin.\n\nSie hat bereits mehrere Vorstellungsgespräche gehabt, aber leider noch keine endgültige Zusage für eine feste Stelle erhalten.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "ihr",
+      "C": "sie",
+      "D": "ihren"
+    },
+    "antwort": "A",
+    "erklaerung": "Sich bewerben + um (reflexives Verb, 3. Person Singular)."
+  },
+  {
+    "id": 1308,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Ihr solltet ___ unbedingt warm anziehen, bevor ihr heute Abend zum Winterspaziergang aufbrecht, denn draußen ist es sehr kalt.\n\nDie Temperaturen sind auf minus zehn Grad gefallen und es weht ein eisiger Wind aus dem Norden.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "euch",
+      "C": "uns",
+      "D": "ihnen"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich anziehen ist reflexiv. 'Ihr' verwendet 'euch'."
+  },
+  {
+    "id": 1309,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Mein Kollege ärgert ___ jeden Tag über die unpünktlichen Züge und die häufigen Verspätungen auf seinem Weg zur Arbeit.\n\nEr muss jeden Morgen fast eine Stunde mit der Bahn fahren und kommt deshalb oft gestresst und genervt im Büro an.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "ihm",
+      "C": "ihn",
+      "D": "sein"
+    },
+    "antwort": "A",
+    "erklaerung": "Sich ärgern + über (reflexives Verb, 3. Person Singular)."
+  },
+  {
+    "id": 1310,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Die Kinder freuen ___ schon seit Wochen riesig auf die bevorstehenden Sommerferien und den geplanten Urlaub am Meer mit der ganzen Familie.\n\nSie haben bereits ihre Koffer gepackt und zählen jeden Tag die Stunden, bis es endlich losgeht.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "ihnen",
+      "C": "sie",
+      "D": "ihre"
+    },
+    "antwort": "A",
+    "erklaerung": "Sich freuen + auf (reflexives Verb, 3. Person Plural 'sich')."
+  },
+  {
+    "id": 1311,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Entschuldigen Sie ___ bitte für die Verspätung, aber ich hatte leider einen platten Reifen auf dem Weg hierher und musste auf den Pannendienst warten.\n\nIch habe Sie sofort angerufen, aber leider war Ihr Telefon nicht erreichbar.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "Sie",
+      "C": "Ihnen",
+      "D": "Ihr"
+    },
+    "antwort": "A",
+    "erklaerung": "Sich entschuldigen ist reflexiv. Höflichkeitsform 'Sie' verwendet 'sich'."
+  },
+  {
+    "id": 1312,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Meine Schwester hat ___ vor zwei Jahren nach dem Abitur dazu entschieden, ein freiwilliges soziales Jahr im Ausland zu machen.\n\nSie arbeitete ein ganzes Jahr lang in einem Kinderheim in Südamerika und sammelte dort viele wertvolle Erfahrungen für ihr Leben.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "ihr",
+      "C": "sie",
+      "D": "ihren"
+    },
+    "antwort": "A",
+    "erklaerung": "Sich entscheiden + zu (reflexives Verb, 3. Person Singular)."
+  },
+  {
+    "id": 1313,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Du musst ___ unbedingt bei deiner neuen Chefin für die Unterstützung und das Vertrauen bedanken, das sie dir in den ersten Wochen entgegengebracht hat.\n\nSie hat dir sehr geholfen, dich in der neuen Abteilung zurechtzufinden und alle wichtigen Arbeitsabläufe kennenzulernen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "dich",
+      "B": "dir",
+      "C": "sich",
+      "D": "dein"
+    },
+    "antwort": "A",
+    "erklaerung": "Sich bedanken + bei + für (reflexives Verb, 'du' verwendet 'dich')."
+  },
+  {
+    "id": 1314,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Die beiden Nachbarn streiten ___ seit Monaten über die Höhe des gemeinsamen Gartenzauns und können sich einfach nicht auf eine Lösung einigen.\n\nJeder besteht auf seiner Meinung und keiner ist bereit, auch nur einen kleinen Kompromiss einzugehen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "ihnen",
+      "C": "sie",
+      "D": "ihre"
+    },
+    "antwort": "A",
+    "erklaerung": "Sich streiten + über (reflexives Verb, 3. Person Plural)."
+  },
+  {
+    "id": 1315,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Wir haben ___ gestern Abend sehr ausführlich über unsere berufliche Zukunft und die verschiedenen Karrieremöglichkeiten unterhalten.\n\nDas Gespräch dauerte bis nach Mitternacht und wir haben viele wichtige Punkte für unsere weitere Planung besprochen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "uns",
+      "C": "euch",
+      "D": "ihnen"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich unterhalten + über (reflexives Verb, 'wir' verwendet 'uns')."
+  },
+  {
+    "id": 1316,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Der Patient erholt ___ nach der schweren Operation langsam aber stetig und die Ärzte sind mit dem Heilungsverlauf sehr zufrieden.\n\nEr kann bereits wieder einige Schritte ohne Hilfe gehen und hofft, bald aus dem Krankenhaus entlassen zu werden.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "ihm",
+      "C": "ihn",
+      "D": "sein"
+    },
+    "antwort": "A",
+    "erklaerung": "Sich erholen + von (reflexives Verb, 3. Person Singular)."
+  },
+  {
+    "id": 1317,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Ich kann ___ leider nicht mehr genau an den Namen des Restaurants erinnern, wo wir letztes Jahr so ein fantastisches Abendessen hatten.\n\nEs war irgendwo in der Altstadt, aber ich habe vergessen, in welcher Straße es genau lag.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "mich",
+      "C": "mir",
+      "D": "meinen"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich erinnern + an (reflexives Verb, 'ich' verwendet 'mich')."
+  },
+  {
+    "id": 1318,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Die Touristen informieren ___ vor ihrer Reise gründlich über die kulturellen Besonderheiten und wichtigen Verhaltensregeln im Zielland.\n\nSie möchten gut vorbereitet sein und keine peinlichen Fehler machen, die die Einheimischen beleidigen könnten.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "ihnen",
+      "C": "sie",
+      "D": "ihre"
+    },
+    "antwort": "A",
+    "erklaerung": "Sich informieren + über (reflexives Verb, 3. Person Plural)."
+  },
+  {
+    "id": 1319,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Du solltest ___ besser konzentrieren, wenn du diese komplizierten mathematischen Aufgaben lösen willst, sonst machst du zu viele Fehler.\n\nSchalte doch bitte dein Handy aus und such dir einen ruhigen Platz, wo dich niemand stören kann.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "dich",
+      "B": "dir",
+      "C": "sich",
+      "D": "dein"
+    },
+    "antwort": "A",
+    "erklaerung": "Sich konzentrieren + auf (reflexives Verb, 'du' verwendet 'dich')."
+  },
+  {
+    "id": 1320,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Mein Bruder beschwert ___ ständig über seine anstrengende Arbeit und die vielen Überstunden, aber er unternimmt nichts, um die Situation zu ändern.\n\nIch habe ihm schon mehrmals geraten, mit seinem Chef über eine bessere Work-Life-Balance zu sprechen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "ihm",
+      "C": "ihn",
+      "D": "sein"
+    },
+    "antwort": "A",
+    "erklaerung": "Sich beschweren + über (reflexives Verb, 3. Person Singular)."
+  },
+  {
+    "id": 1321,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Wir müssen ___ spätestens bis Ende des Monats bei der Universität für das Wintersemester anmelden, sonst verlieren wir unseren Studienplatz.\n\nAlle erforderlichen Unterlagen und Dokumente sollten wir schon jetzt zusammenstellen, um keine wichtigen Fristen zu verpassen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "uns",
+      "C": "euch",
+      "D": "ihnen"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich anmelden + bei + für (reflexives Verb, 'wir' verwendet 'uns')."
+  },
+  {
+    "id": 1322,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Die Schülerin bemüht ___ sehr intensiv um bessere Noten in Mathematik und nimmt sogar zweimal pro Woche privaten Nachhilfeunterricht.\n\nSie arbeitet jeden Abend mehrere Stunden an ihren Hausaufgaben und übt regelmäßig mit speziellen Lernprogrammen am Computer.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "ihr",
+      "C": "sie",
+      "D": "ihren"
+    },
+    "antwort": "A",
+    "erklaerung": "Sich bemühen + um (reflexives Verb, 3. Person Singular)."
+  },
+  {
+    "id": 1323,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Ihr müsst ___ darauf einstellen, dass die Renovierung der Wohnung mindestens drei Monate dauern wird und sehr viel Geduld erfordert.\n\nDie Handwerker haben uns erklärt, dass besonders die Sanierung des Badezimmers und der Küche sehr zeitaufwendig sein wird.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "euch",
+      "C": "uns",
+      "D": "ihnen"
+    },
+    "antwort": "B",
+    "erklaerung": "Sich einstellen + auf (reflexives Verb, 'ihr' verwendet 'euch')."
+  },
+  {
+    "id": 1324,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Der erfahrene Rechtsanwalt kümmert ___ seit vielen Jahren persönlich um die komplizierten Fälle seiner wichtigsten Mandanten.\n\nEr nimmt sich für jeden einzelnen Fall sehr viel Zeit und recherchiert gründlich alle relevanten Gesetze und bisherigen Gerichtsurteile.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "sich",
+      "B": "ihm",
+      "C": "ihn",
+      "D": "sein"
+    },
+    "antwort": "A",
+    "erklaerung": "Sich kümmern + um (reflexives Verb, 3. Person Singular)."
+  },
+
+  {
+    "id": 4300,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Darf ich ___ kurz vorstellen? Ich heiße Ali und ich interessiere ___ sehr für Musik.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mich / mich",
+      "B": "mir / mich",
+      "C": "mich / mir",
+      "D": "uns / dich"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich vorstellen' (kendini tanıtmak) Akkusativ (mich) alır. 'Sich interessieren' de Akkusativ (mich) alır."
+  },
+  {
+    "id": 4301,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Du siehst sehr müde aus. Du solltest ___ im Urlaub gut ___.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dich / erholen",
+      "B": "dir / erholen",
+      "C": "dich / beschweren",
+      "D": "dir / bewerben"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich erholen' (dinlenmek/iyileşmek) Akkusativ (dich) ile kullanılır."
+  },
+  {
+    "id": 4302,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Bevor wir essen, muss ich ___ unbedingt noch die Hände ___.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mir / waschen",
+      "B": "mich / waschen",
+      "C": "mir / duschen",
+      "D": "mich / spülen"
+    },
+    "antwort": "A",
+    "erklaerung": "Eğer vücudun belli bir parçası (die Hände) nesne olarak belirtilmişse, refleksif zamir Dativ (mir) olur."
+  },
+  {
+    "id": 4303,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Wir freuen ___ schon sehr auf den Urlaub. Hoffentlich müssen wir ___ am Flughafen nicht so lange gedulden.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "uns / uns",
+      "B": "euch / uns",
+      "C": "sich / euch",
+      "D": "uns / sich"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich freuen' ve 'sich gedulden' (sabretmek) her ikisi de Akkusativ (uns) alır."
+  },
+  {
+    "id": 4304,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Kannst du ___ bitte beeilen? Wir dürfen ___ nicht verspäten.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dich / uns",
+      "B": "dir / uns",
+      "C": "dich / euch",
+      "D": "dir / sich"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich beeilen' (acele etmek) ve 'sich verspäten' (gecikmek) Akkusativ (dich/uns) ile kullanılır."
+  },
+  {
+    "id": 4305,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Mein Nachbar beschwert ___ ständig über den Lärm. Er ärgert ___ über alles.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "sich / sich",
+      "B": "mich / sich",
+      "C": "dich / uns",
+      "D": "uns / euch"
+    },
+    "antwort": "A",
+    "erklaerung": "3. tekil şahıs (er/sie/es) için dönüşlü zamir her zaman 'sich'tir."
+  },
+  {
+    "id": 4306,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Ich kann ___ leider nicht an seinen Namen erinnern. Hast du ___ den Namen gemerkt?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mich / dir",
+      "B": "mir / dich",
+      "C": "mich / dich",
+      "D": "mir / dir"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich erinnern' (hatırlamak) Akkusativ (mich). 'Sich etwas merken' (bir şeyi aklında tutmak) Dativ (dir) gerektirir."
+  },
+  {
+    "id": 4307,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Morgen habe ich ein Vorstellungsgespräch. Ich muss ___ gut darauf ___.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mich / vorbereiten",
+      "B": "mir / vorbereiten",
+      "C": "dich / bewerben",
+      "D": "sich / vorstellen"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich vorbereiten' (hazırlanmak) Akkusativ (mich) ile kullanılır."
+  },
+  {
+    "id": 4308,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Es ist kalt draußen. Zieh ___ bitte eine warme Jacke ___!",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dir / an",
+      "B": "dich / an",
+      "C": "dir / aus",
+      "D": "dich / um"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich etwas anziehen' (bir şeyi giymek) yapısında nesne (Jacke) olduğu için zamir Dativ (dir) olur."
+  },
+  {
+    "id": 4309,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Setz ___ bitte auf diesen Stuhl! Ich hole ___ kurz einen Kaffee.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dich / mir",
+      "B": "dir / mir",
+      "C": "dich / mich",
+      "D": "dir / mich"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich setzen' (oturmak) Akkusativ (dich). 'Sich etwas holen/kaufen' Dativ (mir)."
+  },
+  {
+    "id": 4310,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Wir treffen ___ heute Abend mit Freunden. Wir wollen ___ gut unterhalten.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "uns / uns",
+      "B": "euch / uns",
+      "C": "sich / euch",
+      "D": "uns / sich"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich treffen' ve 'sich unterhalten' (sohbet etmek) Akkusativ (uns) alır."
+  },
+  {
+    "id": 4311,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Ich fühle ___ heute nicht gut. Ich glaube, ich habe ___ erkältet.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mich / mich",
+      "B": "mir / mich",
+      "C": "mich / mir",
+      "D": "mir / mir"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich fühlen' ve 'sich erkälten' (üşütmek) Akkusativ (mich) ile kullanılır."
+  },
+  {
+    "id": 4312,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Das ist unglaublich teuer! Das kann ich ___ absolut nicht ___.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mir / leisten",
+      "B": "mich / leisten",
+      "C": "mir / erlauben",
+      "D": "mich / kaufen"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich etwas leisten' (maddi gücü yetmek) kalıbı her zaman Dativ (mir) ile kullanılır."
+  },
+  {
+    "id": 4313,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Interessierst du ___ auch für Kunst? Oder langweilst du ___ im Museum?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dich / dich",
+      "B": "dir / dich",
+      "C": "dich / dir",
+      "D": "dir / dir"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich interessieren' ve 'sich langweilen' (sıkılmak) Akkusativ (dich) alır."
+  },
+  {
+    "id": 4314,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Sie kümmert ___ liebevoll um ihre Kinder und sorgt ___ um ihre Zukunft.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "sich / sich",
+      "B": "sie / sie",
+      "C": "mich / sich",
+      "D": "sich / uns"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich kümmern' ve 'sich sorgen' Akkusativ zamiri (sich) alır."
+  },
+  {
+    "id": 4315,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Ich möchte ___ für Ihre Hilfe bedanken. Ich werde ___ erkenntlich zeigen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mich / mich",
+      "B": "mir / mich",
+      "C": "mich / mir",
+      "D": "mir / mir"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich bedanken' ve 'sich zeigen' (kendini göstermek) Akkusativ (mich) alır."
+  },
+  {
+    "id": 4316,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Du musst ___ entscheiden: Willst du das rote oder das blaue Hemd? Ich kann ___ das nicht vorstellen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dich / mir",
+      "B": "dir / mich",
+      "C": "dich / mich",
+      "D": "dir / mir"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich entscheiden' (karar vermek) -> Akkusativ (dich). 'Sich etwas vorstellen' (bir şeyi hayal etmek/tasavvur etmek) -> Dativ (mir)."
+  },
+  {
+    "id": 4317,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Hast du ___ schon an das deutsche Essen gewöhnt? Oder wunderst du ___ noch über manche Gerichte?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dich / dich",
+      "B": "dir / dich",
+      "C": "dich / dir",
+      "D": "dir / dir"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich gewöhnen' (alışmak) ve 'sich wundern' (şaşırmak) Akkusativ (dich) ile kullanılır."
+  },
+  {
+    "id": 4318,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Bitte konzentriert ___ auf die Aufgabe! Ihr dürft ___ nicht ablenken lassen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "euch / euch",
+      "B": "uns / euch",
+      "C": "sich / uns",
+      "D": "euch / sich"
+    },
+    "antwort": "A",
+    "erklaerung": "Çoğul 'ihr' (siz) için dönüşlü zamir 'euch'. Her iki fiil de Akkusativ alır."
+  },
+  {
+    "id": 4319,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Ich habe ___ gestern Abend mit meiner Schwester gestritten. Jetzt fühle ich ___ schlecht.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mich / mich",
+      "B": "mir / mich",
+      "C": "mich / mir",
+      "D": "mir / mir"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich streiten' (tartışmak) ve 'sich fühlen' Akkusativ (mich) ile kullanılır."
+  },
+  {
+    "id": 4320,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Wir müssen ___ beeilen, der Zug fährt gleich ab. Hast du ___ informiert, wann er ankommt?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "uns / dich",
+      "B": "euch / dir",
+      "C": "sich / uns",
+      "D": "uns / mir"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich beeilen' -> uns. 'Sich informieren' -> dich. İkisi de Akkusativ."
+  },
+  {
+    "id": 4321,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Können Sie ___ bitte ausweisen? Ich muss ___ Ihre Daten notieren.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "sich / mir",
+      "B": "mich / mir",
+      "C": "sich / mich",
+      "D": "uns / sich"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich ausweisen' (kimliğini göstermek) Akkusativ (sich). 'Sich etwas notieren' Dativ (mir) çünkü 'Daten' nesnesi var."
+  },
+  {
+    "id": 4322,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Ich bewerbe ___ um die Stelle als Kellner. Ich kann ___ gut vorstellen, dort zu arbeiten.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "mich / mir",
+      "B": "mich / mich",
+      "C": "mir / mir",
+      "D": "mir / mich"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich bewerben' (başvurmak) -> Akkusativ (mich). 'Sich vorstellen' (hayal etmek) -> Dativ (mir)."
+  },
+  {
+    "id": 4323,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Der neue Kollege hat ___ noch nicht bei uns vorgestellt. Er verhält ___ etwas seltsam.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "sich / sich",
+      "B": "uns / sich",
+      "C": "sich / ihn",
+      "D": "ihn / sich"
+    },
+    "antwort": "A",
+    "erklaerung": "3. tekil şahıs için her zaman 'sich'. 'Sich vorstellen' (tanıtmak) ve 'sich verhalten' (davranmak) Akkusativ mantığındadır."
+  },
+  {
+    "id": 4324,
+    "thema": "Reflexive Verben",
+    "format": "Text",
+    "kontext": "Wir haben ___ lange nicht gesehen. Wir müssen ___ bald wieder verabreden.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "uns / uns",
+      "B": "euch / uns",
+      "C": "sich / euch",
+      "D": "uns / sich"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich sehen' ve 'sich verabreden' (sözleşmek) Akkusativ (uns) alır."
+  }
+]

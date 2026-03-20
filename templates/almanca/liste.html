@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Almanca Çalış | Mainzer-Binger{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="mb-4">
+    <h2 class="fw-bold mb-1"><i class="bi bi-translate me-2"></i>Almanca Çalış</h2>
+    <p class="text-muted">Bir konu seç ve çoktan seçmeli sorularla pratik yap. İlerleme tarayıcında saklanır.</p>
+  </div>
+
+  <div class="row g-3">
+    {% for k in konular %}
+    <div class="col-12 col-sm-6 col-lg-4">
+      <a href="{% url 'almanca:quiz' k.slug %}" class="text-decoration-none">
+        <div class="card h-100 shadow-sm border-0 konu-card">
+          <div class="card-body d-flex flex-column gap-2 p-3">
+            <div class="d-flex justify-content-between align-items-start">
+              <span class="fw-semibold text-dark">{{ k.thema }}</span>
+              <span class="badge bg-secondary rounded-pill ms-2 flex-shrink-0">{{ k.toplam }}</span>
+            </div>
+            <span class="text-muted small">{{ k.tr }}</span>
+            <div class="mt-auto pt-1">
+              <span class="btn btn-sm btn-outline-primary w-100">Başla <i class="bi bi-arrow-right ms-1"></i></span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.konu-card { transition: transform .15s, box-shadow .15s; }
+.konu-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,.12) !important; }
+</style>
+{% endblock %}

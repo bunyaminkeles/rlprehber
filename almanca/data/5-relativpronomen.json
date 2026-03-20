@@ -1,0 +1,753 @@
+[
+  {
+    "id": 1400,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Das ist der Mann, ___ mir gestern bei ___ Autopanne geholfen hat.\n\nEr war sehr freundlich und hat sogar sein eigenes Werkzeug mitgebracht.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "der / der",
+      "B": "der / meiner",
+      "C": "den / der",
+      "D": "dem / meiner"
+    },
+    "antwort": "B",
+    "erklaerung": "Relativpronomen Nominativ 'der' (Subjekt) + 'meiner' (Possessiv Dativ nach 'bei')."
+  },
+  {
+    "id": 1401,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Die Frau, ___ ich auf ___ Party kennengelernt habe, ist Ärztin.\n\nWir haben uns sehr gut unterhalten und Telefonnummern ausgetauscht.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "die / die",
+      "B": "die / der",
+      "C": "der / die",
+      "D": "den / der"
+    },
+    "antwort": "B",
+    "erklaerung": "Relativpronomen Akkusativ 'die' (Objekt von 'kennenlernen') + 'der' (Dativ nach 'auf')."
+  },
+  {
+    "id": 1402,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Ich suche das Buch, ___ auf ___ Tisch lag.\n\nIch brauche es dringend für meine Hausarbeit, die ich morgen abgeben muss.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "der / der",
+      "B": "das / dem",
+      "C": "die / den",
+      "D": "dem / das"
+    },
+    "antwort": "B",
+    "erklaerung": "Relativpronomen Nominativ 'das' (Subjekt, neutral) + 'dem' (Dativ nach 'auf' - wo?)."
+  },
+  {
+    "id": 1403,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Die Kollegen, mit ___ ich zusammenarbeite, sind sehr nett und ___ immer hilfsbereit.\n\nWir verstehen uns alle sehr gut im Team und unterstützen uns gegenseitig.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "die / sind",
+      "B": "denen / sind",
+      "C": "den / seid",
+      "D": "dem / ist"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach Präposition 'mit' steht Dativ Plural 'denen' + Verb 'sind' (Plural)."
+  },
+  {
+    "id": 1404,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Das Kind, ___ Spielzeug auf ___ Boden liegt, heißt Tim.\n\nSeine Mutter bittet ihn jeden Tag, sein Zimmer aufzuräumen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "dessen / dem",
+      "B": "deren / der",
+      "C": "den / das",
+      "D": "dem / den"
+    },
+    "antwort": "A",
+    "erklaerung": "Relativpronomen Genitiv 'dessen' (neutral, Besitz) + 'dem' (Dativ nach 'auf' - wo?)."
+  },
+  {
+    "id": 1405,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Der Lehrer, ___ Unterricht immer interessant ist, arbeitet schon seit ___ Jahren an unserer Schule.\n\nAlle Schüler mögen ihn sehr und lernen gerne in seinem Fach.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "der / zehn",
+      "B": "dessen / zehn",
+      "C": "den / zehnte",
+      "D": "dem / zehnten"
+    },
+    "antwort": "B",
+    "erklaerung": "Relativpronomen Genitiv 'dessen' (Besitz) + Kardinalzahl 'zehn' nach 'seit'."
+  },
+  {
+    "id": 1406,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Das Restaurant, in ___ wir gestern gegessen haben, ___ sehr teuer aber ausgezeichnet.\n\nDas Essen war fantastisch und der Service war erstklassig.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "das / ist",
+      "B": "dem / war",
+      "C": "den / waren",
+      "D": "der / wurde"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach Präposition 'in' + Dativ 'dem' (neutral) + Präteritum 'war' (Singular)."
+  },
+  {
+    "id": 1407,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Die Stadt, aus ___ mein Freund kommt, liegt ___ Süden Deutschlands.\n\nEr erzählt mir oft von den schönen Bergen und Seen in seiner Heimat.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "die / in",
+      "B": "der / im",
+      "C": "das / am",
+      "D": "dem / auf"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach Präposition 'aus' + Dativ 'der' (feminin) + 'im Süden' (feste Wendung)."
+  },
+  {
+    "id": 1408,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Der Film, ___ wir letzte Woche ___ haben, war sehr spannend.\n\nDie Handlung hatte viele überraschende Wendungen und das Ende war unerwartet.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "der / sehen",
+      "B": "den / gesehen",
+      "C": "das / gesehen",
+      "D": "dem / sehen"
+    },
+    "antwort": "B",
+    "erklaerung": "Relativpronomen Akkusativ 'den' (maskulin, Objekt) + Partizip 'gesehen' (Perfekt)."
+  },
+  {
+    "id": 1409,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Die Frau, ___ ich das Buch gegeben ___, ist meine Nachbarin.\n\nSie liest sehr gerne und hat mich um eine Empfehlung gebeten.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "die / bin",
+      "B": "der / habe",
+      "C": "das / hat",
+      "D": "den / haben"
+    },
+    "antwort": "B",
+    "erklaerung": "Relativpronomen Dativ 'der' (feminin, indirektes Objekt) + 'habe' (Perfekt mit 'ich')."
+  },
+  {
+    "id": 1410,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Das Haus, vor ___ der Bus hält, gehört ___ Eltern.\n\nSie haben es vor zwanzig Jahren gekauft und seitdem immer gut gepflegt.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "das / meine",
+      "B": "dem / meinen",
+      "C": "der / mein",
+      "D": "den / meiner"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach Präposition 'vor' + Dativ 'dem' (neutral) + 'meinen' (Dativ Plural)."
+  },
+  {
+    "id": 1411,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Die Studenten, ___ Prüfungen nächste Woche ___, lernen jeden Tag in der Bibliothek.\n\nSie bereiten sich sehr intensiv auf die schwierigen Tests vor.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "die / sind",
+      "B": "deren / sind",
+      "C": "denen / haben",
+      "D": "dessen / ist"
+    },
+    "antwort": "B",
+    "erklaerung": "Relativpronomen Genitiv Plural 'deren' (Besitz) + Verb 'sind' (Plural)."
+  },
+  {
+    "id": 1412,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Der Arzt, bei ___ ich gestern ___, hat mir eine neue Behandlung empfohlen.\n\nEr ist Spezialist für Rückenprobleme und sehr erfahren.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "der / bin",
+      "B": "dem / war",
+      "C": "den / hatte",
+      "D": "das / wurde"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach Präposition 'bei' + Dativ 'dem' (maskulin) + Präteritum 'war'."
+  },
+  {
+    "id": 1413,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Das Problem, über ___ wir gestern gesprochen ___, ist noch nicht gelöst.\n\nWir müssen morgen noch einmal darüber diskutieren und eine Entscheidung treffen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "das / sind",
+      "B": "dem / war",
+      "C": "die / haben",
+      "D": "den / hatten"
+    },
+    "antwort": "C",
+    "erklaerung": "Nach Präposition 'über' + Akkusativ 'die' (feminin - das Problem) + 'haben' (Perfekt)."
+  },
+  {
+    "id": 1414,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Die Nachbarn, mit ___ wir oft grillen, ___ sehr freundlich und hilfsbereit.\n\nWir verstehen uns ausgezeichnet und unternehmen viel zusammen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "die / ist",
+      "B": "denen / sind",
+      "C": "den / seid",
+      "D": "dem / war"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach Präposition 'mit' + Dativ Plural 'denen' + Verb 'sind' (Plural)."
+  },
+  {
+    "id": 1415,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Der Computer, ___ ich mir letzten Monat gekauft habe, ___ schon kaputt.\n\nIch muss ihn morgen zur Reparatur bringen, weil er nicht mehr startet.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "der / war",
+      "B": "den / ist",
+      "C": "das / sind",
+      "D": "dem / hat"
+    },
+    "antwort": "B",
+    "erklaerung": "Relativpronomen Akkusativ 'den' (maskulin, Objekt) + Verb 'ist' (Singular)."
+  },
+  {
+    "id": 1416,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Die Kollegin, ___ Büro neben ___ liegt, arbeitet in der Marketing-Abteilung.\n\nWir trinken oft zusammen Kaffee und sprechen über unsere Projekte.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "die / meinem",
+      "B": "deren / meinem",
+      "C": "dessen / mein",
+      "D": "denen / meinen"
+    },
+    "antwort": "B",
+    "erklaerung": "Relativpronomen Genitiv 'deren' (feminin, Besitz) + 'meinem' (Dativ nach 'neben')."
+  },
+  {
+    "id": 1417,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Das Konzert, zu ___ wir gestern gegangen ___, war fantastisch.\n\nDie Band hat alle ihre größten Hits gespielt und die Atmosphäre war großartig.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "das / haben",
+      "B": "dem / sind",
+      "C": "den / waren",
+      "D": "der / ist"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach Präposition 'zu' + Dativ 'dem' (neutral) + 'sind' (Perfekt mit 'sein')."
+  },
+  {
+    "id": 1418,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Der Kurs, für ___ ich ___ angemeldet habe, beginnt nächsten Montag.\n\nIch freue mich schon sehr darauf, neue Leute kennenzulernen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "der / mir",
+      "B": "den / mich",
+      "C": "das / mein",
+      "D": "dem / meinen"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach Präposition 'für' + Akkusativ 'den' (maskulin) + reflexiv 'mich' (sich anmelden)."
+  },
+  {
+    "id": 1419,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Die Kinder, ___ im Park spielen, ___ zur Grundschule in unserer Straße.\n\nIch sehe sie jeden Morgen auf dem Weg zur Schule.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "die / gehen",
+      "B": "denen / geht",
+      "C": "dessen / geht",
+      "D": "deren / gehen"
+    },
+    "antwort": "A",
+    "erklaerung": "Relativpronomen Nominativ Plural 'die' (Subjekt) + Verb 'gehen' (Plural)."
+  },
+  {
+    "id": 1420,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Der Mitarbeiter, ___ ich die Aufgabe gegeben habe, hat sie schon ___.\n\nEr arbeitet sehr schnell und zuverlässig, deshalb vertraue ich ihm wichtige Projekte an.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "der / beendet",
+      "B": "dem / beendet",
+      "C": "den / beenden",
+      "D": "dessen / beendete"
+    },
+    "antwort": "B",
+    "erklaerung": "Relativpronomen Dativ 'dem' (maskulin, indirektes Objekt) + Partizip 'beendet' (Perfekt)."
+  },
+  {
+    "id": 1421,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Die Wohnung, in ___ wir seit fünf Jahren wohnen, ___ sehr zentral gelegen.\n\nWir haben alles in der Nähe: Supermärkte, Schulen und öffentliche Verkehrsmittel.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "die / sind",
+      "B": "der / ist",
+      "C": "das / hat",
+      "D": "dem / war"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach Präposition 'in' + Dativ 'der' (feminin - wo?) + Verb 'ist' (Singular)."
+  },
+  {
+    "id": 1422,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Das Projekt, an ___ unser Team arbeitet, ___ sehr anspruchsvoll und komplex.\n\nWir müssen bis Ende des Monats fertig werden, was sehr stressig ist.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "das / sind",
+      "B": "dem / ist",
+      "C": "den / hat",
+      "D": "der / war"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach Präposition 'an' + Dativ 'dem' (neutral) + Verb 'ist' (Singular)."
+  },
+  {
+    "id": 1423,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Die Lehrerin, von ___ ich viel gelernt habe, geht nächstes Jahr in ___.\n\nWir werden sie sehr vermissen, denn sie war immer sehr engagiert.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "die / Urlaub",
+      "B": "der / Rente",
+      "C": "dem / Pension",
+      "D": "deren / Ruhestand"
+    },
+    "antwort": "B",
+    "erklaerung": "Nach Präposition 'von' + Dativ 'der' (feminin) + 'in Rente gehen' (feste Wendung)."
+  },
+  {
+    "id": 1424,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Der Urlaub, auf ___ wir uns schon lange freuen, ___ endlich nächste Woche.\n\nWir haben alles gebucht und können es kaum erwarten loszufahren.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "der / anfängt",
+      "B": "dem / anfangen",
+      "C": "den / beginnt",
+      "D": "das / begonnen"
+    },
+    "antwort": "C",
+    "erklaerung": "Nach Präposition 'auf' + Akkusativ 'den' (maskulin) + Verb 'beginnt' (Singular)."
+  },
+
+  {
+    "id": 4400,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Das ist der neue Nachbar, ___ vor Kurzem eingezogen ist und ___ ich gestern im Treppenhaus getroffen habe.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "der / den",
+      "B": "den / dem",
+      "C": "dem / der",
+      "D": "das / den"
+    },
+    "antwort": "A",
+    "erklaerung": "1. boşluk: Özne (Nominativ) -> der. 2. boşluk: Nesne (Akkusativ) -> den."
+  },
+  {
+    "id": 4401,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Die Kollegin, mit ___ ich das Büro teile, ist sehr nett. Das ist die Frau, ___ mir immer bei Problemen hilft.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "der / die",
+      "B": "die / der",
+      "C": "dem / das",
+      "D": "denen / die"
+    },
+    "antwort": "A",
+    "erklaerung": "'Mit' edatı Dativ gerektirir (die Kollegin -> mit der). İkinci cümlede özne (Nominativ) -> die."
+  },
+  {
+    "id": 4402,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Wir besuchen oft die Stadt, in ___ ich geboren bin und ___ viele historische Sehenswürdigkeiten hat.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "der / die",
+      "B": "die / der",
+      "C": "dem / das",
+      "D": "den / dem"
+    },
+    "antwort": "A",
+    "erklaerung": "'In' edatı burada yer bildirir (Wo? -> Dativ, die Stadt -> in der). İkinci kısımda özne (Nominativ) -> die."
+  },
+  {
+    "id": 4403,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Hier ist der Mann, ___ Auto gestohlen wurde und ___ jetzt mit dem Bus zur Arbeit fahren muss.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dessen / der",
+      "B": "deren / den",
+      "C": "dem / das",
+      "D": "den / dem"
+    },
+    "antwort": "A",
+    "erklaerung": "Sahiplik bildiriyor (Genitiv Maskulin -> dessen). İkinci kısımda özne (Nominativ) -> der."
+  },
+  {
+    "id": 4404,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Das Buch, ___ ich gerade lese, ist sehr spannend. Der Autor, von ___ es geschrieben wurde, ist berühmt.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "das / dem",
+      "B": "die / den",
+      "C": "dem / der",
+      "D": "den / das"
+    },
+    "antwort": "A",
+    "erklaerung": "Das Buch (Akkusativ) -> das. Der Autor (von + Dativ) -> von dem."
+  },
+  {
+    "id": 4405,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Das sind die Kinder, mit ___ meine Tochter spielt und ___ sehr gut erzogen sind.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "denen / die",
+      "B": "die / denen",
+      "C": "der / das",
+      "D": "den / die"
+    },
+    "antwort": "A",
+    "erklaerung": "Çoğul Dativ (mit + Dativ Plural) -> denen. Çoğul Nominativ -> die."
+  },
+  {
+    "id": 4406,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Die Aufgabe, ___ wir lösen müssen, ist schwierig. Wir brauchen den Computer, ___ im Büro steht.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "die / der",
+      "B": "der / den",
+      "C": "das / dem",
+      "D": "den / die"
+    },
+    "antwort": "A",
+    "erklaerung": "Die Aufgabe (Akkusativ -> die). Der Computer (Nominativ -> der)."
+  },
+  {
+    "id": 4407,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Das kleine Mädchen, ___ Fahrrad kaputt ist, weint. Es sucht seinen Vater, ___ es trösten kann.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dessen / der",
+      "B": "deren / den",
+      "C": "dem / das",
+      "D": "das / dem"
+    },
+    "antwort": "A",
+    "erklaerung": "Das Mädchen (Neutrum Genitiv -> dessen). Der Vater (Nominativ -> der)."
+  },
+  {
+    "id": 4408,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Die Lehrerin, ___ Schüler die Prüfung bestanden haben, ist stolz auf die Klasse, ___ sie unterrichtet.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "deren / die",
+      "B": "dessen / der",
+      "C": "dem / das",
+      "D": "denen / den"
+    },
+    "antwort": "A",
+    "erklaerung": "Die Lehrerin (Feminin Genitiv -> deren). Die Klasse (Akkusativ -> die)."
+  },
+  {
+    "id": 4409,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Ist das der Laptop, ___ du kaufen wolltest? Oder ist es das Modell, ___ im Angebot war?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "den / das",
+      "B": "der / die",
+      "C": "dem / den",
+      "D": "das / der"
+    },
+    "antwort": "A",
+    "erklaerung": "Der Laptop (Akkusativ -> den). Das Modell (Nominativ -> das)."
+  },
+  {
+    "id": 4410,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Die Firma, bei ___ ich arbeite, ist international. Der Job, ___ ich dort mache, macht mir Spaß.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "der / den",
+      "B": "die / der",
+      "C": "dem / das",
+      "D": "den / die"
+    },
+    "antwort": "A",
+    "erklaerung": "Die Firma (bei + Dativ -> der). Der Job (Akkusativ -> den)."
+  },
+  {
+    "id": 4411,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Wo ist der Schlüssel, ___ zur Haustür gehört? Ich finde die Tasche nicht, in ___ er sein sollte.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "der / der",
+      "B": "die / die",
+      "C": "das / dem",
+      "D": "den / den"
+    },
+    "antwort": "A",
+    "erklaerung": "Der Schlüssel (Nominativ -> der). Die Tasche (in + Dativ -> der)."
+  },
+  {
+    "id": 4412,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Das sind meine Freunde, ___ ich zur Party eingeladen habe und ___ extra aus München kommen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "die / die",
+      "B": "denen / der",
+      "C": "der / das",
+      "D": "den / dem"
+    },
+    "antwort": "A",
+    "erklaerung": "Plural Akkusativ (davet edilenler -> die). Plural Nominativ (gelenler -> die)."
+  },
+  {
+    "id": 4413,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Der Arzt, zu ___ ich gehe, ist sehr kompetent. Er verschreibt mir ein Medikament, ___ schnell hilft.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dem / das",
+      "B": "der / der",
+      "C": "den / die",
+      "D": "dem / den"
+    },
+    "antwort": "A",
+    "erklaerung": "Der Arzt (zu + Dativ -> dem). Das Medikament (Nominativ -> das)."
+  },
+  {
+    "id": 4414,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Die Frau, ___ Mann gestern einen Unfall hatte, ist sehr besorgt. Wir besuchen das Krankenhaus, in ___ er liegt.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "deren / dem",
+      "B": "dessen / der",
+      "C": "dem / das",
+      "D": "der / den"
+    },
+    "antwort": "A",
+    "erklaerung": "Die Frau (Genitiv -> deren). Das Krankenhaus (in + Dativ -> dem)."
+  },
+  {
+    "id": 4415,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Das Haus, in ___ wir wohnen, ist alt. Aber der Garten, ___ dazu gehört, ist wunderschön.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dem / der",
+      "B": "das / die",
+      "C": "der / das",
+      "D": "den / den"
+    },
+    "antwort": "A",
+    "erklaerung": "Das Haus (in + Dativ -> dem). Der Garten (Nominativ -> der)."
+  },
+  {
+    "id": 4416,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Die Bewerber, ___ Unterlagen unvollständig sind, werden nicht eingeladen. Das ist eine Regel, ___ für alle gilt.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "deren / die",
+      "B": "dessen / der",
+      "C": "denen / das",
+      "D": "die / dem"
+    },
+    "antwort": "A",
+    "erklaerung": "Plural Genitiv (deren Unterlagen). Die Regel (Nominativ -> die)."
+  },
+  {
+    "id": 4417,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Das Geschenk, für ___ ich mich entschieden habe, ist teuer. Meine Schwester, ___ es bekommt, wird sich freuen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "das / die",
+      "B": "dem / der",
+      "C": "den / das",
+      "D": "die / dem"
+    },
+    "antwort": "A",
+    "erklaerung": "Das Geschenk (für + Akkusativ -> das). Die Schwester (Nominativ -> die)."
+  },
+  {
+    "id": 4418,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Der Chef, mit ___ ich gesprochen habe, war freundlich. Das Projekt, über ___ wir geredet haben, ist wichtig.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dem / das",
+      "B": "der / dem",
+      "C": "den / die",
+      "D": "das / der"
+    },
+    "antwort": "A",
+    "erklaerung": "Der Chef (mit + Dativ -> dem). Das Projekt (über + Akkusativ -> das)."
+  },
+  {
+    "id": 4419,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Der Park, in ___ wir spazieren gehen, ist groß. Die Bäume, ___ dort stehen, sind sehr alt.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dem / die",
+      "B": "den / der",
+      "C": "der / das",
+      "D": "das / den"
+    },
+    "antwort": "A",
+    "erklaerung": "Der Park (in + Dativ -> dem). Die Bäume (Plural Nominativ -> die)."
+  },
+  {
+    "id": 4420,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Dort steht eine Tasche, ___ niemandem gehört. Ich suche die Frau, ___ Geldbörse darin ist.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "die / deren",
+      "B": "der / dessen",
+      "C": "das / der",
+      "D": "den / die"
+    },
+    "antwort": "A",
+    "erklaerung": "Die Tasche (Nominativ -> die). Die Frau (Genitiv -> deren)."
+  },
+  {
+    "id": 4421,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Der Bus, auf ___ ich warte, hat Verspätung. Das ist der Moment, ___ ich am meisten hasse.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "den / den",
+      "B": "dem / der",
+      "C": "das / die",
+      "D": "die / das"
+    },
+    "antwort": "A",
+    "erklaerung": "Der Bus (auf + Akkusativ -> den). Der Moment (Akkusativ -> den)."
+  },
+  {
+    "id": 4422,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Der Kurs, an ___ ich teilnehme, ist interessant. Die Grammatik, ___ wir lernen, ist aber schwer.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dem / die",
+      "B": "den / der",
+      "C": "das / das",
+      "D": "die / den"
+    },
+    "antwort": "A",
+    "erklaerung": "Der Kurs (an + Dativ -> dem). Die Grammatik (Akkusativ -> die)."
+  },
+  {
+    "id": 4423,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Unsere Nachbarn, ___ wir sehr mögen, ziehen um. Das ist eine Nachricht, ___ uns traurig macht.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "die / die",
+      "B": "denen / der",
+      "C": "der / das",
+      "D": "den / dem"
+    },
+    "antwort": "A",
+    "erklaerung": "Die Nachbarn (Plural Akkusativ -> die). Die Nachricht (Nominativ -> die)."
+  },
+  {
+    "id": 4424,
+    "thema": "Relativpronomen",
+    "format": "Text",
+    "kontext": "Das Problem, mit ___ wir uns beschäftigen, ist kompliziert. Wir suchen eine Lösung, ___ funktioniert.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "dem / die",
+      "B": "das / der",
+      "C": "den / das",
+      "D": "die / den"
+    },
+    "antwort": "A",
+    "erklaerung": "Das Problem (mit + Dativ -> dem). Die Lösung (Nominativ -> die)."
+  }
+]

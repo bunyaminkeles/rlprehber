@@ -1,0 +1,377 @@
+[
+  {
+    "id": 4200,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Entschuldigung, darf ich mich ___ diesen freien Stuhl setzen? Oder sitzt schon jemand ___ diesem Platz?",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "auf / auf",
+      "B": "an / an",
+      "C": "in / auf",
+      "D": "über / hinter"
+    },
+    "antwort": "A",
+    "erklaerung": "'Sich setzen' (Wohin? - Akkusativ) -> auf diesen Stuhl. 'Sitzen' (Wo? - Dativ) -> auf diesem Platz."
+  },
+  {
+    "id": 4201,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Bitte hängen Sie das Bild vorsichtig ___ die Wand. Es soll genau ___ dem Sofa hängen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "an / über",
+      "B": "auf / unter",
+      "C": "in / neben",
+      "D": "vor / an"
+    },
+    "antwort": "A",
+    "erklaerung": "Hängen (Aktion/Wohin) -> an die Wand (Akk). Hängen (Position/Wo) -> über dem Sofa (Dat)."
+  },
+  {
+    "id": 4202,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Ich lege die Zeitung immer ___ den Tisch, aber heute Morgen liegt sie ___ dem Küchenschrank.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "auf / auf",
+      "B": "in / an",
+      "C": "an / vor",
+      "D": "unter / neben"
+    },
+    "antwort": "A",
+    "erklaerung": "Legen (Wohin/Akk) -> auf den Tisch. Liegen (Wo/Dat) -> auf dem Küchenschrank."
+  },
+  {
+    "id": 4203,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Die Kinder laufen schnell ___ den Park, weil sie ___ dem Spielplatz spielen wollen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "in / auf",
+      "B": "an / in",
+      "C": "auf / an",
+      "D": "zu / bei"
+    },
+    "antwort": "A",
+    "erklaerung": "Laufen (Wohin/Akk) -> in den Park. Spielen (Wo/Dat) -> auf dem Spielplatz."
+  },
+  {
+    "id": 4204,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Stell die Vase bitte ___ das Fensterbrett! Dort steht sie sicher ___ den beiden Lampen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "auf / zwischen",
+      "B": "an / neben",
+      "C": "in / vor",
+      "D": "über / hinter"
+    },
+    "antwort": "A",
+    "erklaerung": "Stellen (Wohin/Akk) -> auf das Fensterbrett. Stehen (Wo/Dat) -> zwischen den Lampen."
+  },
+  {
+    "id": 4205,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Wir fahren im Sommer oft ___ die Berge und übernachten dann ___ einer kleinen Hütte.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "in / in",
+      "B": "auf / an",
+      "C": "an / auf",
+      "D": "zu / bei"
+    },
+    "antwort": "A",
+    "erklaerung": "Fahren (Wohin/Akk) -> in die Berge. Übernachten (Wo/Dat) -> in einer Hütte."
+  },
+  {
+    "id": 4206,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Der Hund kriecht ängstlich ___ das Bett und bleibt den ganzen Abend ___ dem Bett liegen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "unter / unter",
+      "B": "in / vor",
+      "C": "hinter / neben",
+      "D": "auf / an"
+    },
+    "antwort": "A",
+    "erklaerung": "Kriechen (Wohin/Akk) -> unter das Bett. Liegen (Wo/Dat) -> unter dem Bett."
+  },
+  {
+    "id": 4207,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Können Sie den Koffer bitte ___ den Schrank stellen? ___ dem Schrank ist kein Platz mehr.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "neben / In",
+      "B": "auf / An",
+      "C": "vor / Unter",
+      "D": "hinter / Auf"
+    },
+    "antwort": "A",
+    "erklaerung": "Stellen (Wohin/Akk) -> neben den Schrank. (Wo/Dat) -> In dem Schrank."
+  },
+  {
+    "id": 4208,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Ich gehe jetzt ___ die Post. Ich muss warten, bis ich ___ Schalter an der Reihe bin.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "in / am",
+      "B": "auf / im",
+      "C": "zu / auf",
+      "D": "an / in"
+    },
+    "antwort": "A",
+    "erklaerung": "Gehen (Wohin/Akk) -> in die Post (binaya girmek). Warten (Wo/Dat) -> an dem (am) Schalter."
+  },
+  {
+    "id": 4209,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Hängen Sie bitte den Spiegel ___ die Tür! Er passt gut ___ die Garderobe.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "an / über",
+      "B": "auf / neben",
+      "C": "vor / unter",
+      "D": "hinter / in"
+    },
+    "antwort": "A",
+    "erklaerung": "Hängen (Aktion/Akk) -> an die Tür. Passen (Wo/Dat) -> über der/die Garderobe (Kontextabhängig, aber hier Position -> über)."
+  },
+  {
+    "id": 4210,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Wir treffen uns ___ dem Kino. Wir gehen dann gemeinsam ___ das Kino hinein.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "vor / in",
+      "B": "in / zu",
+      "C": "an / auf",
+      "D": "bei / nach"
+    },
+    "antwort": "A",
+    "erklaerung": "Treffen (Wo/Dat) -> vor dem Kino. Gehen (Wohin/Akk) -> in das Kino."
+  },
+  {
+    "id": 4211,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Schreiben Sie Ihren Namen bitte oben ___ das Blatt, nicht ___ den Rand.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "auf / an",
+      "B": "in / auf",
+      "C": "über / vor",
+      "D": "neben / unter"
+    },
+    "antwort": "A",
+    "erklaerung": "Schreiben (Wohin/Akk) -> auf das Blatt / an den Rand."
+  },
+  {
+    "id": 4212,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Im Urlaub liegen wir den ganzen Tag ___ Strand und gehen abends ___ ein Restaurant.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "am / in",
+      "B": "im / zu",
+      "C": "auf / nach",
+      "D": "um / bei"
+    },
+    "antwort": "A",
+    "erklaerung": "Liegen (Wo/Dat) -> an dem (am) Strand. Gehen (Wohin/Akk) -> in ein Restaurant."
+  },
+  {
+    "id": 4213,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Die Katze ist ___ den Baum geklettert und sitzt jetzt ganz oben ___ einem Ast.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "auf / auf",
+      "B": "in / an",
+      "C": "an / in",
+      "D": "über / vor"
+    },
+    "antwort": "A",
+    "erklaerung": "Klettern (Wohin/Akk) -> auf den Baum. Sitzen (Wo/Dat) -> auf einem Ast."
+  },
+  {
+    "id": 4214,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Kannst du das Auto bitte ___ die Garage fahren? Es darf nicht ___ der Straße stehen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "in / auf",
+      "B": "vor / an",
+      "C": "neben / in",
+      "D": "hinter / bei"
+    },
+    "antwort": "A",
+    "erklaerung": "Fahren (Wohin/Akk) -> in die Garage. Stehen (Wo/Dat) -> auf der Straße."
+  },
+  {
+    "id": 4215,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Ich habe den Schlüssel ___ meine Tasche gesteckt. Jetzt ist er aber nicht mehr ___ der Tasche.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "in / in",
+      "B": "auf / an",
+      "C": "unter / vor",
+      "D": "hinter / auf"
+    },
+    "antwort": "A",
+    "erklaerung": "Stecken (Aktion/Akk) -> in die Tasche. Sein (Zustand/Dat) -> in der Tasche."
+  },
+  {
+    "id": 4216,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Der Mülleimer steht ___ dem Haus. Bitte bring den Müllsack ___ den Mülleimer.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "hinter / in",
+      "B": "in / auf",
+      "C": "vor / an",
+      "D": "neben / unter"
+    },
+    "antwort": "A",
+    "erklaerung": "Stehen (Wo/Dat) -> hinter dem Haus. Bringen (Wohin/Akk/Richtung) -> in den Mülleimer."
+  },
+  {
+    "id": 4217,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Wir setzen uns ___ den Tisch, um zu essen. Das Essen steht schon ___ dem Tisch.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "an / auf",
+      "B": "auf / an",
+      "C": "in / vor",
+      "D": "vor / in"
+    },
+    "antwort": "A",
+    "erklaerung": "Sich setzen (Wohin/Akk) -> an den Tisch. Stehen (Wo/Dat) -> auf dem Tisch."
+  },
+  {
+    "id": 4218,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Ich habe ein Zimmer ___ einem Hotel gebucht. Morgen reise ich ___ die Schweiz.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "in / in",
+      "B": "bei / nach",
+      "C": "an / zu",
+      "D": "auf / in"
+    },
+    "antwort": "A",
+    "erklaerung": "Wo? (Dativ) -> in einem Hotel. Wohin? (Akkusativ) -> in die Schweiz (Artikel olduğu için 'in' kullanılır, 'nach' değil)."
+  },
+  {
+    "id": 4219,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Stell dich bitte ___ mich, damit ich dich sehen kann! Du stehst die ganze Zeit ___ mir.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "vor / hinter",
+      "B": "neben / auf",
+      "C": "an / vor",
+      "D": "zwischen / in"
+    },
+    "antwort": "A",
+    "erklaerung": "Sich stellen (Wohin/Akk) -> vor mich. Stehen (Wo/Dat) -> hinter mir."
+  },
+  {
+    "id": 4220,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Die U-Bahn fährt ___ den Tunnel. Jetzt ist sie ___ dem Tunnel.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "in / in",
+      "B": "durch / bei",
+      "C": "um / an",
+      "D": "über / vor"
+    },
+    "antwort": "A",
+    "erklaerung": "Fahren (Wohin/Akk) -> in den Tunnel. Sein (Wo/Dat) -> in dem (im) Tunnel."
+  },
+  {
+    "id": 4221,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Ich warte ___ dem Bahnsteig auf den Zug. Er fährt sicher gleich ___ den Bahnhof ein.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "auf / in",
+      "B": "an / auf",
+      "C": "in / zu",
+      "D": "vor / an"
+    },
+    "antwort": "A",
+    "erklaerung": "Warten (Wo/Dat) -> auf dem Bahnsteig. Einfahren (Wohin/Akk) -> in den Bahnhof."
+  },
+  {
+    "id": 4222,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Hängst du die Lampe bitte ___ den Esstisch? Sie hängt im Moment ___ der Ecke.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "über / in",
+      "B": "auf / an",
+      "C": "unter / vor",
+      "D": "neben / auf"
+    },
+    "antwort": "A",
+    "erklaerung": "Hängen (Aktion/Akk) -> über den Tisch. Hängen (Zustand/Dat) -> in der Ecke."
+  },
+  {
+    "id": 4223,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Das Flugzeug fliegt hoch ___ den Wolken. Wir fliegen morgen ___ die Türkei.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "über / in",
+      "B": "in / nach",
+      "C": "auf / zu",
+      "D": "unter / bei"
+    },
+    "antwort": "A",
+    "erklaerung": "Fliegen (Wo?/Dat) -> über den Wolken. Fliegen (Wohin?/Akk) -> in die Türkei."
+  },
+  {
+    "id": 4224,
+    "thema": "Wechselpräpositionen",
+    "format": "Text",
+    "kontext": "Setzen Sie sich doch ___ uns! Wir sitzen hier so gemütlich ___ dem Balkon.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "zu / auf",
+      "B": "bei / in",
+      "C": "neben / an",
+      "D": "mit / vor"
+    },
+    "antwort": "A",
+    "erklaerung": "Sich setzen zu (Dativ) jemandem ODER neben (Akk) jemanden. Hier ist 'zu' am gängigsten als Einladung. 'Sitzen auf dem Balkon' (Wo/Dat)."
+  }
+]

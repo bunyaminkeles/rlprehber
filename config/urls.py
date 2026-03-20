@@ -17,4 +17,5 @@ urlpatterns = [
     path('yerler/', include('yerler.urls')),
     path('linkler/', include('linkler.urls')),
     path('api/', include('api.urls')),
+    path('almanca/', include('almanca.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

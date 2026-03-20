@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block title %}{{ tr }} Quiz | Mainzer-Binger{% endblock %}
+
+{% block content %}
+<div class="container py-4" style="max-width:720px">
+
+  <!-- Başlık & istatistik -->
+  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+    <div>
+      <a href="{% url 'almanca:liste' %}" class="text-muted small me-2"><i class="bi bi-arrow-left"></i> Konular</a>
+      <span class="fw-bold">{{ thema }}</span>
+      <span class="text-muted small ms-1">({{ tr }})</span>
+    </div>
+    <div class="d-flex gap-2 align-items-center">
+      <span class="badge bg-success">✓ {{ dogru }}</span>
+      <span class="badge bg-danger">✗ {{ yanlis }}</span>
+      <span class="text-muted small">{{ gorulmus }} / {{ toplam }}</span>
+      <a href="{% url 'almanca:quiz' slug %}?sifirla=1" class="btn btn-outline-secondary btn-sm" onclick="return confirm('İlerlemeyi sıfırla?')">
+        <i class="bi bi-arrow-counterclockwise"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- İlerleme çubuğu -->
+  <div class="progress mb-4" style="height:6px">
+    <div class="progress-bar bg-primary" style="width:{% widthratio gorulmus toplam 100 %}%"></div>
+  </div>
+
+  <!-- DTZ Lesen — okuma metni -->
+  {% if soru.lesetext %}
+  <div class="card mb-3 border-0 bg-light">
+    <div class="card-body small" style="white-space:pre-line">{{ soru.lesetext }}</div>
+  </div>
+  {% endif %}
+
+  <!-- Bağlam -->
+  {% if soru.kontext %}
+  <p class="text-muted fst-italic mb-2 small">{{ soru.kontext }}</p>
+  {% endif %}
+
+  <!-- Soru -->
+  <div class="card shadow-sm border-0 mb-3">
+    <div class="card-body">
+      <p class="fs-5 fw-semibold mb-4">{{ soru.frage }}</p>
+
+      <div class="d-grid gap-2" id="secenekler">
+        {% for harf, metin in soru.optionen.items %}
+        <button class="btn btn-outline-secondary text-start secim-btn"
+                data-harf="{{ harf }}">
+          <span class="badge bg-secondary me-2">{{ harf }}</span>{{ metin }}
+        </button>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Sonuç kutusu (gizli başlangıçta) -->
+  <div id="sonuc-kutu" class="card border-0 mb-3 d-none">
+    <div class="card-body">
+      <p id="sonuc-metin" class="fw-bold mb-2"></p>
+      <p id="aciklama" class="mb-0 small text-muted"></p>
+    </div>
+  </div>
+
+  <!-- Sonraki soru düğmesi -->
+  <div class="text-end d-none" id="sonraki-alan">
+    <a href="{% url 'almanca:quiz' slug %}" class="btn btn-primary px-4">
+      Sonraki Soru <i class="bi bi-arrow-right ms-1"></i>
+    </a>
+  </div>
+
+</div>
+
+<script>
+const CEVAPLA_URL = "{% url 'almanca:cevapla' slug %}";
+const CSRF = "{{ csrf_token }}";
+
+document.querySelectorAll('.secim-btn').forEach(btn => {
+  btn.addEventListener('click', async function () {
+    // Tüm butonları devre dışı bırak
+    document.querySelectorAll('.secim-btn').forEach(b => b.disabled = true);
+
+    const harf = this.dataset.harf;
+    const resp = await fetch(CEVAPLA_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-CSRFToken': CSRF },
+      body: JSON.stringify({ harf }),
+    });
+    const veri = await resp.json();
+
+    // Doğru cevabı yeşil yap
+    document.querySelectorAll('.secim-btn').forEach(b => {
+      if (b.dataset.harf === veri.dogru_harf) {
+        b.classList.replace('btn-outline-secondary', 'btn-success');
+        b.querySelector('.badge').classList.replace('bg-secondary', 'bg-success');
+      }
+    });
+
+    // Yanlış seçimi kırmızı yap
+    if (veri.durum === 'yanlis') {
+      this.classList.replace('btn-outline-secondary', 'btn-danger');
+      this.querySelector('.badge').classList.replace('bg-secondary', 'bg-danger');
+    }
+
+    // Sonuç kutusu
+    const kutu = document.getElementById('sonuc-kutu');
+    kutu.classList.remove('d-none');
+    kutu.classList.add(veri.durum === 'dogru' ? 'bg-success-subtle' : 'bg-danger-subtle');
+    document.getElementById('sonuc-metin').textContent =
+      veri.durum === 'dogru' ? '✓ Doğru!' : `✗ Yanlış — Doğru cevap: ${veri.dogru_harf}`;
+    document.getElementById('aciklama').textContent = veri.erklaerung || '';
+
+    document.getElementById('sonraki-alan').classList.remove('d-none');
+  });
+});
+</script>
+{% endblock %}

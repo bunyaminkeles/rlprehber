@@ -91,6 +91,23 @@ class Command(BaseCommand):
                 toplam += self._scrape_isle(kaynak)
 
         self.stdout.write(self.style.SUCCESS(f'\n✅ Toplam {toplam} yeni duyuru eklendi.'))
+        self._eskiyi_temizle()
+
+    # ------------------------------------------------------------------ #
+    def _eskiyi_temizle(self):
+        """Her kategoride en fazla 10 duyuru bırak, gerisini sil."""
+        from duyurular.models import Duyuru
+        kategoriler = Duyuru.objects.values_list('kategori', flat=True).distinct()
+        silindi = 0
+        for kat in kategoriler:
+            sakla = Duyuru.objects.filter(kategori=kat).order_by('-id').values_list('id', flat=True)[:10]
+            fazla = Duyuru.objects.filter(kategori=kat).exclude(id__in=list(sakla))
+            sayi = fazla.count()
+            if sayi:
+                fazla.delete()
+                silindi += sayi
+        if silindi:
+            self.stdout.write(f'🗑  {silindi} eski duyuru silindi.')
 
     # ------------------------------------------------------------------ #
     def _temizle(self):

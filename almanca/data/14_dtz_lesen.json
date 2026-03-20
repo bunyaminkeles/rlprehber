@@ -1,0 +1,662 @@
+[
+  {
+    "id": 3001,
+    "thema": "DTZ Lesen",
+    "format": "Lesetext",
+    "text": "Arbeiten im Homeoffice – Fluch oder Segen?\n\nSeit der Corona-Pandemie arbeiten immer mehr Menschen von zu Hause aus. Was früher nur in wenigen Berufen möglich war, ist heute in vielen Firmen zur Normalität geworden. Besonders in der IT-Branche, im Marketing und in der Verwaltung hat sich das Homeoffice etabliert. Viele Arbeitnehmer schätzen die Flexibilität, die ihnen diese Arbeitsform bietet. Sie sparen sich den oft stressigen Weg zur Arbeit und können ihre Zeit besser einteilen. Morgens noch schnell eine Waschmaschine anstellen oder mittags mit den Kindern essen – das ist im Homeoffice problemlos möglich.\n\nAllerdings gibt es auch Nachteile. Viele Menschen vermissen den persönlichen Kontakt zu ihren Kollegen. Der Austausch in der Kaffeeküche oder das gemeinsame Mittagessen fehlen. Außerdem fällt es manchen schwer, Privatleben und Arbeit zu trennen. Wenn der Schreibtisch im Wohnzimmer steht, ist man gedanklich nie richtig frei. Experten empfehlen deshalb, einen festen Arbeitsplatz einzurichten und klare Arbeitszeiten festzulegen.\n\nDie Zukunft wird wahrscheinlich in einem Kompromiss liegen: Viele Unternehmen setzen mittlerweile auf hybride Modelle. Die Mitarbeiter arbeiten zwei oder drei Tage pro Woche im Büro und die restlichen Tage von zu Hause aus. So profitieren sie von den Vorteilen beider Welten – der Flexibilität des Homeoffice und dem sozialen Austausch im Büro.",
+    "fragen": [
+      {
+        "frage_id": "3001a",
+        "frage": "Was ist seit der Corona-Pandemie zur Normalität geworden?",
+        "optionen": {
+          "A": "Dass Menschen nur noch in der IT-Branche arbeiten",
+          "B": "Dass viele Menschen von zu Hause aus arbeiten",
+          "C": "Dass alle Arbeitnehmer flexibel sein müssen",
+          "D": "Dass niemand mehr ins Büro gehen muss"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Seit der Corona-Pandemie arbeiten immer mehr Menschen von zu Hause aus.'"
+      },
+      {
+        "frage_id": "3001b",
+        "frage": "Was ist ein Nachteil des Homeoffice laut Text?",
+        "optionen": {
+          "A": "Man muss länger arbeiten",
+          "B": "Die Arbeit ist schwieriger geworden",
+          "C": "Der persönliche Kontakt zu Kollegen fehlt",
+          "D": "Man verdient weniger Geld"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Viele Menschen vermissen den persönlichen Kontakt zu ihren Kollegen.'"
+      },
+      {
+        "frage_id": "3001c",
+        "frage": "Was empfehlen Experten für das Arbeiten im Homeoffice?",
+        "optionen": {
+          "A": "Jeden Tag ins Büro zu gehen",
+          "B": "Nur noch am Computer zu arbeiten",
+          "C": "Einen festen Arbeitsplatz und klare Arbeitszeiten",
+          "D": "Den Schreibtisch im Wohnzimmer aufzustellen"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Experten empfehlen deshalb, einen festen Arbeitsplatz einzurichten und klare Arbeitszeiten festzulegen.'"
+      }
+    ]
+  },
+  {
+    "id": 3002,
+    "thema": "DTZ Lesen",
+    "format": "Lesetext",
+    "text": "Der Führerschein mit 17 – Begleitetes Fahren in Deutschland\n\nIn Deutschland können junge Menschen bereits mit 17 Jahren den Führerschein machen. Dieses Modell heißt 'Begleitetes Fahren' oder auch 'Führerschein mit 17'. Der Jugendliche darf dann Auto fahren, aber nur, wenn eine erfahrene Begleitperson neben ihm sitzt. Diese Person muss mindestens 30 Jahre alt sein, seit mindestens fünf Jahren einen Führerschein haben und darf nicht mehr als einen Punkt in Flensburg haben.\n\nDie Vorteile dieses Systems sind klar: Die jungen Fahrer sammeln mehr Erfahrung im Straßenverkehr, bevor sie mit 18 Jahren alleine fahren dürfen. Studien zeigen, dass Jugendliche, die am begleiteten Fahren teilgenommen haben, später weniger Unfälle verursachen. Die Begleitperson kann in kritischen Situationen Tipps geben und beruhigend einwirken. Außerdem lernen die Fahranfänger, verschiedene Verkehrssituationen zu meistern – bei Tag und Nacht, bei gutem und schlechtem Wetter, auf der Autobahn und in der Stadt.\n\nAuch für die Eltern hat das System Vorteile. Sie müssen ihre Kinder nicht mehr überall hinfahren, wenn diese mit 17 selbst fahren können. Die Jugendlichen werden selbstständiger und können beispielsweise selbst zur Schule, zu Freunden oder zum Sport fahren. Wichtig ist aber, dass die Begleitperson immer dabei ist – sonst drohen hohe Bußgelder und der Führerschein kann entzogen werden.",
+    "fragen": [
+      {
+        "frage_id": "3002a",
+        "frage": "Welche Voraussetzung muss die Begleitperson erfüllen?",
+        "optionen": {
+          "A": "Sie muss über 25 Jahre alt sein",
+          "B": "Sie muss mindestens 30 Jahre alt sein und seit 5 Jahren einen Führerschein haben",
+          "C": "Sie muss einen Fahrlehrerausweis haben",
+          "D": "Sie muss Elternteil des Jugendlichen sein"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Diese Person muss mindestens 30 Jahre alt sein, seit mindestens fünf Jahren einen Führerschein haben.'"
+      },
+      {
+        "frage_id": "3002b",
+        "frage": "Was ist ein Vorteil des begleiteten Fahrens?",
+        "optionen": {
+          "A": "Man muss keine Prüfung machen",
+          "B": "Es ist billiger als der normale Führerschein",
+          "C": "Junge Fahrer sammeln mehr Erfahrung und verursachen später weniger Unfälle",
+          "D": "Man darf schneller fahren"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Studien zeigen, dass Jugendliche, die am begleiteten Fahren teilgenommen haben, später weniger Unfälle verursachen.'"
+      },
+      {
+        "frage_id": "3002c",
+        "frage": "Was passiert, wenn der Jugendliche ohne Begleitperson fährt?",
+        "optionen": {
+          "A": "Nichts, das ist erlaubt",
+          "B": "Er muss eine neue Prüfung machen",
+          "C": "Es drohen hohe Bußgelder und der Führerschein kann entzogen werden",
+          "D": "Die Eltern bekommen eine Strafe"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Wichtig ist aber, dass die Begleitperson immer dabei ist – sonst drohen hohe Bußgelder und der Führerschein kann entzogen werden.'"
+      }
+    ]
+  },
+  {
+    "id": 3003,
+    "thema": "DTZ Lesen",
+    "format": "Lesetext",
+    "text": "Mülltrennung in Deutschland – Ein System für die Umwelt\n\nDeutschland gilt weltweit als Vorbild bei der Mülltrennung. In fast jedem Haushalt stehen verschiedene Tonnen: die schwarze für Restmüll, die gelbe für Verpackungen, die braune für Biomüll und die blaue für Papier und Pappe. Zusätzlich gibt es Glascontainer für Weiß-, Grün- und Braunglas. Dieses System ist für viele Menschen aus anderen Ländern zunächst verwirrend, doch es hat einen wichtigen Grund: Durch die getrennte Sammlung können Rohstoffe wiederverwertet und die Umwelt geschont werden.\n\nBesonders wichtig ist die richtige Trennung. In die gelbe Tonne gehören Verpackungen aus Kunststoff, Metall und Verbundmaterialien wie Tetrapaks. Allerdings müssen diese Verpackungen leer sein – Essensreste haben dort nichts zu suchen. In die Biotonne kommen Obst- und Gemüsereste, Kaffeesatz, Teebeutel und Gartenabfälle. Gekochte Essensreste und Fleisch sollten dagegen in den Restmüll, da sie in der Biotonne Ungeziefer anlocken können. Papier und Pappe müssen sauber und trocken sein, sonst können sie nicht recycelt werden.\n\nWer den Müll nicht richtig trennt, riskiert Probleme mit der Hausverwaltung oder dem Vermieter. In manchen Städten werden Bußgelder verhängt, wenn Müll falsch entsorgt wird. Zudem wird die Müllabfuhr teurer, wenn zu viel Restmüll anfällt. Es lohnt sich also für jeden, die Regeln zu kennen und zu befolgen.",
+    "fragen": [
+      {
+        "frage_id": "3003a",
+        "frage": "Welche Farbe hat die Tonne für Papier und Pappe?",
+        "optionen": {
+          "A": "Schwarz",
+          "B": "Gelb",
+          "C": "Braun",
+          "D": "Blau"
+        },
+        "antwort": "D",
+        "erklaerung": "Im Text steht: 'die blaue für Papier und Pappe.'"
+      },
+      {
+        "frage_id": "3003b",
+        "frage": "Was gehört NICHT in die Biotonne?",
+        "optionen": {
+          "A": "Obst- und Gemüsereste",
+          "B": "Kaffeesatz und Teebeutel",
+          "C": "Gekochte Essensreste und Fleisch",
+          "D": "Gartenabfälle"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Gekochte Essensreste und Fleisch sollten dagegen in den Restmüll.'"
+      },
+      {
+        "frage_id": "3003c",
+        "frage": "Was kann passieren, wenn man Müll falsch trennt?",
+        "optionen": {
+          "A": "Nichts, es ist nicht wichtig",
+          "B": "Man bekommt neue Tonnen",
+          "C": "Man riskiert Probleme mit der Hausverwaltung und Bußgelder",
+          "D": "Der Müll wird nicht abgeholt"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Wer den Müll nicht richtig trennt, riskiert Probleme mit der Hausverwaltung oder dem Vermieter. In manchen Städten werden Bußgelder verhängt.'"
+      }
+    ]
+  },
+  {
+    "id": 3004,
+    "thema": "DTZ Lesen",
+    "format": "Lesetext",
+    "text": "Ehrenamt in Deutschland – Engagement für die Gesellschaft\n\nMillionen Menschen in Deutschland engagieren sich ehrenamtlich. Das bedeutet, sie arbeiten freiwillig und ohne Bezahlung für eine gute Sache. Besonders beliebt sind ehrenamtliche Tätigkeiten bei der Feuerwehr, in Sportvereinen, bei sozialen Organisationen oder in der Flüchtlingshilfe. Viele Menschen möchten damit etwas zurückgeben und anderen helfen. Gleichzeitig knüpfen sie neue Kontakte und lernen interessante Menschen kennen.\n\nDas Ehrenamt bietet aber auch persönliche Vorteile. Man sammelt neue Erfahrungen, entwickelt Fähigkeiten weiter und kann diese später im Lebenslauf erwähnen. Besonders für junge Menschen oder Neuankömmlinge in Deutschland ist ehrenamtliche Arbeit eine gute Möglichkeit, die deutsche Sprache zu üben und die Kultur besser kennenzulernen. Außerdem fühlen sich viele Ehrenamtliche erfüllter und glücklicher, weil sie sehen, dass ihre Arbeit einen Unterschied macht.\n\nDer Staat unterstützt das Ehrenamt auf verschiedene Weise. Ehrenamtliche können eine Aufwandsentschädigung erhalten, die steuerfrei ist. In manchen Bundesländern gibt es auch eine Ehrenamtskarte, mit der man Vergünstigungen bei Museen, Schwimmbädern oder Veranstaltungen bekommt. Wer sich für ein Ehrenamt interessiert, findet Informationen bei der Stadt, bei karitativen Organisationen oder im Internet.",
+    "fragen": [
+      {
+        "frage_id": "3004a",
+        "frage": "Was bedeutet 'ehrenamtlich' arbeiten?",
+        "optionen": {
+          "A": "Man arbeitet nur am Wochenende",
+          "B": "Man arbeitet freiwillig und ohne Bezahlung",
+          "C": "Man bekommt sehr wenig Geld",
+          "D": "Man muss vom Staat dazu verpflichtet werden"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Das bedeutet, sie arbeiten freiwillig und ohne Bezahlung für eine gute Sache.'"
+      },
+      {
+        "frage_id": "3004b",
+        "frage": "Was ist ein Vorteil des Ehrenamts für Neuankömmlinge in Deutschland?",
+        "optionen": {
+          "A": "Sie bekommen automatisch einen Job",
+          "B": "Sie müssen keinen Sprachkurs besuchen",
+          "C": "Sie können die deutsche Sprache üben und die Kultur kennenlernen",
+          "D": "Sie bekommen einen deutschen Pass"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Besonders für junge Menschen oder Neuankömmlinge in Deutschland ist ehrenamtliche Arbeit eine gute Möglichkeit, die deutsche Sprache zu üben und die Kultur besser kennenzulernen.'"
+      },
+      {
+        "frage_id": "3004c",
+        "frage": "Wie unterstützt der Staat Ehrenamtliche?",
+        "optionen": {
+          "A": "Er gibt ihnen einen festen Arbeitsplatz",
+          "B": "Sie können eine steuerfreie Aufwandsentschädigung und Vergünstigungen erhalten",
+          "C": "Sie müssen keine Steuern mehr zahlen",
+          "D": "Sie bekommen eine kostenlose Wohnung"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Ehrenamtliche können eine Aufwandsentschädigung erhalten, die steuerfrei ist. In manchen Bundesländern gibt es auch eine Ehrenamtskarte, mit der man Vergünstigungen [...] bekommt.'"
+      }
+    ]
+  },
+  {
+    "id": 3005,
+    "thema": "DTZ Lesen",
+    "format": "Lesetext",
+    "text": "Online-Shopping vs. Einzelhandel – Wohin geht der Trend?\n\nDer Online-Handel boomt. Immer mehr Menschen kaufen Kleidung, Elektronik, Bücher und sogar Lebensmittel im Internet. Die Vorteile liegen auf der Hand: Man kann rund um die Uhr einkaufen, von zu Hause aus in Ruhe Preise vergleichen und die Ware wird direkt nach Hause geliefert. Besonders beliebt ist das Online-Shopping bei jungen Menschen, die mit dem Internet aufgewachsen sind. Aber auch ältere Menschen entdecken zunehmend die Vorteile des digitalen Einkaufens.\n\nDer traditionelle Einzelhandel hat jedoch mit großen Problemen zu kämpfen. Viele kleine Geschäfte in den Innenstädten müssen schließen, weil sie der Konkurrenz nicht standhalten können. Die Mieten sind hoch, die Kunden bleiben aus. Besonders betroffen sind Buchhandlungen, Elektronikgeschäfte und Modeboutiquen. Leere Ladenlokale prägen inzwischen das Bild vieler Innenstädte. Das hat nicht nur wirtschaftliche, sondern auch soziale Folgen: Die Städte verlieren an Attraktivität und Lebendigkeit.\n\nTrotzdem hat der Einzelhandel auch Chancen. Viele Kunden schätzen die persönliche Beratung, das Einkaufserlebnis und die Möglichkeit, Produkte direkt auszuprobieren. Außerdem wird der Service immer wichtiger: Geschäfte, die individuelle Beratung, besondere Produkte oder Events anbieten, können sich auch in Zeiten des Online-Handels behaupten. Experten empfehlen eine Kombination: Online-Präsenz und gleichzeitig ein ansprechendes Ladengeschäft.",
+    "fragen": [
+      {
+        "frage_id": "3005a",
+        "frage": "Was ist ein Vorteil des Online-Shoppings?",
+        "optionen": {
+          "A": "Man bekommt immer Rabatt",
+          "B": "Man kann rund um die Uhr einkaufen und Preise vergleichen",
+          "C": "Die Qualität ist besser als im Laden",
+          "D": "Man muss nicht bezahlen"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Man kann rund um die Uhr einkaufen, von zu Hause aus in Ruhe Preise vergleichen und die Ware wird direkt nach Hause geliefert.'"
+      },
+      {
+        "frage_id": "3005b",
+        "frage": "Welche Geschäfte sind besonders vom Online-Handel betroffen?",
+        "optionen": {
+          "A": "Supermärkte und Bäckereien",
+          "B": "Restaurants und Cafés",
+          "C": "Buchhandlungen, Elektronikgeschäfte und Modeboutiquen",
+          "D": "Apotheken und Arztpraxen"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Besonders betroffen sind Buchhandlungen, Elektronikgeschäfte und Modeboutiquen.'"
+      },
+      {
+        "frage_id": "3005c",
+        "frage": "Was empfehlen Experten für den Einzelhandel?",
+        "optionen": {
+          "A": "Alle Geschäfte zu schließen",
+          "B": "Nur noch online zu verkaufen",
+          "C": "Eine Kombination aus Online-Präsenz und ansprechendem Ladengeschäft",
+          "D": "Die Preise stark zu erhöhen"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Experten empfehlen eine Kombination: Online-Präsenz und gleichzeitig ein ansprechendes Ladengeschäft.'"
+      }
+    ]
+  },
+  {
+    "id": 3006,
+    "thema": "DTZ Lesen",
+    "format": "Lesetext",
+    "text": "Die deutsche Krankenversicherung – Pflicht für alle\n\nIn Deutschland ist jeder verpflichtet, eine Krankenversicherung zu haben. Es gibt zwei Systeme: die gesetzliche Krankenversicherung (GKV) und die private Krankenversicherung (PKV). Die meisten Menschen sind in der gesetzlichen Krankenversicherung versichert. Arbeitnehmer zahlen etwa die Hälfte des Beitrags selbst, die andere Hälfte übernimmt der Arbeitgeber. Die Höhe des Beitrags richtet sich nach dem Einkommen – wer mehr verdient, zahlt auch mehr.\n\nDie gesetzliche Krankenversicherung übernimmt viele Leistungen: Arztbesuche, Krankenhausaufenthalte, Medikamente und Vorsorgeuntersuchungen sind abgedeckt. Auch Zahnbehandlungen werden teilweise übernommen, allerdings muss man bei hochwertigem Zahnersatz einen Teil selbst bezahlen. Wichtig ist, dass man bei jedem Arztbesuch seine Versicherungskarte dabei hat. Ohne Karte kann es sein, dass man die Behandlung zunächst selbst bezahlen muss und das Geld später von der Versicherung zurückbekommt.\n\nDie private Krankenversicherung ist nur für bestimmte Gruppen zugänglich: Selbstständige, Beamte und Angestellte mit einem hohen Einkommen können sich privat versichern. Die Beiträge richten sich hier nicht nach dem Einkommen, sondern nach dem Alter, dem Gesundheitszustand und den gewünschten Leistungen. Private Versicherungen bieten oft mehr Komfort, zum Beispiel Einzelzimmer im Krankenhaus oder kürzere Wartezeiten beim Facharzt. Allerdings sind die Beiträge im Alter oft sehr hoch.",
+    "fragen": [
+      {
+        "frage_id": "3006a",
+        "frage": "Wer zahlt bei Arbeitnehmern den Krankenversicherungsbeitrag?",
+        "optionen": {
+          "A": "Nur der Arbeitnehmer",
+          "B": "Nur der Arbeitgeber",
+          "C": "Arbeitnehmer und Arbeitgeber teilen sich den Beitrag",
+          "D": "Der Staat zahlt alles"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Arbeitnehmer zahlen etwa die Hälfte des Beitrags selbst, die andere Hälfte übernimmt der Arbeitgeber.'"
+      },
+      {
+        "frage_id": "3006b",
+        "frage": "Was passiert, wenn man die Versicherungskarte beim Arzt vergisst?",
+        "optionen": {
+          "A": "Man wird nicht behandelt",
+          "B": "Man bekommt eine Strafe",
+          "C": "Man muss die Behandlung eventuell zunächst selbst bezahlen",
+          "D": "Nichts, das ist kein Problem"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Ohne Karte kann es sein, dass man die Behandlung zunächst selbst bezahlen muss und das Geld später von der Versicherung zurückbekommt.'"
+      },
+      {
+        "frage_id": "3006c",
+        "frage": "Wer kann sich privat krankenversichern?",
+        "optionen": {
+          "A": "Alle Menschen in Deutschland",
+          "B": "Nur Rentner",
+          "C": "Selbstständige, Beamte und Angestellte mit hohem Einkommen",
+          "D": "Nur ausländische Bürger"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Selbstständige, Beamte und Angestellte mit einem hohen Einkommen können sich privat versichern.'"
+      }
+    ]
+  },
+  {
+    "id": 3007,
+    "thema": "DTZ Lesen",
+    "format": "Lesetext",
+    "text": "Nachbarschaftshilfe – Zusammenleben im Mehrfamilienhaus\n\nIn deutschen Mehrfamilienhäusern wohnen oft viele Menschen auf engem Raum zusammen. Damit das Zusammenleben funktioniert, gibt es einige wichtige Regeln. Die bekannteste ist die Ruhezeit: Zwischen 22 Uhr abends und 6 Uhr morgens sollte man keinen Lärm machen. Auch mittags zwischen 13 und 15 Uhr gilt in vielen Häusern eine Ruhepause. Laute Musik, Bohren oder Staubsaugen sind in diesen Zeiten tabu. Am Sonntag sollte man den ganzen Tag über besonders rücksichtsvoll sein.\n\nZum guten Zusammenleben gehört aber mehr als nur die Einhaltung der Ruhezeiten. Viele Nachbarn helfen sich gegenseitig: Sie gießen die Blumen während des Urlaubs, nehmen Pakete an oder leihen sich Werkzeug aus. Ein freundlicher Gruß im Treppenhaus oder ein kurzer Small Talk beim Briefkasten können das Zusammenleben sehr angenehm machen. Besonders ältere Menschen, die alleine leben, freuen sich über solche kleinen Gesten der Aufmerksamkeit.\n\nProbleme sollte man immer direkt und höflich ansprechen. Wenn der Nachbar zu laut ist, kann man zunächst freundlich klingeln und das Problem erklären. Meist lässt sich so eine Lösung finden. Nur wenn das nicht hilft, sollte man den Vermieter oder die Hausverwaltung einschalten. Gegenseitige Rücksichtnahme und Respekt sind die Grundlage für ein harmonisches Miteinander.",
+    "fragen": [
+      {
+        "frage_id": "3007a",
+        "frage": "Wann gilt in Deutschland normalerweise die Nachtruhe?",
+        "optionen": {
+          "A": "Von 20 bis 8 Uhr",
+          "B": "Von 22 bis 6 Uhr",
+          "C": "Von 23 bis 7 Uhr",
+          "D": "Von 21 bis 5 Uhr"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Zwischen 22 Uhr abends und 6 Uhr morgens sollte man keinen Lärm machen.'"
+      },
+      {
+        "frage_id": "3007b",
+        "frage": "Was sind Beispiele für gute Nachbarschaftshilfe?",
+        "optionen": {
+          "A": "Immer die Tür offen lassen",
+          "B": "Blumen gießen während des Urlaubs, Pakete annehmen, Werkzeug ausleihen",
+          "C": "Jeden Tag zu Besuch kommen",
+          "D": "Die Wohnung des Nachbarn putzen"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Viele Nachbarn helfen sich gegenseitig: Sie gießen die Blumen während des Urlaubs, nehmen Pakete an oder leihen sich Werkzeug aus.'"
+      },
+      {
+        "frage_id": "3007c",
+        "frage": "Was sollte man tun, wenn der Nachbar zu laut ist?",
+        "optionen": {
+          "A": "Sofort die Polizei rufen",
+          "B": "Nichts sagen und sich ärgern",
+          "C": "Das Problem zunächst freundlich direkt ansprechen",
+          "D": "Selbst noch lauter sein"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Wenn der Nachbar zu laut ist, kann man zunächst freundlich klingeln und das Problem erklären.'"
+      }
+    ]
+  },
+  {
+    "id": 3008,
+    "thema": "DTZ Lesen",
+    "format": "Lesetext",
+    "text": "Öffentliche Verkehrsmittel in deutschen Städten\n\nDie meisten deutschen Städte verfügen über ein gut ausgebautes Netz an öffentlichen Verkehrsmitteln. U-Bahnen, S-Bahnen, Straßenbahnen und Busse bringen die Menschen schnell und zuverlässig von A nach B. Besonders in Großstädten wie Berlin, München oder Hamburg ist man oft schneller mit den 'Öffis' unterwegs als mit dem Auto, da man nicht im Stau steht und keinen Parkplatz suchen muss. Zudem ist es umweltfreundlicher und günstiger.\n\nFür die Nutzung braucht man ein gültiges Ticket. Es gibt verschiedene Tarifzonen, und je nachdem, wie weit man fährt, zahlt man mehr oder weniger. Besonders praktisch sind Monats- oder Jahrestickets, die sich für Pendler lohnen. Auch Studenten und Auszubildende bekommen oft vergünstigte Tickets. Wichtig: In den meisten Städten muss man das Ticket vor der Fahrt am Automaten oder im Bus beim Fahrer kaufen. Wer ohne gültigen Fahrschein erwischt wird, muss 60 Euro Strafe zahlen – das sogenannte 'erhöhte Beförderungsentgelt. Ein weiterer Vorteil der öffentlichen Verkehrsmittel ist die Flexibilität. Die meisten Linien fahren im Takt, oft alle 10 oder 20 Minuten. Abends und am Wochenende gibt es Nachtbusse oder Nachtbahnen. Mit einer App kann man jederzeit sehen, wann die nächste Bahn kommt und welche Verbindung am schnellsten ist. Für Touristen gibt es spezielle Tageskarten, mit denen man den ganzen Tag unbegrenzt fahren kann.",
+    "fragen": [
+      {
+        "frage_id": "3008a",
+        "frage": "Warum sind öffentliche Verkehrsmittel in Großstädten oft besser als das Auto?",
+        "optionen": {
+          "A": "Sie sind kostenlos",
+          "B": "Man kommt schneller ans Ziel, steht nicht im Stau und muss keinen Parkplatz suchen",
+          "C": "Sie fahren nur nachts",
+          "D": "Man braucht keinen Führerschein"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Besonders in Großstädten [...] ist man oft schneller mit den Öffis unterwegs als mit dem Auto, da man nicht im Stau steht und keinen Parkplatz suchen muss.'"
+      },
+      {
+        "frage_id": "3008b",
+        "frage": "Was passiert, wenn man ohne Ticket fährt und kontrolliert wird?",
+        "optionen": {
+          "A": "Man bekommt eine Verwarnung",
+          "B": "Man muss 60 Euro Strafe zahlen",
+          "C": "Man darf nie wieder Bus fahren",
+          "D": "Nichts, das ist erlaubt"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Wer ohne gültigen Fahrschein erwischt wird, muss 60 Euro Strafe zahlen – das sogenannte erhöhte Beförderungsentgelt.'"
+      },
+      {
+        "frage_id": "3008c",
+        "frage": "Welche Ticketart lohnt sich besonders für Pendler?",
+        "optionen": {
+          "A": "Einzeltickets",
+          "B": "Tageskarten",
+          "C": "Monats- oder Jahrestickets",
+          "D": "Touristenkarten"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Besonders praktisch sind Monats- oder Jahrestickets, die sich für Pendler lohnen.'"
+      }
+    ]
+  },
+  {
+    "id": 3009,
+    "thema": "DTZ Lesen",
+    "format": "Lesetext",
+    "text": "Weiterbildung und lebenslanges Lernen in Deutschland\n\nDie Arbeitswelt verändert sich ständig. Neue Technologien, Digitalisierung und veränderte Anforderungen machen es notwendig, dass Arbeitnehmer sich regelmäßig weiterbilden. In Deutschland gibt es zahlreiche Möglichkeiten für Weiterbildung – von Abendkursen über Online-Seminare bis hin zu mehrmonatigen Fortbildungen. Viele Arbeitgeber unterstützen ihre Mitarbeiter dabei und übernehmen teilweise oder ganz die Kosten.\n\nBesonders beliebt sind berufliche Weiterbildungen, die zu einem anerkannten Abschluss führen. Wer zum Beispiel eine Ausbildung gemacht hat, kann später einen Meister- oder Technikertitel erwerben. Auch Sprachkurse oder EDV-Schulungen sind gefragt. Die Volkshochschulen (VHS) bieten ein breites Spektrum an Kursen zu günstigen Preisen an. Hier kann man nicht nur berufliche Qualifikationen erwerben, sondern auch Hobbykurse wie Malen, Tanzen oder Kochen besuchen.\n\nDer Staat fördert Weiterbildung durch verschiedene Programme. Mit einem Bildungsgutschein der Arbeitsagentur können Arbeitslose oder von Arbeitslosigkeit bedrohte Menschen kostenlos an Weiterbildungen teilnehmen. Auch das Aufstiegs-BAföG unterstützt Menschen finanziell, die eine berufliche Fortbildung machen möchten. Lebenslanges Lernen ist in Deutschland nicht nur ein Schlagwort, sondern wird aktiv gefördert und ist für den beruflichen Erfolg oft entscheidend.",
+    "fragen": [
+      {
+        "frage_id": "3009a",
+        "frage": "Warum ist Weiterbildung heute wichtig?",
+        "optionen": {
+          "A": "Weil es Pflicht ist",
+          "B": "Weil die Arbeitswelt sich ständig verändert und neue Anforderungen entstehen",
+          "C": "Weil man sonst seinen Job verliert",
+          "D": "Weil es kostenlos ist"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Die Arbeitswelt verändert sich ständig. Neue Technologien, Digitalisierung und veränderte Anforderungen machen es notwendig, dass Arbeitnehmer sich regelmäßig weiterbilden.'"
+      },
+      {
+        "frage_id": "3009b",
+        "frage": "Was bieten Volkshochschulen (VHS) an?",
+        "optionen": {
+          "A": "Nur Sprachkurse",
+          "B": "Nur berufliche Kurse",
+          "C": "Berufliche Qualifikationen und Hobbykurse zu günstigen Preisen",
+          "D": "Kostenlose Universitätsabschlüsse"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Die Volkshochschulen (VHS) bieten ein breites Spektrum an Kursen zu günstigen Preisen an. Hier kann man nicht nur berufliche Qualifikationen erwerben, sondern auch Hobbykurse [...] besuchen.'"
+      },
+      {
+        "frage_id": "3009c",
+        "frage": "Wer kann mit einem Bildungsgutschein kostenlos an Weiterbildungen teilnehmen?",
+        "optionen": {
+          "A": "Alle Menschen in Deutschland",
+          "B": "Nur Studenten",
+          "C": "Arbeitslose oder von Arbeitslosigkeit bedrohte Menschen",
+          "D": "Nur Rentner"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Mit einem Bildungsgutschein der Arbeitsagentur können Arbeitslose oder von Arbeitslosigkeit bedrohte Menschen kostenlos an Weiterbildungen teilnehmen.'"
+      }
+    ]
+  },
+  {
+    "id": 3010,
+    "thema": "DTZ Lesen",
+    "format": "Lesetext",
+    "text": "Kinderbetreuung in Deutschland – Kita, Krippe und Tagesmutter\n\nIn Deutschland haben Kinder ab dem ersten Lebensjahr einen Rechtsanspruch auf einen Betreuungsplatz. Für Kinder unter drei Jahren gibt es Kinderkrippen oder Tagesmütter, ab drei Jahren können Kinder in den Kindergarten gehen. Die Betreuungszeiten sind unterschiedlich: Manche Einrichtungen bieten nur Halbtagsbetreuung an, andere sind ganztags geöffnet. Besonders für berufstätige Eltern ist eine Ganztagsbetreuung wichtig.\n\nDie Kosten für einen Kitaplatz sind von Bundesland zu Bundesland verschieden. In manchen Städten ist die Kita kostenlos, in anderen zahlen Eltern je nach Einkommen einen bestimmten Betrag. Das Mittagessen muss meist extra bezahlt werden. Wichtig ist, dass man sich frühzeitig um einen Platz kümmert – in vielen Städten gibt es mehr Kinder als Plätze, und die Wartelisten sind lang.\n\nIn der Kita werden die Kinder nicht nur betreut, sondern auch gefördert. Sie lernen spielerisch Zahlen, Buchstaben und Farben, machen Musik und Sport und knüpfen erste Freundschaften. Besonders für Kinder aus Familien, in denen nicht Deutsch gesprochen wird, ist die Kita wichtig: Hier lernen sie die deutsche Sprache und haben bessere Chancen in der Schule. Erzieherinnen und Erzieher achten darauf, dass jedes Kind individuell unterstützt wird.",
+    "fragen": [
+      {
+        "frage_id": "3010a",
+        "frage": "Ab welchem Alter haben Kinder in Deutschland einen Rechtsanspruch auf einen Betreuungsplatz?",
+        "optionen": {
+          "A": "Ab der Geburt",
+          "B": "Ab dem ersten Lebensjahr",
+          "C": "Ab drei Jahren",
+          "D": "Ab dem Schulalter"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'In Deutschland haben Kinder ab dem ersten Lebensjahr einen Rechtsanspruch auf einen Betreuungsplatz.'"
+      },
+      {
+        "frage_id": "3010b",
+        "frage": "Was sollten Eltern bei der Kitaplatzsuche beachten?",
+        "optionen": {
+          "A": "Die Kita ist immer kostenlos",
+          "B": "Man bekommt automatisch einen Platz",
+          "C": "Man sollte sich frühzeitig kümmern, da die Wartelisten oft lang sind",
+          "D": "Nur deutsche Kinder bekommen einen Platz"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Wichtig ist, dass man sich frühzeitig um einen Platz kümmert – in vielen Städten gibt es mehr Kinder als Plätze, und die Wartelisten sind lang.'"
+      },
+      {
+        "frage_id": "3010c",
+        "frage": "Warum ist die Kita besonders wichtig für Kinder aus nicht-deutschsprachigen Familien?",
+        "optionen": {
+          "A": "Dort bekommen sie kostenloses Essen",
+          "B": "Sie lernen dort die deutsche Sprache und haben bessere Chancen in der Schule",
+          "C": "Sie müssen dort hingehen",
+          "D": "Die Eltern müssen dann nicht mehr arbeiten"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Besonders für Kinder aus Familien, in denen nicht Deutsch gesprochen wird, ist die Kita wichtig: Hier lernen sie die deutsche Sprache und haben bessere Chancen in der Schule.'"
+      }
+    ]
+  },
+  {
+    "id": 3011,
+    "thema": "DTZ Lesen",
+    "format": "Lesetext",
+    "text": "Handy und Internet – Kostenfallen vermeiden\n\nFast jeder in Deutschland besitzt ein Smartphone. Mit dem Handy telefoniert man nicht nur, sondern surft im Internet, schreibt Nachrichten, macht Fotos und nutzt soziale Medien. Doch Vorsicht: Wer nicht aufpasst, kann schnell in Kostenfallen tappen. Besonders teuer wird es, wenn man im Ausland ohne passendes Datenpaket im Internet surft. Innerhalb der EU ist das Roaming zwar seit einigen Jahren kostenlos, aber außerhalb Europas können hohe Kosten entstehen.\n\nAuch bei Handyverträgen sollte man genau hinsehen. Es gibt zwei Arten: Verträge mit fester Laufzeit (meist 24 Monate) und Prepaid-Tarife. Bei einem Vertrag zahlt man jeden Monat einen festen Betrag und bekommt dafür eine bestimmte Anzahl an Minuten, SMS und Datenvolumen. Wer mehr verbraucht, muss nachzahlen. Prepaid-Tarife sind flexibler: Man lädt Guthaben auf und telefoniert oder surft, bis das Guthaben aufgebraucht ist. Danach kann man nichts mehr nutzen, bis man wieder Geld auflädt – so hat man die Kosten besser unter Kontrolle.\n\nBesonders tückisch sind sogenannte Abo-Fallen im Internet. Manchmal klickt man auf Werbung oder lädt eine App herunter, und plötzlich hat man ein kostenpflichtiges Abo abgeschlossen. Hier gilt: Nie vorschnell auf 'Kaufen' oder 'Abonnieren' klicken, sondern immer das Kleingedruckte lesen. Wenn man versehentlich ein Abo abgeschlossen hat, kann man oft innerhalb von 14 Tagen widerrufen.",
+    "fragen": [
+      {
+        "frage_id": "3011a",
+        "frage": "Wann kann das Surfen im Internet mit dem Handy besonders teuer werden?",
+        "optionen": {
+          "A": "Immer",
+          "B": "Nur nachts",
+          "C": "Im Ausland außerhalb der EU ohne passendes Datenpaket",
+          "D": "Nur in Deutschland"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Besonders teuer wird es, wenn man im Ausland ohne passendes Datenpaket im Internet surft. [...] außerhalb Europas können hohe Kosten entstehen.'"
+      },
+      {
+        "frage_id": "3011b",
+        "frage": "Was ist ein Vorteil von Prepaid-Tarifen?",
+        "optionen": {
+          "A": "Sie sind immer günstiger",
+          "B": "Man hat die Kosten besser unter Kontrolle",
+          "C": "Man bekommt ein neues Handy",
+          "D": "Man kann unbegrenzt telefonieren"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Man lädt Guthaben auf und telefoniert oder surft, bis das Guthaben aufgebraucht ist. [...] so hat man die Kosten besser unter Kontrolle.'"
+      },
+      {
+        "frage_id": "3011c",
+        "frage": "Was sollte man tun, wenn man versehentlich ein Abo abgeschlossen hat?",
+        "optionen": {
+          "A": "Nichts, man muss es bezahlen",
+          "B": "Man kann oft innerhalb von 14 Tagen widerrufen",
+          "C": "Das Handy wegwerfen",
+          "D": "Die Polizei rufen"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Wenn man versehentlich ein Abo abgeschlossen hat, kann man oft innerhalb von 14 Tagen widerrufen.'"
+      }
+    ]
+  },
+  {
+    "id": 3012,
+    "thema": "DTZ Lesen",
+    "format": "Lesetext",
+    "text": "Das deutsche Schulsystem – Vielfalt und Durchlässigkeit\n\nDas Schulsystem in Deutschland ist für viele Neuankömmlinge zunächst verwirrend. Nach der Grundschule, die vier Jahre dauert (in Berlin und Brandenburg sechs Jahre), wechseln die Kinder auf eine weiterführende Schule. Hier gibt es verschiedene Schulformen: die Hauptschule, die Realschule, das Gymnasium und die Gesamtschule. Welche Schule ein Kind besucht, hängt von den Noten und einer Empfehlung der Grundschullehrer ab. In manchen Bundesländern können die Eltern frei wählen.\n\nDas Gymnasium führt nach acht oder neun Jahren zum Abitur, das den Zugang zur Universität ermöglicht. Die Realschule endet nach der 10. Klasse mit der Mittleren Reife. Danach können die Schüler eine Ausbildung beginnen oder auf eine weiterführende Schule wechseln, um doch noch das Abitur zu machen. Die Hauptschule bereitet vor allem auf praktische Berufe vor und endet nach der 9. oder 10. Klasse. Gesamtschulen kombinieren alle Schulformen unter einem Dach.\n\nWichtig zu wissen: Das deutsche Schulsystem ist durchlässig. Wer in der Hauptschule oder Realschule gute Leistungen zeigt, kann später noch auf eine höhere Schule wechseln. Auch ohne Abitur gibt es viele Möglichkeiten, etwa eine Ausbildung zu machen und dann als Meister oder Techniker Karriere zu machen. In Deutschland sind praktische Berufe genauso angesehen wie akademische.",
+    "fragen": [
+      {
+        "frage_id": "3012a",
+        "frage": "Wie lange dauert die Grundschule in den meisten Bundesländern?",
+        "optionen": {
+          "A": "Zwei Jahre",
+          "B": "Vier Jahre",
+          "C": "Sechs Jahre",
+          "D": "Acht Jahre"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Nach der Grundschule, die vier Jahre dauert (in Berlin und Brandenburg sechs Jahre)...'"
+      },
+      {
+        "frage_id": "3012b",
+        "frage": "Was ermöglicht das Abitur?",
+        "optionen": {
+          "A": "Eine Ausbildung",
+          "B": "Den Zugang zur Universität",
+          "C": "Einen Arbeitsplatz",
+          "D": "Den Realschulabschluss"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Das Gymnasium führt nach acht oder neun Jahren zum Abitur, das den Zugang zur Universität ermöglicht.'"
+      },
+      {
+        "frage_id": "3012c",
+        "frage": "Was bedeutet 'durchlässig' im deutschen Schulsystem?",
+        "optionen": {
+          "A": "Alle Schüler müssen aufs Gymnasium",
+          "B": "Man kann nicht die Schule wechseln",
+          "C": "Man kann bei guten Leistungen später auf eine höhere Schule wechseln",
+          "D": "Nur das Gymnasium ist wichtig"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Das deutsche Schulsystem ist durchlässig. Wer in der Hauptschule oder Realschule gute Leistungen zeigt, kann später noch auf eine höhere Schule wechseln.'"
+      }
+    ]
+  },
+  {
+    "id": 3013,
+    "thema": "DTZ Lesen",
+    "format": "Lesetext",
+    "text": "Wohnungssuche in Deutschland – Tipps und Tricks\n\nEine Wohnung in Deutschland zu finden, besonders in Großstädten, ist oft schwierig. Die Nachfrage ist hoch und die Mieten steigen ständig. Wer eine Wohnung sucht, sollte mehrere Wege nutzen: Online-Portale wie ImmobilienScout24 oder Immowelt, Zeitungsanzeigen und persönliche Kontakte. Auch ein Aushang am Schwarzen Brett im Supermarkt kann helfen. Wichtig ist, schnell zu reagieren – oft bewerben sich hunderte Interessenten auf eine einzige Wohnung.\n\nFür die Bewerbung braucht man verschiedene Unterlagen: eine Mieterselbstauskunft, Gehaltsnachweise der letzten drei Monate, eine Schufa-Auskunft und manchmal auch eine Mietschuldenfreiheitsbescheinigung vom vorherigen Vermieter. Die Schufa ist eine Auskunftei, die Informationen über die Zahlungsfähigkeit speichert. Eine negative Schufa kann die Wohnungssuche sehr erschweren. Viele Vermieter möchten auch wissen, ob man einen unbefristeten Arbeitsvertrag hat.\n\nBei der Wohnungsbesichtigung sollte man einen guten Eindruck machen: pünktlich sein, höflich auftreten und Interesse zeigen. Man sollte aber auch kritisch sein und die Wohnung genau anschauen: Funktionieren die Fenster? Gibt es Schimmel? Wie ist der Zustand der Heizung? All diese Fragen sind wichtig. Nach der Besichtigung dauert es oft einige Tage, bis der Vermieter sich meldet. Geduld ist gefragt!",
+    "fragen": [
+      {
+        "frage_id": "3013a",
+        "frage": "Welche Unterlagen braucht man für eine Wohnungsbewerbung?",
+        "optionen": {
+          "A": "Nur einen Personalausweis",
+          "B": "Mieterselbstauskunft, Gehaltsnachweise, Schufa-Auskunft",
+          "C": "Nur ein Foto",
+          "D": "Keine besonderen Unterlagen"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Für die Bewerbung braucht man verschiedene Unterlagen: eine Mieterselbstauskunft, Gehaltsnachweise der letzten drei Monate, eine Schufa-Auskunft...'"
+      },
+      {
+        "frage_id": "3013b",
+        "frage": "Was ist die Schufa?",
+        "optionen": {
+          "A": "Eine Wohnungsfirma",
+          "B": "Eine Bank",
+          "C": "Eine Auskunftei, die Informationen über die Zahlungsfähigkeit speichert",
+          "D": "Eine Versicherung"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Die Schufa ist eine Auskunftei, die Informationen über die Zahlungsfähigkeit speichert.'"
+      },
+      {
+        "frage_id": "3013c",
+        "frage": "Worauf sollte man bei der Wohnungsbesichtigung achten?",
+        "optionen": {
+          "A": "Nur auf die Größe",
+          "B": "Auf den Zustand: funktionierende Fenster, Schimmel, Heizung",
+          "C": "Nur auf die Farbe der Wände",
+          "D": "Nur auf den Preis"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Man sollte aber auch kritisch sein und die Wohnung genau anschauen: Funktionieren die Fenster? Gibt es Schimmel? Wie ist der Zustand der Heizung?'"
+      }
+    ]
+  },
+  {
+    "id": 3014,
+    "thema": "DTZ Lesen",
+    "format": "Lesetext",
+    "text": "Einkaufen in Deutschland – Öffnungszeiten und Besonderheiten\n\nWer neu in Deutschland ist, wundert sich oft über die Öffnungszeiten der Geschäfte. Anders als in vielen anderen Ländern haben die meisten Läden sonntags geschlossen. Das liegt am sogenannten Sonntagsgesetz, das die Sonntagsruhe schützen soll. Ausnahmen gibt es nur für Bäckereien (am Sonntagmorgen), Tankstellen, Bahnhöfe und Flughäfen. Auch an Feiertagen bleiben die Geschäfte meist geschlossen. Deshalb ist es wichtig, samstags für das Wochenende einzukaufen.\n\nUnter der Woche haben die Supermärkte in den meisten Städten von montags bis samstags zwischen 7 oder 8 Uhr morgens bis 20 oder 22 Uhr geöffnet. In kleineren Orten schließen die Geschäfte oft früher, manchmal schon um 18 Uhr. Auch die Mittagspause ist in manchen kleinen Läden noch üblich. Große Einkaufszentren haben meist durchgehend geöffnet. Samstags ist in den Supermärkten besonders viel los, da viele Menschen für die ganze Woche einkaufen.\n\nBeim Einkaufen sollte man einige Dinge beachten: An der Kasse packt man seine Waren schnell in die mitgebrachte Tasche – Plastiktüten kosten extra und sind nicht besonders umweltfreundlich. Viele Deutsche bringen deshalb Stofftaschen oder Rucksäcke mit. Auch Pfandflaschen sind in Deutschland wichtig: Auf die meisten Flaschen zahlt man Pfand, das man beim Zurückbringen des Leerguts wiederbekommt. Die Automaten dafür stehen in jedem Supermarkt.",
+    "fragen": [
+      {
+        "frage_id": "3014a",
+        "frage": "Warum haben die meisten Geschäfte in Deutschland sonntags geschlossen?",
+        "optionen": {
+          "A": "Weil niemand einkaufen geht",
+          "B": "Wegen des Sonntagsgesetzes, das die Sonntagsruhe schützt",
+          "C": "Weil es zu teuer ist",
+          "D": "Weil die Verkäufer frei haben wollen"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Das liegt am sogenannten Sonntagsgesetz, das die Sonntagsruhe schützen soll.'"
+      },
+      {
+        "frage_id": "3014b",
+        "frage": "Was sollte man zum Einkaufen mitbringen?",
+        "optionen": {
+          "A": "Nichts, man bekommt alles im Laden",
+          "B": "Nur Geld",
+          "C": "Stofftaschen oder Rucksäcke, da Plastiktüten extra kosten",
+          "D": "Einen großen Koffer"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'Plastiktüten kosten extra und sind nicht besonders umweltfreundlich. Viele Deutsche bringen deshalb Stofftaschen oder Rucksäcke mit.'"
+      },
+      {
+        "frage_id": "3014c",
+        "frage": "Was ist das Pfandsystem?",
+        "optionen": {
+          "A": "Eine zusätzliche Steuer",
+          "B": "Man zahlt Pfand auf Flaschen und bekommt es beim Zurückbringen wieder",
+          "C": "Eine Art Rabatt",
+          "D": "Ein Bonusprogramm"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Auf die meisten Flaschen zahlt man Pfand, das man beim Zurückbringen des Leerguts wiederbekommt.'"
+      }
+    ]
+  },
+  {
+    "id": 3015,
+    "thema": "DTZ Lesen",
+    "format": "Lesetext",
+    "text": "Sport und Fitness in Deutschland – Vereine und Studios\n\nSport ist in Deutschland sehr beliebt. Millionen Menschen sind Mitglied in einem Sportverein. Die Auswahl ist riesig: Fußball, Tennis, Handball, Schwimmen, Turnen, Leichtathletik und viele andere Sportarten werden angeboten. Besonders für Kinder und Jugendliche sind Sportvereine ideal: Sie lernen Teamgeist, bleiben fit und knüpfen Freundschaften. Die Mitgliedsbeiträge sind meist moderat und liegen zwischen 5 und 20 Euro pro Monat.\n\nFür Erwachsene gibt es neben den Vereinen auch viele Fitnessstudios. Hier kann man an Geräten trainieren, an Kursen wie Yoga, Spinning oder Zumba teilnehmen oder im Pool schwimmen. Die Preise variieren stark: Von günstigen Ketten für 20 Euro im Monat bis zu exklusiven Studios für 100 Euro und mehr ist alles dabei. Wichtig ist, vor der Anmeldung zu prüfen, ob das Studio in der Nähe liegt und die Öffnungszeiten passen. Viele Studios bieten ein kostenloses Probetraining an. \n\nWer nicht in einem Verein oder Studio trainieren möchte, kann auch draußen aktiv sein. In den meisten Städten gibt es gut ausgebaute Radwege, Parks zum Joggen und öffentliche Sportplätze. Im Winter sind Skifahren und Schlittschuhlaufen beliebt, im Sommer gehen viele Menschen zum Wandern in die Berge oder Schwimmen in Seen. Sport in der Natur ist kostenlos und für jeden zugänglich.",
+    "fragen": [
+      {
+        "frage_id": "3015a",
+        "frage": "Was ist ein Vorteil von Sportvereinen für Kinder?",
+        "optionen": {
+          "A": "Sie sind sehr teuer",
+          "B": "Sie lernen Teamgeist, bleiben fit und knüpfen Freundschaften",
+          "C": "Sie müssen jeden Tag trainieren",
+          "D": "Sie bekommen immer Pokale"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Besonders für Kinder und Jugendliche sind Sportvereine ideal: Sie lernen Teamgeist, bleiben fit und knüpfen Freundschaften.'"
+      },
+      {
+        "frage_id": "3015b",
+        "frage": "Wie viel kostet ein günstiges Fitnessstudio pro Monat?",
+        "optionen": {
+          "A": "5 Euro",
+          "B": "Etwa 20 Euro",
+          "C": "100 Euro",
+          "D": "Es ist kostenlos"
+        },
+        "antwort": "B",
+        "erklaerung": "Im Text steht: 'Von günstigen Ketten für 20 Euro im Monat bis zu exklusiven Studios für 100 Euro und mehr ist alles dabei.'"
+      },
+      {
+        "frage_id": "3015c",
+        "frage": "Welche kostenlosen Sportmöglichkeiten gibt es?",
+        "optionen": {
+          "A": "Nur Fitnessstudios",
+          "B": "Nur Schwimmbäder",
+          "C": "Radwege, Parks zum Joggen, öffentliche Sportplätze, Wandern, Schwimmen in Seen",
+          "D": "Keine"
+        },
+        "antwort": "C",
+        "erklaerung": "Im Text steht: 'In den meisten Städten gibt es gut ausgebaute Radwege, Parks zum Joggen und öffentliche Sportplätze. [...] gehen viele Menschen zum Wandern in die Berge oder Schwimmen in Seen. Sport in der Natur ist kostenlos.'"
+      }
+    ]
+  }
+]

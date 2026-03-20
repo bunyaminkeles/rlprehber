@@ -1,0 +1,753 @@
+[
+  {
+    "id": 1700,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Ich habe gestern einen ___ Film im Kino gesehen und war von der ___ Handlung begeistert.\n\nDer Film hat mir sehr gut gefallen und ich empfehle ihn allen weiter.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "interessanter / spannende",
+      "B": "interessanten / spannenden",
+      "C": "interessante / spannend",
+      "D": "interessantes / spannender"
+    },
+    "antwort": "B",
+    "erklaerung": "Unbestimmter Artikel 'einen' (maskulin, Akkusativ) + Adjektiv → -en / bestimmter Artikel 'der' (feminin, Dativ) → -en."
+  },
+  {
+    "id": 1701,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Das ist eine ___ Idee für unser Projekt und könnte uns bei der ___ Lösung helfen.\n\nWir sollten sie auf jeden Fall weiterverfolgen und im Team besprechen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "guter / praktische",
+      "B": "gute / praktischen",
+      "C": "guten / praktischer",
+      "D": "gutes / praktischem"
+    },
+    "antwort": "B",
+    "erklaerung": "Unbestimmter Artikel 'eine' (feminin, Nominativ) + Adjektiv → -e / bestimmter Artikel 'der' (feminin, Dativ) → -en."
+  },
+  {
+    "id": 1702,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Wir wohnen in einem ___ Haus mit einem ___ Garten am Stadtrand.\n\nDas Haus bietet viel Platz für die ganze Familie und liegt sehr ruhig.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "schöner / großer",
+      "B": "schönes / großes",
+      "C": "schönen / großen",
+      "D": "schöne / große"
+    },
+    "antwort": "C",
+    "erklaerung": "Unbestimmter Artikel 'einem' (neutral, Dativ) + Adjektiv → -en / 'einem' (maskulin, Dativ) → -en."
+  },
+  {
+    "id": 1703,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Der ___ Mann an der Rezeption hat uns mit einem ___ Lächeln begrüßt.\n\nEr war sehr freundlich und hat uns sofort weitergeholfen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "nette / freundliche",
+      "B": "netter / freundlichen",
+      "C": "nette / freundlichen",
+      "D": "netten / freundlicher"
+    },
+    "antwort": "C",
+    "erklaerung": "Bestimmter Artikel 'der' (maskulin, Nominativ) + Adjektiv → -e / unbestimmter Artikel 'einem' (neutral, Dativ) → -en."
+  },
+  {
+    "id": 1704,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Sie trägt heute ein ___ Kleid und eine ___ Jacke zur Party.\n\nDie Kleidung hat sie extra für diesen besonderen Anlass gekauft.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "elegante / schöne",
+      "B": "eleganten / schönen",
+      "C": "elegantes / schöne",
+      "D": "elegant / schön"
+    },
+    "antwort": "C",
+    "erklaerung": "Unbestimmter Artikel 'ein' (neutral, Akkusativ) + Adjektiv → -es / 'eine' (feminin, Akkusativ) → -e."
+  },
+  {
+    "id": 1705,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Die ___ Wohnung in der ___ Straße ist leider schon vermietet.\n\nWir müssen weiter nach einer passenden Bleibe für uns suchen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "schöne / ruhige",
+      "B": "schönen / ruhigen",
+      "C": "schöne / ruhigen",
+      "D": "schöner / ruhiger"
+    },
+    "antwort": "C",
+    "erklaerung": "Bestimmter Artikel 'die' (feminin, Nominativ) + Adjektiv → -e / 'der' (feminin, Dativ) → -en."
+  },
+  {
+    "id": 1706,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Ich habe mir gestern neue Schuhe gekauft und dazu passende Socken.\n\nDie ___ Schuhe waren im Angebot und die ___ Socken gab es gratis dazu.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "neuen / passenden",
+      "B": "neue / passende",
+      "C": "neuer / passender",
+      "D": "neues / passendes"
+    },
+    "antwort": "A",
+    "erklaerung": "Bestimmter Artikel 'die' (Plural, Nominativ) + Adjektiv → -en / 'die' (Plural, Nominativ) → -en."
+  },
+  {
+    "id": 1707,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Wir haben einen ___ Tisch aus ___ Holz im Möbelgeschäft gesehen.\n\nEr würde perfekt in unser Wohnzimmer passen und ist nicht zu teuer.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "großen / dunklem",
+      "B": "großer / dunkles",
+      "C": "große / dunkle",
+      "D": "großes / dunklen"
+    },
+    "antwort": "A",
+    "erklaerung": "Unbestimmter Artikel 'einen' (maskulin, Akkusativ) + Adjektiv → -en / ohne Artikel (Dativ) → -em."
+  },
+  {
+    "id": 1708,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Das ___ Auto auf dem ___ Parkplatz gehört meinem Nachbarn.\n\nEr hat es erst vor zwei Wochen gekauft und ist sehr stolz darauf.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "rote / großen",
+      "B": "roter / großer",
+      "C": "roten / großem",
+      "D": "rot / groß"
+    },
+    "antwort": "A",
+    "erklaerung": "Bestimmter Artikel 'das' (neutral, Nominativ) + Adjektiv → -e / 'dem' (maskulin, Dativ) → -en."
+  },
+  {
+    "id": 1709,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Ich suche eine ___ Tasche für meine ___ Reise nach Italien.\n\nSie sollte leicht sein und viele praktische Fächer haben.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "praktische / geplante",
+      "B": "praktischen / geplanten",
+      "C": "praktischer / geplanter",
+      "D": "praktisches / geplantes"
+    },
+    "antwort": "A",
+    "erklaerung": "Unbestimmter Artikel 'eine' (feminin, Akkusativ) + Adjektiv → -e / Possessiv 'meine' (feminin, Akkusativ) → -e."
+  },
+  {
+    "id": 1710,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Der ___ Lehrer hat den ___ Schülern die Aufgabe erklärt.\n\nAlle haben gut zugehört und die Erklärung verstanden.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "neue / neuen",
+      "B": "neuer / neuer",
+      "C": "neuen / neue",
+      "D": "neues / neues"
+    },
+    "antwort": "A",
+    "erklaerung": "Bestimmter Artikel 'der' (maskulin, Nominativ) + Adjektiv → -e / 'den' (Plural, Dativ) → -en."
+  },
+  {
+    "id": 1711,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "In unserem Viertel gibt es viele Geschäfte und Restaurants.\n\nBesonders die ___ Bäckerei und das ___ Café an der Ecke sind sehr beliebt.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "kleine / gemütliche",
+      "B": "kleinen / gemütlichen",
+      "C": "kleiner / gemütlicher",
+      "D": "kleines / gemütliches"
+    },
+    "antwort": "A",
+    "erklaerung": "Bestimmter Artikel 'die' (feminin, Nominativ) + Adjektiv → -e / 'das' (neutral, Nominativ) → -e."
+  },
+  {
+    "id": 1712,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Wir haben uns mit ___ Freunden in einem ___ Restaurant getroffen.\n\nDas Essen war ausgezeichnet und die Atmosphäre sehr angenehm.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "gute / italienische",
+      "B": "guten / italienischen",
+      "C": "guter / italienischer",
+      "D": "gutes / italienisches"
+    },
+    "antwort": "B",
+    "erklaerung": "Ohne Artikel (Plural, Dativ) + Adjektiv → -en / unbestimmter Artikel 'einem' (neutral, Dativ) → -en."
+  },
+  {
+    "id": 1713,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Meine Schwester hat einen ___ Job in einer ___ Firma gefunden.\n\nSie ist sehr glücklich über diese Chance und freut sich auf die neue Herausforderung.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "interessanten / internationalen",
+      "B": "interessanter / internationaler",
+      "C": "interessante / internationale",
+      "D": "interessantes / internationales"
+    },
+    "antwort": "A",
+    "erklaerung": "Unbestimmter Artikel 'einen' (maskulin, Akkusativ) + Adjektiv → -en / 'einer' (feminin, Dativ) → -en."
+  },
+  {
+    "id": 1714,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Die Kinder spielen mit ihren Spielsachen im Garten.\n\nDas ___ Mädchen spielt mit der ___ Puppe und der Junge mit dem Ball.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "kleine / neuen",
+      "B": "kleiner / neuer",
+      "C": "kleines / neue",
+      "D": "kleinen / neuen"
+    },
+    "antwort": "A",
+    "erklaerung": "Bestimmter Artikel 'das' (neutral, Nominativ) + Adjektiv → -e / 'der' (feminin, Dativ) → -en."
+  },
+  {
+    "id": 1715,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Er hat seiner Freundin einen ___ Ring und eine ___ Halskette geschenkt.\n\nSie hat sich sehr über die teuren Geschenke gefreut.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "goldenen / silbernen",
+      "B": "goldener / silberner",
+      "C": "goldene / silberne",
+      "D": "goldenes / silbernes"
+    },
+    "antwort": "A",
+    "erklaerung": "Unbestimmter Artikel 'einen' (maskulin, Akkusativ) + Adjektiv → -en / 'eine' (feminin, Akkusativ) → -e (aber hier Plural-Kontext, daher -en)."
+  },
+  {
+    "id": 1716,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "In der Stadt gibt es ein Museum mit Kunstwerken.\n\nDas ___ Museum zeigt Werke aus verschiedenen ___ Epochen der Kunstgeschichte.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "bekannte / historische",
+      "B": "bekannten / historischen",
+      "C": "bekannter / historischer",
+      "D": "bekannte / historischen"
+    },
+    "antwort": "D",
+    "erklaerung": "Bestimmter Artikel 'das' (neutral, Nominativ) + Adjektiv → -e / ohne Artikel (Plural, Dativ nach 'aus') → -en."
+  },
+  {
+    "id": 1717,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Ich habe einen ___ Computer für meine ___ Arbeit gekauft.\n\nEr ist sehr schnell und hat genug Speicherplatz für alle meine Dateien.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "neuen / berufliche",
+      "B": "neuer / beruflicher",
+      "C": "neue / berufliche",
+      "D": "neues / berufliches"
+    },
+    "antwort": "A",
+    "erklaerung": "Unbestimmter Artikel 'einen' (maskulin, Akkusativ) + Adjektiv → -en / Possessiv 'meine' (feminin, Akkusativ) → -e."
+  },
+  {
+    "id": 1718,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Die Familie wohnt in einem Haus mit Garten.\n\nSie haben das ___ Haus vor Jahren gekauft und lieben den ___ Garten sehr.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "alte / großen",
+      "B": "alten / großer",
+      "C": "altes / große",
+      "D": "alter / großes"
+    },
+    "antwort": "A",
+    "erklaerung": "Bestimmter Artikel 'das' (neutral, Akkusativ) + Adjektiv → -e / 'den' (maskulin, Akkusativ) → -en."
+  },
+  {
+    "id": 1719,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Wir suchen eine Wohnung zum Mieten.\n\nAm liebsten hätten wir eine ___ Wohnung mit einem ___ Balkon in zentraler Lage.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "helle / sonnigen",
+      "B": "hellen / sonniger",
+      "C": "heller / sonniges",
+      "D": "helles / sonnige"
+    },
+    "antwort": "A",
+    "erklaerung": "Unbestimmter Artikel 'eine' (feminin, Akkusativ) + Adjektiv → -e / 'einem' (maskulin, Dativ) → -en."
+  },
+  {
+    "id": 1720,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Der Arzt hat dem ___ Patienten eine ___ Medizin verschrieben.\n\nDer Patient muss sie dreimal täglich nach dem Essen einnehmen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "kranken / neue",
+      "B": "kranker / neuer",
+      "C": "kranke / neuen",
+      "D": "krankes / neues"
+    },
+    "antwort": "A",
+    "erklaerung": "Bestimmter Artikel 'dem' (maskulin, Dativ) + Adjektiv → -en / unbestimmter Artikel 'eine' (feminin, Akkusativ) → -e."
+  },
+  {
+    "id": 1721,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Sie hat sich über das Geschenk gefreut.\n\nDas ___ Geschenk von ihrem ___ Freund war eine wunderbare Überraschung.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "schöne / besten",
+      "B": "schönen / beste",
+      "C": "schönes / bester",
+      "D": "schön / best"
+    },
+    "antwort": "A",
+    "erklaerung": "Bestimmter Artikel 'das' (neutral, Nominativ) + Adjektiv → -e / Possessiv 'ihrem' (maskulin, Dativ) → -en."
+  },
+  {
+    "id": 1722,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Im Park gibt es einen Spielplatz mit Geräten.\n\nDer ___ Spielplatz ist bei allen ___ Kindern aus der Nachbarschaft sehr beliebt.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "neue / kleinen",
+      "B": "neuer / kleine",
+      "C": "neuen / kleiner",
+      "D": "neues / kleines"
+    },
+    "antwort": "A",
+    "erklaerung": "Bestimmter Artikel 'der' (maskulin, Nominativ) + Adjektiv → -e / ohne Artikel (Plural, Dativ) → -en."
+  },
+  {
+    "id": 1723,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Wir haben einen ___ Urlaub in einem ___ Hotel verbracht.\n\nEs war wirklich erholsam und wir haben die Zeit sehr genossen.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "wunderschönen / luxuriösen",
+      "B": "wunderschöner / luxuriöser",
+      "C": "wunderschöne / luxuriöse",
+      "D": "wunderschönes / luxuriöses"
+    },
+    "antwort": "A",
+    "erklaerung": "Unbestimmter Artikel 'einen' (maskulin, Akkusativ) + Adjektiv → -en / 'einem' (neutral, Dativ) → -en."
+  },
+  {
+    "id": 1724,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Sie trägt gerne Kleidung aus natürlichen Materialien.\n\nHeute hat sie eine ___ Bluse und einen ___ Rock aus Baumwolle an.",
+    "frage": "Was ist richtig?",
+    "optionen": {
+      "A": "weiße / langen",
+      "B": "weißen / langer",
+      "C": "weißer / langes",
+      "D": "weißes / lange"
+    },
+    "antwort": "A",
+    "erklaerung": "Unbestimmter Artikel 'eine' (feminin, Akkusativ) + Adjektiv → -e / 'einen' (maskulin, Akkusativ) → -en."
+  },
+  
+  {
+    "id": 4700,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Gestern habe ich einen ___ Mann gesehen, der einen ___ Hund hatte.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "alten / kleinen",
+      "B": "alter / kleiner",
+      "C": "alte / kleine",
+      "D": "altem / kleinen"
+    },
+    "antwort": "A",
+    "erklaerung": "Akkusativ Masculin (einen) -> sıfat sonu -en (einen alten Mann). Akkusativ Masculin (einen) -> -en (einen kleinen Hund)."
+  },
+  {
+    "id": 4701,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Das ist ein ___ Auto. Es gehört einer ___ Frau.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "schnelles / reichen",
+      "B": "schnelle / reiche",
+      "C": "schneller / reicher",
+      "D": "schnell / reichen"
+    },
+    "antwort": "A",
+    "erklaerung": "Nominativ Neutrum (ein) -> -es (schnelles Auto). Dativ Feminin (einer) -> -en (reichen Frau)."
+  },
+  {
+    "id": 4702,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Wir trinken gerne ___ Kaffee aus ___ Tassen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "heißen / großen",
+      "B": "heißer / großer",
+      "C": "heiße / große",
+      "D": "heißem / großen"
+    },
+    "antwort": "A",
+    "erklaerung": "Akkusativ Masculin (Nullartikel) -> -en (heißen Kaffee). Dativ Plural (Nullartikel) -> -en (großen Tassen) [Dativ Plural'da sıfat her zaman -en alır]."
+  },
+  {
+    "id": 4703,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Der ___ Tisch passt nicht in das ___ Zimmer.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "große / kleine",
+      "B": "großer / kleines",
+      "C": "großen / kleinen",
+      "D": "großes / kleiner"
+    },
+    "antwort": "A",
+    "erklaerung": "Nominativ Masculin (der) -> -e (große Tisch). Akkusativ Neutrum (das) -> -e (kleine Zimmer)."
+  },
+  {
+    "id": 4704,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Ich wünsche dir ein ___ Wochenende und viel ___ Erfolg.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "schönes / guten",
+      "B": "schöne / guter",
+      "C": "schönen / gutes",
+      "D": "schöner / gute"
+    },
+    "antwort": "A",
+    "erklaerung": "Akkusativ Neutrum (ein) -> -es (schönes Wochenende). Akkusativ Masculin (Nullartikel/Miktar bildiren 'viel') -> -en (guten Erfolg)."
+  },
+  {
+    "id": 4705,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Mit diesem ___ Computer kann man keine ___ Spiele spielen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "alten / neuen",
+      "B": "alte / neue",
+      "C": "alter / neuer",
+      "D": "altem / neuen"
+    },
+    "antwort": "A",
+    "erklaerung": "Dativ Masculin (diesem - belirli artikel gibi davranır) -> -en (alten Computer). Akkusativ Plural (keine) -> -en (neuen Spiele)."
+  },
+  {
+    "id": 4706,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "In der ___ Stadt gibt es viele ___ Gebäude.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "neuen / historische",
+      "B": "neue / historischen",
+      "C": "neuer / historischer",
+      "D": "neuen / historischen"
+    },
+    "antwort": "A",
+    "erklaerung": "Dativ Feminin (der) -> -en (neuen Stadt). Nominativ/Akkusativ Plural (viele - Nullartikel gibi davranır) -> -e (historische Gebäude)."
+  },
+  {
+    "id": 4707,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Ein ___ Freund hilft dir in ___ Zeiten.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "guter / schlechten",
+      "B": "gute / schlechte",
+      "C": "guten / schlechter",
+      "D": "gutes / schlechtes"
+    },
+    "antwort": "A",
+    "erklaerung": "Nominativ Masculin (ein) -> -er (guter Freund). Dativ Plural (Nullartikel) -> -en (schlechten Zeiten)."
+  },
+  {
+    "id": 4708,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Wegen des ___ Wetters bleiben wir im ___ Haus.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "schlechten / warmen",
+      "B": "schlechte / warrem",
+      "C": "schlechter / warmes",
+      "D": "schlechtes / warme"
+    },
+    "antwort": "A",
+    "erklaerung": "Genitiv Neutrum (des) -> -en (schlechten Wetters). Dativ Neutrum (im = in dem) -> -en (warmen Haus)."
+  },
+  {
+    "id": 4709,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Sie trägt ein ___ Kleid und ___ Schuhe.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "rotes / schwarze",
+      "B": "rote / schwarzen",
+      "C": "roter / schwarzer",
+      "D": "roten / schwarz"
+    },
+    "antwort": "A",
+    "erklaerung": "Akkusativ Neutrum (ein) -> -es (rotes Kleid). Akkusativ Plural (Nullartikel) -> -e (schwarze Schuhe)."
+  },
+  {
+    "id": 4710,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Auf dem ___ Tisch liegen ___ Äpfel.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "runden / frische",
+      "B": "runder / frischen",
+      "C": "runde / frischer",
+      "D": "rundem / frisch"
+    },
+    "antwort": "A",
+    "erklaerung": "Dativ Masculin (dem) -> -en (runden Tisch). Nominativ Plural (Nullartikel) -> -e (frische Äpfel)."
+  },
+  {
+    "id": 4711,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Mein ___ Bruder hat eine ___ Freundin.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "kleiner / nette",
+      "B": "kleine / netten",
+      "C": "kleinen / netter",
+      "D": "kleines / nette"
+    },
+    "antwort": "A",
+    "erklaerung": "Nominativ Masculin (mein -> ein gibi) -> -er (kleiner Bruder). Akkusativ Feminin (eine) -> -e (nette Freundin)."
+  },
+  {
+    "id": 4712,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Wir brauchen ___ Brot und ___ Milch.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "frisches / frische",
+      "B": "frische / frischen",
+      "C": "frischer / frisches",
+      "D": "frischen / frisch"
+    },
+    "antwort": "A",
+    "erklaerung": "Akkusativ Neutrum (Nullartikel) -> -es (frisches Brot). Akkusativ Feminin (Nullartikel) -> -e (frische Milch)."
+  },
+  {
+    "id": 4713,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Der ___ Mann hilft der ___ Frau über die Straße.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "junge / alten",
+      "B": "junger / alter",
+      "C": "jungen / alte",
+      "D": "junges / alt"
+    },
+    "antwort": "A",
+    "erklaerung": "Nominativ Masculin (der) -> -e (junge Mann). Dativ Feminin (der) -> -en (alten Frau)."
+  },
+  {
+    "id": 4714,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Ich wohne in einem ___ Haus mit einem ___ Garten.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "kleinen / großen",
+      "B": "kleines / großer",
+      "C": "kleine / große",
+      "D": "kleinem / großem"
+    },
+    "antwort": "A",
+    "erklaerung": "Dativ Neutrum (einem) -> -en (kleinen Haus). Dativ Masculin (einem) -> -en (großen Garten)."
+  },
+  {
+    "id": 4715,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Das ___ Kind spielt mit dem ___ Ball.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "kleine / bunten",
+      "B": "kleines / bunter",
+      "C": "kleinen / bunte",
+      "D": "klein / buntes"
+    },
+    "antwort": "A",
+    "erklaerung": "Nominativ Neutrum (das) -> -e (kleine Kind). Dativ Masculin (dem) -> -en (bunten Ball)."
+  },
+  {
+    "id": 4716,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Für diese ___ Suppe brauchen wir ___ Gemüse.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "leckere / frisches",
+      "B": "leckeren / frische",
+      "C": "leckerer / frischen",
+      "D": "leckeres / frisch"
+    },
+    "antwort": "A",
+    "erklaerung": "Akkusativ Feminin (diese -> die gibi) -> -e (leckere Suppe). Akkusativ Neutrum (Nullartikel) -> -es (frisches Gemüse)."
+  },
+  {
+    "id": 4717,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Er hat ___ Haare und ___ Augen.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "kurze / blaue",
+      "B": "kurzen / blauen",
+      "C": "kurzer / blauer",
+      "D": "kurzes / blaues"
+    },
+    "antwort": "A",
+    "erklaerung": "Akkusativ Plural (Nullartikel) -> -e (kurze Haare). Akkusativ Plural (Nullartikel) -> -e (blaue Augen)."
+  },
+  {
+    "id": 4718,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Ich mag diesen ___ Pullover nicht. Ich möchte einen ___ Pullover.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "alten / neuen",
+      "B": "alter / neuer",
+      "C": "alte / neue",
+      "D": "altem / neuem"
+    },
+    "antwort": "A",
+    "erklaerung": "Akkusativ Masculin (diesen -> den gibi) -> -en (alten). Akkusativ Masculin (einen) -> -en (neuen)."
+  },
+  {
+    "id": 4719,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Wir suchen eine ___ Wohnung in einer ___ Lage.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "ruhige / guten",
+      "B": "ruhigen / guter",
+      "C": "ruhig / gutes",
+      "D": "ruhiges / gute"
+    },
+    "antwort": "A",
+    "erklaerung": "Akkusativ Feminin (eine) -> -e (ruhige Wohnung). Dativ Feminin (einer) -> -en (guten Lage)."
+  },
+  {
+    "id": 4720,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Sehr ___ Damen und ___ Herren, herzlich willkommen!",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "geehrte / geehrte",
+      "B": "geehrten / geehrten",
+      "C": "geehrter / geehrtes",
+      "D": "geehrt / geehrt"
+    },
+    "antwort": "A",
+    "erklaerung": "Nominativ/Hitap Plural (Nullartikel) -> -e (geehrte Damen und Herren)."
+  },
+  {
+    "id": 4721,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Ich habe ihm ein ___ Buch zum ___ Geburtstag geschenkt.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "spannendes / runden",
+      "B": "spannende / runder",
+      "C": "spannenden / runde",
+      "D": "spannender / rundem"
+    },
+    "antwort": "A",
+    "erklaerung": "Akkusativ Neutrum (ein) -> -es (spannendes Buch). Dativ Masculin (zum = zu dem) -> -en (runden Geburtstag)."
+  },
+  {
+    "id": 4722,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Trotz des ___ Regens machen wir einen ___ Spaziergang.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "starken / langen",
+      "B": "starke / lange",
+      "C": "starker / langer",
+      "D": "starkes / langes"
+    },
+    "antwort": "A",
+    "erklaerung": "Genitiv Masculin (des) -> -en (starken Regens). Akkusativ Masculin (einen) -> -en (langen Spaziergang)."
+  },
+  {
+    "id": 4723,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Das ist nichts ___ für mich. Ich suche etwas ___.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "Gutes / Billigeres",
+      "B": "Guten / Billigere",
+      "C": "Gute / Billiger",
+      "D": "Gut / Billig"
+    },
+    "antwort": "A",
+    "erklaerung": "'Etwas', 'nichts', 'viel', 'wenig' kelimelerinden sonra gelen sıfatlar isimleşir ve büyük yazılır, nötr çekimlenir (-es). Nichts Gutes / Etwas Billigeres."
+  },
+  {
+    "id": 4724,
+    "thema": "Adjektivdeklination",
+    "format": "Text",
+    "kontext": "Ich trinke meinen ___ Tee immer ohne ___ Zucker.",
+    "frage": "Was passt in die Lücken?",
+    "optionen": {
+      "A": "schwarzen / weißen",
+      "B": "schwarze / weißem",
+      "C": "schwarzer / weißes",
+      "D": "schwarz / weiß"
+    },
+    "antwort": "A",
+    "erklaerung": "Akkusativ Masculin (meinen -> den gibi) -> -en (schwarzen Tee). 'Ohne' edatı Akkusativ gerektirir, Nullartikel Masculin -> -en (weißen Zucker)."
+  }
+]
