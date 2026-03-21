@@ -1,14 +1,113 @@
 {% extends 'base.html' %}
-{% block title %}Hakkında{% endblock %}
+{% block title %}Hakkında — RLP Rehber{% endblock %}
 {% block content %}
-<div class="container mt-4" style="max-width:720px">
-  <div class="card">
+<div class="container mt-4 mb-5" style="max-width:760px">
+
+  <!-- Platform tanıtımı -->
+  <div class="card mb-4">
     <div class="card-body p-4">
-      <h4 class="mb-3"><i class="bi bi-info-circle me-2 text-primary"></i>Mainzer-Binger Hakkında</h4>
-      <p>Bu platform, Mainz ve Mainz-Bingen bölgesine yeni yerleşen kişilere yönelik oluşturulmuş topluluk odaklı bir bilgi ve iletişim platformudur.</p>
-      <p>Resmi işlemler, günlük yaşam, Almanca çalışma kaynakları, araç ve ev ilanları, forum ve takvim gibi pek çok içerik burada yer almaktadır.</p>
-      <p>Platform, gönüllülük esasıyla ve topluluk katkılarıyla büyümektedir.</p>
+      <h4 class="mb-3"><i class="bi bi-info-circle me-2 text-primary"></i>RLP Rehber Hakkında</h4>
+      <p>
+        <strong>RLP Rehber</strong>, Rheinland-Pfalz eyaletine yerleşen Türk vatandaşları için
+        topluluk odaklı bir bilgi ve iletişim platformudur.
+      </p>
+      <p>
+        Koblenz'den Trier'e, Mainz'dan Kaiserslautern'a — eyaletin tüm şehirlerinde yaşayan
+        Türk topluluğuna yönelik; resmi işlemler, günlük yaşam, konut, iş, forum, etkinlik
+        ve daha pek çok içerik tek çatı altında sunulmaktadır.
+      </p>
+
+      <hr>
+
+      <div class="row g-3 mt-1">
+        <div class="col-sm-6">
+          <div class="d-flex gap-3 align-items-start">
+            <span class="fs-4">🏙️</span>
+            <div>
+              <strong class="d-block">Çok Şehirli Yapı</strong>
+              <small class="text-muted">RLP'nin tüm kreisfreie şehirleri ve ilçeleri desteklenir.</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="d-flex gap-3 align-items-start">
+            <span class="fs-4">🤝</span>
+            <div>
+              <strong class="d-block">Topluluk Katkısı</strong>
+              <small class="text-muted">Platform gönüllülük esasıyla büyümektedir.</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="d-flex gap-3 align-items-start">
+            <span class="fs-4">🔒</span>
+            <div>
+              <strong class="d-block">Ücretsiz & Bağımsız</strong>
+              <small class="text-muted">Hiçbir resmi kurum veya ticari yapıyla bağlantısı yoktur.</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="d-flex gap-3 align-items-start">
+            <span class="fs-4">📍</span>
+            <div>
+              <strong class="d-block">Yerel Odaklı</strong>
+              <small class="text-muted">Her şehir kendi yerel bilgileriyle ayrı yönetilir.</small>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- Öneri formu -->
+  <div class="card">
+    <div class="card-header fw-semibold">
+      <i class="bi bi-lightbulb me-2 text-warning"></i>Öneri & Geri Bildirim
+    </div>
+    <div class="card-body p-4">
+      {% if gonderildi %}
+      <div class="alert alert-success">
+        <i class="bi bi-check-circle me-2"></i>Teşekkürler! Mesajınız iletildi.
+      </div>
+      {% else %}
+      <p class="text-muted small mb-4">
+        Eksik gördüğünüz bir bilgi, hata, içerik talebi veya öneri için bu formu kullanabilirsiniz.
+      </p>
+      <form method="post">
+        {% csrf_token %}
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <label class="form-label fw-semibold small">Tür</label>
+            <select name="tur" class="form-select form-select-sm">
+              <option value="oneri">💡 Öneri</option>
+              <option value="hata">🐛 Hata Bildirimi</option>
+              <option value="icerik">📄 İçerik Talebi</option>
+              <option value="diger">📌 Diğer</option>
+            </select>
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label fw-semibold small">Ad Soyad <span class="text-muted fw-normal">(opsiyonel)</span></label>
+            <input type="text" name="ad" class="form-control form-control-sm" placeholder="Anonim gönderebilirsiniz">
+          </div>
+          <div class="col-12">
+            <label class="form-label fw-semibold small">E-posta <span class="text-muted fw-normal">(yanıt almak isterseniz)</span></label>
+            <input type="email" name="eposta" class="form-control form-control-sm" placeholder="ornek@email.com">
+          </div>
+          <div class="col-12">
+            <label class="form-label fw-semibold small">Mesajınız <span class="text-danger">*</span></label>
+            <textarea name="mesaj" class="form-control form-control-sm" rows="4" required placeholder="Detaylı yazmaya çalışın..."></textarea>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">
+              <i class="bi bi-send me-1"></i>Gönder
+            </button>
+          </div>
+        </div>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+
 </div>
 {% endblock %}

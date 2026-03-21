@@ -38,7 +38,17 @@ def anasayfa(request):
 
 
 def hakkinda(request):
-    return render(request, 'core/hakkinda.html')
+    from .models import Oneri
+    gonderildi = False
+    if request.method == 'POST':
+        Oneri.objects.create(
+            tur=request.POST.get('tur', 'oneri'),
+            ad=request.POST.get('ad', '').strip(),
+            eposta=request.POST.get('eposta', '').strip(),
+            mesaj=request.POST.get('mesaj', '').strip(),
+        )
+        gonderildi = True
+    return render(request, 'core/hakkinda.html', {'gonderildi': gonderildi})
 
 
 def iletisim(request):
