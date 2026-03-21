@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% block title %}{{ stadt.name }} — RLP Rehber{% endblock %}
+{% block breadcrumb %}<li class="breadcrumb-item active">{{ stadt.name }}</li>{% endblock %}
+
+{% block content %}
+<!-- Hero -->
+<section class="hero">
+  <div class="container text-center">
+    <h1><i class="bi bi-geo-alt-fill me-2"></i>{{ stadt.name }}</h1>
+    {% if stadt.beschreibung %}
+    <p class="mb-4">{{ stadt.beschreibung }}</p>
+    {% else %}
+    <p class="mb-4">{{ stadt.get_typ_display }} — Rheinland-Pfalz</p>
+    {% endif %}
+    <a href="/{{ stadt.slug }}/rehber/" class="btn btn-light btn-lg me-2">
+      <i class="bi bi-journal-bookmark-fill me-1"></i>Kaynaklara Bak
+    </a>
+    {% if stadt.auslaenderbehorde_url %}
+    <a href="{{ stadt.auslaenderbehorde_url }}" target="_blank" rel="noopener" class="btn btn-outline-light btn-lg me-2">
+      <i class="bi bi-building me-1"></i>Ausländerbehörde
+    </a>
+    {% endif %}
+    {% if stadt.termin_url %}
+    <a href="{{ stadt.termin_url }}" target="_blank" rel="noopener" class="btn btn-accent btn-lg">
+      <i class="bi bi-calendar-check me-1"></i>Randevu Al
+    </a>
+    {% endif %}
+  </div>
+</section>
+
+<div class="container mt-4">
+
+  <!-- Hızlı erişim -->
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-md-3">
+      <a href="/{{ stadt.slug }}/rehber/?kategori=resmi" class="rehber-kategori">
+        <span class="icon">🏛️</span>
+        <strong>Resmi İşlemler</strong>
+        <small class="text-muted d-block">Behörde, BAMF, Ehliyet</small>
+      </a>
+    </div>
+    <div class="col-6 col-md-3">
+      <a href="/rlp/almanca/" class="rehber-kategori">
+        <span class="icon">🇩🇪</span>
+        <strong>Almanca Çalışma</strong>
+        <small class="text-muted d-block">595 soru, 14 konu</small>
+      </a>
+    </div>
+    <div class="col-6 col-md-3">
+      <a href="/{{ stadt.slug }}/ilan/" class="rehber-kategori">
+        <span class="icon">🚗</span>
+        <strong>İlanlar</strong>
+        <small class="text-muted d-block">Araç & Ev</small>
+      </a>
+    </div>
+    <div class="col-6 col-md-3">
+      <a href="/{{ stadt.slug }}/forum/" class="rehber-kategori">
+        <span class="icon">💬</span>
+        <strong>Forum</strong>
+        <small class="text-muted d-block">Soru & Deneyim</small>
+      </a>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <!-- Son Duyurular -->
+    <div class="col-lg-6">
+      <div class="card h-100">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span><i class="bi bi-megaphone me-2"></i>Son Duyurular</span>
+          <a href="/{{ stadt.slug }}/duyurular/" class="btn btn-sm btn-outline-primary">Tümü</a>
+        </div>
+        <div class="card-body p-0">
+          {% for d in son_duyurular %}
+          <a href="/{{ stadt.slug }}/duyurular/{{ d.pk }}/" class="d-flex align-items-start p-3 border-bottom text-decoration-none text-dark hover-bg">
+            <div class="flex-grow-1">
+              <div class="fw-semibold">{{ d.baslik }}</div>
+              <small class="text-muted">{{ d.get_kategori_display }} &bull; {{ d.olusturulma|date:"d.m.Y" }}</small>
+            </div>
+            <i class="bi bi-chevron-right text-muted ms-2 mt-1"></i>
+          </a>
+          {% empty %}
+          <p class="text-muted p-3 mb-0">Henüz duyuru yok.</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Yaklaşan Etkinlikler -->
+    <div class="col-lg-6">
+      <div class="card h-100">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span><i class="bi bi-calendar3 me-2"></i>Yaklaşan Günler</span>
+          <a href="/{{ stadt.slug }}/takvim/" class="btn btn-sm btn-outline-primary">Takvim</a>
+        </div>
+        <div class="card-body p-0">
+          {% for e in yaklasan %}
+          <div class="d-flex align-items-center p-3 border-bottom">
+            <div class="me-3 text-center" style="min-width:48px">
+              <div class="fw-bold text-primary" style="font-size:1.3rem">{{ e.tarih|date:"d" }}</div>
+              <div class="text-muted" style="font-size:0.75rem">{{ e.tarih|date:"M" }}</div>
+            </div>
+            <div>
+              <div class="fw-semibold">{{ e.baslik }}</div>
+              <small class="text-muted">{{ e.get_tur_display }}</small>
+            </div>
+          </div>
+          {% empty %}
+          <p class="text-muted p-3 mb-0">Yaklaşan etkinlik yok.</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Son Blog Yazıları -->
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span><i class="bi bi-pencil-square me-2"></i>Blog</span>
+          <a href="/{{ stadt.slug }}/blog/" class="btn btn-sm btn-outline-primary">Tümü</a>
+        </div>
+        <div class="card-body p-0">
+          {% for y in son_yazilar %}
+          <a href="/{{ stadt.slug }}/blog/{{ y.slug }}/" class="d-flex align-items-start p-3 border-bottom text-decoration-none text-dark">
+            <div class="flex-grow-1">
+              <div class="fw-semibold">{{ y.baslik }}</div>
+              <small class="text-muted">{{ y.yazar.get_full_name|default:y.yazar.username }} &bull; {{ y.olusturulma|date:"d.m.Y" }}</small>
+            </div>
+            <i class="bi bi-chevron-right text-muted ms-2 mt-1"></i>
+          </a>
+          {% empty %}
+          <p class="text-muted p-3 mb-0">Henüz yazı yok.</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Son İlanlar -->
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span><i class="bi bi-grid me-2"></i>Son İlanlar</span>
+          <a href="/{{ stadt.slug }}/ilan/" class="btn btn-sm btn-outline-primary">Tümü</a>
+        </div>
+        <div class="card-body p-0">
+          {% for i in son_ilanlar %}
+          <a href="/{{ stadt.slug }}/ilan/{{ i.pk }}/" class="d-flex align-items-start p-3 border-bottom text-decoration-none text-dark">
+            <div class="flex-grow-1">
+              <div class="fw-semibold">{{ i.baslik }}</div>
+              <small class="text-muted">{{ i.get_kategori_display }}{% if i.fiyat %} &bull; {{ i.fiyat }} €{% endif %}</small>
+            </div>
+            <i class="bi bi-chevron-right text-muted ms-2 mt-1"></i>
+          </a>
+          {% empty %}
+          <p class="text-muted p-3 mb-0">Henüz ilan yok.</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

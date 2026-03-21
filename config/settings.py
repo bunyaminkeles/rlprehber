@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django_crontab',
 
     # Proje app'leri
+    'stadt',
     'core',
     'accounts',
     'rehber',
@@ -74,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'stadt.context_processors.alle_staedte',
             ],
         },
     },

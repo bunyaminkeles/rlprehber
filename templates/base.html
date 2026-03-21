@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Mainzer-Binger{% endblock %}</title>
+  <title>{% block title %}{% if stadt %}{{ stadt.name }} — RLP Rehber{% else %}RLP Rehber{% endif %}{% endblock %}</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   {% load static %}
@@ -16,42 +16,85 @@
 <nav class="navbar navbar-expand-lg">
   <div class="container">
     <a class="navbar-brand" href="{% url 'core:anasayfa' %}">
-      <i class="bi bi-geo-alt-fill me-1"></i>Mainzer-Binger
+      <i class="bi bi-geo-alt-fill me-1"></i>RLP Rehber
     </a>
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
       <i class="bi bi-list text-white fs-4"></i>
     </button>
     <div class="collapse navbar-collapse" id="navMenu">
       <ul class="navbar-nav me-auto ms-3 gap-1">
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'rehber:liste' %}"><i class="bi bi-journal-bookmark-fill me-1"></i>Kaynaklar</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'duyurular:liste' %}"><i class="bi bi-megaphone me-1"></i>Duyurular</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'takvim:takvim' %}"><i class="bi bi-calendar3 me-1"></i>Takvim</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'forum:liste' %}"><i class="bi bi-chat-dots me-1"></i>Forum</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'blog:liste' %}"><i class="bi bi-pencil-square me-1"></i>Blog</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'ilan:liste' %}"><i class="bi bi-grid me-1"></i>İlanlar</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'yerler:liste' %}"><i class="bi bi-geo-alt me-1"></i>Yerler</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'linkler:liste' %}"><i class="bi bi-link-45deg me-1"></i>Linkler</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'almanca:liste' %}"><i class="bi bi-translate me-1"></i>Almanca</a>
-        </li>
+        {% if stadt %}
+          {# Şehir bazlı menü #}
+          <li class="nav-item">
+            <a class="nav-link" href="/{{ stadt.slug }}/rehber/"><i class="bi bi-journal-bookmark-fill me-1"></i>Kaynaklar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/{{ stadt.slug }}/duyurular/"><i class="bi bi-megaphone me-1"></i>Duyurular</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/{{ stadt.slug }}/takvim/"><i class="bi bi-calendar3 me-1"></i>Takvim</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/{{ stadt.slug }}/forum/"><i class="bi bi-chat-dots me-1"></i>Forum</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/{{ stadt.slug }}/blog/"><i class="bi bi-pencil-square me-1"></i>Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/{{ stadt.slug }}/ilan/"><i class="bi bi-grid me-1"></i>İlanlar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/{{ stadt.slug }}/yerler/"><i class="bi bi-geo-alt me-1"></i>Yerler</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/{{ stadt.slug }}/linkler/"><i class="bi bi-link-45deg me-1"></i>Linkler</a>
+          </li>
+        {% endif %}
       </ul>
-      <ul class="navbar-nav ms-auto gap-1">
+
+      <ul class="navbar-nav ms-auto gap-1 align-items-center">
+        {# Şehir switcher #}
+        {% if stadt %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-warning fw-semibold" href="#" role="button" data-bs-toggle="dropdown">
+            <i class="bi bi-geo-fill me-1"></i>{{ stadt.name }}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><h6 class="dropdown-header">Şehir Değiştir</h6></li>
+            {% for s in alle_staedte %}
+              <li>
+                <a class="dropdown-item {% if s.slug == stadt.slug %}active{% endif %}" href="/{{ s.slug }}/">
+                  {{ s.name }}
+                  {% if s.typ == 'landkreis' %}<small class="text-muted ms-1">(Landkreis)</small>{% endif %}
+                </a>
+              </li>
+            {% endfor %}
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'core:anasayfa' %}"><i class="bi bi-house me-1"></i>Ana Sayfa</a></li>
+          </ul>
+        </li>
+        {% else %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            <i class="bi bi-geo-alt me-1"></i>Şehir Seç
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><h6 class="dropdown-header">Şehir Seçin</h6></li>
+            {% for s in alle_staedte %}
+              <li>
+                <a class="dropdown-item" href="/{{ s.slug }}/">
+                  {% if s.typ == 'kreisfrei' %}🏙️{% else %}🗺️{% endif %}
+                  {{ s.name }}
+                  {% if s.typ == 'landkreis' %}<small class="text-muted ms-1">(Landkreis)</small>{% endif %}
+                </a>
+              </li>
+            {% empty %}
+              <li><span class="dropdown-item text-muted">Henüz şehir yok</span></li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% endif %}
+
         {% if user.is_authenticated %}
           {% if user.is_staff %}
           <li class="nav-item">
@@ -79,6 +122,19 @@
   </div>
 </nav>
 
+{# Breadcrumb — şehir bağlamında #}
+{% if stadt %}
+<div class="container mt-2">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb small mb-0">
+      <li class="breadcrumb-item"><a href="{% url 'core:anasayfa' %}">Ana Sayfa</a></li>
+      <li class="breadcrumb-item"><a href="/{{ stadt.slug }}/">{{ stadt.name }}</a></li>
+      {% block breadcrumb %}{% endblock %}
+    </ol>
+  </nav>
+</div>
+{% endif %}
+
 <!-- Flash mesajları -->
 {% if messages %}
 <div class="container mt-2">
@@ -101,8 +157,8 @@
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-6">
-        <strong class="text-white">Mainzer-Binger</strong> &mdash;
-        Mainz ve çevresinde yeni başlayanlar için kaynak platformu.
+        <strong class="text-white">RLP Rehber</strong> &mdash;
+        Rheinland-Pfalz'da yeni başlayanlar için kaynak platformu.
       </div>
       <div class="col-md-6 text-md-end mt-2 mt-md-0">
         <a href="{% url 'core:iletisim' %}"><i class="bi bi-envelope me-1"></i>İletişim</a>

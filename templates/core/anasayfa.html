@@ -1,16 +1,13 @@
 {% extends 'base.html' %}
-{% block title %}Mainzer-Binger — Mainz'a Hoş Geldiniz{% endblock %}
+{% block title %}RLP Rehber — Rheinland-Pfalz Türk Topluluğu{% endblock %}
 
 {% block content %}
 <!-- Hero -->
 <section class="hero">
   <div class="container text-center">
-    <h1><i class="bi bi-geo-alt-fill me-2"></i>Mainzer-Binger</h1>
-    <p class="mb-4">Mainz ve çevresinde yeni bir başlangıç yapıyorsanız doğru yerdesiniz.<br>
-    Resmi işlemler, günlük yaşam, forum ve çok daha fazlası.</p>
-    <a href="{% url 'rehber:liste' %}" class="btn btn-light btn-lg me-2">
-      <i class="bi bi-journal-bookmark-fill me-1"></i>Kaynaklara Bak
-    </a>
+    <h1><i class="bi bi-map me-2"></i>RLP Rehber</h1>
+    <p class="mb-4">Rheinland-Pfalz'da yeni bir başlangıç yapıyorsanız doğru yerdesiniz.<br>
+    Şehrinizi seçin, size özel bilgilere ulaşın.</p>
     {% if not user.is_authenticated %}
     <a href="{% url 'account_signup' %}" class="btn btn-accent btn-lg">
       <i class="bi bi-person-plus me-1"></i>Üye Ol
@@ -19,131 +16,118 @@
   </div>
 </section>
 
-<div class="container mt-4">
-
-  <!-- Hızlı erişim kategorileri -->
-  <div class="row g-3 mb-4">
-    <div class="col-6 col-md-3">
-      <a href="{% url 'rehber:liste' %}?kategori=resmi" class="rehber-kategori">
-        <span class="icon">🏛️</span>
-        <strong>Resmi İşlemler</strong>
-        <small class="text-muted d-block">Behörde, BAMF, Ehliyet</small>
-      </a>
-    </div>
-    <div class="col-6 col-md-3">
-      <a href="{% url 'almanca:liste' %}" class="rehber-kategori">
-        <span class="icon">🇩🇪</span>
-        <strong>Almanca Çalışma</strong>
-        <small class="text-muted d-block">595 soru, 14 konu</small>
-      </a>
-    </div>
-    <div class="col-6 col-md-3">
-      <a href="{% url 'ilan:liste' %}" class="rehber-kategori">
-        <span class="icon">🚗</span>
-        <strong>İlanlar</strong>
-        <small class="text-muted d-block">Araç & Ev</small>
-      </a>
-    </div>
-    <div class="col-6 col-md-3">
-      <a href="{% url 'forum:liste' %}" class="rehber-kategori">
-        <span class="icon">💬</span>
-        <strong>Forum</strong>
-        <small class="text-muted d-block">Soru & Deneyim</small>
-      </a>
-    </div>
-  </div>
-
+<div class="container mt-4 mb-5">
   <div class="row g-4">
-    <!-- Son Duyurular -->
-    <div class="col-lg-6">
-      <div class="card h-100">
+
+    <!-- Sol: Son Forum Konuları -->
+    <div class="col-lg-4">
+      <div class="card shadow-sm h-100">
         <div class="card-header d-flex justify-content-between align-items-center">
-          <span><i class="bi bi-megaphone me-2"></i>Son Duyurular</span>
-          <a href="{% url 'duyurular:liste' %}" class="btn btn-sm btn-outline-primary">Tümü</a>
+          <span class="fw-semibold"><i class="bi bi-chat-dots me-2 text-primary"></i>Son Konular</span>
+          <a href="/rlp/forum/" class="small text-muted text-decoration-none">Tümü →</a>
         </div>
-        <div class="card-body p-0">
-          {% for d in son_duyurular %}
-          <a href="{% url 'duyurular:detay' d.pk %}" class="d-flex align-items-start p-3 border-bottom text-decoration-none text-dark hover-bg">
-            <div class="flex-grow-1">
-              <div class="fw-semibold">{{ d.baslik }}</div>
-              <small class="text-muted">{{ d.get_kategori_display }} &bull; {{ d.olusturulma|date:"d.m.Y" }}</small>
+        <div class="list-group list-group-flush">
+          {% for konu in son_konular %}
+          <a href="/{% if konu.scope == 'stadt' and konu.stadt %}{{ konu.stadt.slug }}{% else %}rlp{% endif %}/forum/konu/{{ konu.pk }}/"
+             class="list-group-item list-group-item-action px-3 py-2">
+            <div class="fw-semibold small text-truncate">{{ konu.baslik }}</div>
+            <div class="d-flex justify-content-between mt-1">
+              <span class="badge {% if konu.scope == 'eyalet' %}bg-secondary{% else %}bg-primary{% endif %} rounded-pill" style="font-size:.68rem;">
+                {% if konu.scope == 'eyalet' %}🌐 RLP{% elif konu.stadt %}🏙️ {{ konu.stadt.name }}{% else %}—{% endif %}
+              </span>
+              <small class="text-muted">{{ konu.olusturulma|date:"d.m.Y" }}</small>
             </div>
-            <i class="bi bi-chevron-right text-muted ms-2 mt-1"></i>
           </a>
           {% empty %}
-          <p class="text-muted p-3 mb-0">Henüz duyuru yok.</p>
+          <div class="list-group-item text-muted small py-4 text-center">Henüz konu yok.</div>
           {% endfor %}
         </div>
       </div>
     </div>
 
-    <!-- Yaklaşan Etkinlikler -->
-    <div class="col-lg-6">
-      <div class="card h-100">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <span><i class="bi bi-calendar3 me-2"></i>Yaklaşan Günler</span>
-          <a href="{% url 'takvim:takvim' %}" class="btn btn-sm btn-outline-primary">Takvim</a>
+    <!-- Orta: RLP Modülleri -->
+    <div class="col-lg-4">
+      <h5 class="fw-semibold mb-3">
+        <i class="bi bi-globe me-2 text-primary"></i>Tüm RLP İçin
+      </h5>
+      <div class="row g-3">
+        <div class="col-6">
+          <a href="/rlp/almanca/" class="rehber-kategori">
+            <span class="icon">🇩🇪</span>
+            <strong>Almanca Çalışma</strong>
+            <small class="text-muted d-block">595 soru, 14 konu</small>
+          </a>
         </div>
-        <div class="card-body p-0">
-          {% for e in yaklasan %}
-          <div class="d-flex align-items-center p-3 border-bottom">
-            <div class="me-3 text-center" style="min-width:48px">
-              <div class="fw-bold text-primary" style="font-size:1.3rem">{{ e.tarih|date:"d" }}</div>
-              <div class="text-muted" style="font-size:0.75rem">{{ e.tarih|date:"M" }}</div>
-            </div>
-            <div>
-              <div class="fw-semibold">{{ e.baslik }}</div>
-              <small class="text-muted">{{ e.get_tur_display }}</small>
-            </div>
-          </div>
-          {% empty %}
-          <p class="text-muted p-3 mb-0">Yaklaşan etkinlik yok.</p>
-          {% endfor %}
+        <div class="col-6">
+          <a href="/rlp/rehber/" class="rehber-kategori">
+            <span class="icon">📋</span>
+            <strong>Genel Kaynaklar</strong>
+            <small class="text-muted d-block">Tüm RLP için</small>
+          </a>
+        </div>
+        <div class="col-6">
+          <a href="/rlp/blog/" class="rehber-kategori">
+            <span class="icon">✍️</span>
+            <strong>Blog</strong>
+            <small class="text-muted d-block">Yazılar & Deneyimler</small>
+          </a>
+        </div>
+        <div class="col-6">
+          <a href="/rlp/duyurular/" class="rehber-kategori">
+            <span class="icon">📢</span>
+            <strong>Duyurular</strong>
+            <small class="text-muted d-block">RLP geneli haberler</small>
+          </a>
+        </div>
+        <div class="col-6">
+          <a href="/rlp/forum/" class="rehber-kategori">
+            <span class="icon">💬</span>
+            <strong>Forum</strong>
+            <small class="text-muted d-block">RLP geneli tartışmalar</small>
+          </a>
         </div>
       </div>
     </div>
 
-    <!-- Son Blog Yazıları -->
-    <div class="col-lg-6">
-      <div class="card">
+    <!-- Sağ: İlanlar -->
+    <div class="col-lg-4">
+      <div class="card shadow-sm mb-3">
         <div class="card-header d-flex justify-content-between align-items-center">
-          <span><i class="bi bi-pencil-square me-2"></i>Blog</span>
-          <a href="{% url 'blog:liste' %}" class="btn btn-sm btn-outline-primary">Tümü</a>
+          <span class="fw-semibold"><i class="bi bi-tag me-2 text-primary"></i>Satılık / Kiralık</span>
         </div>
-        <div class="card-body p-0">
-          {% for y in son_yazilar %}
-          <a href="{% url 'blog:detay' y.slug %}" class="d-flex align-items-start p-3 border-bottom text-decoration-none text-dark">
-            <div class="flex-grow-1">
-              <div class="fw-semibold">{{ y.baslik }}</div>
-              <small class="text-muted">{{ y.yazar.get_full_name|default:y.yazar.username }} &bull; {{ y.olusturulma|date:"d.m.Y" }}</small>
+        <div class="list-group list-group-flush">
+          {% for i in son_satilik %}
+          <a href="/{% if i.stadt %}{{ i.stadt.slug }}{% else %}rlp{% endif %}/ilan/{{ i.pk }}/"
+             class="list-group-item list-group-item-action px-3 py-2">
+            <div class="fw-semibold small text-truncate">{{ i.baslik }}</div>
+            <div class="d-flex justify-content-between mt-1">
+              <small class="text-muted">{{ i.get_kategori_display }}</small>
+              {% if i.fiyat %}<span class="text-primary fw-semibold small">{{ i.fiyat }} €</span>{% endif %}
             </div>
-            <i class="bi bi-chevron-right text-muted ms-2 mt-1"></i>
+            {% if i.stadt %}<span class="badge bg-light text-muted border" style="font-size:.65rem;">{{ i.stadt.name }}</span>{% endif %}
           </a>
           {% empty %}
-          <p class="text-muted p-3 mb-0">Henüz yazı yok.</p>
+          <div class="list-group-item text-muted small py-3 text-center">Henüz ilan yok.</div>
           {% endfor %}
         </div>
       </div>
-    </div>
 
-    <!-- Son İlanlar -->
-    <div class="col-lg-6">
-      <div class="card">
+      <div class="card shadow-sm">
         <div class="card-header d-flex justify-content-between align-items-center">
-          <span><i class="bi bi-grid me-2"></i>Son İlanlar</span>
-          <a href="{% url 'ilan:liste' %}" class="btn btn-sm btn-outline-primary">Tümü</a>
+          <span class="fw-semibold"><i class="bi bi-search me-2 text-warning"></i>Aranıyor</span>
         </div>
-        <div class="card-body p-0">
-          {% for i in son_ilanlar %}
-          <a href="{% url 'ilan:detay' i.pk %}" class="d-flex align-items-start p-3 border-bottom text-decoration-none text-dark">
-            <div class="flex-grow-1">
-              <div class="fw-semibold">{{ i.baslik }}</div>
-              <small class="text-muted">{{ i.get_kategori_display }}{% if i.fiyat %} &bull; {{ i.fiyat }} €{% endif %}</small>
+        <div class="list-group list-group-flush">
+          {% for i in son_araniyor %}
+          <a href="/{% if i.stadt %}{{ i.stadt.slug }}{% else %}rlp{% endif %}/ilan/{{ i.pk }}/"
+             class="list-group-item list-group-item-action px-3 py-2">
+            <div class="fw-semibold small text-truncate">{{ i.baslik }}</div>
+            <div class="d-flex justify-content-between mt-1">
+              <small class="text-muted">{{ i.get_kategori_display }}</small>
             </div>
-            <i class="bi bi-chevron-right text-muted ms-2 mt-1"></i>
+            {% if i.stadt %}<span class="badge bg-light text-muted border" style="font-size:.65rem;">{{ i.stadt.name }}</span>{% endif %}
           </a>
           {% empty %}
-          <p class="text-muted p-3 mb-0">Henüz ilan yok.</p>
+          <div class="list-group-item text-muted small py-3 text-center">Henüz ilan yok.</div>
           {% endfor %}
         </div>
       </div>

@@ -9,7 +9,7 @@
       <div class="card h-100">
         <div class="card-body">
           <span class="badge-duyuru mb-2 d-inline-block">{{ d.get_kategori_display }}</span>
-          <h6 class="card-title"><a href="{% url 'duyurular:detay' d.pk %}" class="text-dark text-decoration-none">{{ d.baslik }}</a></h6>
+          <h6 class="card-title"><a href="/{{ stadt.slug }}/duyurular/{{ d.pk }}/" class="text-dark text-decoration-none">{{ d.baslik }}</a></h6>
           <p class="card-text text-muted small">{{ d.icerik|truncatechars:120 }}</p>
           <small class="text-muted">{{ d.olusturulma|date:"d.m.Y" }}</small>
         </div>

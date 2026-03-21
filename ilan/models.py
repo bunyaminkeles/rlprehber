@@ -1,5 +1,11 @@
 from django.db import models
+from django.db.models import SET_NULL
 from django.contrib.auth.models import User
+
+SCOPE_SECENEKLERI = [
+    ('stadt', 'Şehre Özel'),
+    ('eyalet', 'RLP Geneli'),
+]
 
 ILAN_KATEGORI = [
     # Satılık / Kiralık
@@ -21,6 +27,8 @@ ARANIYOR_KATEGORILER = {'arac_araniyor', 'ev_araniyor', 'is_araniyor', 'eleman_a
 
 
 class Ilan(models.Model):
+    stadt       = models.ForeignKey('stadt.Stadt', null=True, blank=True, on_delete=SET_NULL, verbose_name='Şehir')
+    scope       = models.CharField(max_length=10, choices=SCOPE_SECENEKLERI, default='stadt', verbose_name='Kapsam')
     sahip       = models.ForeignKey(User, on_delete=models.CASCADE)
     baslik      = models.CharField(max_length=200)
     icerik      = models.TextField()

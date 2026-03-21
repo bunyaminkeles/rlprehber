@@ -8,7 +8,7 @@
   <div class="row g-3">
     {% for s in sayfalar %}
     <div class="col-md-4 col-6">
-      <a href="{% if s.tip == 'link' or not s.slug %}{{ s.url|default:'#' }}{% else %}{% url 'rehber:detay' s.slug %}{% endif %}"
+      <a href="{% if s.tip == 'link' or not s.slug %}{{ s.url|default:'#' }}{% else %}/{{ stadt.slug }}/rehber/{{ s.slug }}/{% endif %}"
          {% if s.tip == 'link' %}target="_blank" rel="noopener"{% endif %}
          class="rehber-kategori">
         <span class="icon"><i class="bi {{ s.icon }}"></i></span>

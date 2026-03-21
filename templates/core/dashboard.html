@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Panelim — Mainzer-Binger{% endblock %}
+{% block title %}Panelim — RLP Rehber{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -343,7 +343,7 @@
       </div>
     </div>
     <div class="col-6 col-sm-4 col-md">
-      <a href="{% url 'takvim:takvim' %}" class="stat-card">
+      <a href="/{{ stadt.slug }}/takvim/" class="stat-card">
         <div class="stat-icon teal"><i class="bi bi-calendar-event-fill"></i></div>
         <div>
           <div class="stat-label">Etkinlik</div>
@@ -353,7 +353,7 @@
       </a>
     </div>
     <div class="col-6 col-sm-4 col-md">
-      <a href="{% url 'ilan:liste' %}" class="stat-card">
+      <a href="/{{ stadt.slug }}/ilan/" class="stat-card">
         <div class="stat-icon orange"><i class="bi bi-grid-fill"></i></div>
         <div>
           <div class="stat-label">İlanlarım</div>
@@ -363,7 +363,7 @@
       </a>
     </div>
     <div class="col-6 col-sm-4 col-md">
-      <a href="{% url 'forum:liste' %}" class="stat-card">
+      <a href="/{{ stadt.slug }}/forum/" class="stat-card">
         <div class="stat-icon purple"><i class="bi bi-chat-dots-fill"></i></div>
         <div>
           <div class="stat-label">Konularım</div>
@@ -380,35 +380,35 @@
       <i class="bi bi-lightning-charge me-1"></i>Hızlı Erişim
     </h6>
     <div class="quick-nav-grid">
-      <a href="{% url 'rehber:liste' %}" class="quick-nav-item">
+      <a href="/{{ stadt.slug }}/rehber/" class="quick-nav-item">
         <i class="bi bi-book"></i>
         <span>Kaynaklar</span>
       </a>
-      <a href="{% url 'duyurular:liste' %}" class="quick-nav-item">
+      <a href="/{{ stadt.slug }}/duyurular/" class="quick-nav-item">
         <i class="bi bi-megaphone"></i>
         <span>Duyurular</span>
       </a>
-      <a href="{% url 'takvim:takvim' %}" class="quick-nav-item">
+      <a href="/{{ stadt.slug }}/takvim/" class="quick-nav-item">
         <i class="bi bi-calendar3"></i>
         <span>Takvim</span>
       </a>
-      <a href="{% url 'forum:liste' %}" class="quick-nav-item">
+      <a href="/{{ stadt.slug }}/forum/" class="quick-nav-item">
         <i class="bi bi-chat-dots"></i>
         <span>Forum</span>
       </a>
-      <a href="{% url 'blog:liste' %}" class="quick-nav-item">
+      <a href="/{{ stadt.slug }}/blog/" class="quick-nav-item">
         <i class="bi bi-pencil-square"></i>
         <span>Blog</span>
       </a>
-      <a href="{% url 'ilan:liste' %}" class="quick-nav-item">
+      <a href="/{{ stadt.slug }}/ilan/" class="quick-nav-item">
         <i class="bi bi-grid"></i>
         <span>İlanlar</span>
       </a>
-      <a href="{% url 'yerler:liste' %}" class="quick-nav-item">
+      <a href="/{{ stadt.slug }}/yerler/" class="quick-nav-item">
         <i class="bi bi-geo-alt"></i>
         <span>Yerler</span>
       </a>
-      <a href="{% url 'linkler:liste' %}" class="quick-nav-item">
+      <a href="/{{ stadt.slug }}/linkler/" class="quick-nav-item">
         <i class="bi bi-link-45deg"></i>
         <span>Linkler</span>
       </a>
@@ -428,10 +428,10 @@
             <i class="bi bi-megaphone-fill text-primary"></i>
             Son Duyurular
           </div>
-          <a href="{% url 'duyurular:liste' %}" class="btn btn-sm btn-outline-primary" style="font-size:0.8rem;padding:0.25rem 0.65rem;">Tümü</a>
+          <a href="/{{ stadt.slug }}/duyurular/" class="btn btn-sm btn-outline-primary" style="font-size:0.8rem;padding:0.25rem 0.65rem;">Tümü</a>
         </div>
         {% for d in son_duyurular %}
-          <a href="{% url 'duyurular:detay' d.pk %}" class="list-item-link">
+          <a href="/{{ stadt.slug }}/duyurular/{{ d.pk }}/" class="list-item-link">
             <div class="list-item-icon"><i class="bi bi-bell"></i></div>
             <div class="list-item-body">
               <div class="list-item-title">{{ d.baslik }}</div>
@@ -458,14 +458,14 @@
             Son Forum Konuları
           </div>
           <div class="d-flex gap-2">
-            <a href="{% url 'forum:liste' %}" class="btn btn-sm btn-accent" style="font-size:0.8rem;padding:0.25rem 0.65rem;">
+            <a href="/{{ stadt.slug }}/forum/" class="btn btn-sm btn-accent" style="font-size:0.8rem;padding:0.25rem 0.65rem;">
               <i class="bi bi-plus me-1"></i>Konu Aç
             </a>
-            <a href="{% url 'forum:liste' %}" class="btn btn-sm btn-outline-primary" style="font-size:0.8rem;padding:0.25rem 0.65rem;">Tümü</a>
+            <a href="/{{ stadt.slug }}/forum/" class="btn btn-sm btn-outline-primary" style="font-size:0.8rem;padding:0.25rem 0.65rem;">Tümü</a>
           </div>
         </div>
         {% for k in son_konular %}
-          <a href="{% url 'forum:konu' k.pk %}" class="list-item-link">
+          <a href="/{{ stadt.slug }}/forum/konu/{{ k.pk }}/" class="list-item-link">
             <div class="forum-row-icon"><i class="bi bi-chat-text"></i></div>
             <div class="list-item-body">
               <div class="list-item-title">{{ k.baslik }}</div>
@@ -496,7 +496,7 @@
             <i class="bi bi-calendar-event-fill text-success"></i>
             Yaklaşan Etkinlikler
           </div>
-          <a href="{% url 'takvim:takvim' %}" class="btn btn-sm btn-outline-primary" style="font-size:0.8rem;padding:0.25rem 0.65rem;">Takvim</a>
+          <a href="/{{ stadt.slug }}/takvim/" class="btn btn-sm btn-outline-primary" style="font-size:0.8rem;padding:0.25rem 0.65rem;">Takvim</a>
         </div>
         {% for e in yaklasan %}
           <div class="list-item-plain">
@@ -547,7 +547,7 @@
             <i class="bi bi-grid-fill text-warning"></i>
             İlanlarım
           </div>
-          <a href="{% url 'ilan:ver' %}" class="btn btn-sm btn-accent" style="font-size:0.8rem;padding:0.25rem 0.65rem;">
+          <a href="/{{ stadt.slug }}/ilan/ver/" class="btn btn-sm btn-accent" style="font-size:0.8rem;padding:0.25rem 0.65rem;">
             <i class="bi bi-plus"></i> Yeni
           </a>
         </div>
@@ -579,10 +579,10 @@
             <i class="bi bi-pencil-fill text-info"></i>
             Son Blog Yazıları
           </div>
-          <a href="{% url 'blog:liste' %}" class="btn btn-sm btn-outline-primary" style="font-size:0.8rem;padding:0.25rem 0.65rem;">Tümü</a>
+          <a href="/{{ stadt.slug }}/blog/" class="btn btn-sm btn-outline-primary" style="font-size:0.8rem;padding:0.25rem 0.65rem;">Tümü</a>
         </div>
         {% for b in son_bloglar %}
-          <a href="{% url 'blog:detay' b.slug %}" class="blog-mini">
+          <a href="/{{ stadt.slug }}/blog/{{ b.slug }}/" class="blog-mini">
             <div class="blog-mini-icon"><i class="bi bi-pencil-square"></i></div>
             <div class="list-item-body">
               <div class="list-item-title">{{ b.baslik }}</div>

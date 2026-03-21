@@ -10,7 +10,12 @@ from blog.models import BlogYazisi
 
 @login_required
 def dashboard(request):
+    from stadt.models import Stadt
     profil, _ = Profil.objects.get_or_create(kullanici=request.user)
+
+    # Kullanıcının şehrini bul, yoksa ilk aktif şehri kullan
+    stadt = Stadt.objects.filter(aktiv=True).first()
+
     son_duyurular  = Duyuru.objects.filter(yayinda=True).order_by('-olusturulma')[:5]
     yaklasan       = Etkinlik.objects.filter(tarih__gte=timezone.now().date()).order_by('tarih')[:5]
     benim_ilanim   = Ilan.objects.filter(sahip=request.user).order_by('-olusturulma')[:5]
@@ -19,6 +24,7 @@ def dashboard(request):
     benim_konularim = Konu.objects.filter(yazar=request.user).count()
     return render(request, 'core/dashboard.html', {
         'profil': profil,
+        'stadt': stadt,
         'son_duyurular': son_duyurular,
         'yaklasan': yaklasan,
         'benim_ilanim': benim_ilanim,

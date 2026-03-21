@@ -1,4 +1,10 @@
 from django.db import models
+from django.db.models import SET_NULL
+
+SCOPE_SECENEKLERI = [
+    ('stadt', 'Şehre Özel'),
+    ('eyalet', 'RLP Geneli'),
+]
 
 KAYNAK_KATEGORI = [
     ('resmi', 'Resmi İşlemler & Kurumlar'),
@@ -21,6 +27,8 @@ KAYNAK_TIPI = [
 ]
 
 class Kaynak(models.Model):
+    stadt       = models.ForeignKey('stadt.Stadt', null=True, blank=True, on_delete=SET_NULL, verbose_name='Şehir')
+    scope       = models.CharField(max_length=10, choices=SCOPE_SECENEKLERI, default='eyalet', verbose_name='Kapsam')
     baslik      = models.CharField(max_length=200)
     slug        = models.SlugField(max_length=220, unique=True, blank=True, null=True, help_text='Sadece dahili sayfalar için kullanılır.')
     tip         = models.CharField(max_length=10, choices=KAYNAK_TIPI, default='sayfa')

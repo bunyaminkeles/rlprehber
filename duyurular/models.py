@@ -1,4 +1,10 @@
 from django.db import models
+from django.db.models import SET_NULL
+
+SCOPE_SECENEKLERI = [
+    ('stadt', 'Şehre Özel'),
+    ('eyalet', 'RLP Geneli'),
+]
 
 KATEGORI_SECENEKLERI = [
     ('belediye', 'Belediye'),
@@ -9,6 +15,8 @@ KATEGORI_SECENEKLERI = [
 ]
 
 class Duyuru(models.Model):
+    stadt       = models.ForeignKey('stadt.Stadt', null=True, blank=True, on_delete=SET_NULL, verbose_name='Şehir')
+    scope       = models.CharField(max_length=10, choices=SCOPE_SECENEKLERI, default='eyalet', verbose_name='Kapsam')
     baslik      = models.CharField(max_length=300)
     icerik      = models.TextField()
     kategori    = models.CharField(max_length=20, choices=KATEGORI_SECENEKLERI, default='genel')

@@ -1,4 +1,10 @@
 from django.db import models
+from django.db.models import SET_NULL
+
+SCOPE_SECENEKLERI = [
+    ('stadt', 'Şehre Özel'),
+    ('eyalet', 'RLP Geneli'),
+]
 
 LINK_KATEGORI = [
     ('resmi', 'Resmi Kurum'),
@@ -12,6 +18,8 @@ LINK_KATEGORI = [
 ]
 
 class OnemliLink(models.Model):
+    stadt       = models.ForeignKey('stadt.Stadt', null=True, blank=True, on_delete=SET_NULL, verbose_name='Şehir')
+    scope       = models.CharField(max_length=10, choices=SCOPE_SECENEKLERI, default='eyalet', verbose_name='Kapsam')
     ad          = models.CharField(max_length=200)
     url         = models.URLField()
     kategori    = models.CharField(max_length=20, choices=LINK_KATEGORI)
