@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}Arama{% if q %} — {{ q }}{% endif %}{% endblock %}
+
+{% block content %}
+<div class="container mt-4 mb-5" style="max-width:780px">
+
+  <form method="get" action="{% url 'core:arama' %}" class="mb-4">
+    <div class="input-group input-group-lg shadow-sm">
+      <span class="input-group-text bg-white border-end-0">
+        <i class="bi bi-search text-muted"></i>
+      </span>
+      <input type="text" name="q" class="form-control border-start-0 ps-0"
+             value="{{ q }}" placeholder="Forum, blog, duyuru, kaynak, yer ara..."
+             autofocus autocomplete="off">
+      <button type="submit" class="btn btn-primary px-4">Ara</button>
+    </div>
+  </form>
+
+  {% if q %}
+    {% if sonuclar %}
+    <p class="text-muted small mb-3">
+      <strong>{{ sonuclar|length }}</strong> sonuç bulundu — "<strong>{{ q }}</strong>"
+    </p>
+    <div class="list-group shadow-sm">
+      {% for s in sonuclar %}
+      <a href="{{ s.url }}" class="list-group-item list-group-item-action py-3 px-4"
+         {% if s.url|slice:":4" == "http" %}target="_blank" rel="noopener"{% endif %}>
+        <div class="d-flex align-items-start gap-3">
+          <span class="text-primary mt-1"><i class="bi {{ s.icon }} fs-5"></i></span>
+          <div class="flex-grow-1">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <span class="badge bg-light text-muted border" style="font-size:.68rem;">{{ s.tip }}</span>
+              <span class="badge {% if s.stadt == 'RLP' %}bg-secondary{% else %}bg-primary{% endif %} rounded-pill" style="font-size:.68rem;">
+                {% if s.stadt == 'RLP' %}🌐 RLP{% else %}🏙️ {{ s.stadt }}{% endif %}
+              </span>
+            </div>
+            <div class="fw-semibold">{{ s.baslik }}</div>
+            {% if s.ozet %}
+            <small class="text-muted">{{ s.ozet|truncatechars:140 }}</small>
+            {% endif %}
+          </div>
+          <i class="bi bi-chevron-right text-muted mt-1 flex-shrink-0"></i>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-5 text-muted">
+      <i class="bi bi-search" style="font-size:3rem;opacity:0.2;display:block;margin-bottom:1rem;"></i>
+      "<strong>{{ q }}</strong>" için sonuç bulunamadı.
+      <div class="mt-2 small">Farklı bir anahtar kelime deneyin.</div>
+    </div>
+    {% endif %}
+  {% endif %}
+
+</div>
+{% endblock %}
