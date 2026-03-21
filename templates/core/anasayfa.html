@@ -13,6 +13,18 @@
       <i class="bi bi-person-plus me-1"></i>Üye Ol
     </a>
     {% endif %}
+    <div class="mt-4 mx-auto" style="max-width:520px">
+      <form method="get" action="{% url 'core:arama' %}">
+        <div class="input-group input-group-lg shadow">
+          <input type="text" name="q" class="form-control border-0"
+                 placeholder="Forum, blog, duyuru, kaynak, yer ara..."
+                 autocomplete="off">
+          <button type="submit" class="btn btn-accent px-4">
+            <i class="bi bi-search"></i>
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </section>
 
