@@ -99,6 +99,10 @@ REHBER = [
          url='https://www.meineschufa.de/service/datenkopie',
          kategori='resmi', icon='bi-file-person', sira=5, yayinda=True,
          ozet="SCHUFA'dan yılda bir kez ücretsiz alınabilen kişisel kredi ve borç bilgisi raporu."),
+    dict(baslik='Almanca Kurs Haritası', tip='link',
+         url='https://bamf-navi.bamf.de/de/Themen/Integrationskurse/?coord=443065.5539144&kursart=1&',
+         kategori='almanca', icon='bi-map', sira=1, yayinda=True,
+         ozet='BAMF entegrasyon kursları haritası — yakınınızdaki Almanca kurslarını bulun.'),
 ]
 
 eklendi = 0
