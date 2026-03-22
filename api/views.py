@@ -11,7 +11,7 @@ def health(request):
     return JsonResponse({
         'status': 'ok',
         'timestamp': timezone.now().isoformat(),
-        'service': 'mainzer-binger',
+        'service': 'rlp-rehber',
     })
 
 
