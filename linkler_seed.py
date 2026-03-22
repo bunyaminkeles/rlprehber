@@ -71,6 +71,10 @@ LINKLER = [
     dict(ad='KV RLP — Doktor Arama (Rheinland-Pfalz)', url='https://www.kv-rlp.de/',
          kategori='saglik', sira=4,
          aciklama='Rheinland-Pfalz Kassenärztliche Vereinigung — bölgedeki aile hekimi ve uzman doktor arama platformu.'),
+    # ── Eğitim
+    dict(ad='BAMF Navi — Entegrasyon Kursu Haritası', url='https://bamf-navi.bamf.de/de/Themen/Integrationskurse/',
+         kategori='egitim', sira=1,
+         aciklama='BAMF resmi entegrasyon kursu arama aracı — bölgenizdeki Almanca ve oryantasyon kurslarını bulun.'),
 ]
 
 # ── Rehber Kaynakları (sadece PDF ve randevu linkleri) ───────────
