@@ -52,15 +52,7 @@
         {% endif %}
       </ul>
 
-      <form class="d-flex me-2" method="get" action="{% url 'core:arama' %}">
-        <div class="input-group input-group-sm">
-          <input type="text" name="q" class="form-control" placeholder="Ara..." style="min-width:160px;background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);color:#fff;" autocomplete="off">
-          <button class="btn btn-sm" type="submit" style="background:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.3);color:#fff;">
-            <i class="bi bi-search"></i>
-          </button>
-        </div>
-      </form>
-      <ul class="navbar-nav ms-auto gap-1 align-items-center">
+<ul class="navbar-nav ms-auto gap-1 align-items-center">
         {# Şehir switcher #}
         {% if stadt %}
         <li class="nav-item dropdown">
