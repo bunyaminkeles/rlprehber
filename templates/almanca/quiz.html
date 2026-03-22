@@ -224,6 +224,12 @@ document.querySelectorAll('.secim-btn').forEach(btn => {
     if (veri.gecmis_idx > 0) {
       document.getElementById('onceki-btn').href = QUIZ_URL + '&goto=' + (veri.gecmis_idx - 1);
     }
+
+    // Sonraki buton: cevap verildi, ?atla=1 yerine düz yeni soru URL'sine yönlendir
+    const sonrakiBtn = document.getElementById('sonraki-btn');
+    if (sonrakiBtn) {
+      sonrakiBtn.href = QUIZ_URL;
+    }
   });
 });
 </script>
