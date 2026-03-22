@@ -127,13 +127,13 @@ ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_REDIRECT_URL = '/'
 
-# E-posta — SendGrid SMTP
+# E-posta — Resend SMTP
 EMAIL_BACKEND   = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST      = 'smtp.sendgrid.net'
+EMAIL_HOST      = 'smtp.resend.com'
 EMAIL_PORT      = 587
 EMAIL_USE_TLS   = True
-EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = config('SENDGRID_API_KEY', default='')
+EMAIL_HOST_USER = 'resend'
+EMAIL_HOST_PASSWORD = config('RESEND_API_KEY', default='')
 DEFAULT_FROM_EMAIL  = config('DEFAULT_FROM_EMAIL', default='noreply@rlprehber.de')
 
 # Zamanlanmış görevler
