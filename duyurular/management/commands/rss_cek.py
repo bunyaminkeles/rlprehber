@@ -1,5 +1,5 @@
 """
-Mainz Belediyesi, T.C. Dışişleri ve Mainz Konsolosluğu'ndan duyuru çeker.
+Mainz ve Mainz-Bingen belediyeleri ile T.C. kurumlarından duyuru çeker.
 Kullanım: python manage.py rss_cek
 """
 import feedparser
@@ -8,11 +8,20 @@ from bs4 import BeautifulSoup
 from django.core.management.base import BaseCommand
 from duyurular.models import Duyuru
 
+# stadt_slug → scope='stadt' (şehre özel)
+# stadt_slug yok → scope='eyalet' (her şehre görünür)
 RSS_KAYNAKLAR = [
     {
-        'url':      'https://www.mainz.de/pressemeldungen/?sp%3Aout=rss',
-        'kategori': 'belediye',
-        'kaynak':   'Mainz Belediyesi',
+        'url':        'https://www.mainz.de/pressemeldungen/?sp%3Aout=rss',
+        'kategori':   'belediye',
+        'kaynak':     'Mainz Belediyesi',
+        'stadt_slug': 'mainz',
+    },
+    {
+        'url':        'https://www.kreis-mainz-bingen.de/pressemitteilungen/?sp%3Aout=rss',
+        'kategori':   'belediye',
+        'kaynak':     'Mainz-Bingen Landkreis',
+        'stadt_slug': 'mainz-bingen',
     },
     {
         'url':      'https://www.mfa.gov.tr/rss.tr.mfa',
@@ -49,7 +58,6 @@ NAV_BLACKLIST = {
 def _temizle_baslik(text: str) -> str:
     """Başlıklardaki kurumsal imza artıklarını temizler."""
     import re
-    # "Türkisches Generalkonsulat  Mainz12.03.2024" gibi artıkları kaldır
     text = re.sub(r'Türkisches Generalkonsulat\s+Mainz\s*[\d.]*', '', text)
     return text.strip()
 
@@ -63,6 +71,17 @@ def _is_nav_item(text: str) -> bool:
         if t.startswith(kw):
             return True
     return False
+
+
+def _get_stadt(stadt_slug):
+    """Slug'a göre Stadt nesnesi döndürür, bulunamazsa None."""
+    if not stadt_slug:
+        return None
+    try:
+        from stadt.models import Stadt
+        return Stadt.objects.get(slug=stadt_slug)
+    except Exception:
+        return None
 
 
 class Command(BaseCommand):
@@ -95,13 +114,17 @@ class Command(BaseCommand):
 
     # ------------------------------------------------------------------ #
     def _eskiyi_temizle(self):
-        """Her kategoride en fazla 10 duyuru bırak, gerisini sil."""
-        from duyurular.models import Duyuru
-        kategoriler = Duyuru.objects.values_list('kategori', flat=True).distinct()
+        """Her (kategori, stadt) kombinasyonunda en fazla 10 duyuru bırak."""
+        kombinasyonlar = Duyuru.objects.values_list('kategori', 'stadt').distinct()
         silindi = 0
-        for kat in kategoriler:
-            sakla = Duyuru.objects.filter(kategori=kat).order_by('-id').values_list('id', flat=True)[:10]
-            fazla = Duyuru.objects.filter(kategori=kat).exclude(id__in=list(sakla))
+        for kat, stadt_id in kombinasyonlar:
+            sakla = (
+                Duyuru.objects
+                .filter(kategori=kat, stadt=stadt_id)
+                .order_by('-id')
+                .values_list('id', flat=True)[:10]
+            )
+            fazla = Duyuru.objects.filter(kategori=kat, stadt=stadt_id).exclude(id__in=list(sakla))
             sayi = fazla.count()
             if sayi:
                 fazla.delete()
@@ -124,9 +147,10 @@ class Command(BaseCommand):
     def _rss_isle(self, kaynak):
         self.stdout.write(f"\n▶ {kaynak['kaynak']}")
         eklendi = 0
+        stadt = _get_stadt(kaynak.get('stadt_slug'))
+        scope = 'stadt' if stadt else 'eyalet'
+
         try:
-            # feedparser URL ile çekince bazen bozo hatası veriyor;
-            # önce requests ile alıp içeriği parse et
             resp = requests.get(kaynak['url'], headers=HEADERS, timeout=15)
             resp.raise_for_status()
             feed = feedparser.parse(resp.content)
@@ -136,7 +160,7 @@ class Command(BaseCommand):
                 return 0
 
             for entry in feed.entries[:MAX_HABER]:
-                baslik = entry.get('title', '').strip()[:200]
+                baslik = entry.get('title', '').strip()[:300]
                 icerik = (
                     entry.get('summary', '')
                     or entry.get('description', '')
@@ -156,6 +180,8 @@ class Command(BaseCommand):
                         'kategori':   kaynak['kategori'],
                         'kaynak_url': link,
                         'yayinda':    True,
+                        'stadt':      stadt,
+                        'scope':      scope,
                     }
                 )
                 if created:
@@ -175,12 +201,14 @@ class Command(BaseCommand):
     def _scrape_isle(self, kaynak):
         self.stdout.write(f"\n▶ {kaynak['kaynak']}")
         eklendi = 0
+        stadt = _get_stadt(kaynak.get('stadt_slug'))
+        scope = 'stadt' if stadt else 'eyalet'
+
         try:
             resp = requests.get(kaynak['url'], headers=HEADERS, timeout=15)
             resp.raise_for_status()
             soup = BeautifulSoup(resp.text, 'html.parser')
 
-            # Belirli link pattern varsa onu kullan (örn. /Mission/ShowAnnouncement/)
             link_match = kaynak.get('link_match', '')
             if link_match:
                 candidates = [
@@ -204,7 +232,7 @@ class Command(BaseCommand):
                 if sayac >= MAX_HABER:
                     break
 
-                baslik = _temizle_baslik(item.get_text(strip=True))[:200]
+                baslik = _temizle_baslik(item.get_text(strip=True))[:300]
                 if not baslik or _is_nav_item(baslik):
                     continue
 
@@ -223,6 +251,8 @@ class Command(BaseCommand):
                         'kategori':   kaynak['kategori'],
                         'kaynak_url': href,
                         'yayinda':    True,
+                        'stadt':      stadt,
+                        'scope':      scope,
                     }
                 )
                 if created:
