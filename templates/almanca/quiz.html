@@ -15,7 +15,13 @@
     </div>
     <div class="d-flex gap-2 align-items-center flex-wrap">
       <span class="badge bg-success">✓ {{ dogru }}</span>
+      {% if yanlis > 0 %}
+      <button class="badge bg-danger border-0" data-bs-toggle="modal" data-bs-target="#yanlisModal" title="Yanlış cevapları gör">
+        ✗ {{ yanlis }}
+      </button>
+      {% else %}
       <span class="badge bg-danger">✗ {{ yanlis }}</span>
+      {% endif %}
       <span class="text-muted small">{{ gorulmus }} / {{ toplam }}</span>
 
       <!-- Mod geçiş -->
@@ -75,35 +81,106 @@
 
       <div class="d-grid gap-2" id="secenekler">
         {% for harf, metin in soru.optionen.items %}
-        <button class="btn btn-outline-secondary text-start secim-btn"
-                data-harf="{{ harf }}">
-          <span class="badge bg-secondary me-2">{{ harf }}</span>{{ metin }}
-        </button>
+        {% if already_answered %}
+          <button class="btn text-start secim-btn
+            {% if harf == dogru_harf_goster %}btn-success
+            {% elif harf == secilen_harf %}btn-danger
+            {% else %}btn-outline-secondary{% endif %}"
+            disabled>
+            <span class="badge me-2
+              {% if harf == dogru_harf_goster %}bg-success
+              {% elif harf == secilen_harf %}bg-danger
+              {% else %}bg-secondary{% endif %}">{{ harf }}</span>{{ metin }}
+          </button>
+        {% else %}
+          <button class="btn btn-outline-secondary text-start secim-btn" data-harf="{{ harf }}">
+            <span class="badge bg-secondary me-2">{{ harf }}</span>{{ metin }}
+          </button>
+        {% endif %}
         {% endfor %}
       </div>
     </div>
   </div>
 
-  <!-- Sonuç kutusu (gizli başlangıçta) -->
+  <!-- Sonuç kutusu -->
+  {% if already_answered %}
+  <div class="card border-0 mb-3
+    {% if secilen_harf == dogru_harf_goster %}bg-success-subtle{% else %}bg-danger-subtle{% endif %}">
+    <div class="card-body">
+      <p class="fw-bold mb-2">
+        {% if secilen_harf == dogru_harf_goster %}✓ Doğru!
+        {% else %}✗ Yanlış — Doğru cevap: {{ dogru_harf_goster }}{% endif %}
+      </p>
+      {% if soru.erklaerung %}<p class="mb-0 small text-muted">{{ soru.erklaerung }}</p>{% endif %}
+    </div>
+  </div>
+  {% else %}
   <div id="sonuc-kutu" class="card border-0 mb-3 d-none">
     <div class="card-body">
       <p id="sonuc-metin" class="fw-bold mb-2"></p>
       <p id="aciklama" class="mb-0 small text-muted"></p>
     </div>
   </div>
+  {% endif %}
 
-  <!-- Sonraki soru düğmesi -->
-  <div class="text-end d-none" id="sonraki-alan">
-    <a href="{% url 'almanca:quiz' slug %}?mod={{ mod }}" class="btn btn-primary px-4">
+  <!-- Navigasyon -->
+  <div class="d-flex justify-content-between align-items-center {% if not already_answered %}d-none{% endif %}" id="nav-alan">
+    {% if mevcut_idx > 0 %}
+    <a href="{% url 'almanca:quiz' slug %}?goto={{ mevcut_idx|add:'-1' }}&mod={{ mod }}" class="btn btn-outline-secondary btn-sm" id="onceki-btn">
+      <i class="bi bi-arrow-left me-1"></i>Önceki Soru
+    </a>
+    {% else %}
+    <span></span>
+    {% endif %}
+
+    {% if already_answered %}
+      {% if mevcut_idx < gecmis_sayisi|add:'-1' %}
+      <a href="{% url 'almanca:quiz' slug %}?goto={{ mevcut_idx|add:'1' }}&mod={{ mod }}" class="btn btn-primary btn-sm px-4">
+        Sonraki Soru <i class="bi bi-arrow-right ms-1"></i>
+      </a>
+      {% else %}
+      <a href="{% url 'almanca:quiz' slug %}?mod={{ mod }}" class="btn btn-primary btn-sm px-4">
+        Yeni Soru <i class="bi bi-arrow-right ms-1"></i>
+      </a>
+      {% endif %}
+    {% else %}
+    <a href="{% url 'almanca:quiz' slug %}?mod={{ mod }}" class="btn btn-primary px-4" id="sonraki-btn">
       Sonraki Soru <i class="bi bi-arrow-right ms-1"></i>
     </a>
+    {% endif %}
   </div>
 
 </div>
 
+<!-- Yanlış Sorular Modal -->
+{% if yanlis_sorular %}
+<div class="modal fade" id="yanlisModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="bi bi-x-circle text-danger me-2"></i>Yanlış Cevaplanan Sorular</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        {% for s in yanlis_sorular %}
+        <div class="mb-4 pb-3 {% if not forloop.last %}border-bottom{% endif %}">
+          <p class="fw-semibold mb-2">{{ forloop.counter }}. {{ s.frage }}</p>
+          <p class="mb-1 small text-danger"><i class="bi bi-x me-1"></i>Senin cevabın: <strong>{{ s.secilen_harf }}</strong> — {{ s.secilen_metin }}</p>
+          <p class="mb-0 small text-success"><i class="bi bi-check me-1"></i>Doğru cevap: <strong>{{ s.dogru_harf }}</strong> — {{ s.dogru_metin }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if not already_answered %}
 <script>
 const CEVAPLA_URL = "{% url 'almanca:cevapla' slug %}";
 const CSRF = "{{ csrf_token }}";
+const QUIZ_URL = "{% url 'almanca:quiz' slug %}?mod={{ mod }}";
+const MEVCUT_IDX = {{ mevcut_idx }};
 
 document.querySelectorAll('.secim-btn').forEach(btn => {
   btn.addEventListener('click', async function () {
@@ -136,8 +213,16 @@ document.querySelectorAll('.secim-btn').forEach(btn => {
       veri.durum === 'dogru' ? '✓ Doğru!' : `✗ Yanlış — Doğru cevap: ${veri.dogru_harf}`;
     document.getElementById('aciklama').textContent = veri.erklaerung || '';
 
-    document.getElementById('sonraki-alan').classList.remove('d-none');
+    // Navigasyon butonlarını göster
+    const navAlan = document.getElementById('nav-alan');
+    navAlan.classList.remove('d-none');
+
+    // Önceki buton
+    if (veri.gecmis_idx > 0) {
+      document.getElementById('onceki-btn').href = QUIZ_URL + '?goto=' + (veri.gecmis_idx - 1);
+    }
   });
 });
 </script>
+{% endif %}
 {% endblock %}

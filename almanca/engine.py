@@ -132,6 +132,13 @@ def rastgele_soru(slug: str, gorulmus: list[str]) -> Soru | None:
     )
 
 
+def soru_by_uid(slug: str, uid: str) -> 'Soru | None':
+    for s in _BANK.get(slug, []):
+        if s.uid == uid:
+            return s
+    return None
+
+
 def konu_bilgi(slug: str) -> tuple[str, str] | None:
     """slug → (thema, tr) döner, yoksa None."""
     entry = KONULAR.get(slug)
