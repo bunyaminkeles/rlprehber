@@ -29,7 +29,7 @@
   </div>
 
   <div class="d-flex gap-2 justify-content-center">
-    <a href="{% url 'almanca:quiz' slug %}?sifirla=1" class="btn btn-primary">Tekrar Başla</a>
+    <a href="{% url 'almanca:quiz' slug %}?sifirla=1&mod={{ mod }}" class="btn btn-primary">Tekrar Başla</a>
     <a href="{% url 'almanca:liste' %}" class="btn btn-outline-secondary">Diğer Konular</a>
   </div>
 </div>

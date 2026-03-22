@@ -11,14 +11,37 @@
       <span class="fw-bold">{{ thema }}</span>
       <span class="text-muted small ms-1">({{ tr }})</span>
     </div>
-    <div class="d-flex gap-2 align-items-center">
+    <div class="d-flex gap-2 align-items-center flex-wrap">
       <span class="badge bg-success">✓ {{ dogru }}</span>
       <span class="badge bg-danger">✗ {{ yanlis }}</span>
       <span class="text-muted small">{{ gorulmus }} / {{ toplam }}</span>
-      <a href="{% url 'almanca:quiz' slug %}?sifirla=1" class="btn btn-outline-secondary btn-sm" onclick="return confirm('İlerlemeyi sıfırla?')">
+
+      <!-- Mod geçiş -->
+      {% if mod == 'sirali' %}
+        <a href="?mod=rastgele&sifirla=1" class="btn btn-outline-secondary btn-sm" title="Rastgele moda geç">
+          <i class="bi bi-shuffle"></i>
+        </a>
+      {% else %}
+        <a href="?mod=sirali&sifirla=1" class="btn btn-outline-primary btn-sm" title="Sıralı moda geç">
+          <i class="bi bi-sort-numeric-down"></i>
+        </a>
+      {% endif %}
+
+      <!-- Sıfırla -->
+      <a href="?sifirla=1&mod={{ mod }}" class="btn btn-outline-secondary btn-sm" onclick="return confirm('İlerlemeyi sıfırla?')">
         <i class="bi bi-arrow-counterclockwise"></i>
       </a>
     </div>
+  </div>
+
+  <!-- Mod etiketi & resmi soru numarası -->
+  <div class="d-flex align-items-center gap-2 mb-2">
+    {% if mod == 'sirali' %}
+      <span class="badge bg-primary"><i class="bi bi-sort-numeric-down me-1"></i>Sıralı</span>
+    {% else %}
+      <span class="badge bg-secondary"><i class="bi bi-shuffle me-1"></i>Rastgele</span>
+    {% endif %}
+    <span class="text-muted small fw-semibold">Soru #{{ soru.uid }}</span>
   </div>
 
   <!-- İlerleme çubuğu -->
@@ -64,7 +87,7 @@
 
   <!-- Sonraki soru düğmesi -->
   <div class="text-end d-none" id="sonraki-alan">
-    <a href="{% url 'almanca:quiz' slug %}" class="btn btn-primary px-4">
+    <a href="{% url 'almanca:quiz' slug %}?mod={{ mod }}" class="btn btn-primary px-4">
       Sonraki Soru <i class="bi bi-arrow-right ms-1"></i>
     </a>
   </div>
@@ -77,7 +100,6 @@ const CSRF = "{{ csrf_token }}";
 
 document.querySelectorAll('.secim-btn').forEach(btn => {
   btn.addEventListener('click', async function () {
-    // Tüm butonları devre dışı bırak
     document.querySelectorAll('.secim-btn').forEach(b => b.disabled = true);
 
     const harf = this.dataset.harf;
@@ -88,7 +110,6 @@ document.querySelectorAll('.secim-btn').forEach(btn => {
     });
     const veri = await resp.json();
 
-    // Doğru cevabı yeşil yap
     document.querySelectorAll('.secim-btn').forEach(b => {
       if (b.dataset.harf === veri.dogru_harf) {
         b.classList.replace('btn-outline-secondary', 'btn-success');
@@ -96,13 +117,11 @@ document.querySelectorAll('.secim-btn').forEach(btn => {
       }
     });
 
-    // Yanlış seçimi kırmızı yap
     if (veri.durum === 'yanlis') {
       this.classList.replace('btn-outline-secondary', 'btn-danger');
       this.querySelector('.badge').classList.replace('bg-secondary', 'bg-danger');
     }
 
-    // Sonuç kutusu
     const kutu = document.getElementById('sonuc-kutu');
     kutu.classList.remove('d-none');
     kutu.classList.add(veri.durum === 'dogru' ? 'bg-success-subtle' : 'bg-danger-subtle');

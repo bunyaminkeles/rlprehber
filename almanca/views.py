@@ -12,7 +12,7 @@ def liste(request):
 
 
 def quiz(request, slug):
-    """Bir soruyu göster; oturum sıfırlama desteği."""
+    """Bir soruyu göster; sıralı ve rastgele mod desteği."""
     bilgi = engine.konu_bilgi(slug)
     if not bilgi:
         from django.http import Http404
@@ -20,18 +20,29 @@ def quiz(request, slug):
 
     thema, tr = bilgi
 
+    # Mod: 'sirali' veya 'rastgele' — GET'ten al, yoksa session'dan, yoksa default rastgele
+    mod = request.GET.get('mod') or request.session.get(f'alm_mod_{slug}', 'rastgele')
+    request.session[f'alm_mod_{slug}'] = mod
+
     if request.GET.get('sifirla'):
         request.session.pop(f'alm_gorulmus_{slug}', None)
         request.session.pop(f'alm_dogru_{slug}', None)
         request.session.pop(f'alm_yanlis_{slug}', None)
-        return redirect('almanca:quiz', slug=slug)
+        request.session.pop(f'alm_index_{slug}', None)
+        return redirect(f"{request.path}?mod={mod}")
 
     gorulmus = request.session.get(f'alm_gorulmus_{slug}', [])
     dogru_sayi = request.session.get(f'alm_dogru_{slug}', 0)
     yanlis_sayi = request.session.get(f'alm_yanlis_{slug}', 0)
     toplam = engine.soru_sayisi(slug)
 
-    soru = engine.rastgele_soru(slug, gorulmus)
+    if mod == 'sirali':
+        index = request.session.get(f'alm_index_{slug}', 0)
+        soru = engine.sirali_soru(slug, index)
+        gorulmus_sayi = index
+    else:
+        soru = engine.rastgele_soru(slug, gorulmus)
+        gorulmus_sayi = len(gorulmus)
 
     if soru is None:
         return render(request, 'almanca/bitti.html', {
@@ -41,12 +52,14 @@ def quiz(request, slug):
             'dogru': dogru_sayi,
             'yanlis': yanlis_sayi,
             'toplam': toplam,
+            'mod': mod,
         })
 
     request.session[f'alm_soru_{slug}'] = {
         'uid': soru.uid,
         'dogru_harf': soru.dogru_harf,
         'erklaerung': soru.erklaerung,
+        'mod': mod,
     }
 
     return render(request, 'almanca/quiz.html', {
@@ -54,10 +67,11 @@ def quiz(request, slug):
         'thema': thema,
         'tr': tr,
         'soru': soru,
-        'gorulmus': len(gorulmus),
+        'gorulmus': gorulmus_sayi,
         'toplam': toplam,
         'dogru': dogru_sayi,
         'yanlis': yanlis_sayi,
+        'mod': mod,
     })
 
 
@@ -78,11 +92,18 @@ def cevapla(request, slug):
     dogru_harf = kayit['dogru_harf']
     erklaerung = kayit['erklaerung']
     uid = kayit['uid']
+    mod = kayit.get('mod', 'rastgele')
 
+    # Görülen soruları takip et (her iki modda da)
     gorulmus = request.session.get(f'alm_gorulmus_{slug}', [])
     if uid not in gorulmus:
         gorulmus.append(uid)
         request.session[f'alm_gorulmus_{slug}'] = gorulmus
+
+    # Sıralı modda index'i ilerlet
+    if mod == 'sirali':
+        idx = request.session.get(f'alm_index_{slug}', 0)
+        request.session[f'alm_index_{slug}'] = idx + 1
 
     if secilen == dogru_harf:
         request.session[f'alm_dogru_{slug}'] = request.session.get(f'alm_dogru_{slug}', 0) + 1

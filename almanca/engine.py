@@ -142,3 +142,49 @@ def konu_bilgi(slug: str) -> tuple[str, str] | None:
 
 def soru_sayisi(slug: str) -> int:
     return len(_BANK.get(slug, []))
+
+
+def _sort_key(soru: Soru) -> tuple[int, int]:
+    """Resmi sıralamaya göre sıralama: önce sayısal, sonra eyalet kodları (RP-1 vb.)."""
+    uid = soru.uid
+    parts = uid.split('-')
+    if len(parts) == 2 and not parts[0].isdigit():
+        # RP-1, BY-3 gibi
+        try:
+            return (1, int(parts[1]))
+        except ValueError:
+            return (2, 0)
+    try:
+        return (0, int(uid))
+    except ValueError:
+        return (2, 0)
+
+
+def sirali_sorular(slug: str) -> list[Soru]:
+    """Tüm soruları resmi BAMF numarasına göre sıralı döner."""
+    return sorted(_BANK.get(slug, []), key=_sort_key)
+
+
+def sirali_soru(slug: str, index: int) -> Soru | None:
+    """index numarasındaki soruyu sıralı listeden döner."""
+    sorular = sirali_sorular(slug)
+    if index >= len(sorular):
+        return None
+    soru = sorular[index]
+    # Seçenekleri karıştır (uid ve doğru cevap korunur)
+    harfler = list(soru.optionen.keys())
+    degerler = list(soru.optionen.values())
+    dogru_deger = soru.optionen[soru.dogru_harf]
+    random.shuffle(degerler)
+    yeni_optionen = {harfler[i]: degerler[i] for i in range(len(harfler))}
+    yeni_dogru = next(h for h, v in yeni_optionen.items() if v == dogru_deger)
+    return Soru(
+        uid=soru.uid,
+        thema=soru.thema,
+        frage=soru.frage,
+        optionen=yeni_optionen,
+        dogru_harf=yeni_dogru,
+        erklaerung=soru.erklaerung,
+        kontext=soru.kontext,
+        lesetext=soru.lesetext,
+    )
