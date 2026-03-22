@@ -18,12 +18,12 @@ def liste(request, stadt_slug=None):
         for kat in kategoriler_qs:
             konular = Konu.objects.filter(
                 stadt=stadt, scope='stadt', kategori=kat
-            ).order_by('-sabitlendi', '-olusturulma')
+            ).order_by('-sabitlendi', '-guncelleme')
             kategoriler.append({'kategori': kat, 'konular': konular})
     else:
         # RLP geneli — sadece eyalet scope
         kategoriler = [
-            {'kategori': kat, 'konular': Konu.objects.filter(scope='eyalet', kategori=kat).order_by('-sabitlendi', '-olusturulma')}
+            {'kategori': kat, 'konular': Konu.objects.filter(scope='eyalet', kategori=kat).order_by('-sabitlendi', '-guncelleme')}
             for kat in kategoriler_qs
         ]
 

@@ -33,7 +33,7 @@ class Konu(models.Model):
     guncelleme  = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['-sabitlendi', '-olusturulma']
+        ordering = ['-sabitlendi', '-guncelleme']
         verbose_name = 'Konu'
         verbose_name_plural = 'Konular'
 
