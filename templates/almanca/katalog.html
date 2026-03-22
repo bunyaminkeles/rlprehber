@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block title %}{{ tr }} — Katalog | Mainzer-Binger{% endblock %}
+
+{% block extra_css %}
+<style>
+  .kat-row {
+    display: grid;
+    grid-template-columns: 60px 1fr 1fr;
+    gap: 0.5rem 1rem;
+    align-items: start;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+  }
+  .kat-row:last-child { border-bottom: none; }
+  .kat-row:hover { background: rgba(44,95,138,0.04); }
+  .kat-num {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 0.8rem;
+    padding-top: 0.1rem;
+  }
+  .kat-frage { color: var(--text); line-height: 1.5; }
+  .kat-cevap {
+    color: #198754;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  .kat-cevap .harf {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: #198754;
+    color: #fff;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.72rem;
+    line-height: 20px;
+    margin-right: 0.3rem;
+    flex-shrink: 0;
+  }
+  .kat-header {
+    display: grid;
+    grid-template-columns: 60px 1fr 1fr;
+    gap: 0.5rem 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 10px 10px 0 0;
+  }
+  .kat-img { max-width: 120px; border-radius: 6px; margin-bottom: 0.25rem; }
+  .kat-img-wrap { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+  @media (max-width: 600px) {
+    .kat-row, .kat-header {
+      grid-template-columns: 44px 1fr;
+    }
+    .kat-cevap { grid-column: 2; }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-4" style="max-width: 960px;">
+
+  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+    <div>
+      <a href="{% url 'almanca:liste' %}" class="text-muted small me-2"><i class="bi bi-arrow-left"></i> Konular</a>
+      <span class="fw-bold">{{ thema }}</span>
+      <span class="text-muted small ms-1">({{ tr }})</span>
+    </div>
+    <div class="d-flex gap-2">
+      <a href="{% url 'almanca:quiz' slug %}?mod=sirali" class="btn btn-sm btn-outline-primary">
+        <i class="bi bi-sort-numeric-down me-1"></i>Sıralı Quiz
+      </a>
+      <a href="{% url 'almanca:quiz' slug %}?mod=rastgele" class="btn btn-sm btn-outline-secondary">
+        <i class="bi bi-shuffle me-1"></i>Rastgele Quiz
+      </a>
+    </div>
+  </div>
+
+  <div class="text-muted small mb-3">
+    <i class="bi bi-list-ol me-1"></i>{{ toplam }} soru — yalnızca soru ve doğru cevap
+  </div>
+
+  <div class="card border-0 shadow-sm overflow-hidden">
+    <div class="kat-header">
+      <div>#</div>
+      <div>Soru</div>
+      <div>Doğru Cevap</div>
+    </div>
+    {% for s in sorular %}
+    <div class="kat-row">
+      <div class="kat-num">{{ s.uid }}</div>
+      <div class="kat-frage">
+        {% if s.lesetext %}
+        <div class="kat-img-wrap mb-1">
+          {{ s.lesetext|safe }}
+        </div>
+        {% endif %}
+        {{ s.frage }}
+      </div>
+      <div class="kat-cevap">
+        <span class="harf">{{ s.dogru_harf }}</span>{% for harf, metin in s.optionen.items %}{% if harf == s.dogru_harf %}{{ metin }}{% endif %}{% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}

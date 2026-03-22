@@ -27,6 +27,11 @@
         </a>
       {% endif %}
 
+      <!-- Katalog -->
+      <a href="{% url 'almanca:katalog' slug %}" class="btn btn-outline-secondary btn-sm" title="Soru kataloğu">
+        <i class="bi bi-list-ol"></i>
+      </a>
+
       <!-- Sıfırla -->
       <a href="?sifirla=1&mod={{ mod }}" class="btn btn-outline-secondary btn-sm" onclick="return confirm('İlerlemeyi sıfırla?')">
         <i class="bi bi-arrow-counterclockwise"></i>

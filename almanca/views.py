@@ -75,6 +75,23 @@ def quiz(request, slug):
     })
 
 
+def katalog(request, slug):
+    """Tüm soruları sıralı göster: numara, soru, doğru cevap."""
+    bilgi = engine.konu_bilgi(slug)
+    if not bilgi:
+        from django.http import Http404
+        raise Http404
+    thema, tr = bilgi
+    sorular = engine.sirali_sorular(slug)
+    return render(request, 'almanca/katalog.html', {
+        'slug': slug,
+        'thema': thema,
+        'tr': tr,
+        'sorular': sorular,
+        'toplam': len(sorular),
+    })
+
+
 @require_POST
 def cevapla(request, slug):
     """AJAX: kullanıcının cevabını kontrol et, JSON döndür."""

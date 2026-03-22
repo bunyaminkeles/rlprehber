@@ -22,22 +22,23 @@
   <div class="row g-3">
     {% for k in kategori.list %}
     <div class="col-12 col-sm-6 col-lg-4">
-      <a href="{% url 'almanca:quiz' k.slug %}" class="text-decoration-none">
-        <div class="card h-100 shadow-sm border-0 konu-card {% if k.slug == 'lid-genel' or k.slug == 'lid-rlp' %}border-primary{% endif %}">
-          <div class="card-body d-flex flex-column gap-2 p-3">
-            <div class="d-flex justify-content-between align-items-start">
-              <span class="fw-semibold text-dark">{{ k.thema }}</span>
-              <span class="badge bg-secondary rounded-pill ms-2 flex-shrink-0">{{ k.toplam }}</span>
-            </div>
-            <span class="text-muted small">{{ k.tr }}</span>
-            <div class="mt-auto pt-1">
-              <span class="btn btn-sm {% if k.slug == 'lid-genel' or k.slug == 'lid-rlp' %}btn-primary{% else %}btn-outline-primary{% endif %} w-100">
-                Başla <i class="bi bi-arrow-right ms-1"></i>
-              </span>
-            </div>
+      <div class="card h-100 shadow-sm border-0 konu-card">
+        <div class="card-body d-flex flex-column gap-2 p-3">
+          <div class="d-flex justify-content-between align-items-start">
+            <span class="fw-semibold text-dark">{{ k.thema }}</span>
+            <span class="badge bg-secondary rounded-pill ms-2 flex-shrink-0">{{ k.toplam }}</span>
+          </div>
+          <span class="text-muted small">{{ k.tr }}</span>
+          <div class="mt-auto pt-1 d-flex gap-1">
+            <a href="{% url 'almanca:quiz' k.slug %}" class="btn btn-sm {% if k.slug == 'lid-genel' or k.slug == 'lid-rlp' %}btn-primary{% else %}btn-outline-primary{% endif %} flex-grow-1">
+              Quiz <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+            <a href="{% url 'almanca:katalog' k.slug %}" class="btn btn-sm btn-outline-secondary" title="Soru Kataloğu">
+              <i class="bi bi-list-ol"></i>
+            </a>
           </div>
         </div>
-      </a>
+      </div>
     </div>
     {% endfor %}
   </div>
