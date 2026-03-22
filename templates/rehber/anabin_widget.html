@@ -1,0 +1,260 @@
+{% extends 'base.html' %}
+{% block title %}Anabin Karar Aracı — ZAB Gerekli mi?{% endblock %}
+
+{% block extra_css %}
+<style>
+  .anabin-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    padding: 0.85rem 1.1rem;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    background: var(--card);
+    color: var(--text);
+    font-size: 0.95rem;
+    transition: border-color 0.15s, background 0.15s, transform 0.1s;
+    cursor: pointer;
+  }
+  .anabin-option:hover {
+    border-color: var(--primary);
+    background: #f0f5fb;
+    transform: translateX(3px);
+  }
+  .anabin-option .badge-label {
+    font-weight: 700;
+    margin-right: 0.4rem;
+  }
+  .anabin-option .option-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+  .anabin-option.opt-green:hover  { border-color: #198754; background: #f0faf4; }
+  .anabin-option.opt-yellow:hover { border-color: #ffc107; background: #fffdf0; }
+  .anabin-option.opt-red:hover    { border-color: #dc3545; background: #fff5f5; }
+
+  #anabin-card {
+    transition: opacity 0.18s ease;
+  }
+  #anabin-card.fading {
+    opacity: 0;
+  }
+
+  .progress { height: 6px; border-radius: 4px; }
+
+  .outcome-icon { font-size: 2rem; }
+
+  .back-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0.4rem 0.8rem;
+  }
+  .back-btn:hover { color: var(--text); }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4" style="max-width: 620px;">
+
+  <div class="mb-3">
+    <h4 class="mb-0">
+      <i class="bi bi-diagram-3 me-2 text-primary"></i>Anabin Karar Aracı
+    </h4>
+    <p class="text-muted small mt-1 mb-0">
+      ZAB Zeugnisbewertung başvurusu gerekli mi? Adım adım öğren.
+    </p>
+  </div>
+
+  <div class="card p-4" id="anabin-card">
+    <div id="anabin-content"></div>
+  </div>
+
+  <p class="text-muted text-center mt-3" style="font-size: 0.78rem;">
+    Bu araç bilgi amaçlıdır. Nihai karar için yetkili danışman görüşü alın.
+  </p>
+</div>
+
+<script>
+// ── Veri ───────────────────────────────────────────────────────────────────
+const STEPS = {
+  1: {
+    id: 1, total: 3,
+    question: 'Anabin veritabanında üniversitenizi buldunuz mu? Kurum statüsü nedir?',
+    hint: '<a href="https://anabin.kmk.org" target="_blank" rel="noopener">anabin.kmk.org</a> adresinde üniversitenizi aratın ve kurum kartındaki statüyü kontrol edin.',
+    options: [
+      { label: 'H+',        desc: 'Kurum tanınıyor',   next: 2,           color: 'green'  },
+      { label: 'H-',        desc: 'Kurum tanınmıyor',  next: 'outcome-1', color: 'red'    },
+      { label: 'H+/-',      desc: 'Kısmi tanınma',     next: 'outcome-2', color: 'yellow' },
+      { label: 'Bulamadım', desc: 'Listede yok',       next: 'outcome-2', color: 'yellow' },
+    ],
+  },
+  2: {
+    id: 2, total: 3,
+    question: 'Harika! Okulunuz tanınıyor. Peki mezun olduğunuz bölüm (Abschluss), Anabin\'de birebir aynı isimle listelenmiş mi?',
+    hint: 'Kurum sayfasında "Abschlüsse" sekmesine tıklayın ve lisans / yüksek lisans bölümünüzü arayın.',
+    options: [
+      { label: 'Evet, listelenmiş',                desc: 'Bölümüm var',            next: 3,           color: 'green'  },
+      { label: 'Hayır, bölümüm yok / isim farklı', desc: 'Eşleşme bulunamadı',     next: 'outcome-3', color: 'yellow' },
+    ],
+  },
+  3: {
+    id: 3, total: 3,
+    question: 'Bölümünüzün "Klasse" veya "Äquivalenzklasse" durumu nedir?',
+    hint: 'Bölümünüzün detay satırında "Klasse" sütununu inceleyin.',
+    options: [
+      { label: 'Entspricht / Gleichwertig',    desc: 'Tam denklik',           next: 'outcome-4', color: 'green'  },
+      { label: 'Bedingt vergleichbar / Diğer', desc: 'Kısmi veya belirsiz',   next: 'outcome-3', color: 'yellow' },
+    ],
+  },
+};
+
+const OUTCOMES = {
+  'outcome-1': {
+    type: 'danger',
+    icon: 'bi-x-circle-fill text-danger',
+    title: 'Üzgünüz, diplomanız tanınmıyor.',
+    text:  'Kurumunuz H- statüsünde. Bu diploma ile Mavi Kart veya nitelikli çalışan vizesi alamazsınız. ZAB başvurusu da bu durumu değiştirmez.',
+    action: null,
+  },
+  'outcome-2': {
+    type: 'warning',
+    icon: 'bi-exclamation-triangle-fill text-warning',
+    title: 'ZAB Başvurusu Zorunlu!',
+    text:  'Okulunuzun durumu net değil veya sistemde yok. Diplomanızın geçerliliğini kanıtlamak için mutlaka ZAB\'a (Zeugnisbewertung) bireysel başvuru yapmalısınız.',
+    action: { label: 'ZAB Başvurusu Yap', href: 'https://zab.kmk.org/de/zeugnisbewertung/antrag' },
+  },
+  'outcome-3': {
+    type: 'warning',
+    icon: 'bi-exclamation-triangle-fill text-warning',
+    title: 'ZAB Başvurusu Zorunlu!',
+    text:  'Okulunuz tanınsa da bölümünüz Anabin\'de birebir eşleşmiyor. Vize sürecinde sorun yaşamamak için ZAB\'a (Zeugnisbewertung) başvurmalısınız.',
+    action: { label: 'ZAB Başvuru Sürecini İncele', href: 'https://zab.kmk.org/de/zeugnisbewertung/antrag' },
+  },
+  'outcome-4': {
+    type: 'success',
+    icon: 'bi-check-circle-fill text-success',
+    title: 'Tebrikler! ZAB Başvurusuna Gerek Yok.',
+    text:  'Okulunuz (H+) ve bölümünüz tam olarak tanınıyor. Anabin\'den ekran çıktısı (PDF) alarak doğrudan vize / Mavi Kart başvurunuza ekleyebilirsiniz. ZAB\'a boşuna 200 Euro ödemeyin!',
+    action: { label: 'Anabin\'e Git', href: 'https://anabin.kmk.org' },
+  },
+};
+
+// ── State ──────────────────────────────────────────────────────────────────
+let current = 1;
+let history = [];
+
+// ── Render ─────────────────────────────────────────────────────────────────
+function render() {
+  const isOutcome = typeof current === 'string';
+  const el = document.getElementById('anabin-content');
+  el.innerHTML = isOutcome ? renderOutcome(OUTCOMES[current]) : renderStep(STEPS[current]);
+  attachListeners();
+}
+
+function renderProgress(id, total) {
+  const pct = Math.round((id / total) * 100);
+  return `
+    <div class="d-flex justify-content-between text-muted mb-1" style="font-size:0.78rem">
+      <span>Adım ${id} / ${total}</span><span>${pct}%</span>
+    </div>
+    <div class="progress mb-4">
+      <div class="progress-bar bg-primary" style="width:${pct}%" role="progressbar"></div>
+    </div>`;
+}
+
+function renderStep(step) {
+  const opts = step.options.map(o => `
+    <button class="anabin-option opt-${o.color} mb-2" data-next="${o.next}">
+      <div>
+        <span class="badge-label">${escHtml(o.label)}</span>
+        <span class="option-desc">${escHtml(o.desc)}</span>
+      </div>
+      <i class="bi bi-chevron-right text-muted"></i>
+    </button>`).join('');
+
+  const backBtn = history.length > 0
+    ? `<button class="back-btn" id="btn-back"><i class="bi bi-arrow-left me-1"></i>Geri</button>`
+    : '';
+
+  return `
+    ${renderProgress(step.id, step.total)}
+    <h6 class="fw-semibold mb-3">${escHtml(step.question)}</h6>
+    <div class="alert alert-light border d-flex align-items-start gap-2 py-2 px-3 mb-4" style="font-size:0.83rem">
+      <i class="bi bi-info-circle text-primary mt-1 flex-shrink-0"></i>
+      <span>${step.hint}</span>
+    </div>
+    <div class="d-flex flex-column mb-3">${opts}</div>
+    <div class="d-flex justify-content-between border-top pt-3">
+      ${backBtn}
+      <button class="back-btn ms-auto" id="btn-reset">
+        <i class="bi bi-arrow-counterclockwise me-1"></i>Başa Dön
+      </button>
+    </div>`;
+}
+
+function renderOutcome(outcome) {
+  const actionBtn = outcome.action
+    ? `<a href="${outcome.action.href}" target="_blank" rel="noopener"
+          class="btn btn-${outcome.type === 'success' ? 'accent' : outcome.type === 'warning' ? 'warning' : 'danger'} w-100 mb-2">
+         ${escHtml(outcome.action.label)} <i class="bi bi-box-arrow-up-right ms-1"></i>
+       </a>`
+    : '';
+
+  return `
+    <div class="alert alert-${outcome.type} d-flex align-items-start gap-3 mb-4">
+      <i class="bi ${outcome.icon} outcome-icon flex-shrink-0"></i>
+      <div>
+        <div class="fw-bold mb-1">${escHtml(outcome.title)}</div>
+        <div style="font-size:0.88rem">${escHtml(outcome.text)}</div>
+      </div>
+    </div>
+    ${actionBtn}
+    <button class="back-btn w-100 text-center mt-1" id="btn-reset">
+      <i class="bi bi-arrow-counterclockwise me-1"></i>Başa Dön
+    </button>`;
+}
+
+// ── Listeners ──────────────────────────────────────────────────────────────
+function attachListeners() {
+  document.querySelectorAll('.anabin-option').forEach(btn => {
+    btn.addEventListener('click', () => navigate(btn.dataset.next));
+  });
+  document.getElementById('btn-back')?.addEventListener('click', goBack);
+  document.getElementById('btn-reset')?.addEventListener('click', reset);
+}
+
+// ── Navigation ─────────────────────────────────────────────────────────────
+function navigate(next) {
+  transition(() => {
+    history.push(current);
+    current = isNaN(next) ? next : Number(next);
+  });
+}
+function goBack() {
+  if (!history.length) return;
+  transition(() => { current = history.pop(); });
+}
+function reset() {
+  transition(() => { current = 1; history = []; });
+}
+function transition(fn) {
+  const card = document.getElementById('anabin-card');
+  card.classList.add('fading');
+  setTimeout(() => { fn(); render(); card.classList.remove('fading'); }, 180);
+}
+
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+// ── Boot ───────────────────────────────────────────────────────────────────
+render();
+</script>
+{% endblock %}

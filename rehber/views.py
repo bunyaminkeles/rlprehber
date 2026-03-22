@@ -28,6 +28,12 @@ def liste(request, stadt_slug=None):
     })
 
 
+def anabin_widget(request, stadt_slug=None):
+    from stadt.models import Stadt
+    stadt = get_object_or_404(Stadt, slug=stadt_slug, aktiv=True) if stadt_slug else None
+    return render(request, 'rehber/anabin_widget.html', {'stadt': stadt})
+
+
 def detay(request, slug, stadt_slug=None):
     from stadt.models import Stadt
     if not slug or slug == 'None':
