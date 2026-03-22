@@ -11,22 +11,24 @@ from pathlib import Path
 
 DATA_DIR = Path(__file__).parent / 'data'
 
-# slug → (dosya adı, thema, türkçe ad)
-KONULAR: dict[str, tuple[str, str, str]] = {
-    'zu-infinitiv':          ('1-zu_infinitiv.json',              'zu + Infinitiv',               'zu + Mastar'),
-    'satzbau':               ('2-satzbau.json',                   'Satzbau',                      'Cümle Yapısı'),
-    'wechselpraep':          ('3-wechselprap.json',               'Wechselpräpositionen',         'Değişken Edatlar'),
-    'reflexive-verben':      ('4-reflexive_verben.json',          'Reflexive Verben',             'Dönüşlü Fiiller'),
-    'relativpronomen':       ('5-relativpronomen.json',           'Relativpronomen',              'İlgi Zamirleri'),
-    'verben-praep':          ('6-verben_prap.json',               'Verben mit Präpositionen',     'Edatlı Fiiller'),
-    'pronominaladv':         ('7-pronominaladverbien.json',       'Pronominaladverbien',          'Pronominaladverb'),
-    'adjektivdekl':          ('8-adjektivdeklination.json',       'Adjektivdeklination',          'Sıfat Çekimi'),
-    'n-deklination':         ('9-n_deklination.json',             'N-Deklination',                'N-Çekimi'),
-    'modalverben':           ('10-modalverben.json',              'Modalverben',                  'Modal Fiiller'),
-    'konnektoren':           ('11-konnektoren_kausativ.json',     'Konnektoren',                  'Bağlaçlar'),
-    'dativ-akkusativ':       ('12-Dativ-Akkusativ-Genitiv.json',  'Dativ / Akkusativ / Genitiv',  'Dativ / Akk / Gen'),
-    'zweiteilige-konnekt':   ('13-Zweiteilige Konnektoren.json',  'Zweiteilige Konnektoren',      'İkili Bağlaçlar'),
-    'dtz-lesen':             ('14_dtz_lesen.json',                'DTZ Lesen',                    'DTZ Okuma'),
+# slug → (dosya adı, thema, türkçe ad, kategori)
+KONULAR: dict[str, tuple[str, str, str, str]] = {
+    'zu-infinitiv':          ('1-zu_infinitiv.json',              'zu + Infinitiv',               'zu + Mastar',                  'Almanca Dilbilgisi'),
+    'satzbau':               ('2-satzbau.json',                   'Satzbau',                      'Cümle Yapısı',                 'Almanca Dilbilgisi'),
+    'wechselpraep':          ('3-wechselprap.json',               'Wechselpräpositionen',         'Değişken Edatlar',             'Almanca Dilbilgisi'),
+    'reflexive-verben':      ('4-reflexive_verben.json',          'Reflexive Verben',             'Dönüşlü Fiiller',              'Almanca Dilbilgisi'),
+    'relativpronomen':       ('5-relativpronomen.json',           'Relativpronomen',              'İlgi Zamirleri',               'Almanca Dilbilgisi'),
+    'verben-praep':          ('6-verben_prap.json',               'Verben mit Präpositionen',     'Edatlı Fiiller',               'Almanca Dilbilgisi'),
+    'pronominaladv':         ('7-pronominaladverbien.json',       'Pronominaladverbien',          'Pronominaladverb',             'Almanca Dilbilgisi'),
+    'adjektivdekl':          ('8-adjektivdeklination.json',       'Adjektivdeklination',          'Sıfat Çekimi',                 'Almanca Dilbilgisi'),
+    'n-deklination':         ('9-n_deklination.json',             'N-Deklination',                'N-Çekimi',                     'Almanca Dilbilgisi'),
+    'modalverben':           ('10-modalverben.json',              'Modalverben',                  'Modal Fiiller',                'Almanca Dilbilgisi'),
+    'konnektoren':           ('11-konnektoren_kausativ.json',     'Konnektoren',                  'Bağlaçlar',                    'Almanca Dilbilgisi'),
+    'dativ-akkusativ':       ('12-Dativ-Akkusativ-Genitiv.json',  'Dativ / Akkusativ / Genitiv',  'Dativ / Akk / Gen',            'Almanca Dilbilgisi'),
+    'zweiteilige-konnekt':   ('13-Zweiteilige Konnektoren.json',  'Zweiteilige Konnektoren',      'İkili Bağlaçlar',              'Almanca Dilbilgisi'),
+    'dtz-lesen':             ('14_dtz_lesen.json',                'DTZ Lesen',                    'DTZ Okuma',                    'Almanca Dilbilgisi'),
+    'lid-genel':             ('15-lid-genel.json',                'Leben in Deutschland — Genel', 'Vatandaşlık Sınavı (Genel)',   'Vatandaşlık Sınavı'),
+    'lid-rlp':               ('16-lid-rlp.json',                  'Leben in Deutschland — RLP',   'Vatandaşlık Sınavı (RLP)',     'Vatandaşlık Sınavı'),
 }
 
 
@@ -46,7 +48,7 @@ def _load_all() -> dict[str, list[Soru]]:
     """Tüm JSON'ları yükler, slug → [Soru] dict döner."""
     bank: dict[str, list[Soru]] = {}
 
-    for slug, (fname, thema, _tr) in KONULAR.items():
+    for slug, (fname, thema, _tr, _kat) in KONULAR.items():
         path = DATA_DIR / fname
         if not path.exists():
             continue
@@ -76,6 +78,7 @@ def _load_all() -> dict[str, list[Soru]]:
                     dogru_harf=item['antwort'],
                     erklaerung=item.get('erklaerung', ''),
                     kontext=item.get('kontext', ''),
+                    lesetext=item.get('lesetext', ''),
                 ))
 
         bank[slug] = sorular
@@ -88,15 +91,16 @@ _BANK: dict[str, list[Soru]] = _load_all()
 
 
 def konu_listesi() -> list[dict]:
-    """Her konu için {slug, thema, tr, toplam} döner."""
+    """Her konu için {slug, thema, tr, toplam, kategori} döner."""
     return [
         {
             'slug': slug,
             'thema': thema,
             'tr': tr,
             'toplam': len(_BANK.get(slug, [])),
+            'kategori': kategori,
         }
-        for slug, (_, thema, tr) in KONULAR.items()
+        for slug, (_, thema, tr, kategori) in KONULAR.items()
         if slug in _BANK
     ]
 

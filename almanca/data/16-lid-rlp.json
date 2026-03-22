@@ -1,0 +1,134 @@
+[
+  {
+    "id": "RP-1",
+    "thema": "Leben in Deutschland — Rheinland-Pfalz",
+    "frage": "Welches Wappen gehört zum Bundesland Rheinland-Pfalz?",
+    "optionen": {
+      "A": "Seçenek 1",
+      "B": "Seçenek 2",
+      "C": "Seçenek 3",
+      "D": "Seçenek 4"
+    },
+    "antwort": "A",
+    "erklaerung": "Soru, Alman federal eyaletlerine ve onların resmi armalarına atıfta bulunur. Her federal eyaletin tarihi veya bölgesel öneme sahip belirli sembollere sahip kendi arması vardır. Görevde, 1'den 4'e kadar numaralı armaların birkaç illüstrasyonu gösterilmiştir. Amaç, Rheinland-Pfalz eyaletine atanmış armayı tanımak ve doğru numarayı seçmektir.",
+    "lesetext": "<img src=\"https://foreignvasi.com/qrp1.5a74c5da.jpeg\" style=\"max-width:100%;border-radius:8px;margin-bottom:0.5rem;\" alt=\"Sınav görseli\">"
+  },
+  {
+    "id": "RP-2",
+    "thema": "Leben in Deutschland — Rheinland-Pfalz",
+    "frage": "Ab welchem Alter darf man in Rheinland-Pfalz bei\n                  Kommunalwahlen wählen?",
+    "optionen": {
+      "A": "14",
+      "B": "18",
+      "C": "16",
+      "D": "20"
+    },
+    "antwort": "B",
+    "erklaerung": "Almanya'daki hayat için önemli bir soru"
+  },
+  {
+    "id": "RP-5",
+    "thema": "Leben in Deutschland — Rheinland-Pfalz",
+    "frage": "Welches ist ein Landkreis in Rheinland-Pfalz?",
+    "optionen": {
+      "A": "Westerwaldkreis",
+      "B": "Altötting",
+      "C": "Emsland",
+      "D": "Prignitz"
+    },
+    "antwort": "A",
+    "erklaerung": "Soru Alman idari yapılarıyla ilgilidir. Almanya'da federal eyaletler, kırsal bölgeler dahil olmak üzere çeşitli idari birimlere ayrılmıştır. Rheinland-Pfalz, Almanya'nın batısında yer alan federal bir eyalettir ve bu tür birkaç ilçeden oluşur. Cevap seçenekleri farklı bölgeler tarafından verilir, ancak farklı federal eyaletlerde de olabilirler. Doğru cevabı bulmak için, bahsedilen ilçelerden hangisinin aslında Rheinland-Pfalz'a ait olduğunu bilmeniz gerekir."
+  },
+  {
+    "id": "RP-5",
+    "thema": "Leben in Deutschland — Rheinland-Pfalz",
+    "frage": "Welche Farben hat die Landesflagge von Rheinland-Pfalz?",
+    "optionen": {
+      "A": "schwarz-rot-gold",
+      "B": "weiß-rot",
+      "C": "grün-weiß-rot",
+      "D": "schwarz-gelb"
+    },
+    "antwort": "A",
+    "erklaerung": "Soru, Alman federal eyaletleri ve onların ulusal amblemlerine atıfta bulunur. Rheinland-Pfalz bu federal eyaletlerden biridir ve belirli renklerde kendi eyalet bayrağı vardır. Doğru cevabı bulmak için, Almanya'daki devlet bayrakları veya devlet sembolleri hakkında temel bilgiye sahip olmak faydalıdır."
+  },
+  {
+    "id": "RP-8",
+    "thema": "Leben in Deutschland — Rheinland-Pfalz",
+    "frage": "Für wie viele Jahre wird der Landtag in Rheinland-Pfalz\n                  gewählt?",
+    "optionen": {
+      "A": "3",
+      "B": "4",
+      "C": "5",
+      "D": "6"
+    },
+    "antwort": "C",
+    "erklaerung": "Almanya'daki hayat için önemli bir soru"
+  },
+  {
+    "id": "RP-10",
+    "thema": "Leben in Deutschland — Rheinland-Pfalz",
+    "frage": "Wo können Sie sich in Rheinland-Pfalz über politische Themen\n                  informieren?",
+    "optionen": {
+      "A": "bei den Kirchen",
+      "B": "bei der Verbraucherzentrale",
+      "C": "bei der Landeszentrale für politische Bildung",
+      "D": "beim Ordnungsamt der Gemeinde"
+    },
+    "antwort": "C",
+    "erklaerung": "Almanya'daki hayat için önemli bir soru"
+  },
+  {
+    "id": "RP-10",
+    "thema": "Leben in Deutschland — Rheinland-Pfalz",
+    "frage": "Die Landeshauptstadt von Rheinland-Pfalz heißt …",
+    "optionen": {
+      "A": "Kaiserslautern",
+      "B": "Ludwigshafen",
+      "C": "Mainz",
+      "D": "Koblenz"
+    },
+    "antwort": "C",
+    "erklaerung": "Bu bağlamda, Alman coğrafyası ve federal eyaletlerin siyasi yapısı hakkında temel bilgilerle ilgilidir. Renland-Pfalz, Almanya'nın 16 federal eyaletinden biridir. Soru, bu federal eyaletin hükümet merkezi ve idari merkezi olarak hangi şehrin hizmet verdiği bilinip bilinmediğini inceliyor."
+  },
+  {
+    "id": "RP-10",
+    "thema": "Leben in Deutschland — Rheinland-Pfalz",
+    "frage": "Welches Bundesland ist Rheinland-Pfalz?",
+    "optionen": {
+      "A": "Seçenek 1",
+      "B": "Seçenek 2",
+      "C": "Seçenek 3",
+      "D": "Seçenek 4"
+    },
+    "antwort": "A",
+    "erklaerung": "Bu görevde, her federal eyaletin bir numarayla işaretlendiği Alman federal eyaletlerinin genel bir görünümü veya haritasına atıfta bulunur. Bu numaralandırmaya dayanarak, katılımcılar Rheinland-Pfalz eyaletine hangi numaranın atandığını belirleyebilir ve doğru seçeneği seçebilirler.",
+    "lesetext": "<img src=\"https://foreignvasi.com/qrp8.528dcff5.jpeg\" style=\"max-width:100%;border-radius:8px;margin-bottom:0.5rem;\" alt=\"Sınav görseli\">"
+  },
+  {
+    "id": "RP-10",
+    "thema": "Leben in Deutschland — Rheinland-Pfalz",
+    "frage": "Wie nennt man den Regierungschef / die Regierungschefin in\n                  Rheinland-Pfalz?",
+    "optionen": {
+      "A": "Ministerpräsident / Ministerpräsidentin",
+      "B": "Bürgermeister / Bürgermeisterin",
+      "C": "Erster Minister / Erste Ministerin",
+      "D": "Premierminister / Premierministerin"
+    },
+    "antwort": "A",
+    "erklaerung": "Almanya'daki hayat için önemli bir soru"
+  },
+  {
+    "id": "RP-10",
+    "thema": "Leben in Deutschland — Rheinland-Pfalz",
+    "frage": "Welchen Minister / welche Ministerin hat Rheinland-Pfalz\n                  nicht?",
+    "optionen": {
+      "A": "Außenminister / Außenministerin",
+      "B": "Innenminister / Innenministerin",
+      "C": "Justizminister / Justizministerin",
+      "D": "Finanzminister / Finanzministerin"
+    },
+    "antwort": "A",
+    "erklaerung": "Almanya'daki hayat için önemli bir soru"
+  }
+]

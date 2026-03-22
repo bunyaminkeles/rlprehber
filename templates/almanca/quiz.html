@@ -26,10 +26,10 @@
     <div class="progress-bar bg-primary" style="width:{% widthratio gorulmus toplam 100 %}%"></div>
   </div>
 
-  <!-- DTZ Lesen — okuma metni -->
+  <!-- Okuma metni / sınav görseli -->
   {% if soru.lesetext %}
   <div class="card mb-3 border-0 bg-light">
-    <div class="card-body small" style="white-space:pre-line">{{ soru.lesetext }}</div>
+    <div class="card-body small" style="white-space:pre-line">{{ soru.lesetext|safe }}</div>
   </div>
   {% endif %}
 
