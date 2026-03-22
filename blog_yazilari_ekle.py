@@ -174,18 +174,29 @@ YAZILAR = [
   <a href="https://anabin.kmk.org/db/institutionen" target="_blank" rel="noopener">Anabin — Üniversite Arama</a><br>
   <a href="https://zab.kmk.org/de/zeugnisbewertung/antrag" target="_blank" rel="noopener">ZAB — Zeugnisbewertung Başvurusu</a>
 </div>
+
+<div class="mt-4 p-4 border rounded" style="background:#f0f5fb; border-color:#2C5F8A !important;">
+  <strong>🤖 ZAB'a başvurmanız gerekiyor mu?</strong><br>
+  <p class="mb-2 mt-1" style="font-size:0.9rem">Anabin durumunuza göre adım adım öğrenmek için kendi karar aracımızı kullanın:</p>
+  <a href="/rlp/rehber/anabin-karar-araci/" class="btn btn-primary btn-sm">
+    Anabin Karar Aracı →
+  </a>
+</div>
 '''.strip(),
     },
 ]
 
-eklendi = 0
+eklendi = guncellendi = 0
 for d in YAZILAR:
-    _, created = BlogYazisi.objects.get_or_create(
+    _, created = BlogYazisi.objects.update_or_create(
         slug=d['slug'],
         defaults={**d, 'yazar': yazar, 'yayinda': True},
     )
     if created:
         eklendi += 1
-        print(f'  ✓ {d["baslik"]}')
+        print(f'  ✓ Eklendi: {d["baslik"]}')
+    else:
+        guncellendi += 1
+        print(f'  ↺ Güncellendi: {d["baslik"]}')
 
-print(f'✅ {eklendi} yeni blog yazısı eklendi.')
+print(f'✅ {eklendi} eklendi, {guncellendi} güncellendi.')
