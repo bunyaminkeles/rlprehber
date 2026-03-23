@@ -31,5 +31,8 @@ print(f'Site domain ayarlandi: {domain}')
 # Blog yazılarını yükle
 python blog_yazilari_ekle.py
 
+# Reklam paketlerini yükle
+python reklam_paketleri_seed.py
+
 # RSS duyurularını çek
 python manage.py rss_cek --sadece-rss || true

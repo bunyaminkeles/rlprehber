@@ -210,10 +210,10 @@ YAZILAR = [
   </a>
 </div>
 
-<div class="ratio mb-4" style="--bs-aspect-ratio:130%">
+<div class="mb-4">
   <iframe
     src="https://docs.google.com/viewer?url=https://lsjv.rlp.de/fileadmin/lsjv/Themen/Gesundheit/Gesundheitsberufe/NA-Heilberufe/AB_Antrag_GB_Pflege.pdf&embedded=true"
-    style="border:1px solid #dee2e6; border-radius:6px"
+    style="width:100%;height:420px;border:1px solid #dee2e6;border-radius:6px"
     allowfullscreen>
   </iframe>
 </div>

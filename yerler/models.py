@@ -37,7 +37,8 @@ class Yer(models.Model):
     website         = models.URLField(blank=True)
     maps_url        = models.URLField(blank=True, help_text='Google Maps linki')
     aciklama        = models.TextField(blank=True)
-    kapak_resmi     = models.URLField(blank=True, verbose_name='Kapak Resmi URL')
+    kapak_resmi     = models.URLField(blank=True, verbose_name='Kapak Resmi URL (harici)')
+    kapak_foto      = models.ImageField(upload_to='yerler/kapak/', blank=True, null=True, verbose_name='Kapak Fotoğrafı (yükle)')
     icerik          = models.TextField(blank=True, verbose_name='Blog İçeriği (HTML)')
     wikipedia_url   = models.URLField(blank=True, verbose_name='Wikipedia Kaynak URL')
     aktif           = models.BooleanField(default=True)
@@ -60,7 +61,8 @@ class Yer(models.Model):
 
 class YerFoto(models.Model):
     yer  = models.ForeignKey(Yer, on_delete=models.CASCADE, related_name='fotolar', verbose_name='Yer')
-    url  = models.URLField(verbose_name='Fotoğraf URL')
+    url  = models.URLField(blank=True, verbose_name='Fotoğraf URL (harici)')
+    foto = models.ImageField(upload_to='yerler/fotolar/', blank=True, null=True, verbose_name='Fotoğraf (yükle)')
     sira = models.PositiveSmallIntegerField(default=0, verbose_name='Sıra')
 
     class Meta:

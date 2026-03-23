@@ -30,6 +30,9 @@ print(f'Site: {domain}')
 echo "==> Blog yazilari..."
 python blog_yazilari_ekle.py || true
 
+echo "==> Reklam paketleri..."
+python reklam_paketleri_seed.py || true
+
 echo "==> Linkler ve rehber seed..."
 python linkler_seed.py || true
 

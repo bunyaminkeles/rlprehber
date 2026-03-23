@@ -13,3 +13,5 @@ beautifulsoup4
 feedparser
 django-crontab
 django-anymail
+django-storages[s3]
+boto3

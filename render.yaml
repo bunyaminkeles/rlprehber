@@ -25,6 +25,14 @@ services:
         value: "localhost,127.0.0.1"
       - key: CRON_SECRET
         generateValue: true
+      - key: AWS_ACCESS_KEY_ID
+        sync: false
+      - key: AWS_SECRET_ACCESS_KEY
+        sync: false
+      - key: AWS_STORAGE_BUCKET_NAME
+        sync: false
+      - key: AWS_S3_REGION_NAME
+        value: eu-central-1
 
   # Periyodik görev: RSS duyurularını çek (UTC 01:00 = Berlin 02:00)
   - type: cron

@@ -33,8 +33,9 @@
           <span class="badge bg-secondary">Standart</span>
         </div>
         {% endif %}
-        {% if yer.kapak_resmi %}
-        <img src="{{ yer.kapak_resmi }}" alt="{{ yer.ad }}" class="card-img-top" style="height:140px;object-fit:cover">
+        {% if yer.kapak_foto or yer.kapak_resmi %}
+        <img src="{% if yer.kapak_foto %}{{ yer.kapak_foto.url }}{% else %}{{ yer.kapak_resmi }}{% endif %}"
+             alt="{{ yer.ad }}" class="card-img-top" style="height:140px;object-fit:cover">
         {% endif %}
         <div class="card-body">
           <h6 class="card-title mb-1">

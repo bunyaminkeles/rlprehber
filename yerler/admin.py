@@ -5,7 +5,7 @@ from .models import Yer, YerFoto, ReklamPaketi
 class YerFotoInline(admin.TabularInline):
     model   = YerFoto
     extra   = 3
-    fields  = ['url', 'sira']
+    fields  = ['foto', 'url', 'sira']
     ordering = ['sira']
 
 
@@ -18,7 +18,7 @@ class YerAdmin(admin.ModelAdmin):
     inlines       = [YerFotoInline]
     fieldsets = (
         ('Temel Bilgiler', {
-            'fields': ('ad', 'kategori', 'stadt', 'scope', 'aktif', 'adres', 'kapak_resmi')
+            'fields': ('ad', 'kategori', 'stadt', 'scope', 'aktif', 'adres', 'kapak_foto', 'kapak_resmi')
         }),
         ('İletişim', {
             'fields': ('telefon', 'website', 'maps_url', 'instagram_url', 'whatsapp', 'calisma_saati')
