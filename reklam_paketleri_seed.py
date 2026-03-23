@@ -8,11 +8,15 @@ django.setup()
 
 from yerler.models import ReklamPaketi
 
+# Eski paketleri temizle (5'ten 3'e geçiş)
+ReklamPaketi.objects.filter(ad__in=['Basic', 'Bronz', 'Silver', 'Gold', 'Premium']).delete()
+
 PAKETLER = [
     {
-        'ad': 'Basic',
-        'fiyat': '4.90',
-        'sure_etiketi': '/ 10 gün',
+        'ad': 'Temel',
+        'aciklama': 'Hızlı başlangıç, risksiz deneyin.',
+        'fiyat': '9.90',
+        'sure_etiketi': '/ ay',
         'renk': 'secondary',
         'vurgulu': False,
         'sira': 1,
@@ -20,71 +24,45 @@ PAKETLER = [
             'İşletme adı ve adres\n'
             'Kategori rozeti\n'
             'Google Maps linki\n'
-            'Platforma giriş fırsatı'
+            'Açıklama metni\n'
+            'Telefon numarası'
         ),
         'iletisim_notu': '',
     },
     {
-        'ad': 'Bronz',
-        'fiyat': '9.90',
-        'sure_etiketi': '/ 3 hafta',
-        'renk': 'warning',
-        'vurgulu': False,
+        'ad': 'Plus',
+        'aciklama': 'Müşterilerinize daha fazla ulaşın.',
+        'fiyat': '19.90',
+        'sure_etiketi': '/ ay',
+        'renk': 'primary',
+        'vurgulu': True,
         'sira': 2,
         'ozellikler': (
-            'Basic paketteki her şey\n'
-            'Açıklama metni\n'
-            'Telefon numarası\n'
+            'Temel paketteki her şey\n'
+            '3 fotoğraf galerisi\n'
+            'WhatsApp butonu\n'
+            'Instagram linki\n'
+            'Çalışma saatleri\n'
             'Web sitesi linki'
         ),
         'iletisim_notu': '',
     },
     {
-        'ad': 'Silver',
-        'fiyat': '14.90',
+        'ad': 'Pro',
+        'aciklama': 'Listenin en üstünde, herkesten önce.',
+        'fiyat': '34.90',
         'sure_etiketi': '/ ay',
-        'renk': 'primary',
-        'vurgulu': True,
+        'renk': 'warning',
+        'vurgulu': False,
         'sira': 3,
         'ozellikler': (
-            'Bronz paketteki her şey\n'
-            '3 fotoğraf galerisi\n'
-            'WhatsApp butonu\n'
-            'Instagram linki\n'
-            'Çalışma saatleri'
-        ),
-        'iletisim_notu': '',
-    },
-    {
-        'ad': 'Gold',
-        'fiyat': '59.90',
-        'sure_etiketi': '/ 6 ay',
-        'renk': 'success',
-        'vurgulu': False,
-        'sira': 4,
-        'ozellikler': (
-            'Silver paketteki her şey\n'
+            'Plus paketteki her şey\n'
             '"Öne Çıkan" rozeti\n'
-            'Liste başında görünüm\n'
-            '~10 €/ay — %33 tasarruf'
-        ),
-        'iletisim_notu': '',
-    },
-    {
-        'ad': 'Premium',
-        'fiyat': '99.90',
-        'sure_etiketi': '/ yıl',
-        'renk': 'dark',
-        'vurgulu': False,
-        'sira': 5,
-        'ozellikler': (
-            'Gold paketteki her şey\n'
-            '1 yıl kesintisiz görünüm\n'
-            'Öncelikli destek\n'
-            '~8,30 €/ay — %44 tasarruf'
+            'Kategori listesinde en üst sıra\n'
+            'Öncelikli destek'
         ),
         'iletisim_notu': (
-            'Paket almak veya daha fazla bilgi almak için bizimle iletişime geçin.\n'
+            'Paket almak veya daha fazla bilgi için bizimle iletişime geçin.\n'
             'Ödeme IBAN ile yapılmaktadır.'
         ),
     },

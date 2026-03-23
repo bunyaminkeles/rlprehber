@@ -85,7 +85,7 @@ class YerFoto(models.Model):
 
 class ReklamPaketi(models.Model):
     ad             = models.CharField(max_length=100, verbose_name='Paket Adı')
-    aciklama       = models.CharField(max_length=200, blank=True, verbose_name='Kısa Açıklama')
+    aciklama       = models.CharField(max_length=200, blank=True, verbose_name='Kısa Açıklama', help_text='Paket kartında başlığın altında gösterilir')
     fiyat          = models.DecimalField(max_digits=8, decimal_places=2, verbose_name='Fiyat (€)')
     sure_etiketi   = models.CharField(max_length=50, default='/ ay', verbose_name='Süre Etiketi')
     ozellikler     = models.TextField(verbose_name='Özellikler', help_text='Her satır bir özellik')
