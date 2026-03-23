@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q, Case, When, IntegerField
-from .models import Yer, YerFoto, ReklamPaketi, YER_KATEGORILERI, ISLETME_KATEGORILERI
+from .models import Yer, YerFoto, ReklamPaketi, YerKategori
 
 
 def _get_stadt(stadt_slug):
@@ -24,22 +24,23 @@ def _base_qs(stadt):
 def liste(request, stadt_slug=None):
     stadt = _get_stadt(stadt_slug)
     kategori = request.GET.get('kategori', '')
-    yer_kodlari = [k for k, _ in YER_KATEGORILERI]
 
+    yer_kategorileri = list(YerKategori.objects.filter(tur='yer').order_by('sira', 'ad'))
+    yer_kodlari = [k.slug for k in yer_kategorileri]
     base_qs = _base_qs(stadt).filter(tur='yer', kategori__in=yer_kodlari)
 
     kategoriler = {}
-    for k, v in YER_KATEGORILERI:
-        if kategori and k != kategori:
+    for k in yer_kategorileri:
+        if kategori and k.slug != kategori:
             continue
-        yerler = base_qs.filter(kategori=k)
+        yerler = base_qs.filter(kategori=k.slug)
         if yerler.exists():
-            kategoriler[k] = {'ad': v, 'yerler': yerler}
+            kategoriler[k.slug] = {'ad': k.ad, 'yerler': yerler}
 
     return render(request, 'yerler/liste.html', {
         'kategoriler': kategoriler,
         'secili': kategori,
-        'tum_kategoriler': YER_KATEGORILERI,
+        'tum_kategoriler': [(k.slug, k.ad) for k in yer_kategorileri],
         'stadt': stadt,
     })
 
@@ -58,25 +59,26 @@ def isletmeler(request, stadt_slug=None):
         output_field=IntegerField(),
     )
 
-    isletme_kodlari = [k for k, _ in ISLETME_KATEGORILERI]
+    isletme_kategorileri = list(YerKategori.objects.filter(tur='isletme').order_by('sira', 'ad'))
+    isletme_kodlari = [k.slug for k in isletme_kategorileri]
     base_qs = _base_qs(stadt).filter(
         tur='isletme', kategori__in=isletme_kodlari
     ).annotate(paket_sira=paket_sira).order_by('paket_sira', 'ad')
 
     kategoriler = {}
-    for k, v in ISLETME_KATEGORILERI:
-        if kategori and k != kategori:
+    for k in isletme_kategorileri:
+        if kategori and k.slug != kategori:
             continue
-        islt = base_qs.filter(kategori=k)
+        islt = base_qs.filter(kategori=k.slug)
         if islt.exists():
-            kategoriler[k] = {'ad': v, 'yerler': islt}
+            kategoriler[k.slug] = {'ad': k.ad, 'yerler': islt}
 
     paketler = ReklamPaketi.objects.filter(aktif=True)
 
     return render(request, 'yerler/isletmeler.html', {
         'kategoriler': kategoriler,
         'secili': kategori,
-        'tum_kategoriler': ISLETME_KATEGORILERI,
+        'tum_kategoriler': [(k.slug, k.ad) for k in isletme_kategorileri],
         'stadt': stadt,
         'paketler': paketler,
     })

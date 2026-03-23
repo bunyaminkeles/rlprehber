@@ -11,26 +11,6 @@ TUR_SECENEKLERI = [
     ('isletme', 'İşletme'),
 ]
 
-# Önemli Yerler kategorileri
-YER_KATEGORILERI = [
-    ('resmi_kurum', 'Resmi Kurum'),
-    ('ibadet', 'Cami / İbadethane'),
-    ('tuv', 'TÜV / GTÜ İstasyonu'),
-    ('saglik', 'Sağlık'),
-    ('egitim', 'Eğitim'),
-    ('gezi', 'Gezi & Kültür'),
-    ('alisveris', 'Alışveriş Merkezi'),
-]
-
-# İşletme kategorileri
-ISLETME_KATEGORILERI = [
-    ('turk_market', 'Türk Marketi'),
-    ('yeme_icme', 'Yeme & İçme'),
-]
-
-# Tüm kategoriler (admin için)
-YER_KATEGORI = YER_KATEGORILERI + ISLETME_KATEGORILERI
-
 PAKET_SECENEKLERI = [
     ('ucretsiz', 'Ücretsiz'),
     ('temel', 'Temel'),
@@ -39,12 +19,27 @@ PAKET_SECENEKLERI = [
 ]
 
 
+class YerKategori(models.Model):
+    slug  = models.SlugField(max_length=30, unique=True, verbose_name='Slug (kod)')
+    ad    = models.CharField(max_length=100, verbose_name='Görünen Ad')
+    tur   = models.CharField(max_length=10, choices=TUR_SECENEKLERI, default='isletme', verbose_name='Tür')
+    sira  = models.PositiveSmallIntegerField(default=0, verbose_name='Sıra')
+
+    class Meta:
+        ordering = ['tur', 'sira', 'ad']
+        verbose_name = 'Kategori'
+        verbose_name_plural = 'Kategoriler'
+
+    def __str__(self):
+        return f"{self.ad} ({self.get_tur_display()})"
+
+
 class Yer(models.Model):
     stadt           = models.ForeignKey('stadt.Stadt', null=True, blank=True, on_delete=SET_NULL, verbose_name='Şehir')
     scope           = models.CharField(max_length=10, choices=SCOPE_SECENEKLERI, default='stadt', verbose_name='Kapsam')
     tur             = models.CharField(max_length=10, choices=TUR_SECENEKLERI, default='yer', verbose_name='Tür')
     ad              = models.CharField(max_length=200)
-    kategori        = models.CharField(max_length=20, choices=YER_KATEGORI)
+    kategori        = models.CharField(max_length=30, blank=True)
     adres           = models.TextField()
     sehir           = models.CharField(max_length=100, default='Mainz', help_text='Eski alan')
     telefon         = models.CharField(max_length=50, blank=True)

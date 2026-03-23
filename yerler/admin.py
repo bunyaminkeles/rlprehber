@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Yer, YerFoto, ReklamPaketi
+from .models import Yer, YerFoto, ReklamPaketi, YerKategori
 
 
 # ── Toplu işlem aksiyonları ──────────────────────────────────────────────────
@@ -50,6 +50,16 @@ class YerAdmin(admin.ModelAdmin):
     @admin.display(description='Aktif', boolean=True, ordering='aktif')
     def aktif_flag(self, obj):
         return obj.aktif
+
+
+# ── YerKategori ──────────────────────────────────────────────────────────────
+
+@admin.register(YerKategori)
+class YerKategoriAdmin(admin.ModelAdmin):
+    list_display  = ['ad', 'slug', 'tur', 'sira']
+    list_editable = ['tur', 'sira']
+    list_filter   = ['tur']
+    prepopulated_fields = {'slug': ('ad',)}
 
 
 # ── ReklamPaketi ─────────────────────────────────────────────────────────────
