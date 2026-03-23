@@ -12,4 +12,5 @@ jobs:
       - name: RSS endpoint'ini tetikle
         run: |
           curl --fail --silent --show-error --max-time 120 \
-            "https://${{ secrets.RENDER_APP_URL }}/api/rss-cek/?token=${{ secrets.CRON_SECRET }}"
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            "https://${{ secrets.RENDER_APP_URL }}/api/rss-cek/"
