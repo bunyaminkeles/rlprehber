@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', include('accounts.urls')),
+    path('mesajlar/', include('mesajlar.urls')),
     path('api/', include('api.urls')),
 
     # Ana sayfa (şehir seçici) ve statik sayfalar

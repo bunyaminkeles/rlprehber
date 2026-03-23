@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.db.models import Q
 from .models import Ilan, ILAN_KATEGORI, SATILIK_KATEGORILER, ARANIYOR_KATEGORILER
 from linkler.models import OnemliLink
+from accounts.utils import email_dogrulandi_mi
 
 
 def liste(request, stadt_slug=None):
@@ -62,6 +63,9 @@ def ilan_ver(request, stadt_slug=None):
     stadt = get_object_or_404(Stadt, slug=stadt_slug, aktiv=True) if stadt_slug else None
 
     if request.method == 'POST':
+        if not email_dogrulandi_mi(request.user):
+            messages.error(request, 'İlan verebilmek için e-posta adresinizi doğrulamanız gerekiyor.')
+            return redirect('account_email')
         ilan = Ilan(
             sahip=request.user,
             baslik=request.POST['baslik'],

@@ -9,6 +9,11 @@
     <div class="card-body p-4">
       <h5>{{ konu.baslik }}</h5>
       <small class="text-muted">{{ konu.yazar.username }} &bull; {{ konu.olusturulma|date:"d.m.Y H:i" }}</small>
+      {% if user.is_authenticated and konu.yazar and konu.yazar != user %}
+        <a href="{% url 'mesajlar:baslat' konu.yazar.username %}" class="btn btn-outline-secondary btn-sm ms-2" style="font-size:.75rem">
+          <i class="bi bi-chat me-1"></i>Mesaj at
+        </a>
+      {% endif %}
       <hr>
       <div>{{ konu.icerik|linebreaks }}</div>
     </div>
@@ -17,6 +22,11 @@
   <div class="card mb-2">
     <div class="card-body py-3 px-4">
       <small class="text-muted fw-semibold">{{ y.yazar.username }} &bull; {{ y.olusturulma|date:"d.m.Y H:i" }}</small>
+      {% if user.is_authenticated and y.yazar and y.yazar != user %}
+        <a href="{% url 'mesajlar:baslat' y.yazar.username %}" class="btn btn-outline-secondary btn-sm ms-2" style="font-size:.72rem">
+          <i class="bi bi-chat me-1"></i>Mesaj at
+        </a>
+      {% endif %}
       <div class="mt-1">{{ y.icerik|linebreaks }}</div>
     </div>
   </div>

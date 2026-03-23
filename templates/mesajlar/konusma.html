@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% block title %}{{ diger.username }} ile Mesajlaşma — RLP Rehber{% endblock %}
+
+{% block extra_css %}
+<style>
+  #mesaj-kutusu {
+    height: 420px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: .5rem;
+    border: 1px solid #dee2e6;
+  }
+  .baloncuk {
+    max-width: 75%;
+    padding: .5rem .85rem;
+    border-radius: 1rem;
+    font-size: .95rem;
+    word-break: break-word;
+  }
+  .benim    { align-self: flex-end;   background: #0d6efd; color: #fff; border-bottom-right-radius: .25rem; }
+  .karsi    { align-self: flex-start; background: #e9ecef; color: #212529; border-bottom-left-radius: .25rem; }
+  .zaman    { font-size: .72rem; opacity: .6; margin-top: 2px; }
+  .zaman.sag { text-align: right; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+
+      <div class="d-flex align-items-center gap-2 mb-3">
+        <a href="{% url 'mesajlar:gelen_kutusu' %}" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-arrow-left"></i>
+        </a>
+        <h5 class="mb-0"><i class="bi bi-person-circle me-1"></i>{{ diger.username }}</h5>
+      </div>
+
+      <div id="mesaj-kutusu">
+        {% for m in mesajlar %}
+          {% if m.gonderen == request.user %}
+            <div class="d-flex flex-column align-items-end" data-id="{{ m.pk }}">
+              <div class="baloncuk benim">{{ m.icerik }}</div>
+              <div class="zaman sag">{{ m.olusturulma|date:"H:i" }}</div>
+            </div>
+          {% else %}
+            <div class="d-flex flex-column" data-id="{{ m.pk }}">
+              <div class="baloncuk karsi">{{ m.icerik }}</div>
+              <div class="zaman">{{ m.olusturulma|date:"H:i" }}</div>
+            </div>
+          {% endif %}
+        {% empty %}
+          <p class="text-muted text-center my-auto">Henüz mesaj yok. İlk mesajı siz gönderin!</p>
+        {% endfor %}
+      </div>
+
+      <form id="mesaj-form" method="post" class="mt-3 d-flex gap-2" autocomplete="off">
+        {% csrf_token %}
+        <input type="text" name="icerik" id="icerik-input"
+               class="form-control" placeholder="Mesajınızı yazın..." required>
+        <button type="submit" class="btn btn-primary px-3">
+          <i class="bi bi-send-fill"></i>
+        </button>
+      </form>
+
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function () {
+  const kutu = document.getElementById('mesaj-kutusu');
+  const form = document.getElementById('mesaj-form');
+  const input = document.getElementById('icerik-input');
+  const benimKullanici = "{{ request.user.username }}";
+  const apiUrl = "{% url 'mesajlar:api' konusma.pk %}";
+  const gonderUrl = "{% url 'mesajlar:konusma' konusma.pk %}";
+  const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+  function sonIdAl() {
+    const tum = kutu.querySelectorAll('[data-id]');
+    if (!tum.length) return 0;
+    return parseInt(tum[tum.length - 1].dataset.id);
+  }
+
+  function baloncukEkle(m) {
+    const benim = m.gonderen === benimKullanici;
+    const wrap = document.createElement('div');
+    wrap.className = benim ? 'd-flex flex-column align-items-end' : 'd-flex flex-column';
+    wrap.dataset.id = m.pk;
+    wrap.innerHTML = `
+      <div class="baloncuk ${benim ? 'benim' : 'karsi'}">${escapeHtml(m.icerik)}</div>
+      <div class="zaman ${benim ? 'sag' : ''}">${m.zaman}</div>`;
+    kutu.appendChild(wrap);
+  }
+
+  function escapeHtml(t) {
+    return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function asagıKaydır() {
+    kutu.scrollTop = kutu.scrollHeight;
+  }
+
+  asagıKaydır();
+
+  // Form gönder — AJAX
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const icerik = input.value.trim();
+    if (!icerik) return;
+    fetch(gonderUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-CSRFToken': csrfToken,
+      },
+      body: 'icerik=' + encodeURIComponent(icerik),
+    }).then(() => {
+      input.value = '';
+      pollMesajlar();
+    });
+  });
+
+  // Polling
+  function pollMesajlar() {
+    const sonId = sonIdAl();
+    fetch(`${apiUrl}?son_id=${sonId}`)
+      .then(r => r.json())
+      .then(data => {
+        if (data.mesajlar && data.mesajlar.length) {
+          data.mesajlar.forEach(baloncukEkle);
+          asagıKaydır();
+        }
+      });
+  }
+
+  setInterval(pollMesajlar, 3000);
+})();
+</script>
+{% endblock %}
