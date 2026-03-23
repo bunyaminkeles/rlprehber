@@ -6,33 +6,47 @@ SCOPE_SECENEKLERI = [
     ('eyalet', 'RLP Geneli'),
 ]
 
-YER_KATEGORI = [
+TUR_SECENEKLERI = [
+    ('yer', 'Önemli Yer'),
+    ('isletme', 'İşletme'),
+]
+
+# Önemli Yerler kategorileri
+YER_KATEGORILERI = [
     ('resmi_kurum', 'Resmi Kurum'),
-    ('alisveris', 'Alışveriş Merkezi'),
-    ('turk_market', 'Türk Marketi'),
     ('ibadet', 'Cami / İbadethane'),
     ('tuv', 'TÜV / GTÜ İstasyonu'),
     ('saglik', 'Sağlık'),
     ('egitim', 'Eğitim'),
     ('gezi', 'Gezi & Kültür'),
-    ('yeme_icme', 'Yeme & İçme'),
-    ('diger', 'Diğer'),
+    ('alisveris', 'Alışveriş Merkezi'),
 ]
+
+# İşletme kategorileri
+ISLETME_KATEGORILERI = [
+    ('turk_market', 'Türk Marketi'),
+    ('yeme_icme', 'Yeme & İçme'),
+]
+
+# Tüm kategoriler (admin için)
+YER_KATEGORI = YER_KATEGORILERI + ISLETME_KATEGORILERI
 
 PAKET_SECENEKLERI = [
     ('ucretsiz', 'Ücretsiz'),
-    ('standart', 'Standart'),
-    ('one_cikan', 'Öne Çıkan'),
+    ('temel', 'Temel'),
+    ('plus', 'Plus'),
+    ('pro', 'Pro'),
 ]
 
 
 class Yer(models.Model):
     stadt           = models.ForeignKey('stadt.Stadt', null=True, blank=True, on_delete=SET_NULL, verbose_name='Şehir')
     scope           = models.CharField(max_length=10, choices=SCOPE_SECENEKLERI, default='stadt', verbose_name='Kapsam')
+    tur             = models.CharField(max_length=10, choices=TUR_SECENEKLERI, default='yer', verbose_name='Tür')
     ad              = models.CharField(max_length=200)
     kategori        = models.CharField(max_length=20, choices=YER_KATEGORI)
     adres           = models.TextField()
-    sehir           = models.CharField(max_length=100, default='Mainz', help_text='Eski alan - migration sonrası kullanılmayacak')
+    sehir           = models.CharField(max_length=100, default='Mainz', help_text='Eski alan')
     telefon         = models.CharField(max_length=50, blank=True)
     website         = models.URLField(blank=True)
     maps_url        = models.URLField(blank=True, help_text='Google Maps linki')
@@ -43,12 +57,12 @@ class Yer(models.Model):
     wikipedia_url   = models.URLField(blank=True, verbose_name='Wikipedia Kaynak URL')
     aktif           = models.BooleanField(default=True)
 
-    # Ücretli paket alanları
+    # Ücretli paket alanları (işletmeler için)
     paket           = models.CharField(max_length=10, choices=PAKET_SECENEKLERI, default='ucretsiz', verbose_name='Paket')
     paket_bitis     = models.DateField(null=True, blank=True, verbose_name='Paket Bitiş Tarihi')
-    calisma_saati   = models.CharField(max_length=200, blank=True, verbose_name='Çalışma Saatleri', help_text='Örn: Pzt-Cum 09:00-18:00')
+    calisma_saati   = models.CharField(max_length=200, blank=True, verbose_name='Çalışma Saatleri')
     instagram_url   = models.URLField(blank=True, verbose_name='Instagram')
-    whatsapp        = models.CharField(max_length=20, blank=True, verbose_name='WhatsApp', help_text='Sadece rakamlar, örn: 4917612345678')
+    whatsapp        = models.CharField(max_length=20, blank=True, verbose_name='WhatsApp')
 
     class Meta:
         ordering = ['kategori', 'ad']
@@ -76,14 +90,15 @@ class YerFoto(models.Model):
 
 class ReklamPaketi(models.Model):
     ad             = models.CharField(max_length=100, verbose_name='Paket Adı')
+    aciklama       = models.CharField(max_length=200, blank=True, verbose_name='Kısa Açıklama')
     fiyat          = models.DecimalField(max_digits=8, decimal_places=2, verbose_name='Fiyat (€)')
-    sure_etiketi   = models.CharField(max_length=50, default='/ ay', verbose_name='Süre Etiketi', help_text='Örn: "/ ay", "/ 3 ay"')
-    ozellikler     = models.TextField(verbose_name='Özellikler', help_text='Her satır bir özellik olarak gösterilir')
-    renk           = models.CharField(max_length=30, default='primary', verbose_name='Bootstrap Renk', help_text='primary, warning, success, dark...')
-    vurgulu        = models.BooleanField(default=False, verbose_name='Vurgulu Göster', help_text='En popüler / tavsiye edilen paket')
+    sure_etiketi   = models.CharField(max_length=50, default='/ ay', verbose_name='Süre Etiketi')
+    ozellikler     = models.TextField(verbose_name='Özellikler', help_text='Her satır bir özellik')
+    renk           = models.CharField(max_length=30, default='primary', verbose_name='Bootstrap Renk')
+    vurgulu        = models.BooleanField(default=False, verbose_name='Vurgulu Göster')
     aktif          = models.BooleanField(default=True, verbose_name='Aktif')
     sira           = models.PositiveSmallIntegerField(default=0, verbose_name='Sıra')
-    iletisim_notu  = models.TextField(blank=True, verbose_name='İletişim Notu', help_text='Sayfanın altında gösterilecek metin')
+    iletisim_notu  = models.TextField(blank=True, verbose_name='İletişim Notu')
 
     class Meta:
         ordering = ['sira']

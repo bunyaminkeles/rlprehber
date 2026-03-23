@@ -10,5 +10,6 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('ilan/', include('ilan.urls')),
     path('yerler/', include('yerler.urls')),
+    path('isletmeler/', include('yerler.isletme_urls')),
     path('linkler/', include('linkler.urls')),
 ]

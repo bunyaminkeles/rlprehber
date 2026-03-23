@@ -1,33 +1,35 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q, Case, When, IntegerField
-from .models import Yer, YerFoto, ReklamPaketi, YER_KATEGORI
+from .models import Yer, YerFoto, ReklamPaketi, YER_KATEGORILERI, ISLETME_KATEGORILERI
 
 
-def liste(request, stadt_slug=None):
+def _get_stadt(stadt_slug):
+    if not stadt_slug:
+        return None
     from stadt.models import Stadt
-    stadt = get_object_or_404(Stadt, slug=stadt_slug, aktiv=True) if stadt_slug else None
+    return get_object_or_404(Stadt, slug=stadt_slug, aktiv=True)
 
-    kategori = request.GET.get('kategori', '')
 
-    paket_sira = Case(
-        When(paket='one_cikan', then=0),
-        When(paket='standart', then=1),
-        default=2,
-        output_field=IntegerField(),
-    )
-
+def _base_qs(stadt):
     if stadt:
-        base_qs = Yer.objects.filter(
+        return Yer.objects.filter(
             Q(stadt=stadt, scope='stadt') | Q(scope='eyalet'),
             aktif=True
         )
-    else:
-        base_qs = Yer.objects.filter(aktif=True)
+    return Yer.objects.filter(aktif=True)
 
-    base_qs = base_qs.annotate(paket_sira=paket_sira).order_by('paket_sira', 'ad')
+
+# ── Önemli Yerler ────────────────────────────────────────────────────────────
+
+def liste(request, stadt_slug=None):
+    stadt = _get_stadt(stadt_slug)
+    kategori = request.GET.get('kategori', '')
+    yer_kodlari = [k for k, _ in YER_KATEGORILERI]
+
+    base_qs = _base_qs(stadt).filter(tur='yer', kategori__in=yer_kodlari)
 
     kategoriler = {}
-    for k, v in YER_KATEGORI:
+    for k, v in YER_KATEGORILERI:
         if kategori and k != kategori:
             continue
         yerler = base_qs.filter(kategori=k)
@@ -37,15 +39,54 @@ def liste(request, stadt_slug=None):
     return render(request, 'yerler/liste.html', {
         'kategoriler': kategoriler,
         'secili': kategori,
-        'tum_kategoriler': YER_KATEGORI,
+        'tum_kategoriler': YER_KATEGORILERI,
         'stadt': stadt,
     })
 
 
+# ── İşletmeler ───────────────────────────────────────────────────────────────
+
+def isletmeler(request, stadt_slug=None):
+    stadt = _get_stadt(stadt_slug)
+    kategori = request.GET.get('kategori', '')
+
+    paket_sira = Case(
+        When(paket='pro', then=0),
+        When(paket='plus', then=1),
+        When(paket='temel', then=2),
+        default=3,
+        output_field=IntegerField(),
+    )
+
+    isletme_kodlari = [k for k, _ in ISLETME_KATEGORILERI]
+    base_qs = _base_qs(stadt).filter(
+        tur='isletme', kategori__in=isletme_kodlari
+    ).annotate(paket_sira=paket_sira).order_by('paket_sira', 'ad')
+
+    kategoriler = {}
+    for k, v in ISLETME_KATEGORILERI:
+        if kategori and k != kategori:
+            continue
+        islt = base_qs.filter(kategori=k)
+        if islt.exists():
+            kategoriler[k] = {'ad': v, 'yerler': islt}
+
+    paketler = ReklamPaketi.objects.filter(aktif=True)
+
+    return render(request, 'yerler/isletmeler.html', {
+        'kategoriler': kategoriler,
+        'secili': kategori,
+        'tum_kategoriler': ISLETME_KATEGORILERI,
+        'stadt': stadt,
+        'paketler': paketler,
+    })
+
+
+# ── Detay (ortak) ────────────────────────────────────────────────────────────
+
 def detay(request, pk, stadt_slug=None):
-    from stadt.models import Stadt
+    stadt = _get_stadt(stadt_slug) if stadt_slug else None
     yer = get_object_or_404(Yer, pk=pk, aktif=True)
-    stadt = get_object_or_404(Stadt, slug=stadt_slug, aktiv=True) if stadt_slug else None
     fotolar = yer.fotolar.all()
     return render(request, 'yerler/detay.html', {
         'yer': yer,
@@ -53,6 +94,8 @@ def detay(request, pk, stadt_slug=None):
         'fotolar': fotolar,
     })
 
+
+# ── Reklam Paketleri ─────────────────────────────────────────────────────────
 
 def paketler(request):
     paket_listesi = ReklamPaketi.objects.filter(aktif=True)

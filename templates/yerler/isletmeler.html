@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block title %}İşletmeler — {{ stadt.name }}{% endblock %}
+{% block breadcrumb %}<li class="breadcrumb-item active">İşletmeler</li>{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+    <h4 class="mb-0"><i class="bi bi-shop me-2 text-primary"></i>{{ stadt.name }}'da İşletmeler</h4>
+    <a href="/rlp/reklam/" class="btn btn-sm btn-warning">
+      <i class="bi bi-star me-1"></i>İşletmenizi Ekleyin
+    </a>
+  </div>
+
+  <div class="d-flex flex-wrap gap-2 mb-4">
+    <a href="/{{ stadt.slug }}/isletmeler/" class="btn btn-sm {% if not secili %}btn-primary{% else %}btn-outline-secondary{% endif %}">Tümü</a>
+    {% for k, v in tum_kategoriler %}
+    <a href="?kategori={{ k }}" class="btn btn-sm {% if secili == k %}btn-primary{% else %}btn-outline-secondary{% endif %}">{{ v }}</a>
+    {% endfor %}
+  </div>
+
+  {% for k, grup in kategoriler.items %}
+  <h6 class="text-uppercase text-muted small fw-bold mt-4 mb-2">{{ grup.ad }}</h6>
+  <div class="row g-3 mb-3">
+    {% for yer in grup.yerler %}
+    <div class="col-md-4 col-sm-6">
+      <div class="card h-100 {% if yer.paket == 'pro' %}border-warning border-2{% elif yer.paket == 'plus' %}border-primary{% endif %}">
+
+        {# Paket rozeti #}
+        {% if yer.paket == 'pro' %}
+        <div class="px-3 pt-2 pb-0">
+          <span class="badge bg-warning text-dark"><i class="bi bi-star-fill me-1"></i>Pro</span>
+        </div>
+        {% elif yer.paket == 'plus' %}
+        <div class="px-3 pt-2 pb-0">
+          <span class="badge bg-primary">Plus</span>
+        </div>
+        {% elif yer.paket == 'temel' %}
+        <div class="px-3 pt-2 pb-0">
+          <span class="badge bg-secondary">Temel</span>
+        </div>
+        {% endif %}
+
+        {% if yer.kapak_foto or yer.kapak_resmi %}
+        <img src="{% if yer.kapak_foto %}{{ yer.kapak_foto.url }}{% else %}{{ yer.kapak_resmi }}{% endif %}"
+             alt="{{ yer.ad }}" class="card-img-top" style="height:150px;object-fit:cover">
+        {% endif %}
+
+        <div class="card-body">
+          <h6 class="card-title mb-1">
+            <a href="/{{ stadt.slug }}/isletmeler/{{ yer.pk }}/" class="text-dark text-decoration-none">{{ yer.ad }}</a>
+          </h6>
+          <p class="small text-muted mb-1"><i class="bi bi-geo-alt me-1"></i>{{ yer.adres }}</p>
+          {% if yer.calisma_saati %}
+          <p class="small text-muted mb-2"><i class="bi bi-clock me-1"></i>{{ yer.calisma_saati }}</p>
+          {% endif %}
+          <div class="d-flex gap-2 mt-2 flex-wrap">
+            {% if yer.telefon %}<a href="tel:{{ yer.telefon }}" class="btn btn-sm btn-outline-primary"><i class="bi bi-telephone me-1"></i>Ara</a>{% endif %}
+            {% if yer.whatsapp %}<a href="https://wa.me/{{ yer.whatsapp }}" target="_blank" class="btn btn-sm btn-success"><i class="bi bi-whatsapp me-1"></i></a>{% endif %}
+            {% if yer.maps_url %}<a href="{{ yer.maps_url }}" target="_blank" class="btn btn-sm btn-outline-secondary"><i class="bi bi-map me-1"></i>Harita</a>{% endif %}
+            <a href="/{{ stadt.slug }}/isletmeler/{{ yer.pk }}/" class="btn btn-sm btn-outline-dark"><i class="bi bi-info-circle me-1"></i>Detay</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% empty %}
+  <div class="text-center text-muted py-4">
+    <i class="bi bi-shop fs-1 d-block mb-2 opacity-25"></i>
+    Henüz işletme eklenmemiş.
+  </div>
+  {% endfor %}
+
+  {# Paket tanıtım bandı #}
+  {% if paketler %}
+  <div class="mt-5 p-4 rounded-3" style="background:#f0f5fb; border:1.5px dashed #2C5F8A;">
+    <div class="row align-items-center">
+      <div class="col-md-7">
+        <h5 class="fw-bold mb-1">İşletmenizi Buraya Ekleyin</h5>
+        <p class="text-muted mb-0" style="font-size:.92rem;">
+          Türkçe konuşan topluluğa doğrudan ulaşın. Aylık <strong>9,90€</strong>'dan başlayan paketler.
+        </p>
+      </div>
+      <div class="col-md-5 text-md-end mt-3 mt-md-0">
+        <a href="/rlp/reklam/" class="btn btn-primary">
+          <i class="bi bi-star me-2"></i>Paketleri İncele
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+</div>
+{% endblock %}

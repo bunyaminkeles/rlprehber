@@ -24,22 +24,22 @@ class YerFotoInline(admin.TabularInline):
 
 @admin.register(Yer)
 class YerAdmin(admin.ModelAdmin):
-    list_display  = ['ad', 'kategori', 'stadt', 'paket', 'paket_bitis', 'aktif_flag']
-    list_filter   = ['paket', 'aktif', 'kategori', 'stadt', 'scope']
-    list_editable = ['paket']
+    list_display  = ['ad', 'tur', 'kategori', 'stadt', 'paket', 'paket_bitis', 'aktif_flag']
+    list_filter   = ['tur', 'paket', 'aktif', 'kategori', 'stadt', 'scope']
+    list_editable = ['tur', 'paket']
     search_fields = ['ad', 'adres']
     actions       = [aktif_yap, pasif_yap]
     inlines       = [YerFotoInline]
     fieldsets = (
         ('Temel Bilgiler', {
-            'fields': ('ad', 'kategori', 'stadt', 'scope', 'aktif', 'adres', 'kapak_foto', 'kapak_resmi')
+            'fields': ('ad', 'tur', 'kategori', 'stadt', 'scope', 'aktif', 'adres', 'kapak_foto', 'kapak_resmi')
         }),
         ('İletişim', {
             'fields': ('telefon', 'website', 'maps_url', 'instagram_url', 'whatsapp', 'calisma_saati')
         }),
-        ('Paket', {
+        ('Paket (İşletmeler için)', {
             'fields': ('paket', 'paket_bitis'),
-            'description': 'Ödeme yapıldığında paketi güncelleyin. Süre bittiğinde "Ücretsiz" olarak geri alın.',
+            'description': 'Sadece işletmeler için. Ödeme gelince paketi güncelleyin, süre bitince "Ücretsiz" yapın.',
         }),
         ('İçerik', {
             'fields': ('aciklama', 'icerik', 'wikipedia_url'),
@@ -60,7 +60,7 @@ class ReklamPaketiAdmin(admin.ModelAdmin):
     list_editable = ['vurgulu', 'sira']
     list_filter   = ['aktif', 'vurgulu']
     actions       = [aktif_yap, pasif_yap]
-    fields        = ['ad', 'fiyat', 'sure_etiketi', 'renk', 'vurgulu', 'aktif', 'sira', 'ozellikler', 'iletisim_notu']
+    fields        = ['ad', 'aciklama', 'fiyat', 'sure_etiketi', 'renk', 'vurgulu', 'aktif', 'sira', 'ozellikler', 'iletisim_notu']
 
     @admin.display(description='Aktif', boolean=True, ordering='aktif')
     def aktif_flag(self, obj):
