@@ -39,4 +39,4 @@ class ReklamPaketiAdmin(admin.ModelAdmin):
     list_display  = ['ad', 'fiyat', 'sure_etiketi', 'vurgulu', 'aktif', 'sira']
     list_editable = ['aktif', 'vurgulu', 'sira']
     list_filter   = ['aktif', 'vurgulu']
-    fields        = ['ad', 'fiyat', 'sure_etiketi', 'renk', 'vurgulu', 'aktif', 'sira', 'ozellikler', 'iletisim_notu']
+    fields        = ['ad', 'aciklama', 'fiyat', 'sure_etiketi', 'renk', 'vurgulu', 'aktif', 'sira', 'ozellikler', 'iletisim_notu']

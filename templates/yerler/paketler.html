@@ -25,6 +25,9 @@
         {% endif %}
         <div class="card-body d-flex flex-column">
           <h5 class="card-title fw-bold">{{ paket.ad }}</h5>
+          {% if paket.aciklama %}
+          <p class="text-muted small mb-2">{{ paket.aciklama }}</p>
+          {% endif %}
           <div class="mb-3">
             <span class="fs-2 fw-bold text-{{ paket.renk }}">{{ paket.fiyat }}€</span>
             <span class="text-muted"> {{ paket.sure_etiketi }}</span>
