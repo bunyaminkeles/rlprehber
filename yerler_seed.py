@@ -175,7 +175,7 @@ YERLER = [
 
 eklendi = guncellendi = 0
 for d in YERLER:
-    obj, created = Yer.objects.get_or_create(ad=d['ad'], defaults={**d, 'aktif': True})
+    obj, created = Yer.objects.get_or_create(ad=d['ad'], defaults={**d, 'aktif': True, 'tur': 'yer'})
     if created:
         eklendi += 1
         print(f'  ✓ {d["ad"]}')
