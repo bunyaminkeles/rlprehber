@@ -24,6 +24,7 @@ urlpatterns = [
     path('sitemap.xml', sitemap, {'sitemaps': SITEMAPS}, name='django.contrib.sitemaps.views.sitemap'),
     path('googlef882ed2d634aa7da.html', TemplateView.as_view(template_name='googlef882ed2d634aa7da.html', content_type='text/html')),
     path('BingSiteAuth.xml', TemplateView.as_view(template_name='BingSiteAuth.xml', content_type='text/xml')),
+    path('yandex_a495fecc6d44f4f8.html', TemplateView.as_view(template_name='yandex_a495fecc6d44f4f8.html', content_type='text/html')),
 
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
