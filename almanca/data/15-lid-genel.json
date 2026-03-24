@@ -2674,12 +2674,12 @@
   {
     "id": "206",
     "thema": "Leben in Deutschland — Genel",
-    "frage": "Was bedeutete im Jahr 1989 in Deutschland das Wort Montagsdemonstration?",
+    "frage": "Woran erinnern die sogenannten „Stolpersteine“ in Deutschland?",
     "optionen": {
-      "A": "In der Bundesrepublik waren Demonstrationen nur am Montag erlaubt.",
-      "B": "Montags waren Demonstrationen gegen das DDR-Regime.",
-      "C": "Am ersten Montag im Monat trafen sich in der Bundesrepublik Deutschland Demonstranten.",
-      "D": "Montags demonstrierte man in der DDR gegen den Westen."
+      "A": "an berühmte deutsche Politikerinnen und Politiker",
+      "B": "an die Opfer des Nationalsozialismus",
+      "C": "an Verkehrstote",
+      "D": "an bekannte jüdische Musiker"
     },
     "antwort": "B",
     "erklaerung": ""
