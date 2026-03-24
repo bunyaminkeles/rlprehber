@@ -3305,9 +3305,9 @@
     "frage": "In Deutschland dürfen Ehepaare sich scheiden lassen. Meistens müssen sie dazu das Trennungsjahr einhalten. Was bedeutet das?",
     "optionen": {
       "A": "Der Scheidungsprozess dauert ein Jahr.",
-      "B": "Mann und Frau sind ein Jahr verheiratet, dann ist die Scheidung möglich.",
+      "B": "Die Ehegatten sind ein Jahr verheiratet, dann ist die Scheidung möglich.",
       "C": "Das Besuchsrecht für die Kinder gilt ein Jahr.",
-      "D": "Mann und Frau führen mindestens ein Jahr getrennt ihr eigenes Leben. Danach ist die Scheidung möglich."
+      "D": "Die Ehegatten führen mindestens ein Jahr getrennt ihr eigenes Leben. Danach ist die Scheidung möglich."
     },
     "antwort": "D",
     "erklaerung": ""
