@@ -1526,12 +1526,12 @@
   {
     "id": "118",
     "thema": "Leben in Deutschland — Genel",
-    "frage": "Was regelt das Wahlrecht in Deutschland?",
+    "frage": "Wer darf bei den rund 40 jüdischen Makkabi-Sportvereinen Mitglied werden?",
     "optionen": {
-      "A": "Wer wählen darf, muss wählen.",
-      "B": "Alle die wollen, können wählen.",
-      "C": "Wer nicht wählt, verliert das Recht zu wählen.",
-      "D": "Wer wählen darf, kann wählen."
+      "A": "nur Deutsche",
+      "B": "nur Israelis",
+      "C": "nur religiöse Menschen",
+      "D": "alle Menschen"
     },
     "antwort": "D",
     "erklaerung": ""
