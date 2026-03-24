@@ -1930,14 +1930,14 @@
   {
     "id": "149",
     "thema": "Leben in Deutschland — Genel",
-    "frage": "Wer kann Gerichtsschöffe / Gerichtsschöffin in Deutschland werden?",
+    "frage": "Was ist ein Beispiel für antisemitisches Verhalten?",
     "optionen": {
-      "A": "alle in Deutschland geborenen Einwohner / Einwohnerinnen über 18 Jahre",
-      "B": "alle deutschen Staatsangehörigen älter als 24 und jünger als 70 Jahre",
-      "C": "alle Personen, die seit mindestens 5 Jahren in Deutschland leben",
-      "D": "nur Personen mit einem abgeschlossenen Jurastudium"
+      "A": "ein jüdisches Fest besuchen",
+      "B": "die israelische Regierung kritisieren",
+      "C": "den Holocaust leugnen",
+      "D": "gegen Juden Fußball spielen."
     },
-    "antwort": "B",
+    "antwort": "C",
     "erklaerung": ""
   },
   {
