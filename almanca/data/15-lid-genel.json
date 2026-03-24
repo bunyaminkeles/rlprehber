@@ -3744,14 +3744,14 @@
   {
     "id": "288",
     "thema": "Leben in Deutschland — Genel",
-    "frage": "Bei welchem Amt muss man in Deutschland in der Regel seinen Hund anmelden?",
+    "frage": "Woraus begründet sich Deutschlands besondere Verantwortung für Israel?",
     "optionen": {
-      "A": "beim Finanzamt",
-      "B": "beim Einwohnermeldeamt",
-      "C": "bei der Kommune (Stadt oder Gemeinde)",
-      "D": "beim Gesundheitsamt"
+      "A": "aus der Mitgliedschaft in der Europäischen Union (EU)",
+      "B": "aus den nationalsozialistischen Verbrechen gegen Juden",
+      "C": "aus dem Grundgesetz der Bundesrepublik Deutschland",
+      "D": "aus der christlichen Tradition"
     },
-    "antwort": "C",
+    "antwort": "B",
     "erklaerung": ""
   },
   {
