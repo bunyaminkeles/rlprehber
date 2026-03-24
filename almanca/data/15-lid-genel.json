@@ -1240,14 +1240,14 @@
   {
     "id": "96",
     "thema": "Leben in Deutschland — Genel",
-    "frage": "Was muss jeder deutsche Staatsbürger / jede deutsche Staatsbürgerin ab dem 16. Lebensjahr besitzen?",
+    "frage": "Wie kann jemand, der den Holocaust leugnet, bestraft werden?",
     "optionen": {
-      "A": "einen Reisepass",
-      "B": "einen Personalausweis",
-      "C": "einen Sozialversicherungsausweis",
-      "D": "einen Führerschein"
+      "A": "Kürzung sozialer Leistungen",
+      "B": "bis zu 100 Sozialstunden",
+      "C": "gar nicht, Holocaustleugnung ist erlaubt",
+      "D": "mit Freiheitsstrafe bis zu fünf Jahren oder mit Geldstrafe"
     },
-    "antwort": "B",
+    "antwort": "D",
     "erklaerung": ""
   },
   {
