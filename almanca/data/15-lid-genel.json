@@ -1435,14 +1435,14 @@
   {
     "id": "111",
     "thema": "Leben in Deutschland — Genel",
-    "frage": "In Deutschland darf man wählen. Was bedeutet das?",
+    "frage": "Welche Handlungen mit Bezug auf den Staat Israel sind in Deutschland verboten?",
     "optionen": {
-      "A": "Alle deutschen Staatsangehörigen dürfen wählen, wenn sie das Mindestalter erreicht haben.",
-      "B": "Nur verheiratete Personen dürfen wählen.",
-      "C": "Nur Personen mit einem festen Arbeitsplatz dürfen wählen.",
-      "D": "Alle Einwohner und Einwohnerinnen in Deutschland müssen wählen."
+      "A": "die Politik Israels öffentlich kritisieren",
+      "B": "das Aufhängen einer israelischen Flagge auf dem Privatgrundstück",
+      "C": "eine Diskussion über die Politik Israels",
+      "D": "der öffentliche Aufruf zur Vernichtung Israels"
     },
-    "antwort": "A",
+    "antwort": "D",
     "erklaerung": ""
   },
   {
