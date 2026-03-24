@@ -2361,14 +2361,14 @@
   {
     "id": "182",
     "thema": "Leben in Deutschland — Genel",
-    "frage": "Welche Parteien wurden 1946 zwangsweise zur SED vereint, der Einheitspartei der späteren DDR?",
+    "frage": "Wie heißt das jüdische Gebetshaus?",
     "optionen": {
-      "A": "KPD und SPD",
-      "B": "SPD und CDU",
-      "C": "CDU und FDP",
-      "D": "KPD und CSU"
+      "A": "Basilika",
+      "B": "Moschee",
+      "C": "Synagoge",
+      "D": "Kirche"
     },
-    "antwort": "A",
+    "antwort": "C",
     "erklaerung": ""
   },
   {
