@@ -71,15 +71,21 @@ def konu_ac(request, kategori_pk, stadt_slug=None):
         if not email_dogrulandi_mi(request.user):
             messages.error(request, 'Konu açabilmek için e-posta adresinizi doğrulamanız gerekiyor.')
             return redirect('account_email')
-        konu = Konu.objects.create(
-            kategori=kategori,
-            yazar=request.user,
-            baslik=request.POST['baslik'],
-            icerik=request.POST['icerik'],
-            resim=request.FILES.get('resim'),
-            stadt=stadt,
-            scope='stadt' if stadt else 'eyalet',
-        )
+        try:
+            konu = Konu.objects.create(
+                kategori=kategori,
+                yazar=request.user,
+                baslik=request.POST['baslik'],
+                icerik=request.POST['icerik'],
+                resim=request.FILES.get('resim'),
+                stadt=stadt,
+                scope='stadt' if stadt else 'eyalet',
+            )
+        except Exception as e:
+            import traceback, logging
+            logging.getLogger(__name__).error('Konu resim yükleme hatası: %s\n%s', e, traceback.format_exc())
+            messages.error(request, f'Resim yüklenirken hata: {e}')
+            return render(request, 'forum/konu_ac.html', {'kategori': kategori, 'stadt': stadt})
         messages.success(request, 'Konu açıldı.')
         if stadt_slug:
             return redirect('forum:konu', pk=konu.pk, stadt_slug=stadt_slug)
