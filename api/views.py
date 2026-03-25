@@ -49,6 +49,60 @@ def rss_cek(request):
 
 
 @csrf_exempt
+def cleanup_s3(request):
+    """
+    Forum klasöründeki 15 günden eski ve DB'de referansı olmayan S3 dosyalarını siler.
+    ?token=<CRON_SECRET> gerekli.
+    """
+    _, hata = _token_kontrol(request)
+    if hata:
+        return hata
+
+    if not getattr(settings, 'AWS_STORAGE_BUCKET_NAME', None):
+        return JsonResponse({'error': 'S3 yapılandırılmamış.'}, status=500)
+
+    try:
+        import boto3
+        from datetime import timedelta
+        from forum.models import Konu, Yorum
+
+        sinir = timezone.now() - timedelta(days=15)
+
+        s3 = boto3.client(
+            's3',
+            aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
+            region_name=settings.AWS_S3_REGION_NAME,
+        )
+
+        # DB'deki tüm aktif resim yollarını topla
+        aktif = set()
+        for r in Konu.objects.exclude(resim='').exclude(resim=None).values_list('resim', flat=True):
+            aktif.add(str(r))
+        for r in Yorum.objects.exclude(resim='').exclude(resim=None).values_list('resim', flat=True):
+            aktif.add(str(r))
+
+        silinen = []
+        paginator = s3.get_paginator('list_objects_v2')
+        for page in paginator.paginate(Bucket=settings.AWS_STORAGE_BUCKET_NAME, Prefix='forum/'):
+            for obj in page.get('Contents', []):
+                key = obj['Key']
+                last_modified = obj['LastModified'].replace(tzinfo=timezone.utc)
+                if last_modified < sinir and key not in aktif:
+                    s3.delete_object(Bucket=settings.AWS_STORAGE_BUCKET_NAME, Key=key)
+                    silinen.append(key)
+
+        return JsonResponse({
+            'status': 'ok',
+            'timestamp': timezone.now().isoformat(),
+            'silinen_sayi': len(silinen),
+            'silinenler': silinen,
+        })
+    except Exception as e:
+        return JsonResponse({'status': 'error', 'detail': str(e)}, status=500)
+
+
+@csrf_exempt
 def seed_calistir(request):
     """
     Seed scriptlerini çalıştırır. ?token=<CRON_SECRET> gerekli.
