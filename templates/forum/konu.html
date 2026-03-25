@@ -16,6 +16,9 @@
       {% endif %}
       <hr>
       <div>{{ konu.icerik|linebreaks }}</div>
+      {% if konu.resim %}
+      <img src="{{ konu.resim.url }}" alt="Resim" class="img-fluid rounded mt-2" style="max-height:400px;">
+      {% endif %}
     </div>
   </div>
   {% for y in yorumlar %}
@@ -28,15 +31,19 @@
         </a>
       {% endif %}
       <div class="mt-1">{{ y.icerik|linebreaks }}</div>
+      {% if y.resim %}
+      <img src="{{ y.resim.url }}" alt="Resim" class="img-fluid rounded mt-2" style="max-height:400px;">
+      {% endif %}
     </div>
   </div>
   {% endfor %}
   {% if user.is_authenticated and not konu.kapali %}
   <div class="card mt-3">
     <div class="card-body p-4">
-      <form method="post" action="/{{ stadt.slug }}/forum/konu/{{ konu.pk }}/yorum/">
+      <form method="post" action="/{{ stadt.slug }}/forum/konu/{{ konu.pk }}/yorum/" enctype="multipart/form-data">
         {% csrf_token %}
         <textarea name="icerik" class="form-control mb-2" rows="3" placeholder="Yanıtınızı yazın..." required></textarea>
+        <input type="file" name="resim" class="form-control form-control-sm mb-2" accept="image/*">
         <button type="submit" class="btn btn-primary btn-sm">
           <i class="bi bi-send me-1"></i>Gönder
         </button>

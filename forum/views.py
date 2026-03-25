@@ -55,7 +55,7 @@ def yorum_ekle(request, pk, stadt_slug=None):
             if stadt_slug:
                 return redirect('forum:konu', pk=pk, stadt_slug=stadt_slug)
             return redirect('forum:konu', pk=pk)
-        Yorum.objects.create(konu=konu, yazar=request.user, icerik=request.POST['icerik'])
+        Yorum.objects.create(konu=konu, yazar=request.user, icerik=request.POST['icerik'], resim=request.FILES.get('resim'))
     if stadt_slug:
         return redirect('forum:konu', pk=pk, stadt_slug=stadt_slug)
     return redirect('forum:konu', pk=pk)
@@ -76,6 +76,7 @@ def konu_ac(request, kategori_pk, stadt_slug=None):
             yazar=request.user,
             baslik=request.POST['baslik'],
             icerik=request.POST['icerik'],
+            resim=request.FILES.get('resim'),
             stadt=stadt,
             scope='stadt' if stadt else 'eyalet',
         )
