@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}{{ yazi.baslik }} — Blog{% endblock %}
-{% block meta_description %}{% if yazi.ozet %}{{ yazi.ozet }}{% else %}{{ yazi.baslik }} — Almanya Rehber Blog{% endif %}{% endblock %}
+{% block meta_description %}{% if yazi.ozet %}{{ yazi.ozet }}{% else %}{{ yazi.baslik }} — Almanyalı Rehber Blog{% endif %}{% endblock %}
 {% block og_title %}{{ yazi.baslik }}{% endblock %}
-{% block og_description %}{% if yazi.ozet %}{{ yazi.ozet }}{% else %}{{ yazi.baslik }} — Almanya Rehber Blog{% endif %}{% endblock %}
+{% block og_description %}{% if yazi.ozet %}{{ yazi.ozet }}{% else %}{{ yazi.baslik }} — Almanyalı Rehber Blog{% endif %}{% endblock %}
 {% if yazi.kapak_resmi %}{% block og_image %}<meta property="og:image" content="{{ yazi.kapak_resmi }}">{% endblock %}{% endif %}
 {% block twitter_title %}{{ yazi.baslik }}{% endblock %}
-{% block twitter_description %}{% if yazi.ozet %}{{ yazi.ozet }}{% else %}{{ yazi.baslik }} — Almanya Rehber Blog{% endif %}{% endblock %}
+{% block twitter_description %}{% if yazi.ozet %}{{ yazi.ozet }}{% else %}{{ yazi.baslik }} — Almanyalı Rehber Blog{% endif %}{% endblock %}
 
 {% block extra_css %}
 <style>

@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}{{ sayfa.baslik }} — Kaynaklar{% endblock %}
-{% block meta_description %}{% if sayfa.ozet %}{{ sayfa.ozet }}{% else %}{{ sayfa.baslik }} — Almanya Rehber{% endif %}{% endblock %}
+{% block meta_description %}{% if sayfa.ozet %}{{ sayfa.ozet }}{% else %}{{ sayfa.baslik }} — Almanyalı Rehber{% endif %}{% endblock %}
 {% block og_title %}{{ sayfa.baslik }}{% endblock %}
-{% block og_description %}{% if sayfa.ozet %}{{ sayfa.ozet }}{% else %}{{ sayfa.baslik }} — Almanya Rehber{% endif %}{% endblock %}
+{% block og_description %}{% if sayfa.ozet %}{{ sayfa.ozet }}{% else %}{{ sayfa.baslik }} — Almanyalı Rehber{% endif %}{% endblock %}
 {% block twitter_title %}{{ sayfa.baslik }}{% endblock %}
-{% block twitter_description %}{% if sayfa.ozet %}{{ sayfa.ozet }}{% else %}{{ sayfa.baslik }} — Almanya Rehber{% endif %}{% endblock %}
+{% block twitter_description %}{% if sayfa.ozet %}{{ sayfa.ozet }}{% else %}{{ sayfa.baslik }} — Almanyalı Rehber{% endif %}{% endblock %}
 {% block content %}
 <div class="container mt-4" style="max-width:760px">
   <a href="{% if stadt %}/{{ eyalet_slug }}/{{ stadt.slug }}/rehber/{% else %}/{{ eyalet_slug }}/rehber/{% endif %}" class="btn btn-sm btn-outline-secondary mb-3">
