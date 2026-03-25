@@ -27,13 +27,5 @@ Site.objects.update_or_create(id=1, defaults={'domain': domain, 'name': 'RLP Reh
 print(f'Site: {domain}')
 "
 
-echo "==> Seed veriler..."
-python blog_yazilari_ekle.py || true
-python reklam_paketleri_seed.py || true
-python linkler_seed.py || true
-python yerler_seed.py || true
-python takvim_seed.py || true
-python forum_seed.py || true
-
 echo "==> Gunicorn basliyor..."
 exec gunicorn config.wsgi --bind 0.0.0.0:8000 --workers 2 --timeout 120 --log-file -
