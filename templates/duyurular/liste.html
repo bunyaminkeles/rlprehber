@@ -15,7 +15,7 @@
   <div class="row g-3" style="height: calc(100vh - 140px);">
 
     <!-- Sol: Konsolosluk -->
-    <div class="col-md-4 d-flex flex-column h-100">
+    <div class="{% if stadt %}col-md-4{% else %}col-md-6{% endif %} d-flex flex-column h-100">
       <div class="card flex-grow-1 border-0 shadow-sm">
         <div class="card-header bg-danger text-white fw-semibold py-2">
           <i class="bi bi-flag me-2"></i>T.C. Konsolosluk
@@ -34,8 +34,8 @@
       </div>
     </div>
 
-    <!-- Orta: Belediye -->
-    <div class="col-md-4 d-flex flex-column h-100">
+    <!-- Orta: Belediye (sadece şehir sayfasında) -->
+    {% if stadt %}<div class="col-md-4 d-flex flex-column h-100">
       <div class="card flex-grow-1 border-0 shadow-sm">
         <div class="card-header bg-primary text-white fw-semibold py-2">
           <i class="bi bi-building me-2"></i>Belediye
@@ -53,10 +53,10 @@
           {% endfor %}
         </div>
       </div>
-    </div>
+    </div>{% endif %}
 
     <!-- Sağ: Kullanıcı Duyuruları -->
-    <div class="col-md-4 d-flex flex-column h-100">
+    <div class="{% if stadt %}col-md-4{% else %}col-md-6{% endif %} d-flex flex-column h-100">
       <div class="card flex-grow-1 border-0 shadow-sm">
         <div class="card-header bg-success text-white fw-semibold py-2">
           <i class="bi bi-people me-2"></i>Topluluk Duyuruları

@@ -19,7 +19,7 @@ def liste(request, stadt_slug=None):
     temel = Duyuru.objects.filter(_kapsam_filtresi(stadt), yayinda=True)
 
     konsolosluk = temel.filter(kaynak_tipi='konsolosluk').order_by('-olusturulma')[:20]
-    belediye    = temel.filter(kaynak_tipi='belediye').order_by('-olusturulma')[:20]
+    belediye    = temel.filter(kaynak_tipi='belediye').order_by('-olusturulma')[:20] if stadt else []
     kullanici   = temel.filter(kaynak_tipi='kullanici').order_by('-olusturulma')[:20]
 
     return render(request, 'duyurular/liste.html', {
