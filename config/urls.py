@@ -45,6 +45,7 @@ urlpatterns = [
     path('googlef882ed2d634aa7da.html',          TemplateView.as_view(template_name='googlef882ed2d634aa7da.html',          content_type='text/html')),
     path('BingSiteAuth.xml',                     TemplateView.as_view(template_name='BingSiteAuth.xml',                     content_type='text/xml')),
     path('yandex_a495fecc6d44f4f8.html',         TemplateView.as_view(template_name='yandex_a495fecc6d44f4f8.html',         content_type='text/html')),
+    path('yandex_74f18fa4e3ddff5c.html',         TemplateView.as_view(template_name='yandex_74f18fa4e3ddff5c.html',         content_type='text/html')),
     path('guzpm0nmoodr8tjb1bxn06wo4bk14o.html',  TemplateView.as_view(template_name='guzpm0nmoodr8tjb1bxn06wo4bk14o.html',  content_type='text/html')),
 
     path('admin/', admin.site.urls),
