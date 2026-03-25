@@ -12,6 +12,7 @@ services:
     plan: free
     branch: main
     dockerfilePath: ./Dockerfile
+    healthCheckPath: /
     envVars:
       - key: SECRET_KEY
         generateValue: true
