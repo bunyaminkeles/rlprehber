@@ -7,9 +7,9 @@ def email_dogrulandi_mi(user):
 
 
 def dogrulama_maili_gonder(request, user):
-    """Doğrulanmamış kullanıcıya doğrulama maili gönder (zaten gönderildiyse atla)."""
+    """Doğrulanmamış kullanıcıya doğrulama maili gönder (hata olursa sessizce geç)."""
     try:
         email_address = EmailAddress.objects.get(user=user, primary=True, verified=False)
         email_address.send_confirmation(request)
-    except EmailAddress.DoesNotExist:
+    except Exception:
         pass
