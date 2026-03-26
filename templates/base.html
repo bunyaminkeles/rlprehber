@@ -21,6 +21,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="{% block twitter_title %}{% if stadt %}{{ stadt.name }} — Almanyalı Rehber{% else %}Almanyalı Rehber{% endif %}{% endblock %}">
   <meta name="twitter:description" content="{% block twitter_description %}Almanya'da yeni başlayanlar için Türkçe kaynak platformu.{% endblock %}">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%232C5F8A'><path d='M8 1a5 5 0 0 0-5 5c0 4 5 9 5 9s5-5 5-9a5 5 0 0 0-5-5zm0 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z'/></svg>">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   {% load static %}
@@ -49,9 +50,65 @@
     <div class="collapse navbar-collapse" id="navMenu">
       <ul class="navbar-nav me-auto ms-3 gap-1">
         {% if stadt %}
-          {# Şehir bazlı menü #}
-          <li class="nav-item">
-            <a class="nav-link" href="/{{ eyalet_slug }}/{{ stadt.slug }}/rehber/"><i class="bi bi-journal-bookmark-fill me-1"></i>Kaynaklar</a>
+          {# Rehber mega-dropdown #}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+              <i class="bi bi-grid me-1"></i>Kaynaklar
+            </a>
+            <div class="dropdown-menu rehber-mega p-3">
+              <div class="row g-1">
+                <div class="col-4">
+                  <a href="/{{ stadt.eyalet.slug }}/{{ stadt.slug }}/yerler/?kategori=resmi_kurum" class="rehber-mega-item">
+                    <i class="bi bi-building"></i><span>Resmi İşlemler</span>
+                  </a>
+                </div>
+                <div class="col-4">
+                  <a href="/{{ stadt.eyalet.slug }}/{{ stadt.slug }}/yerler/?kategori=resmi_kurum" class="rehber-mega-item">
+                    <i class="bi bi-briefcase"></i><span>İş & Kariyer</span>
+                  </a>
+                </div>
+                <div class="col-4">
+                  <a href="/{{ stadt.eyalet.slug }}/{{ stadt.slug }}/yerler/?kategori=egitim" class="rehber-mega-item">
+                    <i class="bi bi-mortarboard"></i><span>Eğitim</span>
+                  </a>
+                </div>
+                <div class="col-4">
+                  <a href="/{{ stadt.eyalet.slug }}/{{ stadt.slug }}/yerler/?kategori=saglik" class="rehber-mega-item">
+                    <i class="bi bi-heart-pulse"></i><span>Sağlık</span>
+                  </a>
+                </div>
+                <div class="col-4">
+                  <a href="/{{ stadt.eyalet.slug }}/{{ stadt.slug }}/rehber/belgeler/#konut" class="rehber-mega-item">
+                    <i class="bi bi-house"></i><span>Konut</span>
+                  </a>
+                </div>
+                <div class="col-4">
+                  <a href="/{{ stadt.eyalet.slug }}/{{ stadt.slug }}/rehber/belgeler/#ulasim" class="rehber-mega-item">
+                    <i class="bi bi-bus-front"></i><span>Ulaşım</span>
+                  </a>
+                </div>
+                <div class="col-4">
+                  <a href="/{{ stadt.eyalet.slug }}/{{ stadt.slug }}/yerler/?kategori=egitim" class="rehber-mega-item">
+                    <i class="bi bi-translate"></i><span>Almanca</span>
+                  </a>
+                </div>
+                <div class="col-4">
+                  <a href="/{{ stadt.eyalet.slug }}/{{ stadt.slug }}/rehber/belgeler/#gunluk" class="rehber-mega-item">
+                    <i class="bi bi-cup-hot"></i><span>Günlük Yaşam</span>
+                  </a>
+                </div>
+                <div class="col-4">
+                  <a href="/{{ stadt.eyalet.slug }}/{{ stadt.slug }}/yerler/?kategori=gezi" class="rehber-mega-item">
+                    <i class="bi bi-map"></i><span>Gezi & Kültür</span>
+                  </a>
+                </div>
+              </div>
+              <div class="border-top mt-2 pt-2">
+                <a href="/{{ stadt.eyalet.slug }}/{{ stadt.slug }}/rehber/belgeler/" class="small fw-semibold d-block text-center" style="color:var(--primary)">
+                  <i class="bi bi-file-earmark-text me-1"></i>Gerekli Dokümanlar
+                </a>
+              </div>
+            </div>
           </li>
           {# Topluluk dropdown #}
           <li class="nav-item dropdown">
@@ -67,7 +124,6 @@
               <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/blog/"><i class="bi bi-pencil-square me-1"></i>Blog</a></li>
               <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/"><i class="bi bi-geo-alt me-1"></i>Yerler</a></li>
               <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/isletmeler/"><i class="bi bi-shop me-1"></i>İşletmeler</a></li>
-              <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/linkler/"><i class="bi bi-link-45deg me-1"></i>Linkler</a></li>
             </ul>
           </li>
         {% endif %}
@@ -76,63 +132,22 @@
 <ul class="navbar-nav ms-auto gap-1 align-items-center">
         {# Eyalet + Şehir switcher #}
 
-        {# Eyalet seç dropdown #}
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle {% if eyalet_slug and eyalet_slug != 'rlp' %}text-info fw-semibold{% endif %}"
-             href="#" role="button" data-bs-toggle="dropdown" id="eyaletDropdown">
-            <i class="bi bi-map me-1"></i>
-            {% if eyalet_slug %}
-              {% for e in alle_eyaletler %}{% if e.slug == eyalet_slug %}{{ e.ad }}{% endif %}{% endfor %}
-            {% else %}Eyalet Seç{% endif %}
+        {# Şehir arama #}
+        <li class="nav-item" id="sehirAraLi">
+          {% if stadt %}
+          <a class="nav-link text-warning fw-semibold" href="{% url 'core:anasayfa' %}">
+            <i class="bi bi-geo-fill me-1"></i>{{ stadt.name }}
+            {% if stadt.eyalet %}<small class="opacity-75">{{ stadt.eyalet.kod }}</small>{% endif %}
+            <i class="bi bi-x ms-1 opacity-75"></i>
           </a>
-          <ul class="dropdown-menu dropdown-menu-end" style="min-width:200px">
-            <li><h6 class="dropdown-header">Eyalet Seçin</h6></li>
-            {% for e in alle_eyaletler %}
-            <li>
-              <a class="dropdown-item {% if e.slug == eyalet_slug %}active{% endif %}"
-                 href="/{{ e.slug }}/" data-eyalet="{{ e.slug }}">
-                <i class="bi bi-map-fill me-1 text-primary"></i>{{ e.ad }}
-                <small class="text-muted ms-1">({{ e.kod }})</small>
-              </a>
-            </li>
-            {% empty %}
-            <li><span class="dropdown-item text-muted">Henüz eyalet yok</span></li>
-            {% endfor %}
-          </ul>
-        </li>
-
-        {# Şehir seç dropdown #}
-        <li class="nav-item dropdown" id="sehirDropdownLi"
-            data-aktif-eyalet="{{ eyalet_slug|default:'' }}">
-          <a class="nav-link dropdown-toggle {% if stadt %}text-warning fw-semibold{% endif %}"
-             href="#" role="button" data-bs-toggle="dropdown" id="sehirDropdownToggle">
-            <i class="bi {% if stadt %}bi-geo-fill{% else %}bi-geo-alt{% endif %} me-1"></i>
-            {% if stadt %}{{ stadt.name }}{% else %}Şehir Seç{% endif %}
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end" id="sehirDropdownMenu" style="min-width:220px; max-height:360px; overflow-y:auto">
-            <li><h6 class="dropdown-header">Şehir Seçin</h6></li>
-            <li id="sehirPlaceholder" class="d-none">
-              <span class="dropdown-item text-muted fst-italic">
-                <i class="bi bi-arrow-left me-1"></i>Önce eyalet seçin
-              </span>
-            </li>
-            {% for s in alle_staedte %}
-            <li class="sehir-item" data-eyalet="{{ s.eyalet.slug|default:'' }}">
-              <a class="dropdown-item {% if s.slug == stadt.slug %}active{% endif %}"
-                 href="/{{ s.eyalet.slug|default:'rlp' }}/{{ s.slug }}/">
-                {% if s.typ == 'kreisfrei' %}🏙️{% else %}🗺️{% endif %}
-                {{ s.name }}
-                {% if s.eyalet %}<small class="text-muted ms-1">{{ s.eyalet.kod }}</small>{% endif %}
-              </a>
-            </li>
-            {% empty %}
-            <li><span class="dropdown-item text-muted">Henüz şehir yok</span></li>
-            {% endfor %}
-            {% if stadt %}
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{% url 'core:anasayfa' %}"><i class="bi bi-house me-1"></i>Ana Sayfa</a></li>
-            {% endif %}
-          </ul>
+          {% endif %}
+          <div class="position-relative d-inline-block">
+            <input type="text" id="sehirAraInput"
+                   class="form-control form-control-sm sehir-ara-input"
+                   placeholder="🔍 Şehir ara…"
+                   autocomplete="off">
+            <ul class="dropdown-menu sehir-ara-sonuclar" id="sehirAraSonuclar"></ul>
+          </div>
         </li>
 
         <li class="nav-item">
@@ -228,24 +243,39 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 (function () {
-  const sehirItems  = document.querySelectorAll('#sehirDropdownMenu .sehir-item');
-  const placeholder = document.getElementById('sehirPlaceholder');
-  const aktifEyalet = (document.getElementById('sehirDropdownLi') || {}).dataset.aktifEyalet || '';
+  const input    = document.getElementById('sehirAraInput');
+  const sonuclar = document.getElementById('sehirAraSonuclar');
+  if (!input) return;
 
-  function filtreSehirler(slug) {
-    if (!slug) {
-      if (placeholder) placeholder.classList.add('d-none');
-      sehirItems.forEach(function (li) { li.style.display = ''; });
-    } else {
-      if (placeholder) placeholder.classList.add('d-none');
-      sehirItems.forEach(function (li) {
-        li.style.display = (li.dataset.eyalet === slug) ? '' : 'none';
-      });
-    }
-  }
+  let timer;
+  input.addEventListener('input', function () {
+    clearTimeout(timer);
+    const q = this.value.trim();
+    if (q.length < 2) { sonuclar.classList.remove('show'); return; }
+    timer = setTimeout(function () {
+      fetch('/api/sehir-ara/?q=' + encodeURIComponent(q))
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (!data.sonuclar.length) { sonuclar.classList.remove('show'); return; }
+          sonuclar.innerHTML = data.sonuclar.map(function (s) {
+            return '<li><a class="dropdown-item" href="' + s.url + '">'
+              + '<i class="bi bi-geo-alt me-1 text-primary"></i>'
+              + s.ad
+              + ' <small class="text-muted ms-1">' + s.kod + '</small>'
+              + '</a></li>';
+          }).join('');
+          sonuclar.classList.add('show');
+        });
+    }, 200);
+  });
 
-  // Sayfa açılışında mevcut eyalete göre filtrele
-  filtreSehirler(aktifEyalet);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { sonuclar.classList.remove('show'); input.value = ''; }
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('#sehirAraLi')) { sonuclar.classList.remove('show'); }
+  });
 })();
 </script>
 {% block extra_js %}{% endblock %}

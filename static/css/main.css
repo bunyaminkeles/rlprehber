@@ -151,6 +151,68 @@ footer a:hover {
   font-size: 1.05rem;
 }
 
+/* Şehir arama */
+.sehir-ara-input {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  width: 160px;
+  border-radius: 20px;
+  padding-left: 12px;
+  transition: width 0.2s, background 0.2s;
+}
+.sehir-ara-input::placeholder { color: rgba(255,255,255,0.55); }
+.sehir-ara-input:focus {
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.5);
+  color: #fff;
+  width: 200px;
+  outline: none;
+  box-shadow: none;
+}
+.sehir-ara-sonuclar {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  min-width: 220px;
+  z-index: 1050;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* Rehber mega-dropdown */
+.rehber-mega {
+  min-width: 480px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+  border: 1px solid var(--border);
+}
+.rehber-mega-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.83rem;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.rehber-mega-item:hover {
+  background: var(--bg);
+  color: var(--primary);
+}
+.rehber-mega-item i {
+  font-size: 1.05rem;
+  color: var(--accent);
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
+
 /* Rehber kategori ikonları */
 .rehber-kategori {
   text-align: center;
