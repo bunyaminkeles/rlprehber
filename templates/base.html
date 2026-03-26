@@ -51,31 +51,24 @@
         {% if stadt %}
           {# Şehir bazlı menü #}
           <li class="nav-item">
-            <a class="nav-link" href="/{{ stadt.slug }}/rehber/"><i class="bi bi-journal-bookmark-fill me-1"></i>Kaynaklar</a>
+            <a class="nav-link" href="/{{ eyalet_slug }}/{{ stadt.slug }}/rehber/"><i class="bi bi-journal-bookmark-fill me-1"></i>Kaynaklar</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/{{ stadt.slug }}/duyurular/"><i class="bi bi-megaphone me-1"></i>Duyurular</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/{{ stadt.slug }}/takvim/"><i class="bi bi-calendar3 me-1"></i>Takvim</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/{{ stadt.slug }}/forum/"><i class="bi bi-chat-dots me-1"></i>Forum</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/{{ stadt.slug }}/blog/"><i class="bi bi-pencil-square me-1"></i>Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/{{ stadt.slug }}/ilan/"><i class="bi bi-grid me-1"></i>İlanlar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/{{ stadt.slug }}/yerler/"><i class="bi bi-geo-alt me-1"></i>Yerler</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/{{ stadt.slug }}/isletmeler/"><i class="bi bi-shop me-1"></i>İşletmeler</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/{{ stadt.slug }}/linkler/"><i class="bi bi-link-45deg me-1"></i>Linkler</a>
+          {# Topluluk dropdown #}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              <i class="bi bi-people me-1"></i>Topluluk
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/duyurular/"><i class="bi bi-megaphone me-1"></i>Duyurular</a></li>
+              <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/takvim/"><i class="bi bi-calendar3 me-1"></i>Takvim</a></li>
+              <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/forum/"><i class="bi bi-chat-dots me-1"></i>Forum</a></li>
+              <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/ilan/"><i class="bi bi-grid me-1"></i>İlanlar</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/blog/"><i class="bi bi-pencil-square me-1"></i>Blog</a></li>
+              <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/"><i class="bi bi-geo-alt me-1"></i>Yerler</a></li>
+              <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/isletmeler/"><i class="bi bi-shop me-1"></i>İşletmeler</a></li>
+              <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/linkler/"><i class="bi bi-link-45deg me-1"></i>Linkler</a></li>
+            </ul>
           </li>
         {% endif %}
       </ul>
@@ -146,30 +139,28 @@
           <a class="nav-link" href="{% url 'core:hakkinda' %}"><i class="bi bi-info-circle me-1"></i>Hakkında</a>
         </li>
         {% if user.is_authenticated %}
-          {% if user.is_staff %}
-          <li class="nav-item">
-            <a class="nav-link text-warning" href="/admin/"><i class="bi bi-shield-lock me-1"></i>Admin</a>
-          </li>
-          {% endif %}
-          <li class="nav-item">
-            <a class="nav-link position-relative" href="{% url 'mesajlar:gelen_kutusu' %}">
-              <i class="bi bi-chat-dots me-1"></i>Mesajlar
-              {% load mesajlar_tags %}
-              {% okunmamis_sayi request.user as okunmamis %}
+          {% load mesajlar_tags %}
+          {% okunmamis_sayi request.user as okunmamis %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle position-relative" href="#" role="button" data-bs-toggle="dropdown">
+              <i class="bi bi-person-circle me-1"></i>{{ user.username }}
               {% if okunmamis %}
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:.65rem">
-                  {{ okunmamis }}
-                </span>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:.65rem">{{ okunmamis }}</span>
               {% endif %}
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'accounts:dashboard' %}">
-              <i class="bi bi-person-circle me-1"></i>{{ user.username }}
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_logout' %}"><i class="bi bi-box-arrow-right me-1"></i>Çıkış</a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="{% url 'accounts:dashboard' %}"><i class="bi bi-speedometer2 me-1"></i>Panelim</a></li>
+              <li><a class="dropdown-item" href="{% url 'mesajlar:gelen_kutusu' %}">
+                <i class="bi bi-chat-dots me-1"></i>Mesajlar
+                {% if okunmamis %}<span class="badge bg-danger ms-1" style="font-size:.65rem">{{ okunmamis }}</span>{% endif %}
+              </a></li>
+              {% if user.is_staff %}
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-warning" href="/admin/"><i class="bi bi-shield-lock me-1"></i>Admin</a></li>
+              {% endif %}
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'account_logout' %}"><i class="bi bi-box-arrow-right me-1"></i>Çıkış</a></li>
+            </ul>
           </li>
         {% else %}
           <li class="nav-item">
