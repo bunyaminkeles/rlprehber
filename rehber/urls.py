@@ -5,6 +5,7 @@ app_name = 'rehber'
 
 urlpatterns = [
     path('', views.liste, name='liste'),
+    path('belgeler/', views.belgeler, name='belgeler'),
     path('anabin-karar-araci/', views.anabin_widget, name='anabin_widget'),
     path('<slug:slug>/', views.detay, name='detay'),
 ]

@@ -3,24 +3,44 @@ from .models import Kaynak, KAYNAK_KATEGORI
 
 
 def liste(request, eyalet_slug='rlp', stadt_slug=None):
+    """Kaynaklar sayfası yerler sayfasına taşındı."""
+    from django.http import HttpResponsePermanentRedirect
+    if stadt_slug:
+        return HttpResponsePermanentRedirect(f'/{eyalet_slug}/{stadt_slug}/yerler/')
+    return HttpResponsePermanentRedirect(f'/{eyalet_slug}/yerler/')
+
+
+def belgeler(request, eyalet_slug='rlp', stadt_slug=None):
+    from django.db.models import Q
     from stadt.models import Stadt
     stadt = get_object_or_404(Stadt, slug=stadt_slug, aktiv=True) if stadt_slug else None
 
+    BELGE_KATEGORILER = [
+        ('konut', 'Konut & Kira'),
+    ]
+    belge_kat_list = [k for k, _ in BELGE_KATEGORILER]
+
     if stadt:
-        qs = Kaynak.objects.filter(stadt=stadt, scope='stadt', yayinda=True)
+        qs = Kaynak.objects.filter(
+            Q(stadt=stadt, scope='stadt') | Q(scope='eyalet', eyalet__slug=eyalet_slug),
+            yayinda=True, kategori__in=belge_kat_list,
+        ).order_by('sira')
     else:
-        qs = Kaynak.objects.filter(scope='eyalet', eyalet__slug=eyalet_slug, yayinda=True)
+        qs = Kaynak.objects.filter(
+            scope='eyalet', eyalet__slug=eyalet_slug,
+            yayinda=True, kategori__in=belge_kat_list,
+        ).order_by('sira')
 
-    kategoriler = {}
-    for k, v in KAYNAK_KATEGORI:
-        kaynaklar = qs.filter(kategori=k)
-        if kaynaklar.exists():
-            kategoriler[v] = kaynaklar
+    kategoriler = []
+    for k, v in BELGE_KATEGORILER:
+        items = list(qs.filter(kategori=k))
+        if items:
+            kategoriler.append((k, v, items))
 
-    return render(request, 'rehber/liste.html', {
-        'kategoriler':  kategoriler,
-        'stadt':        stadt,
-        'eyalet_slug':  eyalet_slug,
+    return render(request, 'rehber/belgeler.html', {
+        'kategoriler': kategoriler,
+        'stadt':       stadt,
+        'eyalet_slug': eyalet_slug,
     })
 
 

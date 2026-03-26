@@ -2,6 +2,14 @@ from django.shortcuts import render, get_object_or_404
 from django.db.models import Q, Case, When, IntegerField
 from .models import Yer, YerFoto, ReklamPaketi, YerKategori
 
+# Yerler sekmesi → gösterilecek Kaynak kategorileri
+YER_TAB_KAYNAK = {
+    'resmi_kurum': [('resmi', 'Resmi İşlemler & Kurumlar'), ('is', 'İş & Kariyer')],
+    'egitim':      [('egitim', 'Eğitim'), ('almanca', 'Almanca Öğrenimi')],
+    'saglik':      [('saglik', 'Sağlık')],
+    'gezi':        [('gezi', 'Gezi & Kültür')],
+}
+
 
 def _get_stadt(stadt_slug):
     if not stadt_slug:
@@ -23,7 +31,7 @@ def _base_qs(stadt, eyalet_slug='rlp'):
 
 def liste(request, eyalet_slug='rlp', stadt_slug=None):
     stadt = _get_stadt(stadt_slug)
-    kategori = request.GET.get('kategori', '')
+    kategori = request.GET.get('kategori', 'resmi_kurum')
 
     yer_kategorileri = list(YerKategori.objects.filter(tur='yer').order_by('sira', 'ad'))
     yer_kodlari = [k.slug for k in yer_kategorileri]
@@ -36,6 +44,36 @@ def liste(request, eyalet_slug='rlp', stadt_slug=None):
         yerler = base_qs.filter(kategori=k.slug)
         if yerler.exists():
             kategoriler[k.slug] = {'ad': k.ad, 'yerler': yerler}
+
+    # Her sekme için ilgili Kaynak (rehber) öğelerini ekle
+    from rehber.models import Kaynak
+    tum_kaynak_kat = list({k for gruplari in YER_TAB_KAYNAK.values() for k, _ in gruplari})
+    if stadt:
+        kaynak_qs = Kaynak.objects.filter(
+            Q(stadt=stadt, scope='stadt') | Q(scope='eyalet', eyalet__slug=eyalet_slug),
+            yayinda=True, kategori__in=tum_kaynak_kat,
+        ).order_by('sira')
+    else:
+        kaynak_qs = Kaynak.objects.filter(
+            scope='eyalet', eyalet__slug=eyalet_slug,
+            yayinda=True, kategori__in=tum_kaynak_kat,
+        ).order_by('sira')
+
+    for tab_slug, gruplari in YER_TAB_KAYNAK.items():
+        if kategori and kategori != tab_slug:
+            continue
+        rehber_alt = {}
+        for kat_k, kat_v in gruplari:
+            items = list(kaynak_qs.filter(kategori=kat_k))
+            if items:
+                rehber_alt[kat_v] = items
+        if rehber_alt:
+            if tab_slug not in kategoriler:
+                kat_obj = next((k for k in yer_kategorileri if k.slug == tab_slug), None)
+                if kat_obj:
+                    kategoriler[tab_slug] = {'ad': kat_obj.ad, 'yerler': Yer.objects.none()}
+            if tab_slug in kategoriler:
+                kategoriler[tab_slug]['rehber_alt'] = rehber_alt
 
     return render(request, 'yerler/liste.html', {
         'kategoriler':    kategoriler,

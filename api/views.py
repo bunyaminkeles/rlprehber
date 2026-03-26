@@ -6,6 +6,28 @@ from django.conf import settings
 from django.core.management import call_command
 
 
+def sehir_ara(request):
+    """Şehir adına göre arama — navbar autocomplete için."""
+    q = request.GET.get('q', '').strip()
+    if len(q) < 2:
+        return JsonResponse({'sonuclar': []})
+    from stadt.models import Stadt
+    staedte = (
+        Stadt.objects
+        .filter(aktiv=True, name__icontains=q)
+        .select_related('eyalet')
+        .order_by('name')[:8]
+    )
+    return JsonResponse({'sonuclar': [
+        {
+            'ad':  s.name,
+            'kod': s.eyalet.kod if s.eyalet else '',
+            'url': f'/{s.eyalet.slug}/{s.slug}/' if s.eyalet else f'/{s.slug}/',
+        }
+        for s in staedte
+    ]})
+
+
 def health(request):
     """Basit health check — cron-job.org veya uptime monitörler için."""
     return JsonResponse({

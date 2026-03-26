@@ -1,34 +1,12 @@
-from django.shortcuts import render, get_object_or_404
-from django.db.models import Q
-from .models import OnemliLink, LINK_KATEGORI
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponsePermanentRedirect
 
 
 def liste(request, eyalet_slug='rlp', stadt_slug=None):
-    from stadt.models import Stadt
-    stadt = get_object_or_404(Stadt, slug=stadt_slug, aktiv=True) if stadt_slug else None
-
-    if stadt:
-        base_qs = OnemliLink.objects.filter(
-            Q(stadt=stadt, scope='stadt') | Q(scope='eyalet', eyalet__slug=eyalet_slug),
-            aktif=True
-        )
-    else:
-        base_qs = OnemliLink.objects.filter(scope='eyalet', eyalet__slug=eyalet_slug, aktif=True)
-
-    kategoriler = {}
-    for k, v in LINK_KATEGORI:
-        if k == 'ilan':
-            continue
-        linkler = base_qs.filter(kategori=k)
-        if linkler.exists():
-            kategoriler[k] = {'ad': v, 'linkler': linkler}
-
-    return render(request, 'linkler/liste.html', {
-        'kategoriler':    kategoriler,
-        'tum_kategoriler': LINK_KATEGORI,
-        'stadt':          stadt,
-        'eyalet_slug':    eyalet_slug,
-    })
+    """Linkler sayfası yerler sayfasına taşındı — kalıcı yönlendirme."""
+    if stadt_slug:
+        return HttpResponsePermanentRedirect(f'/{eyalet_slug}/{stadt_slug}/yerler/')
+    return HttpResponsePermanentRedirect(f'/{eyalet_slug}/yerler/')
 
 
 def git(request, pk, eyalet_slug='rlp', stadt_slug=None):

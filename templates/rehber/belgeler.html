@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Gerekli Dokümanlar — {% if stadt %}{{ stadt.name }}{% else %}Rehber{% endif %}{% endblock %}
+{% block breadcrumb %}<li class="breadcrumb-item active">Gerekli Dokümanlar</li>{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h4 class="mb-4"><i class="bi bi-file-earmark-text me-2 text-primary"></i>Gerekli Dokümanlar</h4>
+
+  {% for kat_slug, kat_ad, kaynaklar in kategoriler %}
+  <h6 class="text-muted text-uppercase small fw-bold mt-4 mb-2" id="{{ kat_slug }}">{{ kat_ad }}</h6>
+  <div class="row g-3">
+    {% for s in kaynaklar %}
+    <div class="col-md-4 col-6">
+      <a href="{{ s.url }}" target="_blank" rel="noopener" class="rehber-kategori">
+        <span class="icon"><i class="bi {{ s.icon }}"></i></span>
+        <strong class="d-block">{{ s.baslik }}</strong>
+        <small class="text-muted">{{ s.ozet|truncatechars:60 }}</small>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+  {% empty %}
+  <p class="text-muted">Henüz doküman eklenmemiş.</p>
+  {% endfor %}
+</div>
+{% endblock %}
