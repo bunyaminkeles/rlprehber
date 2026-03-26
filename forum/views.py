@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
 from .models import ForumKategori, Konu, Yorum
-from accounts.utils import email_dogrulandi_mi
+from accounts.utils import email_dogrulandi_mi, dogrulama_maili_gonder
 
 
 def liste(request, eyalet_slug='rlp', stadt_slug=None):
@@ -55,7 +55,8 @@ def yorum_ekle(request, pk, eyalet_slug='rlp', stadt_slug=None):
     konu = get_object_or_404(Konu, pk=pk)
     if not konu.kapali and request.method == 'POST':
         if not email_dogrulandi_mi(request.user):
-            messages.error(request, 'Yorum yapabilmek için e-posta adresinizi doğrulamanız gerekiyor.')
+            dogrulama_maili_gonder(request, request.user)
+            messages.error(request, 'Yorum yapabilmek için e-posta adresinizi doğrulamanız gerekiyor. Doğrulama bağlantısı e-postanıza gönderildi.')
             if stadt_slug:
                 return redirect(f'/{eyalet_slug}/{stadt_slug}/forum/konu/{pk}/')
             return redirect(f'/{eyalet_slug}/forum/konu/{pk}/')
@@ -72,7 +73,8 @@ def konu_ac(request, kategori_pk, eyalet_slug='rlp', stadt_slug=None):
     stadt = get_object_or_404(Stadt, slug=stadt_slug, aktiv=True) if stadt_slug else None
 
     if not email_dogrulandi_mi(request.user):
-        messages.error(request, 'Konu açabilmek için e-posta adresinizi doğrulamanız gerekiyor.')
+        dogrulama_maili_gonder(request, request.user)
+        messages.error(request, 'Konu açabilmek için e-posta adresinizi doğrulamanız gerekiyor. Doğrulama bağlantısı e-postanıza gönderildi.')
         return redirect('account_email')
 
     if request.method == 'POST':

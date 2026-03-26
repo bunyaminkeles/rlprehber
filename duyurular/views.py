@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
 from .models import Duyuru
-from accounts.utils import email_dogrulandi_mi
+from accounts.utils import email_dogrulandi_mi, dogrulama_maili_gonder
 
 
 def _kapsam_filtresi(stadt, eyalet_slug):
@@ -37,7 +37,8 @@ def duyuru_ekle(request, eyalet_slug='rlp', stadt_slug=None):
     stadt = get_object_or_404(Stadt, slug=stadt_slug, aktiv=True) if stadt_slug else None
 
     if not email_dogrulandi_mi(request.user):
-        messages.error(request, 'Duyuru eklemek için e-posta adresinizi doğrulamanız gerekiyor.')
+        dogrulama_maili_gonder(request, request.user)
+        messages.error(request, 'Duyuru eklemek için e-posta adresinizi doğrulamanız gerekiyor. Doğrulama bağlantısı e-postanıza gönderildi.')
         return redirect('account_email')
 
     if request.method == 'POST':
