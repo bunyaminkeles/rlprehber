@@ -234,8 +234,8 @@
 
   function filtreSehirler(slug) {
     if (!slug) {
-      sehirItems.forEach(function (li) { li.style.display = 'none'; });
-      if (placeholder) placeholder.classList.remove('d-none');
+      if (placeholder) placeholder.classList.add('d-none');
+      sehirItems.forEach(function (li) { li.style.display = ''; });
     } else {
       if (placeholder) placeholder.classList.add('d-none');
       sehirItems.forEach(function (li) {
