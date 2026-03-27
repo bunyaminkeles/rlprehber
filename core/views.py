@@ -39,13 +39,19 @@ def _tagesschau_haberleri():
 
 
 def anasayfa(request):
-    """Ana sayfa: son forum konuları ve ilanlar widget'ları."""
+    """Ana sayfa: son forum konuları, duyurular ve ilanlar widget'ları."""
     sehirler = Stadt.objects.filter(aktiv=True)
     son_konular = (
         Konu.objects
         .filter(scope='eyalet')
         .select_related('stadt', 'yazar')
         .order_by('-olusturulma')[:8]
+    )
+    son_duyurular = (
+        Duyuru.objects
+        .filter(yayinda=True)
+        .select_related('stadt__eyalet')
+        .order_by('-olusturulma')[:6]
     )
     son_satilik = (
         Ilan.objects
@@ -60,11 +66,11 @@ def anasayfa(request):
         .order_by('-olusturulma')[:5]
     )
     return render(request, 'core/anasayfa.html', {
-        'sehirler':    sehirler,
-        'son_konular': son_konular,
-        'son_satilik': son_satilik,
-        'son_araniyor': son_araniyor,
-        'tagesschau':  _tagesschau_haberleri(),
+        'sehirler':      sehirler,
+        'son_konular':   son_konular,
+        'son_duyurular': son_duyurular,
+        'son_satilik':   son_satilik,
+        'son_araniyor':  son_araniyor,
     })
 
 

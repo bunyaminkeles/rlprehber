@@ -73,35 +73,26 @@
       </div>
     </div>
 
-    <!-- Orta: Tüm Almanya İçin -->
+    <!-- Orta: Son Duyurular -->
     <div class="col-lg-4">
-      <div class="mb-3">
-        <a href="/rlp/almanca/" class="rehber-kategori">
-          <span class="icon">🇩🇪</span>
-          <strong>Almanca Çalışma</strong>
-          <small class="text-muted d-block">595 soru, 14 konu</small>
-        </a>
-      </div>
-
-      <!-- Tagesschau Haberleri -->
-      <div class="card shadow-sm">
+      <div class="card shadow-sm h-100">
         <div class="card-header d-flex justify-content-between align-items-center">
-          <span class="fw-semibold">
-            <i class="bi bi-newspaper me-2 text-danger"></i>Almanya Haberleri
-          </span>
-          <a href="https://www.tagesschau.de" target="_blank" rel="noopener"
-             class="small text-muted text-decoration-none">tagesschau.de →</a>
+          <span class="fw-semibold"><i class="bi bi-megaphone me-2 text-warning"></i>Son Duyurular</span>
         </div>
         <div class="list-group list-group-flush">
-          {% for h in tagesschau %}
-          <a href="{{ h.link }}" target="_blank" rel="noopener"
+          {% for d in son_duyurular %}
+          <a href="/{{ d.stadt.eyalet.slug|default:'rlp' }}/{{ d.stadt.slug }}/duyurular/{{ d.pk }}/"
              class="list-group-item list-group-item-action px-3 py-2">
-            <div class="small text-dark">{{ h.baslik }}</div>
+            <div class="fw-semibold small text-truncate">{{ d.baslik }}</div>
+            <div class="d-flex justify-content-between mt-1">
+              <span class="badge bg-secondary rounded-pill" style="font-size:.68rem;">
+                🌐 {{ d.stadt.eyalet.kod|default:'RLP' }}
+              </span>
+              <small class="text-muted">{{ d.olusturulma|date:"d.m.Y" }}</small>
+            </div>
           </a>
           {% empty %}
-          <div class="list-group-item text-muted small py-3 text-center">
-            <i class="bi bi-wifi-off me-1"></i>Haberler yüklenemedi
-          </div>
+          <div class="list-group-item text-muted small py-4 text-center">Henüz duyuru yok.</div>
           {% endfor %}
         </div>
       </div>
