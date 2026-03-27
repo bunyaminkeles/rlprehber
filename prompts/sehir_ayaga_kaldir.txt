@@ -43,10 +43,10 @@ Bundesland → eyalet_kod eşleştirmesi:
 ADIM 2 — YER MİGRASYONU (yerler app)
 ====================================================================
 
-DOSYA ADI: yerler/migrations/0021_seed_{city_slug}_yerler.py
+DOSYA ADI: yerler/migrations/0022_seed_{city_slug}_yerler.py
 
 BAĞIMLILIK (dependencies):
-  ('yerler', '0020_seed_stuttgart_yerler'),
+  ('yerler', '0021_seed_mannheim_yerler'),
   ('stadt', '0010_seed_baskentler'),
 
 KATEGORİLER VE DOLDURULACAK YER SAYISI:
@@ -167,7 +167,7 @@ def unseed(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('yerler', '0020_seed_stuttgart_yerler'),
+        ('yerler', '0021_seed_mannheim_yerler'),
         ('stadt', '0010_seed_baskentler'),
     ]
 
@@ -180,10 +180,10 @@ class Migration(migrations.Migration):
 ADIM 3 — KAYNAK MİGRASYONU (rehber app)
 ====================================================================
 
-DOSYA ADI: rehber/migrations/0023_seed_{city_slug}_kaynaklar.py
+DOSYA ADI: rehber/migrations/0024_seed_{city_slug}_kaynaklar.py
 
 BAĞIMLILIK (dependencies):
-  ('rehber', '0022_fix_stuttgart_kaynaklar_urls'),
+  ('rehber', '0023_seed_mannheim_kaynaklar'),
   ('stadt', '0010_seed_baskentler'),
 
 KATEGORİLER VE DOLDURULACAK KAYNAK SAYISI:
@@ -250,7 +250,7 @@ def seed(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('rehber', '0022_fix_stuttgart_kaynaklar_urls'),
+        ('rehber', '0023_seed_mannheim_kaynaklar'),
         ('stadt', '0001_initial'),
     ]
 
@@ -323,20 +323,20 @@ bu dosyayı (sehir_ayaga_kaldir.txt) güncelle. Aksi hâlde bir sonraki
 Güncellenecek yerler:
 
   ADIM 2 → DOSYA ADI:
-    0021_seed_{city_slug}_yerler.py  →  0022_seed_{city_slug}_yerler.py
+    0022_seed_{city_slug}_yerler.py  →  0023_seed_{city_slug}_yerler.py
     (bir artır)
 
   ADIM 2 → dependencies içi (2 yerde):
-    ('yerler', '0020_seed_stuttgart_yerler')
-    →  ('yerler', '0021_seed_{tamamlanan_city_slug}_yerler')
+    ('yerler', '0021_seed_mannheim_yerler')
+    →  ('yerler', '0022_seed_{tamamlanan_city_slug}_yerler')
 
   ADIM 3 → DOSYA ADI:
-    0023_seed_{city_slug}_kaynaklar.py  →  0024_seed_{city_slug}_kaynaklar.py
+    0024_seed_{city_slug}_kaynaklar.py  →  0025_seed_{city_slug}_kaynaklar.py
     (bir artır)
 
   ADIM 3 → dependencies içi (2 yerde):
-    ('rehber', '0022_fix_stuttgart_kaynaklar_urls')
-    →  ('rehber', '0022_seed_{tamamlanan_city_slug}_kaynaklar')
+    ('rehber', '0023_seed_mannheim_kaynaklar')
+    →  ('rehber', '0024_seed_{tamamlanan_city_slug}_kaynaklar')
        veya en son mevcut rehber migration'ı
 
 NOT: Aynı şehir için URL fix migration'ı oluşturulduysa
