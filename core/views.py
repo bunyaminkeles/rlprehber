@@ -49,25 +49,26 @@ def anasayfa(request):
     )
     son_duyurular = (
         Duyuru.objects
-        .filter(yayinda=True)
+        .filter(yayinda=True, kaynak_tipi='kullanici')
         .select_related('stadt__eyalet')
-        .order_by('-olusturulma')[:6]
+        .order_by('-olusturulma')[:5]
     )
     son_satilik = (
         Ilan.objects
-        .filter(aktif=True, scope='eyalet', kategori__in=SATILIK_KATEGORILER)
+        .filter(aktif=True, kategori__in=SATILIK_KATEGORILER)
         .select_related('stadt')
-        .order_by('-olusturulma')[:5]
+        .order_by('-olusturulma')[:4]
     )
     son_araniyor = (
         Ilan.objects
-        .filter(aktif=True, scope='eyalet', kategori__in=ARANIYOR_KATEGORILER)
+        .filter(aktif=True, kategori__in=ARANIYOR_KATEGORILER)
         .select_related('stadt')
-        .order_by('-olusturulma')[:5]
+        .order_by('-olusturulma')[:4]
     )
     return render(request, 'core/anasayfa.html', {
         'sehirler':      sehirler,
         'son_konular':   son_konular,
+        'son_duyurular': son_duyurular,
         'son_satilik':   son_satilik,
         'son_araniyor':  son_araniyor,
         'tagesschau':    _tagesschau_haberleri(),
