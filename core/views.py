@@ -44,8 +44,7 @@ def anasayfa(request):
     sehirler = Stadt.objects.filter(aktiv=True).select_related('eyalet').order_by('eyalet__slug', 'name')
     son_konular = (
         Konu.objects
-        .filter(scope='eyalet')
-        .select_related('stadt', 'yazar')
+        .select_related('eyalet', 'stadt__eyalet', 'yazar')
         .order_by('-olusturulma')[:8]
     )
     son_duyurular = (

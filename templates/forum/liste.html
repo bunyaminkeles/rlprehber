@@ -8,20 +8,27 @@
     <div class="card-header d-flex justify-content-between">
       <strong>{{ item.kategori.ad }}</strong>
       {% if user.is_authenticated %}
-      <a href="{% if stadt %}/{{ eyalet_slug }}/{{ stadt.slug }}/forum/kategori/{{ item.kategori.pk }}/yeni/{% else %}/{{ eyalet_slug }}/forum/kategori/{{ item.kategori.pk }}/yeni/{% endif %}" class="btn btn-sm btn-accent">
+      <a href="{% if genel %}/forum/kategori/{{ item.kategori.pk }}/yeni/{% elif stadt %}/{{ eyalet_slug }}/{{ stadt.slug }}/forum/kategori/{{ item.kategori.pk }}/yeni/{% else %}/{{ eyalet_slug }}/forum/kategori/{{ item.kategori.pk }}/yeni/{% endif %}" class="btn btn-sm btn-accent">
         <i class="bi bi-plus me-1"></i>Konu Aç
       </a>
       {% endif %}
     </div>
     <div class="card-body p-0">
       {% for konu in item.konular %}
-      <a href="{% if stadt %}/{{ eyalet_slug }}/{{ stadt.slug }}/forum/konu/{{ konu.pk }}/{% else %}/{{ eyalet_slug }}/forum/konu/{{ konu.pk }}/{% endif %}" class="d-flex align-items-center p-3 border-bottom text-decoration-none text-dark">
+      <a href="{% if genel %}/forum/konu/{{ konu.pk }}/{% elif stadt %}/{{ eyalet_slug }}/{{ stadt.slug }}/forum/konu/{{ konu.pk }}/{% else %}/{{ eyalet_slug }}/forum/konu/{{ konu.pk }}/{% endif %}" class="d-flex align-items-center p-3 border-bottom text-decoration-none text-dark">
         <div class="flex-grow-1">
           <div class="fw-semibold small">
             {% if konu.sabitlendi %}<i class="bi bi-pin-angle-fill text-warning me-1"></i>{% endif %}
             {{ konu.baslik }}
           </div>
-          <small class="text-muted">{{ konu.yazar.username }} &bull; {{ konu.olusturulma|date:"d.m.Y" }}</small>
+          <div class="d-flex align-items-center gap-2 mt-1">
+            <small class="text-muted">{{ konu.yazar.username }} &bull; {{ konu.olusturulma|date:"d.m.Y" }}</small>
+            {% if genel %}
+            <span class="badge bg-light text-secondary border" style="font-size:.65rem;">
+              {% if konu.scope == 'global' %}Genel{% elif konu.scope == 'stadt' and konu.stadt %}{{ konu.stadt.eyalet.kod|default:'RLP' }} · {{ konu.stadt.name }}{% else %}{{ konu.eyalet.kod|default:'RLP' }}{% endif %}
+            </span>
+            {% endif %}
+          </div>
         </div>
         <span class="badge bg-light text-muted">{{ konu.yorumlar.count }} yorum</span>
       </a>

@@ -30,7 +30,6 @@ def legacy_stadt_redirect(request, old_slug, subpath=''):
 OLD_MAINZ_REDIRECTS = [
     path('rehber/',    RedirectView.as_view(url='/rlp/mainz/rehber/',    permanent=True)),
     path('duyurular/', RedirectView.as_view(url='/rlp/mainz/duyurular/', permanent=True)),
-    path('forum/',     RedirectView.as_view(url='/rlp/mainz/forum/',     permanent=True)),
     path('blog/',      RedirectView.as_view(url='/rlp/mainz/blog/',      permanent=True)),
     path('ilan/',      RedirectView.as_view(url='/rlp/mainz/ilan/',      permanent=True)),
     path('takvim/',    RedirectView.as_view(url='/rlp/mainz/takvim/',    permanent=True)),

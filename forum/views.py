@@ -6,6 +6,73 @@ from .models import ForumKategori, Konu, Yorum
 from accounts.utils import email_dogrulandi_mi, dogrulama_maili_gonder
 
 
+# ── Global (tüm şehir/eyalet) forum ──────────────────────────────────────────
+
+def genel_liste(request):
+    kategoriler_qs = ForumKategori.objects.all()
+    kategoriler = []
+    for kat in kategoriler_qs:
+        konular = (
+            Konu.objects
+            .filter(kategori=kat)
+            .select_related('eyalet', 'stadt__eyalet')
+            .order_by('-sabitlendi', '-guncelleme')
+        )
+        kategoriler.append({'kategori': kat, 'konular': konular})
+    return render(request, 'forum/liste.html', {
+        'kategoriler': kategoriler,
+        'genel': True,
+    })
+
+
+def genel_konu_detay(request, pk):
+    konu = get_object_or_404(Konu, pk=pk)
+    yorumlar = konu.yorumlar.select_related('yazar').all()
+    return render(request, 'forum/konu.html', {
+        'konu':    konu,
+        'yorumlar': yorumlar,
+        'genel':   True,
+    })
+
+
+@login_required
+def genel_yorum_ekle(request, pk):
+    konu = get_object_or_404(Konu, pk=pk)
+    if not konu.kapali and request.method == 'POST':
+        if not email_dogrulandi_mi(request.user):
+            dogrulama_maili_gonder(request, request.user)
+            messages.error(request, 'Yorum yapabilmek için e-posta adresinizi doğrulamanız gerekiyor. Doğrulama bağlantısı e-postanıza gönderildi.')
+            return redirect(f'/forum/konu/{pk}/')
+        Yorum.objects.create(konu=konu, yazar=request.user, icerik=request.POST['icerik'])
+    return redirect(f'/forum/konu/{pk}/')
+
+
+@login_required
+def genel_konu_ac(request, kategori_pk):
+    kategori = get_object_or_404(ForumKategori, pk=kategori_pk)
+
+    if not email_dogrulandi_mi(request.user):
+        dogrulama_maili_gonder(request, request.user)
+        messages.error(request, 'Konu açabilmek için e-posta adresinizi doğrulamanız gerekiyor. Doğrulama bağlantısı e-postanıza gönderildi.')
+        return redirect('account_email')
+
+    if request.method == 'POST':
+        konu = Konu.objects.create(
+            kategori=kategori,
+            yazar=request.user,
+            baslik=request.POST['baslik'],
+            icerik=request.POST['icerik'],
+            scope='global',
+        )
+        messages.success(request, 'Konu açıldı.')
+        return redirect(f'/forum/konu/{konu.pk}/')
+
+    return render(request, 'forum/konu_ac.html', {
+        'kategori': kategori,
+        'genel':    True,
+    })
+
+
 def liste(request, eyalet_slug='rlp', stadt_slug=None):
     from stadt.models import Stadt
     stadt = get_object_or_404(Stadt, slug=stadt_slug, aktiv=True) if stadt_slug else None

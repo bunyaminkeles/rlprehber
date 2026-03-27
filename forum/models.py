@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 SCOPE_SECENEKLERI = [
     ('stadt', 'Şehre Özel'),
     ('eyalet', 'RLP Geneli'),
+    ('global', 'Genel'),
 ]
 
 class ForumKategori(models.Model):
