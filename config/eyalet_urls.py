@@ -11,4 +11,5 @@ urlpatterns = [
     path('blog/', include(('blog.urls', 'blog'), namespace='rlp-blog')),
     path('duyurular/', include(('duyurular.urls', 'duyurular'), namespace='rlp-duyurular')),
     path('forum/', include(('forum.urls', 'forum'), namespace='rlp-forum')),
+    path('ilan/', include(('ilan.urls', 'ilan'), namespace='rlp-ilan')),
 ]
