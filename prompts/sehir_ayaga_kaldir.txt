@@ -43,10 +43,10 @@ Bundesland → eyalet_kod eşleştirmesi:
 ADIM 2 — YER MİGRASYONU (yerler app)
 ====================================================================
 
-DOSYA ADI: yerler/migrations/0020_seed_{city_slug}_yerler.py
+DOSYA ADI: yerler/migrations/0021_seed_{city_slug}_yerler.py
 
 BAĞIMLILIK (dependencies):
-  ('yerler', '0019_seed_wiesbaden_yerler'),
+  ('yerler', '0020_seed_stuttgart_yerler'),
   ('stadt', '0010_seed_baskentler'),
 
 KATEGORİLER VE DOLDURULACAK YER SAYISI:
@@ -167,7 +167,7 @@ def unseed(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('yerler', '0019_seed_wiesbaden_yerler'),
+        ('yerler', '0020_seed_stuttgart_yerler'),
         ('stadt', '0010_seed_baskentler'),
     ]
 
@@ -180,10 +180,10 @@ class Migration(migrations.Migration):
 ADIM 3 — KAYNAK MİGRASYONU (rehber app)
 ====================================================================
 
-DOSYA ADI: rehber/migrations/0021_seed_{city_slug}_kaynaklar.py
+DOSYA ADI: rehber/migrations/0022_seed_{city_slug}_kaynaklar.py
 
 BAĞIMLILIK (dependencies):
-  ('rehber', '0020_wiesbaden_ve_almanya_seed'),
+  ('rehber', '0021_seed_stuttgart_kaynaklar'),
   ('stadt', '0010_seed_baskentler'),
 
 KATEGORİLER VE DOLDURULACAK KAYNAK SAYISI:
@@ -250,7 +250,7 @@ def seed(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('rehber', '0020_wiesbaden_ve_almanya_seed'),
+        ('rehber', '0021_seed_stuttgart_kaynaklar'),
         ('stadt', '0001_initial'),
     ]
 
