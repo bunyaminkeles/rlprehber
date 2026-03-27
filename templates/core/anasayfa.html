@@ -135,7 +135,10 @@
               <small class="text-muted">{{ i.get_kategori_display }}</small>
               {% if i.fiyat %}<span class="text-primary fw-semibold small">{{ i.fiyat }} €</span>{% endif %}
             </div>
-            <span class="badge bg-light text-muted border" style="font-size:.65rem;">🌐 {{ i.eyalet.kod|default:'RLP' }}</span>
+            <div class="d-flex justify-content-between mt-1">
+              <span class="badge bg-light text-muted border" style="font-size:.65rem;">🌐 {{ i.eyalet.kod|default:'RLP' }}</span>
+              <small class="text-muted">{{ i.olusturulma|date:"d.m.Y" }}</small>
+            </div>
           </a>
           {% empty %}
           <div class="list-group-item text-muted small py-3 text-center">Henüz ilan yok.</div>
@@ -153,9 +156,9 @@
              class="list-group-item list-group-item-action px-3 py-2">
             <div class="fw-semibold small text-truncate">{{ i.baslik }}</div>
             <div class="d-flex justify-content-between mt-1">
-              <small class="text-muted">{{ i.get_kategori_display }}</small>
+              <span class="badge bg-light text-muted border" style="font-size:.65rem;">🌐 {{ i.eyalet.kod|default:'RLP' }}</span>
+              <small class="text-muted">{{ i.olusturulma|date:"d.m.Y" }}</small>
             </div>
-            <span class="badge bg-light text-muted border" style="font-size:.65rem;">🌐 {{ i.eyalet.kod|default:'RLP' }}</span>
           </a>
           {% empty %}
           <div class="list-group-item text-muted small py-3 text-center">Henüz ilan yok.</div>
