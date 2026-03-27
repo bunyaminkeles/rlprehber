@@ -9,33 +9,13 @@
     <p class="mb-4">Almanya'da yaşayan Türkler için şehir rehberi.<br>
     Şehrinizi seçin — resmi kurumlar, eğitim, sağlık ve topluluk bilgileri sizi bekliyor.</p>
 
-    <!-- Öne çıkan şehirler -->
-    <div class="d-flex flex-wrap justify-content-center gap-2 mb-3">
-      <a href="/rlp/mainz/" class="btn btn-light btn-lg shadow-sm px-4">
-        <i class="bi bi-geo-fill text-primary me-1"></i>Mainz
-      </a>
-      <a href="/rlp/mainz-bingen/" class="btn btn-light btn-lg shadow-sm px-4">
-        <i class="bi bi-geo-fill text-primary me-1"></i>Mainz-Bingen
-      </a>
-      <a href="/be/berlin/" class="btn btn-light btn-lg shadow-sm px-4">
-        <i class="bi bi-geo-fill text-primary me-1"></i>Berlin
-      </a>
-      <a href="/by/muenchen/" class="btn btn-light btn-lg shadow-sm px-4">
-        <i class="bi bi-geo-fill text-primary me-1"></i>München
-      </a>
-      <a href="/hh/hamburg/" class="btn btn-light btn-lg shadow-sm px-4">
-        <i class="bi bi-geo-fill text-primary me-1"></i>Hamburg
-      </a>
-    </div>
-
-    <!-- Diğer şehirler -->
+    <!-- Aktif şehirler (admin panelinden yönetilir) -->
     <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
-      <a href="/nw/duesseldorf/" class="btn btn-outline-light btn-sm px-3">Düsseldorf</a>
-      <a href="/he/wiesbaden/" class="btn btn-outline-light btn-sm px-3">Wiesbaden</a>
-      <a href="/bw/stuttgart/" class="btn btn-outline-light btn-sm px-3">Stuttgart</a>
-      <a href="/ni/hannover/" class="btn btn-outline-light btn-sm px-3">Hannover</a>
-      <a href="/hb/bremen/" class="btn btn-outline-light btn-sm px-3">Bremen</a>
-      <a href="/sn/dresden/" class="btn btn-outline-light btn-sm px-3">Dresden</a>
+      {% for s in sehirler %}
+      <a href="/{{ s.eyalet.slug }}/{{ s.slug }}/" class="btn btn-light btn-lg shadow-sm px-4">
+        <i class="bi bi-geo-fill text-primary me-1"></i>{{ s.name }}
+      </a>
+      {% endfor %}
     </div>
 
     <p class="text-white-50 small mb-0">Şehriniz listede yok mu?

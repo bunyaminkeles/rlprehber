@@ -40,7 +40,7 @@ def _tagesschau_haberleri():
 
 def anasayfa(request):
     """Ana sayfa: son forum konuları, duyurular ve ilanlar widget'ları."""
-    sehirler = Stadt.objects.filter(aktiv=True)
+    sehirler = Stadt.objects.filter(aktiv=True).select_related('eyalet').order_by('eyalet__slug', 'name')
     son_konular = (
         Konu.objects
         .filter(scope='eyalet')
