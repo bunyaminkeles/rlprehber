@@ -313,3 +313,33 @@ Dosyaları doğru klasörlere kopyala ve `git add → commit → push` yap.
 GitHub Actions Hetzner'de otomatik olarak `migrate` çalıştıracaktır.
 
 ====================================================================
+ADIM 6 — HER ŞEHİR BİTİMİNDE PROMPT'U GÜNCELLE (ZORUNLU)
+====================================================================
+
+Migration dosyaları üretildikten ve commit edildikten hemen sonra
+bu dosyayı (sehir_ayaga_kaldir.txt) güncelle. Aksi hâlde bir sonraki
+şehir yanlış migration numaralarıyla üretilir.
+
+Güncellenecek yerler:
+
+  ADIM 2 → DOSYA ADI:
+    0021_seed_{city_slug}_yerler.py  →  0022_seed_{city_slug}_yerler.py
+    (bir artır)
+
+  ADIM 2 → dependencies içi (2 yerde):
+    ('yerler', '0020_seed_stuttgart_yerler')
+    →  ('yerler', '0021_seed_{tamamlanan_city_slug}_yerler')
+
+  ADIM 3 → DOSYA ADI:
+    0023_seed_{city_slug}_kaynaklar.py  →  0024_seed_{city_slug}_kaynaklar.py
+    (bir artır)
+
+  ADIM 3 → dependencies içi (2 yerde):
+    ('rehber', '0022_fix_stuttgart_kaynaklar_urls')
+    →  ('rehber', '0022_seed_{tamamlanan_city_slug}_kaynaklar')
+       veya en son mevcut rehber migration'ı
+
+NOT: Aynı şehir için URL fix migration'ı oluşturulduysa
+     (0022_fix_... gibi) rehber dependency o migration'a işaret etmeli.
+
+====================================================================
