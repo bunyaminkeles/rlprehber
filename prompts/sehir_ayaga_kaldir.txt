@@ -260,7 +260,26 @@ class Migration(migrations.Migration):
 ────────────────────────────────────────────────────────────────
 
 ====================================================================
-ADIM 4 — KONTROL LİSTESİ (üretmeden önce yap)
+ADIM 4 — LİNK DOĞRULAMA (ZORUNLU)
+====================================================================
+
+Migration'a girecek HER URL için şunları yap:
+
+1. WebFetch veya WebSearch aracıyla URL'yi ziyaret et
+2. Sayfa gerçekten yükleniyorsa ve içeriği doğruysa kullan
+3. 404, yönlendirme hatası veya alakasız sayfa çıkarsa:
+   a. Şehrin resmi sitesinde alternatif ara
+   b. Alternatif bulamazsan o kaydı dahil etme
+   c. Asla erişilmeyen ya da test edilmemiş URL koyma
+
+Özellikle dikkat et:
+  - Jobcenter / Sozialamt linkleri şehre özel olmalı
+  - PDF linkleri (KdU tabloları) güncel yıla ait olmalı
+  - VHS / Volkshochschule her şehrin kendi sitesi olmalı
+  - Bürgerbüro randevu linkleri şehrin sistemiyle uyumlu olmalı
+
+====================================================================
+ADIM 5 — KONTROL LİSTESİ (üretmeden önce yap)
 ====================================================================
 
 □ Şehrin Bundesland'ını ve eyalet_kod'unu doğruladım
@@ -273,6 +292,7 @@ ADIM 4 — KONTROL LİSTESİ (üretmeden önce yap)
 □ Google Maps URL'leri ?q= parametresi ile doğru encode edilmiş
 □ icerik alanı yazılan yerlerde HTML geçerli
 □ İki migration dosyası bağımsız — biri diğerine bağımlı değil
+□ Migration'daki HER URL WebFetch ile test edildi, hepsi çalışıyor
 
 ====================================================================
 KULLANIM
