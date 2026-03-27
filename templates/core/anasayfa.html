@@ -12,8 +12,8 @@
     <!-- Aktif şehirler (admin panelinden yönetilir) -->
     <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
       {% for s in sehirler %}
-      <a href="/{{ s.eyalet.slug }}/{{ s.slug }}/" class="btn btn-light btn-lg shadow-sm px-4">
-        <i class="bi bi-geo-fill text-primary me-1"></i>{{ s.name }}
+      <a href="/{{ s.eyalet.slug }}/{{ s.slug }}/" class="btn btn-outline-light px-3">
+        <i class="bi bi-geo-fill me-1"></i>{{ s.name }}
       </a>
       {% endfor %}
     </div>
