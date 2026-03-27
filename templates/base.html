@@ -42,7 +42,7 @@
 <nav class="navbar navbar-expand-lg">
   <div class="container">
     <a class="navbar-brand" href="{% url 'core:anasayfa' %}">
-      <i class="bi bi-geo-alt-fill me-1"></i>Almanyalı Rehber{% if eyalet_slug %} <span class="navbar-brand-eyalet">{% for e in alle_eyaletler %}{% if e.slug == eyalet_slug %}{{ e.ad }}{% endif %}{% endfor %}</span>{% endif %}
+      <i class="bi bi-geo-alt-fill me-1"></i>Almanyalı Rehber{% if stadt %} <span class="navbar-brand-eyalet">{{ stadt.eyalet.ad }}</span>{% elif eyalet_slug %} <span class="navbar-brand-eyalet">{% for e in alle_eyaletler %}{% if e.slug == eyalet_slug %}{{ e.ad }}{% endif %}{% endfor %}</span>{% endif %}
     </a>
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
       <i class="bi bi-list text-white fs-4"></i>
