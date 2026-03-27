@@ -1,0 +1,295 @@
+====================================================================
+ALMANYALI REHBER — ŞEHİR AYAĞA KALDIRMA PROMPTU
+====================================================================
+
+Sen bir Django migration uzmanısın. Sana bir şehir adı verilecek.
+Bu şehir için iki Django migration dosyası üreteceksin:
+
+  1. yerler/migrations/XXXX_seed_{city_slug}_yerler.py
+  2. rehber/migrations/XXXX_seed_{city_slug}_kaynaklar.py
+
+Dosyaları üretmeden önce internet araştırması yap. Gerçek adres,
+website ve Google Maps linkleri kullan. Uydurma, yaklaşık yaz.
+
+====================================================================
+ADIM 1 — ŞEHİR BİLGİLERİNİ BELİRLE
+====================================================================
+
+Şehir adından şu bilgileri türet:
+  - city_slug     : küçük harf, boşuk yok (örn: "stuttgart")
+  - eyalet_kod    : 2 harfli Bundesland kodu (BW, BY, BE, BB, HB,
+                    HH, HE, MV, NI, NW, RP, SL, SN, ST, SH, TH)
+  - eyalet_ad     : eyaletin Türkçe adı (örn: "Baden-Württemberg")
+
+Bundesland → eyalet_kod eşleştirmesi:
+  Baden-Württemberg      → BW
+  Bayern                 → BY
+  Berlin                 → BE
+  Brandenburg            → BB
+  Bremen                 → HB
+  Hamburg                → HH
+  Hessen                 → HE
+  Mecklenburg-Vorpommern → MV
+  Niedersachsen          → NI
+  Nordrhein-Westfalen    → NW
+  Rheinland-Pfalz        → RP
+  Saarland               → SL
+  Sachsen                → SN
+  Sachsen-Anhalt         → ST
+  Schleswig-Holstein     → SH
+  Thüringen              → TH
+
+====================================================================
+ADIM 2 — YER MİGRASYONU (yerler app)
+====================================================================
+
+DOSYA ADI: yerler/migrations/0020_seed_{city_slug}_yerler.py
+
+BAĞIMLILIK (dependencies):
+  ('yerler', '0019_seed_wiesbaden_yerler'),
+  ('stadt', '0010_seed_baskentler'),
+
+KATEGORİLER VE DOLDURULACAK YER SAYISI:
+
+  slug='ibadet'    → Cami / İbadethane         → 3-5 kayıt
+  slug='tuv'       → TÜV / GTÜ / DEKRA         → 2-4 kayıt
+  slug='saglik'    → Hastane / Klinik / Sağlık  → 3-5 kayıt
+  slug='egitim'    → Okul / VHS / Üniversite    → 3-5 kayıt
+  slug='gezi'      → Tarihi / Kültürel Yerler   → 4-6 kayıt
+  slug='alisveris' → AVM / Alışveriş Merkezi    → 2-4 kayıt
+
+  NOT: slug='resmi_kurum' Bu migration'a dahil edilmez,
+       rehber migration'ına gider (ADIM 3).
+
+HER YER KAYDI İÇİN DOLDURULACAK ALANLAR:
+
+  ad          : Yerin tam adı (max 200 karakter)
+  adres       : Sokak, numara, posta kodu, şehir
+  aciklama    : 1-2 cümle, Türkçe, ne olduğunu açıkla
+  kapak_resmi : Wikimedia Commons'tan gerçek resim URL'si
+                (yoksa boş string bırak → '')
+  website     : Resmi web sitesi URL'si (yoksa '')
+  maps_url    : 'https://maps.google.com/?q=...' formatında
+  icerik      : Sadece öne çıkan 1-2 yer için HTML içerik yaz
+                (hastane, üniversite, önemli tarihi yer).
+                Diğerleri için boş string → ''
+
+  icerik HTML formatı (Bootstrap uyumlu):
+    <p>Giriş paragrafı...</p>
+    <h2>Başlık</h2>
+    <p>Paragraf</p>
+    <div class="info-box"><strong>Etiket:</strong> Bilgi</div>
+
+MİGRASYON DOSYASI ŞABLONU:
+
+────────────────────────────────────────────────────────────────
+from django.db import migrations
+
+IBADET = [
+    {
+        'ad': '...',
+        'adres': '...',
+        'aciklama': '...',
+        'kapak_resmi': '',
+        'website': 'https://...',
+        'maps_url': 'https://maps.google.com/?q=...',
+        'icerik': '',
+    },
+    # ... devam
+]
+
+TUV = [ ... ]
+SAGLIK = [ ... ]
+EGITIM = [ ... ]
+GEZI = [ ... ]
+ALISVERIS = [ ... ]
+
+
+def seed(apps, schema_editor):
+    Eyalet = apps.get_model('stadt', 'Eyalet')
+    Stadt = apps.get_model('stadt', 'Stadt')
+    Yer = apps.get_model('yerler', 'Yer')
+
+    try:
+        eyalet = Eyalet.objects.get(kod='{EYALET_KOD}')
+        sehir = Stadt.objects.get(slug='{CITY_SLUG}')
+    except (Eyalet.DoesNotExist, Stadt.DoesNotExist):
+        return
+
+    if not sehir.aktiv:
+        sehir.aktiv = True
+        sehir.save()
+
+    kategoriler = [
+        ('ibadet',    IBADET),
+        ('tuv',       TUV),
+        ('saglik',    SAGLIK),
+        ('egitim',    EGITIM),
+        ('gezi',      GEZI),
+        ('alisveris', ALISVERIS),
+    ]
+
+    for kategori_slug, yerler in kategoriler:
+        for veri in yerler:
+            Yer.objects.get_or_create(
+                ad=veri['ad'],
+                stadt=sehir,
+                defaults={
+                    'eyalet':      eyalet,
+                    'scope':       'stadt',
+                    'tur':         'yer',
+                    'kategori':    kategori_slug,
+                    'adres':       veri['adres'],
+                    'sehir':       '{CITY_NAME}',
+                    'aciklama':    veri['aciklama'],
+                    'kapak_resmi': veri.get('kapak_resmi', ''),
+                    'website':     veri.get('website', ''),
+                    'maps_url':    veri.get('maps_url', ''),
+                    'icerik':      veri.get('icerik', ''),
+                    'aktif':       True,
+                }
+            )
+
+
+def unseed(apps, schema_editor):
+    Yer = apps.get_model('yerler', 'Yer')
+    adlar = (
+        [v['ad'] for v in IBADET] +
+        [v['ad'] for v in TUV] +
+        [v['ad'] for v in SAGLIK] +
+        [v['ad'] for v in EGITIM] +
+        [v['ad'] for v in GEZI] +
+        [v['ad'] for v in ALISVERIS]
+    )
+    Yer.objects.filter(ad__in=adlar, sehir='{CITY_NAME}').delete()
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('yerler', '0019_seed_wiesbaden_yerler'),
+        ('stadt', '0010_seed_baskentler'),
+    ]
+
+    operations = [
+        migrations.RunPython(seed, unseed),
+    ]
+────────────────────────────────────────────────────────────────
+
+====================================================================
+ADIM 3 — KAYNAK MİGRASYONU (rehber app)
+====================================================================
+
+DOSYA ADI: rehber/migrations/0021_seed_{city_slug}_kaynaklar.py
+
+BAĞIMLILIK (dependencies):
+  ('rehber', '0020_wiesbaden_ve_almanya_seed'),
+  ('stadt', '0010_seed_baskentler'),
+
+KATEGORİLER VE DOLDURULACAK KAYNAK SAYISI:
+
+  kategori='resmi'   → Bürgerbüro, Ausländerbehörde, Caritas    → 3-4 link
+  kategori='is'      → Jobcenter, Agentur für Arbeit, HWK/IHK   → 3-4 link
+  kategori='konut'   → KdU PDF, Wohnungsgesellschaft, Mietrecht  → 2-3 link
+  kategori='egitim'  → VHS kayıt, Schulamt, BAMF kurs            → 2-3 link
+  kategori='almanca' → VHS Almanca, BAMF-Navi, Kursnet           → 2-3 link
+  kategori='saglik'  → 116117, Gesundheitsamt, Krankenhäuser     → 2-3 link
+
+HER KAYNAK KAYDI İÇİN DOLDURULACAK ALANLAR:
+
+  baslik    : Türkçe başlık, açıklayıcı (max 200 karakter)
+  kategori  : yukarıdaki slug'lardan biri
+  url       : Gerçek, çalışan URL
+  ozet      : 1 cümle Türkçe açıklama (max 300 karakter)
+  icon      : Bootstrap Icons sınıfı (bi-calendar-check, bi-building,
+              bi-briefcase, bi-house-fill, bi-mortarboard, bi-heart-pulse vb.)
+  sira      : Kategori içi sıra (1'den başla)
+
+MİGRASYON DOSYASI ŞABLONU:
+
+────────────────────────────────────────────────────────────────
+from django.db import migrations
+
+KAYNAKLAR = [
+    dict(kategori='resmi', baslik='... Bürgerbüro — Randevu',
+         url='https://...',
+         ozet='...',
+         icon='bi-calendar-check', sira=1),
+    dict(kategori='resmi', baslik='... Ausländerbehörde',
+         url='https://...',
+         ozet='...',
+         icon='bi-building-fill', sira=2),
+    # ... devam
+]
+
+
+def seed(apps, schema_editor):
+    Kaynak = apps.get_model('rehber', 'Kaynak')
+    Stadt = apps.get_model('stadt', 'Stadt')
+
+    try:
+        sehir = Stadt.objects.get(slug='{CITY_SLUG}')
+    except Stadt.DoesNotExist:
+        return
+
+    eyalet = sehir.eyalet
+
+    for d in KAYNAKLAR:
+        Kaynak.objects.get_or_create(
+            baslik=d['baslik'],
+            defaults=dict(
+                **d,
+                stadt=sehir,
+                eyalet=eyalet,
+                scope='stadt',
+                tip='link',
+                yayinda=True,
+            ),
+        )
+
+
+class Migration(migrations.Migration):
+    dependencies = [
+        ('rehber', '0020_wiesbaden_ve_almanya_seed'),
+        ('stadt', '0001_initial'),
+    ]
+
+    operations = [
+        migrations.RunPython(seed, migrations.RunPython.noop),
+    ]
+────────────────────────────────────────────────────────────────
+
+====================================================================
+ADIM 4 — KONTROL LİSTESİ (üretmeden önce yap)
+====================================================================
+
+□ Şehrin Bundesland'ını ve eyalet_kod'unu doğruladım
+□ Şehrin slug'u: küçük harf, Türkçe karakter yok, boşluk yok
+  (örn: "Frankfurt am Main" → "frankfurt", "Köln" → "koeln")
+□ Stadt kaydının `slug` alanı ile migration'daki slug eşleşiyor
+□ Her yer için adres bilgisi gerçek ve doğru
+□ Wikimedia Commons resimleri Commons URL formatında
+  (https://upload.wikimedia.org/wikipedia/commons/...)
+□ Google Maps URL'leri ?q= parametresi ile doğru encode edilmiş
+□ icerik alanı yazılan yerlerde HTML geçerli
+□ İki migration dosyası bağımsız — biri diğerine bağımlı değil
+
+====================================================================
+KULLANIM
+====================================================================
+
+Bu dosyayı Claude'a ver ve şunu söyle:
+
+  "[ŞEHİR_ADI] şehrini ayağa kaldır"
+
+Örnek:
+  "Stuttgart şehrini ayağa kaldır"
+  "Köln şehrini ayağa kaldır"
+  "München şehrini ayağa kaldır"
+  "Hamburg şehrini ayağa kaldır"
+
+Claude iki migration dosyasını eksiksiz üretecektir.
+Dosyaları doğru klasörlere kopyala ve `git add → commit → push` yap.
+GitHub Actions Hetzner'de otomatik olarak `migrate` çalıştıracaktır.
+
+====================================================================
