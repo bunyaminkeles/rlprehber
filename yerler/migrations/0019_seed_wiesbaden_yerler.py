@@ -261,7 +261,7 @@ def unseed(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('yerler', '0018_huma_kaldir'),
+        ('yerler', '0019_yerkategori_seed'),
         ('stadt', '0010_seed_baskentler'),
     ]
 
