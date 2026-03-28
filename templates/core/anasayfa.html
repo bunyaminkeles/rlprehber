@@ -1,257 +1,858 @@
 {% extends 'base.html' %}
-{% block title %}Almanyalı Rehber — Almanya Türk Topluluğu{% endblock %}
+{% load static %}
+{% block title %}Almanya'yı Çözdük. Sıra Sende. — Almanyalı Rehber{% endblock %}
 
 {% block content %}
-<!-- Hero -->
-<section class="hero">
-  <div class="container text-center">
-    <h1><i class="bi bi-map me-2"></i>Almanyalı Rehber</h1>
-    <p class="mb-4">Almanya'da yaşayan Türkler için şehir rehberi.<br>
-    Şehrinizi seçin — resmi kurumlar, eğitim, sağlık ve topluluk bilgileri sizi bekliyor.</p>
+<div class="container-fluid px-md-5">
 
-    <!-- Aktif şehirler (admin panelinden yönetilir) -->
-    <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
-      {% for s in sehirler %}
-      <a href="/{{ s.eyalet.slug }}/{{ s.slug }}/" class="btn btn-outline-light px-3">
-        <i class="bi bi-geo-fill me-1"></i>{{ s.name }}
-      </a>
-      {% endfor %}
-    </div>
-
-    <p class="text-white-50 small mb-0">Şehriniz listede yok mu?
-      <span class="text-white fw-semibold">Navbar'daki arama kutusunu kullanın.</span>
-    </p>
-  </div>
-</section>
-
-<div class="container mt-4 mb-5">
-  <div class="row g-4">
-
-    <!-- Sol: Son Forum Konuları -->
-    <div class="col-lg-4">
-      <div class="card shadow-sm h-100">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <span class="fw-semibold"><i class="bi bi-chat-dots me-2 text-primary"></i>Son Konular</span>
-          <a href="/forum/" class="small text-muted text-decoration-none">Tümü →</a>
-        </div>
-        <div class="list-group list-group-flush">
-          {% for konu in son_konular %}
-          <a href="/forum/konu/{{ konu.pk }}/"
-             class="list-group-item list-group-item-action px-3 py-2">
-            <div class="fw-semibold small text-truncate">{{ konu.baslik }}</div>
-            <div class="d-flex justify-content-between mt-1">
-              <span class="badge bg-secondary rounded-pill" style="font-size:.68rem;">
-                🌐 {% if konu.scope == 'global' %}Genel{% elif konu.scope == 'stadt' and konu.stadt %}{{ konu.stadt.eyalet.kod|default:'RLP' }} · {{ konu.stadt.name }}{% else %}{{ konu.eyalet.kod|default:'RLP' }}{% endif %}
-              </span>
-              <small class="text-muted">{{ konu.olusturulma|date:"d.m.Y" }}</small>
+    <!-- HERO SECTION -->
+    <section class="text-center" style="padding: 4rem 1rem 3rem;">
+        <h1 class="display-3 fw-bolder" style="letter-spacing: -0.03em; color: #0a0a0a;">Almanya'yı Çözdük. Sıra Sende.</h1>
+        <p class="mt-2 fs-5" style="color: #6b7280;">Almanya'daki yeni hayatınızın işletim sistemi.</p>
+        <div class="row justify-content-center mt-4">
+            <div class="col-lg-7 col-xl-6">
+                <form id="main-search-form" action="{% url 'core:arama' %}" method="get" role="search">
+                    <div class="search-wrap d-flex align-items-center rounded-3 bg-white px-3" style="border: 1px solid #d1d5db; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+                        <i class="bi bi-search me-2" style="color: #9ca3af; font-size: 0.95rem;"></i>
+                        <input id="main-search-input" type="search" name="q"
+                            class="form-control border-0 shadow-none bg-transparent"
+                            placeholder="Şehrini, aradığın kurumu veya ilanı yaz..."
+                            aria-label="Arama"
+                            style="padding: 0.9rem 0; font-size: 0.9375rem;">
+                        <button class="btn btn-sm fw-semibold rounded-2 flex-shrink-0" type="submit"
+                            style="background: #032A4A; color: #fff; padding: 0.45rem 1.1rem; font-size: 0.875rem; letter-spacing: 0.01em;">
+                            Ara
+                        </button>
+                    </div>
+                </form>
             </div>
-          </a>
-          {% empty %}
-          <div class="list-group-item text-muted small py-4 text-center">Henüz konu yok — ilk konuyu sen aç!</div>
-          {% endfor %}
         </div>
-      </div>
-    </div>
+    </section>
 
-    <!-- Orta: Almanca + Haberleri -->
-    <div class="col-lg-4">
-      <a href="/rlp/almanca/" class="rehber-kategori mb-3">
-        <span class="icon">🇩🇪</span>
-        <strong>Almanca Çalışma</strong>
-        <small class="text-muted d-block">595 soru, 14 konu</small>
-      </a>
-      <div class="card shadow-sm">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <span class="fw-semibold"><i class="bi bi-newspaper me-2 text-danger"></i>Almanya Haberleri</span>
-          <a href="https://www.tagesschau.de" target="_blank" rel="noopener"
-             class="small text-muted text-decoration-none">tagesschau.de →</a>
-        </div>
-        <div class="list-group list-group-flush">
-          {% for h in tagesschau %}
-          <a href="{{ h.link }}" target="_blank" rel="noopener"
-             class="list-group-item list-group-item-action px-3 py-2">
-            <div class="small text-dark">{{ h.baslik }}</div>
-          </a>
-          {% empty %}
-          <div class="list-group-item text-muted small py-3 text-center">
-            <i class="bi bi-wifi-off me-1"></i>Haberler yüklenemedi
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
+    <!-- "TAŞ" (STONE) BLOCK: Sabit Kurallar -->
+    <section class="py-4">
+        <div class="container">
+            <div class="row justify-content-center g-3">
 
-    <!-- Sağ: Duyurular + İlanlar -->
-    <div class="col-lg-4">
-      {% if son_duyurular %}
-      <div class="card shadow-sm mb-3">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <span class="fw-semibold"><i class="bi bi-megaphone me-2 text-success"></i>Topluluk Duyuruları</span>
-        </div>
-        <div class="list-group list-group-flush">
-          {% for d in son_duyurular %}
-          <a href="/{{ d.stadt.eyalet.slug|default:'rlp' }}/{{ d.stadt.slug }}/duyurular/{{ d.pk }}/"
-             class="list-group-item list-group-item-action px-3 py-2">
-            <div class="fw-semibold small text-truncate">{{ d.baslik }}</div>
-            <div class="d-flex justify-content-between mt-1">
-              <span class="badge bg-secondary rounded-pill" style="font-size:.68rem;">{{ d.stadt.eyalet.kod|default:'RLP' }}</span>
-              <small class="text-muted">{{ d.olusturulma|date:"d.m.Y" }}</small>
-            </div>
-          </a>
-          {% endfor %}
-        </div>
-      </div>
-      {% endif %}
-      <div class="card shadow-sm mb-3">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <span class="fw-semibold"><i class="bi bi-tag me-2 text-primary"></i>Satılık / Kiralık</span>
-        </div>
-        <div class="list-group list-group-flush">
-          {% for i in son_satilik %}
-          <a href="/{{ i.eyalet.slug|default:'rlp' }}/ilan/{{ i.pk }}/"
-             class="list-group-item list-group-item-action px-3 py-2">
-            <div class="fw-semibold small text-truncate">{{ i.baslik }}</div>
-            <div class="d-flex justify-content-between mt-1">
-              <small class="text-muted">{{ i.get_kategori_display }}</small>
-              {% if i.fiyat %}<span class="text-primary fw-semibold small">{{ i.fiyat }} €</span>{% endif %}
-            </div>
-            <div class="d-flex justify-content-between mt-1">
-              <span class="badge bg-light text-muted border" style="font-size:.65rem;">🌐 {{ i.eyalet.kod|default:'RLP' }}</span>
-              <small class="text-muted">{{ i.olusturulma|date:"d.m.Y" }}</small>
-            </div>
-          </a>
-          {% empty %}
-          <div class="list-group-item text-muted small py-3 text-center">Henüz ilan yok — ilk ilanını ver!</div>
-          {% endfor %}
-        </div>
-      </div>
-
-      <div class="card shadow-sm">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <span class="fw-semibold"><i class="bi bi-search me-2 text-warning"></i>Aranıyor</span>
-        </div>
-        <div class="list-group list-group-flush">
-          {% for i in son_araniyor %}
-          <a href="/{{ i.eyalet.slug|default:'rlp' }}/ilan/{{ i.pk }}/"
-             class="list-group-item list-group-item-action px-3 py-2">
-            <div class="fw-semibold small text-truncate">{{ i.baslik }}</div>
-            <div class="d-flex justify-content-between mt-1">
-              <span class="badge bg-light text-muted border" style="font-size:.65rem;">🌐 {{ i.eyalet.kod|default:'RLP' }}</span>
-              <small class="text-muted">{{ i.olusturulma|date:"d.m.Y" }}</small>
-            </div>
-          </a>
-          {% empty %}
-          <div class="list-group-item text-muted small py-3 text-center">Henüz ilan yok — ilk ilanını ver!</div>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Eğitim & Staj Duyuruları -->
-  <div class="row mt-4">
-    <div class="col-12">
-      <div class="card shadow-sm">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <span class="fw-semibold"><i class="bi bi-mortarboard me-2 text-warning"></i>Eğitim & Staj Duyuruları</span>
-          <small class="text-muted">Almanya genelinde mesleki eğitim ve staj fırsatları</small>
-        </div>
-        <div class="card-body">
-          <div class="row g-3">
-            <div class="col-md-3">
-              <a href="https://praktikumswoche.de/berufsfelder" target="_blank" rel="noopener"
-                 class="d-block p-3 border rounded text-decoration-none text-dark h-100 duyuru-dis-link">
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-calendar-event text-warning me-2 fs-5"></i>
-                  <strong class="small">Praktikumswoche</strong>
+                <!-- Kart 1: Ev & Kira -->
+                <div class="col-md-4 col-lg-3">
+                    <button type="button"
+                        class="d-block w-100 text-start text-decoration-none tas-card rounded-3 p-4 position-relative"
+                        style="border: 1px solid #e5e7eb; background: #fff; cursor: pointer;"
+                        data-bs-toggle="offcanvas" data-bs-target="#offcanvasKira" aria-controls="offcanvasKira">
+                        <div class="tas-icon-box mb-3">
+                            <i class="bi bi-house-door" style="font-size: 1.15rem; color: #032A4A;"></i>
+                        </div>
+                        <p class="fw-semibold mb-0" style="font-size: 0.9375rem; color: #111827;">Ev & Kira (KdU)</p>
+                        <p class="mb-0 mt-1" style="font-size: 0.8rem; color: #9ca3af;">Kira limitleri, KdU, haklar</p>
+                        <span class="tas-arrow">→</span>
+                    </button>
                 </div>
-                <div class="text-muted" style="font-size:.78rem">Mesleklere göre staj haftası etkinlikleri</div>
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="https://suche.ausbildung.nrw/" target="_blank" rel="noopener"
-                 class="d-block p-3 border rounded text-decoration-none text-dark h-100 duyuru-dis-link">
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-search text-primary me-2 fs-5"></i>
-                  <strong class="small">Ausbildung NRW</strong>
-                </div>
-                <div class="text-muted" style="font-size:.78rem">NRW'de çıraklık ve meslek eğitimi arama</div>
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="https://www.ihk.de/rheinhessen/bim-rheinhessen" target="_blank" rel="noopener"
-                 class="d-block p-3 border rounded text-decoration-none text-dark h-100 duyuru-dis-link">
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-buildings text-success me-2 fs-5"></i>
-                  <strong class="small">IHK Rheinhessen</strong>
-                </div>
-                <div class="text-muted" style="font-size:.78rem">Rheinhessen'de çıraklık ve iş yerleştirme</div>
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="https://machdeinhandwerk.de/vermittlung-von-ausbildung-und-praktika/" target="_blank" rel="noopener"
-                 class="d-block p-3 border rounded text-decoration-none text-dark h-100 duyuru-dis-link">
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-tools text-danger me-2 fs-5"></i>
-                  <strong class="small">Mach dein Handwerk</strong>
-                </div>
-                <div class="text-muted" style="font-size:.78rem">Zanaatçılık eğitimi ve staj aracılığı</div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  {% if ulusal_kaynaklar %}
-  <!-- Tüm Almanya için Kaynaklar -->
-  <div class="row mt-2">
-    <div class="col-12">
-      <div class="card shadow-sm">
-        <div class="card-header">
-          <span class="fw-semibold"><i class="bi bi-globe2 me-2 text-primary"></i>Tüm Almanya İçin Kaynaklar</span>
-          <small class="text-muted ms-2">Şehirden bağımsız, herkese gerekli resmi bağlantılar</small>
+                <!-- Kart 2: Resmi Belgeler -->
+                <div class="col-md-4 col-lg-3">
+                    <button type="button"
+                        class="d-block w-100 text-start text-decoration-none tas-card rounded-3 p-4 position-relative"
+                        style="border: 1px solid #e5e7eb; background: #fff; cursor: pointer;"
+                        data-bs-toggle="offcanvas" data-bs-target="#offcanvasBelgeler" aria-controls="offcanvasBelgeler">
+                        <div class="tas-icon-box mb-3">
+                            <i class="bi bi-file-earmark-text" style="font-size: 1.15rem; color: #032A4A;"></i>
+                        </div>
+                        <p class="fw-semibold mb-0" style="font-size: 0.9375rem; color: #111827;">Resmi Belgeler</p>
+                        <p class="mb-0 mt-1" style="font-size: 0.8rem; color: #9ca3af;">Formlar, başvurular, linkler</p>
+                        <span class="tas-arrow">→</span>
+                    </button>
+                </div>
+
+                <!-- Kart 3: Almanca Pratik -->
+                <div class="col-md-4 col-lg-3">
+                    <button type="button"
+                        class="d-block w-100 text-start text-decoration-none tas-card rounded-3 p-4 position-relative"
+                        style="border: 1px solid #e5e7eb; background: #fff; cursor: pointer;"
+                        data-bs-toggle="offcanvas" data-bs-target="#offcanvasAlmanca" aria-controls="offcanvasAlmanca">
+                        <div class="tas-icon-box mb-3">
+                            <i class="bi bi-translate" style="font-size: 1.15rem; color: #032A4A;"></i>
+                        </div>
+                        <p class="fw-semibold mb-0" style="font-size: 0.9375rem; color: #111827;">Almanca Pratik</p>
+                        <p class="mb-0 mt-1" style="font-size: 0.8rem; color: #9ca3af;">Diyaloglar, kalıplar, quiz</p>
+                        <span class="tas-arrow">→</span>
+                    </button>
+                </div>
+
+            </div>
         </div>
-        <div class="card-body pb-2">
-          <div class="row g-3">
-            {% for grup in ulusal_kaynaklar %}
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="fw-semibold small text-muted text-uppercase mb-2" style="font-size:.7rem;letter-spacing:.05em">
-                {{ grup.ad }}
-              </div>
-              <div class="list-group list-group-flush">
-                {% for k in grup.kaynaklar %}
-                {% if k.tip == 'link' %}
-                <a href="{{ k.url }}" target="_blank" rel="noopener"
-                   class="list-group-item list-group-item-action px-0 py-2 border-0 border-bottom">
-                  <i class="{{ k.icon }} me-2 text-primary" style="font-size:.85rem"></i>
-                  <span class="small">{{ k.baslik }}</span>
-                {% else %}
-                <a href="/rlp/mainz/rehber/{{ k.slug }}/"
-                   class="list-group-item list-group-item-action px-0 py-2 border-0 border-bottom">
-                  <i class="{{ k.icon }} me-2 text-primary" style="font-size:.85rem"></i>
-                  <span class="small">{{ k.baslik }}</span>
-                {% endif %}
-                  {% if k.ozet %}<div class="text-muted ms-4" style="font-size:.7rem">{{ k.ozet|truncatechars:70 }}</div>{% endif %}
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         OFFCANVAS PANELLERİ
+    ═══════════════════════════════════════════════════════ -->
+
+    <!-- Panel 1: Ev & Kira (KdU) -->
+    <div class="offcanvas offcanvas-end oc-panel" tabindex="-1" id="offcanvasKira" aria-labelledby="offcanvasKiraLabel" style="width: min(480px, 100vw);">
+        <div class="offcanvas-header oc-header">
+            <div class="d-flex align-items-center gap-3">
+                <div class="tas-icon-box" style="width: 38px; height: 38px;">
+                    <i class="bi bi-house-door" style="font-size: 1.05rem; color: #032A4A;"></i>
+                </div>
+                <div>
+                    <h5 class="offcanvas-title fw-bold mb-0" id="offcanvasKiraLabel" style="font-size: 1rem; color: #111827;">Ev & Kira (KdU)</h5>
+                    <p class="mb-0" style="font-size: 0.775rem; color: #9ca3af;">Kira limitleri ve kiracı hakları</p>
+                </div>
+            </div>
+            <button type="button" class="oc-close" data-bs-dismiss="offcanvas" aria-label="Kapat">
+                <i class="bi bi-x" style="font-size: 1.25rem;"></i>
+            </button>
+        </div>
+        <div class="offcanvas-body oc-body">
+
+            <!-- Bilgi Kutusu -->
+            <div class="oc-callout mb-4">
+                <div class="d-flex gap-3">
+                    <i class="bi bi-hourglass-split flex-shrink-0 mt-1" style="font-size: 1rem; color: #3b82f6;"></i>
+                    <div>
+                        <p class="fw-semibold mb-1" style="font-size: 0.875rem; color: #1e40af;">Otomatik KdU Hesaplama Aracı</p>
+                        <p class="mb-0" style="font-size: 0.8125rem; color: #3b82f6; line-height: 1.55;">
+                            Şehrinizdeki güncel Jobcenter kira limitlerini hesaplayan aracımız geliştirme aşamasındadır.
+                            Şimdilik ana arama çubuğuna <strong>"KdU [Şehriniz]"</strong> yazarak güncel limitlere ulaşabilirsiniz.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-3 pt-3" style="border-top: 1px solid #dbeafe;">
+                    <button type="button" class="d-flex align-items-center gap-2 text-decoration-none oc-search-hint"
+                        data-bs-dismiss="offcanvas"
+                        onclick="document.getElementById('main-search-input').focus(); document.getElementById('main-search-input').value='KdU ';">
+                        <i class="bi bi-search" style="font-size: 0.85rem;"></i>
+                        <span style="font-size: 0.8125rem;">Arama çubuğuna git</span>
+                        <i class="bi bi-arrow-up-right ms-auto" style="font-size: 0.8rem;"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hızlı Bilgi Maddeleri -->
+            <p class="oc-section-label">Bilmeniz Gerekenler</p>
+            <div class="vstack gap-0 oc-list">
+                <div class="oc-list-item">
+                    <i class="bi bi-check-circle flex-shrink-0" style="color: #059669; font-size: 0.9rem;"></i>
+                    <div>
+                        <p class="fw-semibold mb-0" style="font-size: 0.875rem; color: #111827;">KdU nedir?</p>
+                        <p class="mb-0" style="font-size: 0.8rem; color: #9ca3af;">Jobcenter'in karşıladığı azami kira miktarı. Şehre ve hane büyüklüğüne göre değişir.</p>
+                    </div>
+                </div>
+                <div class="oc-list-item">
+                    <i class="bi bi-check-circle flex-shrink-0" style="color: #059669; font-size: 0.9rem;"></i>
+                    <div>
+                        <p class="fw-semibold mb-0" style="font-size: 0.875rem; color: #111827;">Sözleşme imzalamadan önce</p>
+                        <p class="mb-0" style="font-size: 0.8rem; color: #9ca3af;">Yeni kiranın KdU limitini aşıp aşmadığını Jobcenter'e onaylatın; yoksa fark kendinizden kesilir.</p>
+                    </div>
+                </div>
+                <div class="oc-list-item">
+                    <i class="bi bi-check-circle flex-shrink-0" style="color: #059669; font-size: 0.9rem;"></i>
+                    <div>
+                        <p class="fw-semibold mb-0" style="font-size: 0.875rem; color: #111827;">Depozito (Kaution)</p>
+                        <p class="mb-0" style="font-size: 0.8rem; color: #9ca3af;">Yasal üst sınır 3 aylık net kira. Jobcenter bazı durumlarda Kaution kredisi verebilir.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Panel 2: Resmi Belgeler -->
+    <div class="offcanvas offcanvas-end oc-panel" tabindex="-1" id="offcanvasBelgeler" aria-labelledby="offcanvasBelgelerLabel" style="width: min(480px, 100vw);">
+        <div class="offcanvas-header oc-header">
+            <div class="d-flex align-items-center gap-3">
+                <div class="tas-icon-box" style="width: 38px; height: 38px;">
+                    <i class="bi bi-file-earmark-text" style="font-size: 1.05rem; color: #032A4A;"></i>
+                </div>
+                <div>
+                    <h5 class="offcanvas-title fw-bold mb-0" id="offcanvasBelgelerLabel" style="font-size: 1rem; color: #111827;">Resmi Belgeler</h5>
+                    <p class="mb-0" style="font-size: 0.775rem; color: #9ca3af;">Form ve başvuru havuzu</p>
+                </div>
+            </div>
+            <button type="button" class="oc-close" data-bs-dismiss="offcanvas" aria-label="Kapat">
+                <i class="bi bi-x" style="font-size: 1.25rem;"></i>
+            </button>
+        </div>
+        <div class="offcanvas-body oc-body">
+
+            <p class="oc-section-label">Sık Kullanılan Formlar</p>
+            <div class="vstack gap-0 oc-list">
+
+                <div class="oc-list-item">
+                    <div class="tas-icon-box flex-shrink-0" style="width: 34px; height: 34px; background: rgba(3,42,74,0.06);">
+                        <i class="bi bi-file-earmark-pdf" style="font-size: 0.85rem; color: #032A4A;"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <p class="fw-semibold mb-0" style="font-size: 0.875rem; color: #111827;">WBA — Jobcenter Uzatma Başvurusu</p>
+                        <p class="mb-0" style="font-size: 0.78rem; color: #9ca3af;">Weiterbewilligungsantrag — ALG II / Bürgergeld uzatma formu</p>
+                    </div>
+                    <i class="bi bi-arrow-up-right flex-shrink-0" style="font-size: 0.85rem; color: #d1d5db;"></i>
+                </div>
+
+                <div class="oc-list-item">
+                    <div class="tas-icon-box flex-shrink-0" style="width: 34px; height: 34px; background: rgba(3,42,74,0.06);">
+                        <i class="bi bi-house-check" style="font-size: 0.85rem; color: #032A4A;"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <p class="fw-semibold mb-0" style="font-size: 0.875rem; color: #111827;">Anmeldung — İkamet Kayıt Formu</p>
+                        <p class="mb-0" style="font-size: 0.78rem; color: #9ca3af;">Ev sahibi tarafından doldurulur. Taşınmadan itibaren 14 gün içinde verilmesi zorunlu.</p>
+                    </div>
+                    <i class="bi bi-arrow-up-right flex-shrink-0" style="font-size: 0.85rem; color: #d1d5db;"></i>
+                </div>
+
+                <div class="oc-list-item">
+                    <div class="tas-icon-box flex-shrink-0" style="width: 34px; height: 34px; background: rgba(3,42,74,0.06);">
+                        <i class="bi bi-credit-card" style="font-size: 0.85rem; color: #032A4A;"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <p class="fw-semibold mb-0" style="font-size: 0.875rem; color: #111827;">SCHUFA — Kredi Notu Belgesi</p>
+                        <p class="mb-0" style="font-size: 0.78rem; color: #9ca3af;">Kiralık ev başvurularında ev sahipleri genellikle ister.</p>
+                    </div>
+                    <a href="https://www.meineschufa.de" target="_blank" rel="noopener"
+                        class="d-flex align-items-center gap-1 text-decoration-none flex-shrink-0"
+                        style="font-size: 0.78rem; color: #032A4A; font-weight: 600;">
+                        Git <i class="bi bi-arrow-up-right" style="font-size: 0.75rem;"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Şehre Özel Formlar -->
+            <div class="oc-callout mt-4" style="background: #f8fafc; border-color: #e5e7eb;">
+                <div class="d-flex gap-3 align-items-start">
+                    <i class="bi bi-geo-alt flex-shrink-0 mt-1" style="font-size: 1rem; color: #6b7280;"></i>
+                    <div>
+                        <p class="fw-semibold mb-1" style="font-size: 0.875rem; color: #374151;">Şehre özel formlar</p>
+                        <p class="mb-0" style="font-size: 0.8125rem; color: #6b7280; line-height: 1.55;">
+                            Ausländerbehörde başvuruları, okul kayıt formları ve belediyeye özel belgeler ilgili şehir sayfasında yer almaktadır.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-3 pt-3" style="border-top: 1px solid #e5e7eb;">
+                    <button type="button" class="d-flex align-items-center gap-2 oc-search-hint"
+                        data-bs-dismiss="offcanvas"
+                        onclick="document.getElementById('main-search-input').focus();"
+                        style="color: #374151;">
+                        <i class="bi bi-search" style="font-size: 0.85rem;"></i>
+                        <span style="font-size: 0.8125rem;">Şehir adını arama çubuğuna yazın</span>
+                        <i class="bi bi-arrow-up-right ms-auto" style="font-size: 0.8rem;"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Panel 3: Almanca Pratik -->
+    <div class="offcanvas offcanvas-end oc-panel" tabindex="-1" id="offcanvasAlmanca" aria-labelledby="offcanvasAlmancaLabel" style="width: min(480px, 100vw);">
+        <div class="offcanvas-header oc-header">
+            <div class="d-flex align-items-center gap-3">
+                <div class="tas-icon-box" style="width: 38px; height: 38px;">
+                    <i class="bi bi-translate" style="font-size: 1.05rem; color: #032A4A;"></i>
+                </div>
+                <div>
+                    <h5 class="offcanvas-title fw-bold mb-0" id="offcanvasAlmancaLabel" style="font-size: 1rem; color: #111827;">Almanca Pratik</h5>
+                    <p class="mb-0" style="font-size: 0.775rem; color: #9ca3af;">Bürokrasi Almancası — Hızlı Başvuru</p>
+                </div>
+            </div>
+            <button type="button" class="oc-close" data-bs-dismiss="offcanvas" aria-label="Kapat">
+                <i class="bi bi-x" style="font-size: 1.25rem;"></i>
+            </button>
+        </div>
+        <div class="offcanvas-body oc-body">
+
+            <div class="vstack gap-0 almanca-list">
+                <div class="almanca-row d-flex gap-3 align-items-start py-4">
+                    <span class="almanca-badge flex-shrink-0">DE</span>
+                    <div>
+                        <p class="fw-semibold mb-1" style="font-size: 0.9rem; color: #111827;">"Ich habe einen Termin beim Jobcenter."</p>
+                        <p class="mb-0" style="font-size: 0.8rem; color: #9ca3af;">Jobcenter'de randevum var.</p>
+                    </div>
+                </div>
+                <div class="almanca-row d-flex gap-3 align-items-start py-4">
+                    <span class="almanca-badge flex-shrink-0">DE</span>
+                    <div>
+                        <p class="fw-semibold mb-1" style="font-size: 0.9rem; color: #111827;">"Könnten Sie das bitte wiederholen?"</p>
+                        <p class="mb-0" style="font-size: 0.8rem; color: #9ca3af;">Bunu tekrar edebilir misiniz?</p>
+                    </div>
+                </div>
+                <div class="almanca-row d-flex gap-3 align-items-start py-4">
+                    <span class="almanca-badge flex-shrink-0">DE</span>
+                    <div>
+                        <p class="fw-semibold mb-1" style="font-size: 0.9rem; color: #111827;">"Haben Sie das schriftlich?"</p>
+                        <p class="mb-0" style="font-size: 0.8rem; color: #9ca3af;">Bunu yazılı alabilir miyim?</p>
+                    </div>
+                </div>
+                <div class="almanca-row d-flex gap-3 align-items-start py-4">
+                    <span class="almanca-badge flex-shrink-0">DE</span>
+                    <div>
+                        <p class="fw-semibold mb-1" style="font-size: 0.9rem; color: #111827;">"Ich verstehe das nicht ganz."</p>
+                        <p class="mb-0" style="font-size: 0.8rem; color: #9ca3af;">Bunu tam anlayamadım.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 text-center">
+                <a href="/rlp/almanca/" class="text-decoration-none fw-semibold" style="font-size: 0.8125rem; color: #032A4A;">
+                    Quiz moduna geç <i class="bi bi-arrow-right ms-1"></i>
                 </a>
-                {% endfor %}
-              </div>
             </div>
-            {% endfor %}
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  {% endif %}
+
+
+    <!-- BÜLTEN: Dönüşüm Hunisi -->
+    <section class="py-5 bulten-section" style="margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-xl-5 text-center">
+                    <p class="fw-semibold mb-2" style="font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: #032A4A;">Haftalık Bülten</p>
+                    <h2 class="fw-bold mb-2" style="letter-spacing: -0.025em; font-size: clamp(1.35rem, 3.5vw, 1.75rem); color: #111827;">Bürokrasiyi tek başınıza<br class="d-none d-sm-inline"> çözmeyin.</h2>
+                    <p class="mb-5" style="font-size: 0.9375rem; color: #6b7280;">Haftalık rehber ve güncel ilanlar e-postanıza gelsin.</p>
+                    <form id="bulten-form" class="bulten-form" novalidate>
+                        <div class="d-flex gap-2 align-items-center rounded-3 bg-white px-2 py-2" style="border: 1px solid #d1d5db; box-shadow: 0 1px 4px rgba(0,0,0,0.05);">
+                            <input id="bulten-email" type="email"
+                                class="form-control border-0 shadow-none bg-transparent flex-grow-1"
+                                placeholder="e-posta adresiniz"
+                                style="font-size: 0.9375rem; padding: 0.5rem 0.75rem;"
+                                required>
+                            <button id="bulten-btn" type="submit" class="btn fw-semibold rounded-2 flex-shrink-0"
+                                style="background: #032A4A; color: #fff; padding: 0.6rem 1.4rem; font-size: 0.875rem; letter-spacing: 0.01em; white-space: nowrap;">
+                                Abone Ol
+                            </button>
+                        </div>
+                    </form>
+                    <p class="mt-3" style="font-size: 0.75rem; color: #d1d5db;">Spam yok. İstediğiniz zaman çıkabilirsiniz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kariyer ve Gelecek İnşası -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold" style="letter-spacing: -0.02em;">Kariyer ve Gelecek İnşası</h2>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
+                <div class="col">
+                    <a href="https://praktikumswoche.de/berufsfelder" target="_blank" rel="noopener" class="d-block text-decoration-none card-hover rounded-3 p-4" style="border: 1px solid #e5e7eb; background: #fff;">
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <i class="bi bi-calendar-event" style="color: #d97706; font-size: 1rem;"></i>
+                            <p class="fw-semibold mb-0" style="font-size: 0.875rem; color: #111827;">Praktikumswoche</p>
+                        </div>
+                        <p class="mb-0" style="font-size: 0.8rem; color: #9ca3af;">Mesleklere göre staj haftası etkinlikleri.</p>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="https://suche.ausbildung.nrw/" target="_blank" rel="noopener" class="d-block text-decoration-none card-hover rounded-3 p-4" style="border: 1px solid #e5e7eb; background: #fff;">
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <i class="bi bi-search" style="color: #3b82f6; font-size: 1rem;"></i>
+                            <p class="fw-semibold mb-0" style="font-size: 0.875rem; color: #111827;">Ausbildung NRW</p>
+                        </div>
+                        <p class="mb-0" style="font-size: 0.8rem; color: #9ca3af;">NRW'de çıraklık ve meslek eğitimi arama.</p>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="https://www.ihk.de/rheinhessen/bim-rheinhessen" target="_blank" rel="noopener" class="d-block text-decoration-none card-hover rounded-3 p-4" style="border: 1px solid #e5e7eb; background: #fff;">
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <i class="bi bi-buildings" style="color: #059669; font-size: 1rem;"></i>
+                            <p class="fw-semibold mb-0" style="font-size: 0.875rem; color: #111827;">IHK Rheinhessen</p>
+                        </div>
+                        <p class="mb-0" style="font-size: 0.8rem; color: #9ca3af;">Rheinhessen'de çıraklık ve iş yerleştirme.</p>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="https://machdeinhandwerk.de/vermittlung-von-ausbildung-und-praktika/" target="_blank" rel="noopener" class="d-block text-decoration-none card-hover rounded-3 p-4" style="border: 1px solid #e5e7eb; background: #fff;">
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <i class="bi bi-tools" style="color: #dc2626; font-size: 1rem;"></i>
+                            <p class="fw-semibold mb-0" style="font-size: 0.875rem; color: #111827;">Mach dein Handwerk</p>
+                        </div>
+                        <p class="mb-0" style="font-size: 0.8rem; color: #9ca3af;">Zanaatçılık eğitimi ve staj aracılığı.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- "SU" (WATER) BLOCK: Topluluğun Nabzı -->
+    <section class="py-5" style="background: #f9fafb; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);">
+        <div class="container-fluid px-md-5">
+            <h2 class="text-center mb-5 fw-bold" style="letter-spacing: -0.02em; font-size: 1.35rem; color: #111827;">Topluluğun Nabzı</h2>
+            <div class="row g-4 g-lg-5">
+
+                <!-- ── Kolon 1: Rehber Makaleler ── -->
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <p class="fw-bold mb-0" style="font-size: 0.9375rem; color: #111827;">
+                            <i class="bi bi-pencil-square me-2" style="color: #3b82f6; font-size: 0.875rem;"></i>Rehber Makaleler
+                        </p>
+                        <a href="/forum/" class="text-decoration-none" style="font-size: 0.78rem; color: #9ca3af;">Tümü →</a>
+                    </div>
+                    <div class="vstack gap-0">
+                        {% for yazi in son_blog_yazilari %}
+                        <a href="/blog/{{ yazi.slug }}/"
+                            class="text-decoration-none nabiz-makale-item py-3"
+                            style="{% if not forloop.first %}border-top: 1px solid #f3f4f6;{% endif %}">
+                            <p class="fw-semibold mb-1" style="font-size: 0.875rem; color: #111827; line-height: 1.45;">{{ yazi.baslik|truncatechars:65 }}</p>
+                            <p class="mb-2" style="font-size: 0.8rem; color: #9ca3af; line-height: 1.5;
+                                display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                {% if yazi.ozet %}{{ yazi.ozet }}{% else %}{{ yazi.icerik|striptags|truncatechars:100 }}{% endif %}
+                            </p>
+                            <span style="font-size: 0.72rem; color: #d1d5db;">
+                                <i class="bi bi-clock me-1"></i>{{ yazi.olusturulma|timesince }} önce
+                            </span>
+                        </a>
+                        {% empty %}
+                        <p style="font-size: 0.875rem; color: #9ca3af;">Yakında burada yeni rehberler olacak.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- ── Kolon 2: Haberler ── -->
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <p class="fw-bold mb-0" style="font-size: 0.9375rem; color: #111827;">
+                            <i class="bi bi-newspaper me-2" style="color: #dc2626; font-size: 0.875rem;"></i>Haberler
+                        </p>
+                        <ul class="nav haber-tabs" id="haberTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="haber-tab-btn active" id="tagesschau-tab"
+                                    data-bs-toggle="tab" data-bs-target="#tagesschau-panel"
+                                    type="button" role="tab" aria-selected="true">DE</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="haber-tab-btn" id="dw-tab"
+                                    data-bs-toggle="tab" data-bs-target="#dw-panel"
+                                    type="button" role="tab" aria-selected="false">TR</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content" id="haberTabsContent">
+                        <!-- DE: Tagesschau (sunucu tarafı) -->
+                        <div class="tab-pane fade show active" id="tagesschau-panel" role="tabpanel">
+                            <div class="vstack gap-0">
+                                {% for h in tagesschau|slice:":4" %}
+                                <a href="{{ h.link }}" target="_blank" rel="noopener"
+                                    class="text-decoration-none nabiz-haber-item py-3"
+                                    style="{% if not forloop.first %}border-top: 1px solid #f3f4f6;{% endif %}">
+                                    <p class="fw-semibold mb-1" style="font-size: 0.875rem; color: #111827; line-height: 1.45;">{{ h.baslik }}</p>
+                                    <span style="font-size: 0.72rem; color: #d1d5db;">Tagesschau.de</span>
+                                </a>
+                                {% empty %}
+                                <p style="font-size: 0.875rem; color: #9ca3af; padding: 0.75rem 0;">Haber akışına ulaşılamıyor.</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <!-- TR: DW Türkçe (sunucu tarafı) -->
+                        <div class="tab-pane fade" id="dw-panel" role="tabpanel">
+                            <div class="vstack gap-0">
+                                {% for h in dw_turkce|slice:":4" %}
+                                <a href="{{ h.link }}" target="_blank" rel="noopener"
+                                    class="text-decoration-none nabiz-haber-item py-3"
+                                    style="{% if not forloop.first %}border-top: 1px solid #f3f4f6;{% endif %}">
+                                    <p class="fw-semibold mb-1" style="font-size: 0.875rem; color: #111827; line-height: 1.45;">{{ h.baslik }}</p>
+                                    <span style="font-size: 0.72rem; color: #d1d5db;">DW Türkçe</span>
+                                </a>
+                                {% empty %}
+                                <p style="font-size: 0.875rem; color: #9ca3af; padding: 0.75rem 0;">Haber akışına ulaşılamıyor.</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Kolon 3: Güncel İlanlar ── -->
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <p class="fw-bold mb-0" style="font-size: 0.9375rem; color: #111827;">
+                            <i class="bi bi-tag me-2" style="color: #059669; font-size: 0.875rem;"></i>Güncel İlanlar
+                        </p>
+                        <a href="/rlp/mainz/ilan/" class="text-decoration-none" style="font-size: 0.78rem; color: #9ca3af;">Tümü →</a>
+                    </div>
+                    <div class="vstack gap-2">
+                        {% for ilan in son_satilik|slice:":4" %}
+                        <a href="/{{ ilan.eyalet.slug|default:'rlp' }}/ilan/{{ ilan.pk }}/"
+                            class="text-decoration-none nabiz-ilan-item d-block rounded-3 p-3"
+                            style="background: #fff; border: 1px solid #f3f4f6;">
+                            <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                                <p class="fw-semibold mb-0" style="font-size: 0.875rem; color: #111827; line-height: 1.4;">{{ ilan.baslik|truncatechars:50 }}</p>
+                                {% if ilan.fiyat %}
+                                <span class="fw-bold flex-shrink-0" style="font-size: 0.8125rem; color: #059669;">{{ ilan.fiyat }} €</span>
+                                {% endif %}
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="rounded-2 px-2 py-1" style="font-size: 0.7rem; font-weight: 600; background: #f3f4f6; color: #6b7280; letter-spacing: 0.03em;">
+                                    {{ ilan.eyalet.kod|default:'RLP' }}{% if ilan.stadt %} · {{ ilan.stadt.name|truncatechars:10 }}{% endif %}
+                                </span>
+                                <span style="font-size: 0.72rem; color: #d1d5db;">{{ ilan.olusturulma|timesince }} önce</span>
+                            </div>
+                        </a>
+                        {% empty %}
+                        <p style="font-size: 0.875rem; color: #9ca3af;">Henüz yeni ilan yok.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
 </div>
 
 {% block extra_css %}
 <style>
-.duyuru-dis-link:hover { background-color: #f8f9fa; border-color: #0d6efd !important; }
+
+/* ─── GENEL KART HOVER ───────────────────────────────────────── */
+/* Zıplama yok. Sadece gölge derinleşir, çerçeve koyulaşır. */
+.card-hover {
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.card-hover:hover {
+    border-color: #c1c9d2 !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+}
+
+/* ─── TAŞ KARTLARI ───────────────────────────────────────────── */
+.tas-card {
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.tas-card:hover {
+    border-color: #c1c9d2 !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+}
+
+/* İkon kutusu: Tailwind'deki bg-opacity benzeri yaklaşım */
+.tas-icon-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: rgba(3, 42, 74, 0.07);
+    flex-shrink: 0;
+}
+
+/* Hover ok animasyonu */
+.tas-card .tas-arrow {
+    position: absolute;
+    bottom: 1rem;
+    right: 1.1rem;
+    font-size: 0.95rem;
+    color: #032A4A;
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.tas-card:hover .tas-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ─── ALMANCA KONU KARTLARI ──────────────────────────────────── */
+.almanca-konu-card {
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.almanca-konu-card:hover {
+    border-color: #c1c9d2 !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.almanca-konu-card a:hover {
+    background-color: rgba(3, 42, 74, 0.04);
+    border-color: #adb5bd !important;
+}
+
+/* ─── ALMANCA MODÜLÜ ─────────────────────────────────────────── */
+/* Underline tab stili — nav-pills değil */
+.almanca-tabs {
+    border-bottom: 1px solid #e5e7eb;
+    gap: 0;
+}
+.almanca-tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    padding: 0.65rem 1.1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #9ca3af;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    cursor: pointer;
+}
+.almanca-tab-btn:hover {
+    color: #374151;
+    border-bottom-color: #d1d5db;
+}
+.almanca-tab-btn.active {
+    color: #032A4A;
+    border-bottom-color: #032A4A;
+    font-weight: 600;
+}
+
+/* Satır ayırıcı — badge değil sol çizgi aksanı */
+.almanca-list .almanca-row {
+    border-top: 1px solid #f3f4f6;
+}
+.almanca-list .almanca-row:first-child {
+    border-top: none;
+}
+
+.almanca-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    background: rgba(3, 42, 74, 0.07);
+    color: #032A4A;
+}
+.almanca-badge--amber {
+    background: rgba(217, 119, 6, 0.08);
+    color: #92400e;
+}
+
+/* ─── HABER SEKME BUTONLARI ──────────────────────────────────── */
+/* DE / TR küçük pill toggle */
+.haber-tabs {
+    gap: 3px;
+    background: #f3f4f6;
+    border-radius: 8px;
+    padding: 3px;
+}
+.haber-tab-btn {
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #9ca3af;
+    transition: background 0.15s, color 0.15s;
+    cursor: pointer;
+}
+.haber-tab-btn:hover {
+    color: #374151;
+}
+.haber-tab-btn.active {
+    background: #fff;
+    color: #032A4A;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* ─── BÜLTEN ─────────────────────────────────────────────────── */
+.bulten-section {
+    background-color: #f9fafb;
+}
+.bulten-form .form-control:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+/* ─── OFFCANVAS PANELLERİ ────────────────────────────────────── */
+/* Bootstrap'ın default offcanvas header'ını sıfırla */
+.oc-panel {
+    border-left: 1px solid #e5e7eb !important;
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.07) !important;
+}
+.oc-header {
+    padding: 1.5rem 1.5rem 1.25rem;
+    border-bottom: 1px solid #f3f4f6 !important;
+    align-items: flex-start !important;
+}
+.oc-body {
+    padding: 1.5rem !important;
+    overflow-y: auto;
+}
+.oc-close {
+    background: none;
+    border: none;
+    padding: 4px;
+    border-radius: 8px;
+    color: #9ca3af;
+    transition: background 0.15s, color 0.15s;
+    line-height: 1;
+    margin-left: auto;
+    align-self: flex-start;
+}
+.oc-close:hover {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+/* Bölüm etiketi */
+.oc-section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #d1d5db;
+    margin-bottom: 0.5rem;
+}
+
+/* Liste satırları */
+.oc-list .oc-list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.875rem;
+    padding: 1rem 0;
+    border-top: 1px solid #f3f4f6;
+}
+.oc-list .oc-list-item:first-child {
+    border-top: none;
+    padding-top: 0;
+}
+
+/* KdU bilgi kutusu */
+.oc-callout {
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    border-radius: 12px;
+    padding: 1rem 1.125rem;
+}
+.oc-search-hint {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #1d4ed8;
+    font-weight: 600;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.15s;
+}
+.oc-search-hint:hover {
+    color: #032A4A;
+}
+
+/* ─── ARAMA ──────────────────────────────────────────────────── */
+.search-wrap .form-control:focus {
+    box-shadow: none;
+    outline: none;
+}
+.search-wrap:focus-within {
+    border-color: #032A4A !important;
+    box-shadow: 0 0 0 3px rgba(3, 42, 74, 0.1);
+}
+
+/* ─── NABIZ BÖLÜMÜ ───────────────────────────────────────────── */
+.nabiz-makale-item,
+.nabiz-haber-item {
+    display: block;
+    transition: opacity 0.15s;
+}
+.nabiz-makale-item:hover,
+.nabiz-haber-item:hover {
+    opacity: 0.72;
+}
+.nabiz-ilan-item {
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+.nabiz-ilan-item:hover {
+    border-color: #d1d5db !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* ─── LİSTE HOVER (eski) ─────────────────────────────────────── */
+.list-item-hover {
+    display: block;
+    transition: background-color 0.15s ease;
+    border-radius: 0.375rem;
+}
+.list-item-hover:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
 </style>
 {% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    // ── Şehir arama kısayolu ──────────────────────────────────
+    const searchForm  = document.getElementById('main-search-form');
+    const searchInput = document.getElementById('main-search-input');
+    if (searchForm && searchInput) {
+        const mainCities = ['mainz', 'wiesbaden', 'mannheim', 'stuttgart'];
+        searchForm.addEventListener('submit', function (e) {
+            const query = searchInput.value.trim().toLowerCase();
+            if (mainCities.includes(query)) {
+                e.preventDefault();
+                window.location.href = `/${query}/`;
+            }
+        });
+    }
+
+    // ── Bülten Kayıt Formu ──────────────────────────────────
+    const bultenForm = document.getElementById('bulten-form');
+    const bultenEmailInput = document.getElementById('bulten-email');
+    const bultenButton = document.getElementById('bulten-btn');
+
+    if (bultenForm) {
+        bultenForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = bultenEmailInput.value.trim();
+
+            if (!email) { return; }
+
+            // CSRF token'ı cookie'den almak için yardımcı fonksiyon
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            const csrftoken = getCookie('csrftoken');
+
+            bultenButton.disabled = true;
+            bultenButton.textContent = 'İşleniyor...';
+
+            fetch('/api/bulten-kayit/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify({ email: email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    bultenButton.textContent = 'Kaydedildi ✓';
+                    bultenButton.style.backgroundColor = '#16a34a'; // Yeşil tonu (btn-success)
+                    bultenEmailInput.disabled = true;
+                } else {
+                    // Hata durumunda butonu eski haline getir
+                    bultenButton.disabled = false;
+                    bultenButton.textContent = 'Abone Ol';
+                    // İsteğe bağlı: kullanıcıya bir hata mesajı gösterilebilir
+                    console.error('Bulten kayit hatasi:', data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Fetch hatasi:', error);
+                bultenButton.disabled = false;
+                bultenButton.textContent = 'Abone Ol';
+            });
+        });
+    }
+});
+</script>
+{% endblock %}
+
 {% endblock %}

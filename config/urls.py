@@ -7,6 +7,7 @@ from django.http import Http404, HttpResponsePermanentRedirect
 from django.contrib.sitemaps.views import sitemap
 from core.sitemaps import SITEMAPS
 from config.converters import EyaletConverter
+from blog.views import detay_root as blog_detay_root
 
 register_converter(EyaletConverter, 'eyalet')
 
@@ -55,6 +56,9 @@ urlpatterns = [
 
     # Ana sayfa (şehir seçici) ve statik sayfalar
     path('', include('core.urls')),
+
+    # Blog yazısı kök URL'i (canonical, şehirden bağımsız)
+    path('blog/<slug:slug>/', blog_detay_root, name='blog_detay_root'),
 
     # Eski kök URL'lere 301 redirect (SEO koruması)
     *OLD_MAINZ_REDIRECTS,
