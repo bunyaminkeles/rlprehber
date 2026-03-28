@@ -24,9 +24,16 @@ def _rss_haberleri(url, cache_key, limit=8):
         r.raise_for_status()
         root = ET.fromstring(r.content)
         haberler = []
-        for item in root.findall('./channel/item')[:limit]:
-            baslik = item.findtext('title', '').strip()
-            link   = item.findtext('link', '').strip()
+        # RSS 2.0
+        items = root.findall('./channel/item')
+        # RDF/RSS 1.0 (ör. DW Türkçe)
+        if not items:
+            NS = 'http://purl.org/rss/1.0/'
+            items = root.findall(f'{{{NS}}}item')
+        for item in items[:limit]:
+            NS = 'http://purl.org/rss/1.0/'
+            baslik = (item.findtext(f'{{{NS}}}title') or item.findtext('title') or '').strip()
+            link   = (item.findtext(f'{{{NS}}}link')  or item.findtext('link')  or '').strip()
             if baslik and link:
                 haberler.append({'baslik': baslik, 'link': link})
         cache.set(cache_key, haberler, 1800)
