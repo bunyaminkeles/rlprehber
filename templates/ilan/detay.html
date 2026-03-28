@@ -2,7 +2,7 @@
 {% block title %}{{ ilan.baslik }}{% endblock %}
 {% block content %}
 <div class="container mt-4" style="max-width:720px">
-  <a href="/{{ stadt.slug }}/ilan/" class="btn btn-sm btn-outline-secondary mb-3">
+  <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/ilan/" class="btn btn-sm btn-outline-secondary mb-3">
     <i class="bi bi-arrow-left me-1"></i>İlanlar
   </a>
   <div class="card">
@@ -15,8 +15,20 @@
       {% endif %}
       <div>{{ ilan.icerik|linebreaks }}</div>
       <hr>
-      <p class="mb-1"><i class="bi bi-envelope me-2 text-primary"></i><a href="mailto:{{ ilan.iletisim }}">{{ ilan.iletisim }}</a></p>
-      <small class="text-muted">{{ ilan.olusturulma|date:"d.m.Y" }}</small>
+      <div class="d-flex align-items-center justify-content-between">
+        <small class="text-muted">{{ ilan.olusturulma|date:"d.m.Y" }}</small>
+        {% if user.is_authenticated %}
+          {% if ilan.sahip and ilan.sahip != user %}
+          <a href="{% url 'mesajlar:baslat' ilan.sahip.username %}" class="btn btn-primary btn-sm">
+            <i class="bi bi-chat-dots me-1"></i>Mesaj Gönder
+          </a>
+          {% endif %}
+        {% else %}
+          <a href="{% url 'account_login' %}?next={{ request.path }}" class="btn btn-outline-primary btn-sm">
+            <i class="bi bi-chat-dots me-1"></i>Mesaj için giriş yap
+          </a>
+        {% endif %}
+      </div>
     </div>
   </div>
 </div>
