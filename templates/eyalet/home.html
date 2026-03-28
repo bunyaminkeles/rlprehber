@@ -7,141 +7,61 @@
 <section class="hero">
   <div class="container text-center">
     <h1><i class="bi bi-map-fill me-2"></i>{{ eyalet.ad }}</h1>
-    <p class="mb-4">{{ eyalet.ad }} eyaletindeki Türk topluluğu için kaynaklar, haberler ve forum.</p>
-    <div class="d-flex justify-content-center flex-wrap gap-2">
-      <a href="/{{ eyalet_slug }}/rehber/"    class="btn btn-light btn-lg"><i class="bi bi-journal-bookmark-fill me-1"></i>Kaynaklar</a>
-      <a href="/{{ eyalet_slug }}/duyurular/" class="btn btn-outline-light btn-lg"><i class="bi bi-megaphone me-1"></i>Duyurular</a>
-      <a href="/{{ eyalet_slug }}/forum/"     class="btn btn-outline-light btn-lg"><i class="bi bi-chat-dots me-1"></i>Forum</a>
-      <a href="/{{ eyalet_slug }}/blog/"      class="btn btn-outline-light btn-lg"><i class="bi bi-pencil-square me-1"></i>Blog</a>
-    </div>
+    <p class="mb-0">{{ eyalet.ad }} eyaletindeki Türk topluluğu için rehber, haberler ve forum.</p>
   </div>
 </section>
 
-<div class="container mt-4 mb-5">
+<div class="container mt-5 mb-5">
 
-  <!-- Şehirler -->
+  <!-- Şehir Kartları -->
   {% if sehirler %}
-  <div class="mb-4">
-    <h5 class="fw-semibold mb-3"><i class="bi bi-geo-alt me-2 text-primary"></i>Şehirler</h5>
-    <div class="row g-2">
-      {% for s in sehirler %}
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <a href="/{{ eyalet_slug }}/{{ s.slug }}/" class="btn btn-outline-secondary w-100 text-start">
-          {% if s.typ == 'kreisfrei' %}🏙️{% else %}🗺️{% endif %} {{ s.name }}
-        </a>
-      </div>
-      {% endfor %}
+  <h5 class="fw-semibold mb-4 text-center"><i class="bi bi-geo-alt me-2 text-primary"></i>Şehirler</h5>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
+    {% for s in sehirler %}
+    <div class="col">
+      <a href="/{{ eyalet_slug }}/{{ s.slug }}/" class="card h-100 shadow-sm text-decoration-none text-dark hover-shadow">
+        <div class="card-body d-flex flex-column justify-content-between py-4 px-4">
+          <div>
+            <div class="mb-2 text-primary fs-4"><i class="bi bi-geo-alt-fill"></i></div>
+            <h4 class="card-title fw-bold mb-1">{{ s.name }}</h4>
+            <p class="small text-muted mb-0">{{ s.get_typ_display }}</p>
+          </div>
+          <div class="mt-3">
+            <span class="small text-muted">Şehir Rehberini Keşfet →</span>
+          </div>
+        </div>
+      </a>
     </div>
+    {% endfor %}
   </div>
   {% endif %}
 
-  <div class="row g-4">
-
-    <!-- Sol: Son Konular -->
-    <div class="col-lg-4">
-      <div class="card shadow-sm h-100">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <span class="fw-semibold"><i class="bi bi-chat-dots me-2 text-primary"></i>Son Konular</span>
-          <a href="/{{ eyalet_slug }}/forum/" class="small text-muted text-decoration-none">Tümü →</a>
-        </div>
-        <div class="list-group list-group-flush">
-          {% for k in son_konular %}
-          <a href="/{{ eyalet_slug }}/forum/konu/{{ k.pk }}/"
-             class="list-group-item list-group-item-action px-3 py-2">
-            <div class="fw-semibold small text-truncate">{{ k.baslik }}</div>
-            <small class="text-muted">{{ k.yazar.username }} · {{ k.olusturulma|date:"d.m.Y" }}</small>
-          </a>
-          {% empty %}
-          <div class="list-group-item text-muted small py-4 text-center">Henüz konu yok — ilk konuyu sen aç!</div>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-
-    <!-- Orta: Duyurular + Yaklaşan Etkinlikler -->
-    <div class="col-lg-4">
-      <div class="card shadow-sm mb-3">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <span class="fw-semibold"><i class="bi bi-megaphone me-2 text-warning"></i>Son Duyurular</span>
-          <a href="/{{ eyalet_slug }}/duyurular/" class="small text-muted text-decoration-none">Tümü →</a>
-        </div>
-        <div class="list-group list-group-flush">
-          {% for d in son_duyurular %}
-          <a href="/{{ eyalet_slug }}/duyurular/{{ d.pk }}/"
-             class="list-group-item list-group-item-action px-3 py-2">
-            <div class="fw-semibold small text-truncate">{{ d.baslik }}</div>
-            <small class="text-muted">{{ d.olusturulma|date:"d.m.Y" }}</small>
-          </a>
-          {% empty %}
-          <div class="list-group-item text-muted small py-3 text-center">Henüz duyuru yok — toplulukla paylaş!</div>
-          {% endfor %}
-        </div>
-      </div>
-
+  <!-- Yaklaşan Etkinlikler -->
+  {% if yaklasan %}
+  <div class="row justify-content-center">
+    <div class="col-lg-7">
+      <h5 class="fw-semibold mb-4 text-center"><i class="bi bi-calendar3 me-2 text-success"></i>Yaklaşan Etkinlikler</h5>
       <div class="card shadow-sm">
-        <div class="card-header">
-          <span class="fw-semibold"><i class="bi bi-calendar3 me-2 text-success"></i>Yaklaşan Etkinlikler</span>
-        </div>
         <div class="list-group list-group-flush">
           {% for e in yaklasan %}
-          <div class="list-group-item px-3 py-2">
-            <div class="d-flex gap-3 align-items-center">
-              <div class="text-center" style="min-width:36px">
-                <div class="fw-bold text-primary lh-1">{{ e.tarih|date:"d" }}</div>
-                <div class="text-muted" style="font-size:.7rem">{{ e.tarih|date:"M" }}</div>
+          <div class="list-group-item px-4 py-3">
+            <div class="d-flex gap-4 align-items-center">
+              <div class="text-center" style="min-width:44px">
+                <div class="fw-bold text-primary lh-1 fs-5">{{ e.tarih|date:"d" }}</div>
+                <div class="text-muted" style="font-size:.7rem;text-transform:uppercase">{{ e.tarih|date:"M" }}</div>
               </div>
               <div>
-                <div class="fw-semibold small">{{ e.baslik }}</div>
+                <div class="fw-semibold">{{ e.baslik }}</div>
                 <small class="text-muted">{{ e.get_tur_display }}</small>
               </div>
             </div>
           </div>
-          {% empty %}
-          <div class="list-group-item text-muted small py-3 text-center">Yaklaşan etkinlik yok.</div>
           {% endfor %}
         </div>
       </div>
     </div>
-
-    <!-- Sağ: Blog + İlanlar -->
-    <div class="col-lg-4">
-      <div class="card shadow-sm mb-3">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <span class="fw-semibold"><i class="bi bi-pencil-square me-2 text-info"></i>Blog</span>
-          <a href="/{{ eyalet_slug }}/blog/" class="small text-muted text-decoration-none">Tümü →</a>
-        </div>
-        <div class="list-group list-group-flush">
-          {% for y in son_yazilar %}
-          <a href="/{{ eyalet_slug }}/blog/{{ y.slug }}/"
-             class="list-group-item list-group-item-action px-3 py-2">
-            <div class="fw-semibold small text-truncate">{{ y.baslik }}</div>
-            <small class="text-muted">{{ y.olusturulma|date:"d.m.Y" }}</small>
-          </a>
-          {% empty %}
-          <div class="list-group-item text-muted small py-3 text-center">Henüz yazı yok — deneyimlerini paylaş!</div>
-          {% endfor %}
-        </div>
-      </div>
-
-      <div class="card shadow-sm">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <span class="fw-semibold"><i class="bi bi-tag me-2 text-primary"></i>Son İlanlar</span>
-          <a href="/{{ eyalet_slug }}/ilan/" class="small text-muted text-decoration-none">Tümü →</a>
-        </div>
-        <div class="list-group list-group-flush">
-          {% for i in son_ilanlar %}
-          <a href="/{{ eyalet_slug }}/ilan/{{ i.pk }}/"
-             class="list-group-item list-group-item-action px-3 py-2">
-            <div class="fw-semibold small text-truncate">{{ i.baslik }}</div>
-            <small class="text-muted">{{ i.get_kategori_display }}{% if i.fiyat %} · {{ i.fiyat }} €{% endif %}</small>
-          </a>
-          {% empty %}
-          <div class="list-group-item text-muted small py-3 text-center">Henüz ilan yok — ilk ilanını ver!</div>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-
   </div>
+  {% endif %}
+
 </div>
 {% endblock %}

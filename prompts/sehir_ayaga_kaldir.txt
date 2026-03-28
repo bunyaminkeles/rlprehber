@@ -1,153 +1,70 @@
 ====================================================================
-ALMANYALI REHBER — OTONOM ŞEHİR İNŞA PROMPTU
+ALMANYALI REHBER — MEVCUT ŞEHİR VERİLERİNİ GÜNCELLEME (v2.3)
 ====================================================================
 
-Sen Kıdemli bir Django Veri Mühendisi ve Araştırmacısın. Sana bir Alman şehri verilecek. Görevin, bu şehir için gerçek, doğrulanmış ve güncel verilerle dolu iki adet Django migration dosyası üretmektir:
+Sen Kıdemli bir Django Veri Mühendisi ve Araştırmacısın. @ARCHITECTURE.md vizyonumuza uygun olarak, halihazırda veritabanımızda bulunan ancak eksik verileri olan şu şehirleri güncelleyeceğiz:
 
-1. yerler/migrations/XXXX_seed_{city_slug}_yerler.py
-2. rehber/migrations/XXXX_seed_{city_slug}_kaynaklar.py
+ŞEHİRLER: [Buraya güncellemek istediğin şehir isimlerini yaz: örn: Mainz, Berlin, Hamburg]
 
-KURAL 1: ASLA HALÜSİNASYON YAPMA. Her URL, her adres, her Jobcenter PDF'i gerçek olmak zorundadır.
-KURAL 2: Çıktı olarak SADECE iki temiz Python kodu bloğu ver. Gereksiz açıklamalar yapma.
+Görevin: Bu şehirler için eksik olan 'Aksiyon ve Haber' linklerini bulmak ve bir 'Data Migration' dosyası üretmektir.
 
 ====================================================================
-ADIM 1 — ŞEHİR BİLGİLERİNİ ÇÖZÜMLE
+ADIM 1 — VERİ ARAŞTIRMA (ZORUNLU ARAÇ KULLANIMI)
 ====================================================================
 
-Bana verilen şehir adından şu bilgileri kesin olarak türet:
-- city_slug  : Sadece küçük harf, boşluk ve Türkçe/Almanca özel karakter yok (ä->ae, ö->oe, ü->ue, ß->ss). Örn: "münchen" -> "muenchen", "frankfurt am main" -> "frankfurt".
-- eyalet_kod : Aşağıdaki listeden 2 harfli kodu bul:
-  [BW: Baden-Württemberg, BY: Bayern, BE: Berlin, BB: Brandenburg, HB: Bremen, HH: Hamburg, HE: Hessen, MV: Mecklenburg-Vorpommern, NI: Niedersachsen, NW: Nordrhein-Westfalen, RP: Rheinland-Pfalz, SL: Saarland, SN: Sachsen, ST: Sachsen-Anhalt, SH: Schleswig-Holstein, TH: Thüringen]
+Belirtilen her şehir için WebSearch kullanarak şu 3 linki bul ve doğrula:
+1. termin_url            : Belediye online randevu (Termin/Bürgerbüro) sayfası.
+2. auslaenderbehorde_url : Yabancılar Dairesi (Ausländerbehörde) iletişim formu veya kontakt sayfası.
+3. rss_duyuru_url        : Resmi belediye haberlerinin RSS beslemesi (RSS yoksa belediye haber sayfası URL'i).
+
+KURAL: ASLA HALÜSİNASYON YAPMA. Her URL gerçek ve erişilebilir olmalıdır.
 
 ====================================================================
-ADIM 2 — VERİ TOPLAMA VE DOĞRULAMA (ZORUNLU ARAÇ KULLANIMI)
+ADIM 2 — MİGRASYON ÜRETİMİ
 ====================================================================
 
-Kodları yazmaya başlamadan önce WebSearch / Tarayıcı aracını kullanarak şu bilgileri topla ve DOĞRULA:
-
-1. Kategori "yerler" (Adresler ve Konumlar):
-   - ibadet: 3 Cami/İbadethane
-   - tuv: 2 TÜV/DEKRA istasyonu
-   - saglik: 3 Hastane
-   - egitim: 3 Üniversite/VHS
-   - gezi: 4 Tarihi Yer
-   - alisveris: 2 AVM
-2. Kategori "rehber" (Resmi Linkler - Hepsi 200 OK dönmeli):
-   - resmi: Bürgerbüro, Ausländerbehörde
-   - is: O şehre özel Jobcenter ve Agentur für Arbeit ana sayfası.
-   - konut: O şehrin güncel "KdU (Kosten der Unterkunft)" PDF tablosu veya sayfası.
-   - egitim: O şehrin VHS Almanca kursları sayfası.
-
-KRİTİK URL KURALLARI:
-- Google Maps URL formatı ŞU OLMALIDIR: `https://www.google.com/maps/search/?api=1&query={mekan_adi}+{sehir_adi}` (Boşlukları + yap).
-- Kapak Resmi URL'si KESİNLİKLE `https://upload.wikimedia.org/...` ile başlamalıdır. Wiki HTML sayfasını verme, görselin direct linkini ver. Yoksa `''` bırak.
-
-====================================================================
-ADIM 3 — YERLER MİGRASYONU (yerler app)
-====================================================================
-
-DOSYA ADI: yerler/migrations/XXXX_seed_{city_slug}_yerler.py
-(Not: XXXX yerine mevcut en son migration numarasının bir fazlasını yaz. Eğer okuyamıyorsan XXXX olarak bırak, ben değiştireceğim.)
-
-DEPENDENCIES (Bağımlılıklar):
-('yerler', 'ÖNCEKİ_MIGRATION_NUMARASI_BURAYA'),
-('stadt', '0010_seed_baskentler'),
-
-PYTHON ŞABLONU (Bu yapıyı aynen kullan):
-
-from django.db import migrations
-
-IBADET = [
-    {
-        'ad': '...', 'adres': '...', 'aciklama': '...',
-        'kapak_resmi': '', 'website': '', 
-        'maps_url': 'https://www.google.com/maps/search/?api=1&query=...',
-        'icerik': '<p>Giriş</p><h2>Başlık</h2><p>Detay</p>', # Sadece öne çıkan 1 yerde HTML olsun, diğerleri ''
-    },
-]
-# TUV, SAGLIK, EGITIM, GEZI, ALISVERIS listelerini de aynı formatta doldur...
-
-def seed(apps, schema_editor):
-    Eyalet = apps.get_model('stadt', 'Eyalet')
-    Stadt = apps.get_model('stadt', 'Stadt')
-    Yer = apps.get_model('yerler', 'Yer')
-
-    try:
-        eyalet = Eyalet.objects.get(kod='{EYALET_KOD}')
-        sehir = Stadt.objects.get(slug='{CITY_SLUG}')
-    except (Eyalet.DoesNotExist, Stadt.DoesNotExist):
-        return
-
-    sehir.aktiv = True
-    sehir.save()
-
-    kategoriler = [('ibadet', IBADET), ('tuv', TUV), ('saglik', SAGLIK), ('egitim', EGITIM), ('gezi', GEZI), ('alisveris', ALISVERIS)]
-
-    for cat_slug, yerler in kategoriler:
-        for veri in yerler:
-            Yer.objects.get_or_create(
-                ad=veri['ad'], stadt=sehir,
-                defaults={
-                    'eyalet': eyalet, 'scope': 'stadt', 'tur': 'yer', 'kategori': cat_slug,
-                    'adres': veri['adres'], 'sehir': '{CITY_NAME}', 'aciklama': veri['aciklama'],
-                    'kapak_resmi': veri.get('kapak_resmi', ''), 'website': veri.get('website', ''),
-                    'maps_url': veri.get('maps_url', ''), 'icerik': veri.get('icerik', ''), 'aktif': True,
-                }
-            )
-
-def unseed(apps, schema_editor):
-    Yer = apps.get_model('yerler', 'Yer')
-    adlar = [v['ad'] for liste in [IBADET, TUV, SAGLIK, EGITIM, GEZI, ALISVERIS] for v in liste]
-    Yer.objects.filter(ad__in=adlar, sehir='{CITY_NAME}').delete()
-
-class Migration(migrations.Migration):
-    dependencies = [
-        ('yerler', 'PREVIOUS_MIGRATION_HERE'),
-        ('stadt', '0010_seed_baskentler'),
-    ]
-    operations = [migrations.RunPython(seed, unseed)]
-
-====================================================================
-ADIM 4 — KAYNAKLAR MİGRASYONU (rehber app)
-====================================================================
-
-DOSYA ADI: rehber/migrations/XXXX_seed_{city_slug}_kaynaklar.py
-
-KATEGORİLER: resmi, is, konut, egitim, almanca, saglik.
-İKONLAR (Bootstrap): bi-calendar-check, bi-building-fill, bi-briefcase-fill, bi-house-door-fill, bi-book-half, bi-heart-pulse-fill.
+DOSYA ADI: stadt/migrations/XXXX_update_city_action_links.py
+(XXXX = mevcut en son migrasyon numarasının bir fazlası. Şu an son migrasyon: 0014_add_rss_duyuru_url)
 
 PYTHON ŞABLONU:
 
 from django.db import migrations
 
-KAYNAKLAR = [
-    dict(kategori='resmi', baslik='Ausländerbehörde {CITY_NAME}', url='https://...', ozet='...', icon='bi-building-fill', sira=1),
-    # Diğer kaynakları buraya ekle (En az 15 adet doğrulanmış kaynak)
-]
+CITY_DATA = {
+    'mainz': {
+        'termin_url':            'https://...',
+        'auslaenderbehorde_url': 'https://...',
+        'rss_duyuru_url':        'https://...',
+    },
+    'berlin': {
+        'termin_url':            'https://...',
+        'auslaenderbehorde_url': 'https://...',
+        'rss_duyuru_url':        'https://...',
+    },
+    # Diğer şehirler...
+}
 
-def seed(apps, schema_editor):
-    Kaynak = apps.get_model('rehber', 'Kaynak')
+def update_cities(apps, schema_editor):
     Stadt = apps.get_model('stadt', 'Stadt')
+    for slug, data in CITY_DATA.items():
+        try:
+            sehir = Stadt.objects.get(slug=slug)
+            sehir.termin_url            = data['termin_url']
+            sehir.auslaenderbehorde_url = data['auslaenderbehorde_url']
+            sehir.rss_duyuru_url        = data['rss_duyuru_url']
+            sehir.save()
+        except Stadt.DoesNotExist:
+            continue
 
-    try:
-        sehir = Stadt.objects.get(slug='{CITY_SLUG}')
-    except Stadt.DoesNotExist:
-        return
-
-    for d in KAYNAKLAR:
-        Kaynak.objects.get_or_create(
-            baslik=d['baslik'], stadt=sehir,
-            defaults={**d, 'eyalet': sehir.eyalet, 'scope': 'stadt', 'tip': 'link', 'yayinda': True}
-        )
-
-def unseed(apps, schema_editor):
-    Kaynak = apps.get_model('rehber', 'Kaynak')
-    basliklar = [d['baslik'] for d in KAYNAKLAR]
-    Kaynak.objects.filter(baslik__in=basliklar, stadt__slug='{CITY_SLUG}').delete()
+def reverse_update(apps, schema_editor):
+    pass
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('rehber', 'PREVIOUS_MIGRATION_HERE'),
-        ('stadt', '0010_seed_baskentler'),
+        ('stadt', '0014_add_rss_duyuru_url'),
     ]
-    operations = [migrations.RunPython(seed, unseed)]
+    operations = [
+        migrations.RunPython(update_cities, reverse_update),
+    ]
+
+KURAL: Çıktı olarak SADECE doğrulanmış linklerle dolu bu Python kodunu ver.

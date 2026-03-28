@@ -780,7 +780,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const searchForm  = document.getElementById('main-search-form');
     const searchInput = document.getElementById('main-search-input');
     if (searchForm && searchInput) {
-        const mainCities = ['mainz', 'wiesbaden', 'mannheim', 'stuttgart'];
+        const mainCities = [{% for s in sehirler %}'{{ s.slug }}'{% if not forloop.last %}, {% endif %}{% endfor %}];
         searchForm.addEventListener('submit', function (e) {
             const query = searchInput.value.trim().toLowerCase();
             if (mainCities.includes(query)) {

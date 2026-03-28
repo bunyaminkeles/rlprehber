@@ -40,6 +40,7 @@ class Stadt(models.Model):
     population = models.IntegerField(null=True, blank=True, verbose_name='Nüfus')
     auslaenderbehorde_url = models.URLField(blank=True, verbose_name='Ausländerbehörde URL')
     termin_url = models.URLField(blank=True, verbose_name='Randevu URL')
+    rss_duyuru_url = models.URLField(blank=True, verbose_name='Belediye RSS / Haber URL')
     beschreibung = models.TextField(blank=True, verbose_name='Açıklama')
     aktiv = models.BooleanField(default=False, verbose_name='Aktif')
 

@@ -31,21 +31,18 @@ def _base_qs(stadt, eyalet_slug='rlp'):
 
 def liste(request, eyalet_slug='rlp', stadt_slug=None):
     stadt = _get_stadt(stadt_slug)
-    kategori = request.GET.get('kategori', 'resmi_kurum')
 
     yer_kategorileri = list(YerKategori.objects.filter(tur='yer').order_by('sira', 'ad'))
     yer_kodlari = [k.slug for k in yer_kategorileri]
     base_qs = _base_qs(stadt, eyalet_slug).filter(tur='yer', kategori__in=yer_kodlari)
 
+    # Tüm kategorileri bir arada döküyoruz (sekme yok)
     kategoriler = {}
     for k in yer_kategorileri:
-        if kategori and k.slug != kategori:
-            continue
         yerler = base_qs.filter(kategori=k.slug)
         if yerler.exists():
             kategoriler[k.slug] = {'ad': k.ad, 'yerler': yerler}
 
-    # Her sekme için ilgili Kaynak (rehber) öğelerini ekle
     from rehber.models import Kaynak
     tum_kaynak_kat = list({k for gruplari in YER_TAB_KAYNAK.values() for k, _ in gruplari})
     if stadt:
@@ -60,8 +57,6 @@ def liste(request, eyalet_slug='rlp', stadt_slug=None):
         ).order_by('sira')
 
     for tab_slug, gruplari in YER_TAB_KAYNAK.items():
-        if kategori and kategori != tab_slug:
-            continue
         rehber_alt = {}
         for kat_k, kat_v in gruplari:
             items = list(kaynak_qs.filter(kategori=kat_k))
@@ -76,11 +71,10 @@ def liste(request, eyalet_slug='rlp', stadt_slug=None):
                 kategoriler[tab_slug]['rehber_alt'] = rehber_alt
 
     return render(request, 'yerler/liste.html', {
-        'kategoriler':    kategoriler,
-        'secili':         kategori,
+        'kategoriler':     kategoriler,
         'tum_kategoriler': [(k.slug, k.ad) for k in yer_kategorileri],
-        'stadt':          stadt,
-        'eyalet_slug':    eyalet_slug,
+        'stadt':           stadt,
+        'eyalet_slug':     eyalet_slug,
     })
 
 
