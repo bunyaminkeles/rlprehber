@@ -54,31 +54,8 @@
 
 <div class="container mt-3">
 
-  <!-- BÖLÜM 2: Duyurular + Yaklaşan Günler -->
+  <!-- BÖLÜM 2: Yaklaşan Günler + Belediye Haberleri -->
   <div class="row g-3">
-    <!-- Son Duyurular -->
-    <div class="col-md-6">
-      <div class="card h-100">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <span><i class="bi bi-megaphone me-2"></i>Son Duyurular</span>
-          <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/duyurular/" class="btn btn-sm btn-outline-primary">Tümü</a>
-        </div>
-        <div class="card-body p-0">
-          {% for d in son_duyurular %}
-          <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/duyurular/{{ d.pk }}/" class="d-flex align-items-start p-3 border-bottom text-decoration-none text-dark hover-bg">
-            <div class="flex-grow-1">
-              <div class="fw-semibold" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ d.baslik }}</div>
-              <small class="text-muted">{{ d.get_kategori_display }} &bull; {{ d.olusturulma|date:"d.m.Y" }}</small>
-            </div>
-            <i class="bi bi-chevron-right text-muted ms-2 mt-1"></i>
-          </a>
-          {% empty %}
-          <p class="text-muted p-3 mb-0">Henüz duyuru yok — toplulukla paylaş!</p>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-
     <!-- Yaklaşan Günler -->
     <div class="col-md-6">
       <div class="card h-100">

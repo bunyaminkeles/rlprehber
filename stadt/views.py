@@ -1,12 +1,14 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from .models import Stadt, Eyalet
-from duyurular.models import Duyuru
 from takvim.models import Etkinlik
 from django.utils import timezone
 from yerler.models import Yer, YerKategori
 from rehber.models import Kaynak
 import feedparser
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Şehir sayfasındaki dizin sekmesi → Kaynak kategorileri eşleşmesi
 _YER_TAB_KAYNAK = {
@@ -46,11 +48,6 @@ def eyalet_home(request, eyalet_slug='rlp'):
 
 def home(request, eyalet_slug='rlp', stadt_slug=None):
     stadt = get_object_or_404(Stadt, slug=stadt_slug, aktiv=True)
-
-    son_duyurular = Duyuru.objects.filter(
-        Q(stadt=stadt, scope='stadt') | Q(scope='eyalet'),
-        yayinda=True
-    ).order_by('-olusturulma')[:4]
 
     yaklasan_qs = Etkinlik.objects.filter(
         Q(stadt=stadt, scope='stadt') | Q(eyalet=stadt.eyalet, scope='eyalet'),
@@ -114,13 +111,12 @@ def home(request, eyalet_slug='rlp', stadt_slug=None):
                     'link':   entry.get('link', ''),
                     'tarih':  entry.get('published', ''),
                 })
-        except Exception:
-            pass
+        except Exception as e:
+            logger.error(f"Belediye RSS feed ({stadt.rss_duyuru_url}) parse edilemedi: {e}")
 
     return render(request, 'stadt/home.html', {
         'stadt':               stadt,
         'eyalet_slug':         eyalet_slug,
-        'son_duyurular':       son_duyurular,
         'yaklasan':            yaklasan,
         'belediye_haberleri':  belediye_haberleri,
         'kategoriler':         kategoriler,
