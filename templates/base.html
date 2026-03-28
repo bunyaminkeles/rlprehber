@@ -38,6 +38,18 @@
 </head>
 <body>
 
+<!-- Bilgi Şeridi (Ticker) -->
+<div class="py-1" style="background-color: #0F172A;">
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="d-flex gap-4 align-items-center" style="font-size: 0.75rem;">
+            <span class="text-light opacity-75">Euro: <strong id="live-euro">...</strong> ₺</span>
+            <span class="text-light opacity-75">Altın: <strong id="live-altin">...</strong> ₺</span>
+            <span class="text-light opacity-75 d-none d-md-block" id="next-prayer"></span>
+            <span class="text-light opacity-75 d-none d-md-block">Tarih: <strong id="live-date">...</strong></span>
+        </div>
+    </div>
+</div>
+
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg">
   <div class="container">
@@ -48,90 +60,7 @@
       <i class="bi bi-list text-white fs-4"></i>
     </button>
     <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav me-auto ms-3 gap-1">
-        {# Almanya Kaynakları dropdown — her zaman görünür #}
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-            <i class="bi bi-globe2 me-1"></i>Almanya
-          </a>
-          <ul class="dropdown-menu">
-            <li><h6 class="dropdown-header small text-uppercase" style="letter-spacing:.05em">Resmi Kurumlar</h6></li>
-            <li><a class="dropdown-item" href="https://www.bamf.de" target="_blank" rel="noopener">
-              <i class="bi bi-building me-1 text-primary"></i>BAMF Ana Sayfası</a></li>
-            <li><a class="dropdown-item" href="https://www.bamf.de/DE/Themen/Integration/ZugewanderteTeilnehmende/Integrationskurse/integrationskurse-node.html" target="_blank" rel="noopener">
-              <i class="bi bi-map me-1 text-primary"></i>Entegrasyon Kursu & Harita</a></li>
-            <li><a class="dropdown-item" href="https://www.kmk.org/zab/" target="_blank" rel="noopener">
-              <i class="bi bi-award me-1 text-primary"></i>ZAB — Denkleştirme Merkezi</a></li>
-            <li><a class="dropdown-item" href="/rlp/rehber/anabin-karar-araci/">
-              <i class="bi bi-diagram-3 me-1 text-primary"></i>ZAB Karar Aracı (Akış)</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><h6 class="dropdown-header small text-uppercase" style="letter-spacing:.05em">İş & Kariyer</h6></li>
-            <li><a class="dropdown-item" href="https://www.make-it-in-germany.com/tr" target="_blank" rel="noopener">
-              <i class="bi bi-briefcase me-1 text-success"></i>Make it in Germany</a></li>
-            <li><a class="dropdown-item" href="https://www.anerkennung-in-deutschland.de/de/interest" target="_blank" rel="noopener">
-              <i class="bi bi-patch-check me-1 text-success"></i>Tanınma Portalı</a></li>
-            <li><a class="dropdown-item" href="https://www.arbeitsagentur.de" target="_blank" rel="noopener">
-              <i class="bi bi-people me-1 text-success"></i>Bundesagentur für Arbeit</a></li>
-          </ul>
-        </li>
-        {% if stadt %}
-          {# Kaynaklar dropdown #}
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-              <i class="bi bi-grid me-1"></i>Kaynaklar
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/{{ stadt.eyalet.slug }}/{{ stadt.slug }}/yerler/?kategori=resmi_kurum"><i class="bi bi-building me-1"></i>Resmi İşlemler</a></li>
-              <li><a class="dropdown-item" href="/{{ stadt.eyalet.slug }}/{{ stadt.slug }}/yerler/?kategori=egitim"><i class="bi bi-mortarboard me-1"></i>Eğitim</a></li>
-              <li><a class="dropdown-item" href="/{{ stadt.eyalet.slug }}/{{ stadt.slug }}/yerler/?kategori=saglik"><i class="bi bi-heart-pulse me-1"></i>Sağlık</a></li>
-              <li><a class="dropdown-item" href="/{{ stadt.eyalet.slug }}/{{ stadt.slug }}/rehber/belgeler/#konut"><i class="bi bi-house me-1"></i>Konut</a></li>
-              <li><a class="dropdown-item" href="/{{ stadt.eyalet.slug }}/{{ stadt.slug }}/yerler/?kategori=gezi"><i class="bi bi-map me-1"></i>Gezi & Kültür</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="/{{ stadt.eyalet.slug }}/{{ stadt.slug }}/rehber/belgeler/"><i class="bi bi-file-earmark-text me-1"></i>Gerekli Dokümanlar</a></li>
-            </ul>
-          </li>
-          {# Topluluk dropdown #}
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-              <i class="bi bi-people me-1"></i>Topluluk
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/duyurular/"><i class="bi bi-megaphone me-1"></i>Duyurular</a></li>
-              <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/takvim/"><i class="bi bi-calendar3 me-1"></i>Takvim</a></li>
-              <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/forum/"><i class="bi bi-chat-dots me-1"></i>Forum</a></li>
-              <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/ilan/"><i class="bi bi-grid me-1"></i>İlanlar</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/blog/"><i class="bi bi-pencil-square me-1"></i>Blog</a></li>
-              <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/isletmeler/"><i class="bi bi-shop me-1"></i>İşletmeler</a></li>
-            </ul>
-          </li>
-        {% endif %}
-      </ul>
-
-<ul class="navbar-nav ms-auto gap-1 align-items-center">
-        {# Eyalet + Şehir switcher #}
-
-        {# Şehir arama #}
-        <li class="nav-item" id="sehirAraLi">
-          {% if stadt %}
-          <a class="nav-link text-warning fw-semibold" href="{% url 'core:anasayfa' %}">
-            <i class="bi bi-geo-fill me-1"></i>{{ stadt.name }}
-            {% if stadt.eyalet %}<small class="opacity-75">{{ stadt.eyalet.kod }}</small>{% endif %}
-            <i class="bi bi-x ms-1 opacity-75"></i>
-          </a>
-          {% endif %}
-          <div class="position-relative d-inline-block">
-            <input type="text" id="sehirAraInput"
-                   class="form-control form-control-sm sehir-ara-input"
-                   placeholder="🔍 Şehir ara…"
-                   autocomplete="off">
-            <ul class="dropdown-menu sehir-ara-sonuclar" id="sehirAraSonuclar"></ul>
-          </div>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'core:hakkinda' %}"><i class="bi bi-info-circle me-1"></i>Hakkında</a>
-        </li>
+        <ul class="navbar-nav ms-auto gap-1 align-items-center">
         {% if user.is_authenticated %}
           {% load mesajlar_tags %}
           {% okunmamis_sayi request.user as okunmamis %}
@@ -158,7 +87,7 @@
           </li>
         {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_login' %}?next={{ request.path }}"><i class="bi bi-box-arrow-in-right me-1"></i>Giriş</a>
+            <a class="nav-link" href="{% url 'account_login' %}?next={{ request.path }}">Giriş</a>
           </li>
           <li class="nav-item">
             <a class="btn btn-accent btn-sm px-3 ms-1" href="{% url 'account_signup' %}">Kayıt Ol</a>
@@ -175,7 +104,8 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb small mb-0">
       <li class="breadcrumb-item"><a href="{% url 'core:anasayfa' %}">Ana Sayfa</a></li>
-      <li class="breadcrumb-item"><a href="/{{ stadt.slug }}/">{{ stadt.name }}</a></li>
+      <li class="breadcrumb-item"><a href="/{{ eyalet_slug }}/">{{ stadt.eyalet.ad }}</a></li>
+      <li class="breadcrumb-item"><a href="/{{ eyalet_slug }}/{{ stadt.slug }}/">{{ stadt.name }}</a></li>
       {% block breadcrumb %}{% endblock %}
     </ol>
   </nav>
@@ -222,39 +152,80 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 (function () {
-  const input    = document.getElementById('sehirAraInput');
-  const sonuclar = document.getElementById('sehirAraSonuclar');
-  if (!input) return;
+    async function updateTicker() {
+        // Update date
+        const dateElement = document.getElementById('live-date');
+        if (dateElement) {
+            const today = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            dateElement.textContent = new Intl.DateTimeFormat('tr-TR', options).format(today);
+        }
 
-  let timer;
-  input.addEventListener('input', function () {
-    clearTimeout(timer);
-    const q = this.value.trim();
-    if (q.length < 2) { sonuclar.classList.remove('show'); return; }
-    timer = setTimeout(function () {
-      fetch('/api/sehir-ara/?q=' + encodeURIComponent(q))
-        .then(function (r) { return r.json(); })
-        .then(function (data) {
-          if (!data.sonuclar.length) { sonuclar.classList.remove('show'); return; }
-          sonuclar.innerHTML = data.sonuclar.map(function (s) {
-            return '<li><a class="dropdown-item" href="' + s.url + '">'
-              + '<i class="bi bi-geo-alt me-1 text-primary"></i>'
-              + s.ad
-              + ' <small class="text-muted ms-1">' + s.kod + '</small>'
-              + '</a></li>';
-          }).join('');
-          sonuclar.classList.add('show');
-        });
-    }, 200);
-  });
+        // Euro kuru
+        const euroElement = document.getElementById('live-euro');
+        if (euroElement) {
+            try {
+                const response = await fetch('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json');
+                const data = await response.json();
+                euroElement.textContent = `${data.eur.try.toFixed(2)} ₺`;
+            } catch {
+                euroElement.textContent = '-- ₺';
+            }
+        }
 
-  input.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { sonuclar.classList.remove('show'); input.value = ''; }
-  });
+        // Gram altın fiyatı (XAU = 1 troy ons = 31.1035 gr)
+        const altinElement = document.getElementById('live-altin');
+        if (altinElement) {
+            try {
+                const response = await fetch('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/xau.json');
+                const data = await response.json();
+                const gramTry = data.xau.try / 31.1035;
+                altinElement.textContent = gramTry.toLocaleString('tr-TR', { maximumFractionDigits: 0 });
+            } catch {
+                altinElement.textContent = '--';
+            }
+        }
 
-  document.addEventListener('click', function (e) {
-    if (!e.target.closest('#sehirAraLi')) { sonuclar.classList.remove('show'); }
-  });
+        // Sıradaki ezan vakti — Mainz, Diyanet metodu (13)
+        const prayerEl = document.getElementById('next-prayer');
+        if (prayerEl) {
+            try {
+                const res = await fetch('https://api.aladhan.com/v1/timingsByCity?city=Mainz&country=Germany&method=13');
+                const json = await res.json();
+                const t = json.data.timings;
+
+                const VAKİTLER = [
+                    { ad: 'İmsak',  saat: t.Fajr    },
+                    { ad: 'Güneş',  saat: t.Sunrise  },
+                    { ad: 'Öğle',   saat: t.Dhuhr   },
+                    { ad: 'İkindi', saat: t.Asr     },
+                    { ad: 'Akşam',  saat: t.Maghrib },
+                    { ad: 'Yatsı',  saat: t.Isha    },
+                ];
+
+                const now = new Date();
+                const nowMin = now.getHours() * 60 + now.getMinutes();
+
+                const sonraki = VAKİTLER.find(v => {
+                    const [h, m] = v.saat.split(':').map(Number);
+                    return (h * 60 + m) > nowMin;
+                });
+
+                if (sonraki) {
+                    prayerEl.innerHTML =
+                        `<i class="bi bi-moon-stars me-1" style="opacity:.7;"></i>` +
+                        `Mainz — <strong>${sonraki.ad} ${sonraki.saat}</strong>`;
+                }
+                // Tüm vakitler geçtiyse (gece yarısından sonra) gizli bırak
+            } catch {
+                prayerEl.innerHTML =
+                    `<i class="bi bi-moon-stars me-1" style="opacity:.7;"></i>` +
+                    `Mainz — <strong>--:--</strong>`;
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', updateTicker);
 })();
 </script>
 {% block extra_js %}{% endblock %}

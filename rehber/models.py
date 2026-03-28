@@ -50,3 +50,17 @@ class Kaynak(models.Model):
 
     def __str__(self):
         return self.baslik
+
+
+class BultenAbone(models.Model):
+    email = models.EmailField(unique=True, verbose_name="E-posta")
+    kayit_tarihi = models.DateTimeField(auto_now_add=True, verbose_name="Kayıt Tarihi")
+    aktif = models.BooleanField(default=True, verbose_name="Aktif")
+
+    class Meta:
+        verbose_name = "Bülten Abonesi"
+        verbose_name_plural = "Bülten Aboneleri"
+        ordering = ['-kayit_tarihi']
+
+    def __str__(self):
+        return self.email

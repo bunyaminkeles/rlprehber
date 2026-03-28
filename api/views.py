@@ -1,9 +1,44 @@
-import subprocess, sys
+import subprocess, sys, json, re
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
 from django.conf import settings
 from django.core.management import call_command
+from rehber.models import BultenAbone
+
+
+@csrf_exempt
+def bulten_kayit_api(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            email = data.get('email')
+
+            if not email or not re.match(r"[^@]+@[^@]+\.[^@]+", email):
+                return JsonResponse({'status': 'error', 'message': 'Geçersiz e-posta formatı.'}, status=400)
+
+            # get_or_create, e-posta mevcutsa nesneyi alır, değilse oluşturur.
+            # E-posta zaten kayıtlıysa tekrar oluşturmaz ve hata vermez.
+            # 'created' değişkeni, nesnenin yeni mi oluşturulduğunu yoksa mevcut mu olduğunu belirtir.
+            bulten_abone, created = BultenAbone.objects.get_or_create(
+                email=email,
+                defaults={'aktif': True} # Sadece yeni oluşturuluyorsa 'aktif' True olur
+            )
+
+            # Eğer mevcut bir abonelik pasif durumdaysa ve tekrar kaydoluyorsa,
+            # onu tekrar aktif hale getirebiliriz.
+            if not created and not bulten_abone.aktif:
+                bulten_abone.aktif = True
+                bulten_abone.save()
+
+            return JsonResponse({'status': 'success', 'message': 'Kayıt başarılı.'})
+        except json.JSONDecodeError:
+            return JsonResponse({'status': 'error', 'message': 'Geçersiz JSON formatı.'}, status=400)
+        except Exception as e:
+            # Genel hataları loglamak iyi bir pratik olabilir.
+            return JsonResponse({'status': 'error', 'message': 'Bir hata oluştu.'}, status=500)
+
+    return JsonResponse({'status': 'error', 'message': 'Sadece POST istekleri kabul edilmektedir.'}, status=405)
 
 
 def sehir_ara(request):

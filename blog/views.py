@@ -22,6 +22,12 @@ def liste(request, eyalet_slug='rlp', stadt_slug=None):
     })
 
 
+def detay_root(request, slug):
+    """Kök URL'den erişilen blog yazısı — /blog/<slug>/"""
+    yazi = get_object_or_404(BlogYazisi, slug=slug, yayinda=True)
+    return render(request, 'blog/detay.html', {'yazi': yazi, 'eyalet_slug': 'rlp'})
+
+
 def detay(request, slug, eyalet_slug='rlp', stadt_slug=None):
     from stadt.models import Stadt
     yazi = get_object_or_404(BlogYazisi, slug=slug, yayinda=True)

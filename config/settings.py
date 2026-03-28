@@ -179,6 +179,9 @@ else:
 CRONJOBS = [
     # Her gece 02:00 — RSS duyurularını çek
     ('0 2 * * *', 'django.core.management.call_command', ['rss_cek']),
+
+    # Her Cuma 10:00 — Haftalık bülteni gönder
+    ('0 10 * * 5', 'django.core.management.call_command', ['bulten_gonder', 'Haftalık Bülten', 'rehber/email/bulten_icerik.html']),
 ]
 
 LOGGING = {

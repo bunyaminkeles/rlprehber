@@ -9,34 +9,45 @@ from takvim.models import Etkinlik
 from forum.models import Konu
 from ilan.models import SATILIK_KATEGORILER, ARANIYOR_KATEGORILER
 from rehber.models import Kaynak
+from almanca import engine as almanca_engine
+from blog.models import BlogYazisi
 
 
-def _tagesschau_haberleri():
-    CACHE_KEY = 'tagesschau_rss'
-    sonuc = cache.get(CACHE_KEY)
+def _rss_haberleri(url, cache_key, limit=8):
+    sonuc = cache.get(cache_key)
     if sonuc is not None:
         return sonuc
     try:
         import requests
         import xml.etree.ElementTree as ET
-        r = requests.get(
-            'https://www.tagesschau.de/xml/rss2',
-            timeout=5,
-            headers={'User-Agent': 'Mozilla/5.0'}
-        )
+        r = requests.get(url, timeout=5, headers={'User-Agent': 'Mozilla/5.0'})
         r.raise_for_status()
         root = ET.fromstring(r.content)
         haberler = []
-        for item in root.findall('./channel/item')[:8]:
+        for item in root.findall('./channel/item')[:limit]:
             baslik = item.findtext('title', '').strip()
             link   = item.findtext('link', '').strip()
             if baslik and link:
                 haberler.append({'baslik': baslik, 'link': link})
-        cache.set(CACHE_KEY, haberler, 1800)
+        cache.set(cache_key, haberler, 1800)
         return haberler
     except Exception:
-        cache.set(CACHE_KEY, [], 300)
+        cache.set(cache_key, [], 300)
         return []
+
+
+def _tagesschau_haberleri():
+    return _rss_haberleri(
+        'https://www.tagesschau.de/xml/rss2',
+        'tagesschau_rss',
+    )
+
+
+def _dw_turkce_haberleri():
+    return _rss_haberleri(
+        'https://rss.dw.com/rdf/rss-tur-all',
+        'dw_turkce_rss',
+    )
 
 
 def anasayfa(request):
@@ -82,13 +93,17 @@ def anasayfa(request):
         for kat, items in _gruplar.items()
     ]
 
+    son_blog_yazilari = BlogYazisi.objects.filter(yayinda=True).order_by('-olusturulma')[:3]
+
     return render(request, 'core/anasayfa.html', {
-        'sehirler':         sehirler,
-        'son_konular':      son_konular,
+        'sehirler':           sehirler,
+        'son_konular':        son_konular,
+        'son_blog_yazilari':  son_blog_yazilari,
         'son_duyurular':    son_duyurular,
         'son_satilik':      son_satilik,
         'son_araniyor':     son_araniyor,
         'tagesschau':       _tagesschau_haberleri(),
+        'dw_turkce':        _dw_turkce_haberleri(),
         'ulusal_kaynaklar': ulusal_kaynaklar,
     })
 
