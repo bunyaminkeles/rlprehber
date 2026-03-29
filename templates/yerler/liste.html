@@ -166,5 +166,18 @@
 
 <script>
   new bootstrap.ScrollSpy(document.body, { target: '#sidebar-nav', offset: 100 });
+
+  // Offcanvas kapandıktan sonra anchor'a scroll et
+  document.querySelectorAll('.offcanvas-body a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function () {
+      const targetId = this.getAttribute('href');
+      const offcanvasEl = this.closest('.offcanvas');
+      offcanvasEl.addEventListener('hidden.bs.offcanvas', function handler() {
+        const el = document.querySelector(targetId);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        offcanvasEl.removeEventListener('hidden.bs.offcanvas', handler);
+      });
+    });
+  });
 </script>
 {% endblock %}
