@@ -38,6 +38,12 @@ MAINZ_BELGELER = [
         'harici_link': 'https://www.mainz.de/vv/medien/internet/Zulassungsstelle-Antragstellung-Abholung-Fahrzeugpapiere-Vollmacht.pdf',
         'ozet': 'Mainz araç tescili için başkasına verilebilecek vekaletname formu.',
     },
+    {
+        'baslik': 'Wohnberechtigungsschein (Sosyal Konut Hak Belgesi) Başvurusu — Mainz',
+        'kategori': 'konut',
+        'harici_link': 'https://www.wohnbau-mainz.de/fileadmin/Dokumente/Vermietung/Antrag_Wohnberechtigungsschein_web.pdf',
+        'ozet': 'Mainz sosyal konut (Sozialwohnung) başvurusu için gereken hak belgesi formu.',
+    },
 ]
 
 
