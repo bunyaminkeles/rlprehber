@@ -123,7 +123,7 @@
       <ul class="nav flex-column gap-1">
         {% for k, v in tum_kategoriler %}
         <li class="nav-item">
-          <a href="#kategori-{{ k }}" class="nav-link sidebar-nav-link">{{ v }}</a>
+          <a href="#kategori-{{ k }}" class="nav-link sidebar-nav-link" data-bs-dismiss="offcanvas">{{ v }}</a>
         </li>
         {% endfor %}
       </ul>
@@ -263,7 +263,6 @@
 
   // Offcanvas kapandıktan sonra anchor'a scroll et
   const offcanvasEl = document.getElementById('kategoriPanel');
-  const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl);
   document.querySelectorAll('#kategoriPanel .offcanvas-body a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
@@ -272,7 +271,6 @@
         const el = document.querySelector(targetId);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
       }, { once: true });
-      bsOffcanvas.hide();
     });
   });
 </script>
