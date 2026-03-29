@@ -462,8 +462,35 @@
                     </div>
                 </div>
 
-                <!-- ── Kolon 3: Güncel İlanlar ── -->
+                <!-- ── Kolon 3: Duyurular + Güncel İlanlar ── -->
                 <div class="col-lg-4">
+
+                    <!-- Kullanıcı Duyuruları -->
+                    {% if son_duyurular %}
+                    <div class="mb-4">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <p class="fw-bold mb-0" style="font-size: 0.9375rem; color: #111827;">
+                                <i class="bi bi-megaphone me-2" style="color: #f59e0b; font-size: 0.875rem;"></i>Duyurular
+                            </p>
+                            <a href="/rlp/mainz/duyurular/" class="text-decoration-none" style="font-size: 0.78rem; color: #9ca3af;">Tümü →</a>
+                        </div>
+                        <div class="vstack gap-2">
+                            {% for d in son_duyurular|slice:":3" %}
+                            <a href="/{% if d.stadt %}{{ d.stadt.eyalet.slug|default:'rlp' }}/{{ d.stadt.slug }}/{% else %}rlp/mainz/{% endif %}duyurular/{{ d.pk }}/"
+                               class="text-decoration-none nabiz-ilan-item d-block rounded-3 p-3"
+                               style="background: #fff; border: 1px solid #f3f4f6;">
+                                <p class="fw-semibold mb-1" style="font-size: 0.875rem; color: #111827; line-height: 1.4;">{{ d.baslik|truncatechars:60 }}</p>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="rounded-2 px-2 py-1" style="font-size: 0.7rem; font-weight: 600; background: #fef3c7; color: #92400e; letter-spacing: 0.03em;">{{ d.get_kategori_display }}</span>
+                                    <span style="font-size: 0.72rem; color: #d1d5db;">{{ d.olusturulma|timesince }} önce</span>
+                                </div>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Güncel İlanlar -->
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <p class="fw-bold mb-0" style="font-size: 0.9375rem; color: #111827;">
                             <i class="bi bi-tag me-2" style="color: #059669; font-size: 0.875rem;"></i>Güncel İlanlar
