@@ -111,22 +111,21 @@
   <hr class="my-4">
   <h4 class="mb-3"><i class="bi bi-geo-alt me-2 text-primary"></i>{{ stadt.name }}'da Önemli Yerler</h4>
 
-  <!-- Mobil: Offcanvas Panel -->
-  <div class="offcanvas offcanvas-end d-lg-none" tabindex="-1" id="kategoriPanel" aria-labelledby="kategoriPanelLabel">
-    <div class="offcanvas-header border-bottom">
-      <h5 class="offcanvas-title fw-bold" id="kategoriPanelLabel">
-        <i class="bi bi-list me-2 text-primary"></i>Kategoriler
-      </h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Kapat"></button>
-    </div>
-    <div class="offcanvas-body p-2">
-      <ul class="nav flex-column gap-1">
-        {% for k, v in tum_kategoriler %}
-        <li class="nav-item">
-          <a href="#kategori-{{ k }}" class="nav-link sidebar-nav-link" data-bs-dismiss="offcanvas">{{ v }}</a>
-        </li>
-        {% endfor %}
-      </ul>
+  <!-- Mobil: Kategoriler Butonu -->
+  <div class="d-lg-none mb-3">
+    <button id="mobil-kat-ac" class="btn btn-outline-secondary d-flex align-items-center gap-2" type="button">
+      <i class="bi bi-list fs-5"></i><span class="fw-medium">Kategoriler</span>
+    </button>
+  </div>
+
+  <!-- Mobil: Inline Kategori Listesi (başta gizli) -->
+  <div id="mobil-kat-liste" class="d-lg-none mb-3" style="display:none!important">
+    <div class="list-group list-group-flush">
+      {% for k, v in tum_kategoriler %}
+      <button type="button" class="list-group-item list-group-item-action fw-medium mobil-kat-item" data-kat="{{ k }}">
+        {{ v }}
+      </button>
+      {% endfor %}
     </div>
   </div>
 
@@ -146,98 +145,106 @@
       </nav>
     </div>
 
-    <!-- Sağ İçerik Kolonu -->
+    <!-- İçerik Kolonu -->
     <div class="col-12 col-lg-9">
 
       {% for k, grup in kategoriler.items %}
 
-      <h3 id="kategori-{{ k }}" class="fw-bold mt-3 mb-3 border-bottom pb-2">
-        {{ grup.ad }}
-      </h3>
+      <div class="mobil-kat-section" data-kat="{{ k }}">
 
-      {% if grup.rehber_alt %}
+        <h3 id="kategori-{{ k }}" class="fw-bold mt-3 mb-3 border-bottom pb-2">
+          <!-- Mobil: geri butonu -->
+          <button class="btn btn-sm btn-link text-muted p-0 me-2 d-lg-none mobil-geri" type="button" aria-label="Geri">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          {{ grup.ad }}
+        </h3>
 
-        {% if grup.yerler %}
-        <div class="row g-3 mb-3">
-          {% for yer in grup.yerler %}
-          <div class="col-md-4 col-sm-6">
-            <div class="card h-100">
-              <div class="card-body d-flex flex-column">
-                <h6 class="card-title mb-1">
-                  <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/" class="text-dark text-decoration-none">{{ yer.ad }}</a>
-                </h6>
-                <p class="small text-muted mb-2 flex-grow-1"><i class="bi bi-geo-alt me-1"></i>{{ yer.adres }}</p>
-                <div class="d-flex gap-2 mt-2 flex-wrap">
-                  <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/" class="btn btn-sm btn-primary"><i class="bi bi-info-circle me-1"></i>Detay</a>
-                  {% if yer.maps_url %}<a href="{{ yer.maps_url }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary"><i class="bi bi-map me-1"></i>Harita</a>{% endif %}
-                  {% if yer.website %}<a href="{{ yer.website }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary"><i class="bi bi-globe me-1"></i>Web</a>{% endif %}
+        {% if grup.rehber_alt %}
+
+          {% if grup.yerler %}
+          <div class="row g-3 mb-3">
+            {% for yer in grup.yerler %}
+            <div class="col-md-4 col-sm-6">
+              <div class="card h-100">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title mb-1">
+                    <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/" class="text-dark text-decoration-none">{{ yer.ad }}</a>
+                  </h6>
+                  <p class="small text-muted mb-2 flex-grow-1"><i class="bi bi-geo-alt me-1"></i>{{ yer.adres }}</p>
+                  <div class="d-flex gap-2 mt-2 flex-wrap">
+                    <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/" class="btn btn-sm btn-primary"><i class="bi bi-info-circle me-1"></i>Detay</a>
+                    {% if yer.maps_url %}<a href="{{ yer.maps_url }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary"><i class="bi bi-map me-1"></i>Harita</a>{% endif %}
+                    {% if yer.website %}<a href="{{ yer.website }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary"><i class="bi bi-globe me-1"></i>Web</a>{% endif %}
+                  </div>
                 </div>
               </div>
             </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          {% for alt_ad, kaynaklar in grup.rehber_alt.items %}
+          <p class="rehber-alt-baslik"><i class="bi bi-bookmark-fill me-1"></i>{{ alt_ad }}</p>
+          <div class="row g-3 mb-3">
+            {% for s in kaynaklar %}
+            <div class="col-md-4 col-sm-6">
+              <div class="card h-100">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title mb-1">
+                    <i class="bi {{ s.icon }} me-1 text-primary"></i>
+                    <span class="text-dark">{{ s.baslik }}</span>
+                  </h6>
+                  {% if s.ozet %}<p class="small text-muted mb-2 flex-grow-1">{{ s.ozet|truncatechars:90 }}</p>{% endif %}
+                  <div class="mt-auto">
+                    {% if s.tip == 'link' or not s.slug %}
+                      {% if s.kategori == 'konut' %}
+                      <a href="{{ s.url|default:'#' }}" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                        <i class="bi bi-file-earmark-pdf me-1"></i>PDF Aç
+                      </a>
+                      {% else %}
+                      <a href="{{ s.url|default:'#' }}" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                        <i class="bi bi-box-arrow-up-right me-1"></i>Git
+                      </a>
+                      {% endif %}
+                    {% else %}
+                      <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/rehber/{{ s.slug }}/" class="btn btn-sm btn-primary">
+                        <i class="bi bi-info-circle me-1"></i>Detay
+                      </a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
           </div>
           {% endfor %}
-        </div>
+
+        {% else %}
+
+          <div class="row g-3 mb-3">
+            {% for yer in grup.yerler %}
+            <div class="col-md-4 col-sm-6">
+              <div class="card h-100">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title mb-1">
+                    <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/" class="text-dark text-decoration-none">{{ yer.ad }}</a>
+                  </h6>
+                  <p class="small text-muted mb-2 flex-grow-1"><i class="bi bi-geo-alt me-1"></i>{{ yer.adres }}</p>
+                  <div class="d-flex gap-2 mt-2 flex-wrap">
+                    <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/" class="btn btn-sm btn-primary"><i class="bi bi-info-circle me-1"></i>Detay</a>
+                    {% if yer.maps_url %}<a href="{{ yer.maps_url }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary"><i class="bi bi-map me-1"></i>Harita</a>{% endif %}
+                    {% if yer.website %}<a href="{{ yer.website }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary"><i class="bi bi-globe me-1"></i>Web</a>{% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+
         {% endif %}
 
-        {% for alt_ad, kaynaklar in grup.rehber_alt.items %}
-        <p class="rehber-alt-baslik"><i class="bi bi-bookmark-fill me-1"></i>{{ alt_ad }}</p>
-        <div class="row g-3 mb-3">
-          {% for s in kaynaklar %}
-          <div class="col-md-4 col-sm-6">
-            <div class="card h-100">
-              <div class="card-body d-flex flex-column">
-                <h6 class="card-title mb-1">
-                  <i class="bi {{ s.icon }} me-1 text-primary"></i>
-                  <span class="text-dark">{{ s.baslik }}</span>
-                </h6>
-                {% if s.ozet %}<p class="small text-muted mb-2 flex-grow-1">{{ s.ozet|truncatechars:90 }}</p>{% endif %}
-                <div class="mt-auto">
-                  {% if s.tip == 'link' or not s.slug %}
-                    {% if s.kategori == 'konut' %}
-                    <a href="{{ s.url|default:'#' }}" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
-                      <i class="bi bi-file-earmark-pdf me-1"></i>PDF Aç
-                    </a>
-                    {% else %}
-                    <a href="{{ s.url|default:'#' }}" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
-                      <i class="bi bi-box-arrow-up-right me-1"></i>Git
-                    </a>
-                    {% endif %}
-                  {% else %}
-                    <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/rehber/{{ s.slug }}/" class="btn btn-sm btn-primary">
-                      <i class="bi bi-info-circle me-1"></i>Detay
-                    </a>
-                  {% endif %}
-                </div>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-        {% endfor %}
-
-      {% else %}
-
-        <div class="row g-3 mb-3">
-          {% for yer in grup.yerler %}
-          <div class="col-md-4 col-sm-6">
-            <div class="card h-100">
-              <div class="card-body d-flex flex-column">
-                <h6 class="card-title mb-1">
-                  <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/" class="text-dark text-decoration-none">{{ yer.ad }}</a>
-                </h6>
-                <p class="small text-muted mb-2 flex-grow-1"><i class="bi bi-geo-alt me-1"></i>{{ yer.adres }}</p>
-                <div class="d-flex gap-2 mt-2 flex-wrap">
-                  <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/" class="btn btn-sm btn-primary"><i class="bi bi-info-circle me-1"></i>Detay</a>
-                  {% if yer.maps_url %}<a href="{{ yer.maps_url }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary"><i class="bi bi-map me-1"></i>Harita</a>{% endif %}
-                  {% if yer.website %}<a href="{{ yer.website }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary"><i class="bi bi-globe me-1"></i>Web</a>{% endif %}
-                </div>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-
-      {% endif %}
+      </div>{# /mobil-kat-section #}
 
       {% empty %}
       <div class="text-center text-muted py-4">
@@ -251,26 +258,63 @@
 
 </div>{# /container #}
 
-<!-- Mobil FAB: Kategori Panelini Aç -->
-<button class="d-lg-none btn btn-primary rounded-circle shadow-lg fab-kategoriler"
-        type="button" data-bs-toggle="offcanvas" data-bs-target="#kategoriPanel"
-        aria-controls="kategoriPanel" aria-label="Kategori menüsünü aç">
-  <i class="bi bi-list-ul fs-5"></i>
-</button>
-
 <script>
   new bootstrap.ScrollSpy(document.body, { target: '#sidebar-nav', offset: 100 });
 
-  // Offcanvas kapandıktan sonra anchor'a scroll et
-  const offcanvasEl = document.getElementById('kategoriPanel');
-  document.querySelectorAll('#kategoriPanel .offcanvas-body a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      offcanvasEl.addEventListener('hidden.bs.offcanvas', function () {
-        const el = document.querySelector(targetId);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, { once: true });
+  // ── Mobil kategori akışı ──────────────────────────────────────
+  const isMobile = () => window.innerWidth < 992;
+
+  const btnAc      = document.getElementById('mobil-kat-ac');
+  const katListe   = document.getElementById('mobil-kat-liste');
+  const sections   = document.querySelectorAll('.mobil-kat-section');
+
+  function hideAllSections() {
+    sections.forEach(s => s.style.display = 'none');
+  }
+  function showAllSections() {
+    sections.forEach(s => s.style.display = '');
+  }
+
+  if (isMobile()) {
+    hideAllSections();
+  }
+
+  window.addEventListener('resize', () => {
+    if (!isMobile()) {
+      katListe.style.display = 'none';
+      showAllSections();
+    } else {
+      const anyVisible = [...sections].some(s => s.style.display !== 'none');
+      if (!anyVisible) hideAllSections();
+    }
+  });
+
+  // Kategoriler butonuna tıkla → listeyi göster/gizle
+  btnAc.addEventListener('click', () => {
+    const visible = katListe.style.display !== 'none';
+    katListe.style.display = visible ? 'none' : 'block';
+  });
+
+  // Kategori seçildi → listeyi gizle, ilgili section'ı göster
+  document.querySelectorAll('.mobil-kat-item').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const kat = btn.dataset.kat;
+      katListe.style.display = 'none';
+      hideAllSections();
+      const target = document.querySelector(`.mobil-kat-section[data-kat="${kat}"]`);
+      if (target) {
+        target.style.display = '';
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Geri butonuna tıkla → content gizle, kategoriler butonunu göster
+  document.querySelectorAll('.mobil-geri').forEach(btn => {
+    btn.addEventListener('click', () => {
+      hideAllSections();
+      katListe.style.display = 'none';
+      btnAc.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 </script>
