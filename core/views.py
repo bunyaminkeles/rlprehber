@@ -101,7 +101,7 @@ def anasayfa(request):
     ]
 
     son_blog_yazilari = BlogYazisi.objects.filter(yayinda=True).order_by('-olusturulma')[:3]
-    son_belgeler = Belge.objects.filter(yayinda=True).order_by('stadt__isnull', 'kategori', 'sira')[:6]
+    son_belgeler = Belge.objects.filter(yayinda=True, stadt__isnull=True).order_by('kategori', 'sira')[:6]
 
     return render(request, 'core/anasayfa.html', {
         'sehirler':           sehirler,
