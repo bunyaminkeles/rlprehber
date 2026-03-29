@@ -5,16 +5,12 @@
 {% block content %}
 <style>
   html { scroll-behavior: smooth; }
-  .sidebar-nav .nav-link { border-radius: 6px; font-size: .85rem; color: #495057; padding: .45rem .85rem; }
-  .sidebar-nav .nav-link:hover { background: #f1f3f5; color: #212529; }
-  .sidebar-nav .nav-link.active { background: #e8f0fe; color: #0d6efd; font-weight: 600; }
-.rehber-alt-baslik { font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #6c757d; margin-top: 1.25rem; margin-bottom: .5rem; }
-  /* Offcanvas nav linkleri */
-  .sidebar-nav-link { border-radius: 6px; font-size: .9rem; color: #495057; padding: .55rem 1rem; }
-  .sidebar-nav-link:hover { background: #f1f3f5; color: #212529; }
-  /* Sağ alt yüzen buton (FAB) */
-  .fab-kategoriler { position: fixed; bottom: 20px; right: 20px; width: 52px; height: 52px; z-index: 1045; display: flex; align-items: center; justify-content: center; }
-  .mobil-kat-liste-gizli { display: none; }
+  .rehber-alt-baslik { font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #6c757d; margin-top: 1.25rem; margin-bottom: .5rem; }
+  /* Yatay kategori pill nav */
+  .kat-pill-nav { overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .kat-pill-nav::-webkit-scrollbar { display: none; }
+  .kat-pill { white-space: nowrap; }
+  .kat-pill.active { background-color: #032A4A !important; color: #fff !important; border-color: #032A4A !important; }
 </style>
 
 <!-- BÖLÜM 1: Hero -->
@@ -45,7 +41,7 @@
       <i class="bi bi-megaphone me-1"></i>Duyurular
     </a>
     <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/ilan/" class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-medium">
-      <i class="bi bi-tags me-1"></i>Şehir İlanları
+      <i class="bi bi-tags me-1"></i>İlanlar
     </a>
     <a href="/{{ eyalet_slug }}/almanca/" class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-medium">
       <i class="bi bi-translate me-1"></i>Almanca Pratik
@@ -115,42 +111,21 @@
   <hr class="my-4">
   <h4 class="mb-3"><i class="bi bi-geo-alt me-2 text-primary"></i>{{ stadt.name }}'da Önemli Yerler</h4>
 
-  <!-- Mobil: Kategoriler Butonu -->
-  <div class="d-lg-none mb-3">
-    <button id="mobil-kat-ac" class="btn btn-outline-secondary d-flex align-items-center gap-2" type="button">
-      <i class="bi bi-list fs-5"></i><span class="fw-medium">Kategoriler</span>
-    </button>
-  </div>
-
-  <!-- Mobil: Inline Kategori Listesi (başta gizli) -->
-  <div id="mobil-kat-liste" class="mobil-kat-liste-gizli mb-3">
-    <div class="list-group list-group-flush">
+  <!-- Yatay Kategori Pill Navigasyonu -->
+  <div class="kat-pill-nav mb-4" id="kat-pill-nav">
+    <div class="d-flex gap-2 flex-nowrap py-1">
       {% for k, v in tum_kategoriler %}
-      <button type="button" class="list-group-item list-group-item-action fw-medium mobil-kat-item" data-kat="{{ k }}">
+      <a href="#kategori-{{ k }}"
+         class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-medium kat-pill"
+         data-kat="{{ k }}">
         {{ v }}
-      </button>
+      </a>
       {% endfor %}
     </div>
   </div>
 
-  <div class="row g-4 align-items-start">
-
-    <!-- Sticky Sidebar (sadece masaüstünde) -->
-    <div class="col-lg-3 d-none d-lg-block align-self-start position-sticky" style="top: 100px;">
-      <nav id="sidebar-nav" class="sidebar-nav">
-        <p class="text-uppercase fw-bold text-muted small mb-2 ps-2">Kategoriler</p>
-        <ul class="nav flex-column gap-1">
-          {% for k, v in tum_kategoriler %}
-          <li class="nav-item">
-            <a href="#kategori-{{ k }}" class="nav-link">{{ v }}</a>
-          </li>
-          {% endfor %}
-        </ul>
-      </nav>
-    </div>
-
-    <!-- İçerik Kolonu -->
-    <div class="col-12 col-lg-9">
+  <div class="row">
+    <div class="col-12">
 
       {% for k, grup in kategoriler.items %}
 
@@ -266,47 +241,55 @@
 
 {% block extra_js %}
 <script>
-  if (document.getElementById('sidebar-nav')) {
-    new bootstrap.ScrollSpy(document.body, { target: '#sidebar-nav', offset: 100 });
+  const sections  = document.querySelectorAll('.mobil-kat-section');
+  const pills     = document.querySelectorAll('.kat-pill');
+  const isMobile  = () => window.innerWidth < 992;
+
+  function setActivePill(kat) {
+    pills.forEach(p => p.classList.toggle('active', p.dataset.kat === kat));
   }
 
-  // ── Masaüstünde tüm section'ları göster ──────────────────────
-  const sections = document.querySelectorAll('.mobil-kat-section');
-  if (window.innerWidth >= 992) {
+  function showSection(kat) {
+    sections.forEach(s => s.style.display = s.dataset.kat === kat ? '' : 'none');
+    setActivePill(kat);
+  }
+
+  // ── Başlangıç durumu ──────────────────────────────────────────
+  if (isMobile()) {
+    // Mobil: ilk kategoriyi göster
+    const first = sections[0];
+    if (first) showSection(first.dataset.kat);
+  } else {
+    // Masaüstü: tümünü göster
     sections.forEach(s => s.style.display = '');
+    if (pills[0]) pills[0].classList.add('active');
   }
 
-  // ── Mobil kategori akışı ──────────────────────────────────────
-  const btnAc    = document.getElementById('mobil-kat-ac');
-  const katListe = document.getElementById('mobil-kat-liste');
-
-  function hideAllSections() {
-    sections.forEach(s => s.style.display = 'none');
-  }
-
-  btnAc.addEventListener('click', () => {
-    katListe.classList.toggle('mobil-kat-liste-gizli');
-  });
-
-  document.querySelectorAll('.mobil-kat-item').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const kat = btn.dataset.kat;
-      katListe.classList.add('mobil-kat-liste-gizli');
-      hideAllSections();
-      const target = document.querySelector(`.mobil-kat-section[data-kat="${kat}"]`);
-      if (target) {
-        target.style.display = 'block';
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // ── Pill tıklama ──────────────────────────────────────────────
+  pills.forEach(pill => {
+    pill.addEventListener('click', e => {
+      if (isMobile()) {
+        e.preventDefault();
+        showSection(pill.dataset.kat);
+        document.getElementById('kat-pill-nav').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        setActivePill(pill.dataset.kat);
       }
     });
   });
 
+  // ── Geri butonları (mobil section içi) ───────────────────────
   document.querySelectorAll('.mobil-geri').forEach(btn => {
     btn.addEventListener('click', () => {
-      hideAllSections();
-      katListe.classList.add('mobil-kat-liste-gizli');
-      btnAc.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      sections.forEach(s => s.style.display = 'none');
+      pills.forEach(p => p.classList.remove('active'));
+      document.getElementById('kat-pill-nav').scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  // ── Masaüstü scrollspy ────────────────────────────────────────
+  if (!isMobile()) {
+    new bootstrap.ScrollSpy(document.body, { target: '#kat-pill-nav', offset: 100 });
+  }
 </script>
 {% endblock %}
