@@ -120,7 +120,7 @@
       <ul class="nav flex-column gap-1">
         {% for k, v in tum_kategoriler %}
         <li class="nav-item">
-          <a href="#kategori-{{ k }}" class="nav-link sidebar-nav-link" data-bs-dismiss="offcanvas">{{ v }}</a>
+          <a href="#kategori-{{ k }}" class="nav-link sidebar-nav-link">{{ v }}</a>
         </li>
         {% endfor %}
       </ul>
@@ -259,16 +259,17 @@
   new bootstrap.ScrollSpy(document.body, { target: '#sidebar-nav', offset: 100 });
 
   // Offcanvas kapandıktan sonra anchor'a scroll et
-  document.querySelectorAll('.offcanvas-body a[href^="#"]').forEach(anchor => {
+  const offcanvasEl = document.getElementById('kategoriPanel');
+  const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl);
+  document.querySelectorAll('#kategoriPanel .offcanvas-body a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const targetId = this.getAttribute('href');
-      const offcanvasEl = this.closest('.offcanvas');
-      offcanvasEl.addEventListener('hidden.bs.offcanvas', function handler() {
+      offcanvasEl.addEventListener('hidden.bs.offcanvas', function () {
         const el = document.querySelector(targetId);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
-        offcanvasEl.removeEventListener('hidden.bs.offcanvas', handler);
-      });
+      }, { once: true });
+      bsOffcanvas.hide();
     });
   });
 </script>
