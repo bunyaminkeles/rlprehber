@@ -144,79 +144,146 @@ def arama(request):
     from duyurular.models import Duyuru
     from rehber.models import Kaynak
     from yerler.models import Yer
+    from stadt.models import Stadt
+    from django.shortcuts import redirect as _redirect
 
     q = request.GET.get('q', '').strip()
+    if not q:
+        return render(request, 'core/arama.html', {'q': q, 'sonuclar': []})
+
+    q_lower = q.lower()
+    q_words = q_lower.split()
+
+    # ── Niyet Motoru yardımcıları ─────────────────────────────────────────────
+    KATEGORI_ANAHTAR = {
+        'saglik':      ['hastane', 'doktor', 'klinik', 'sağlık', 'saglik', 'eczane', 'hospital', 'arzt'],
+        'egitim':      ['okul', 'üniversite', 'universite', 'kurs', 'dil kursu', 'sprachschule', 'vhs', 'almanca', 'schule', 'uni'],
+        'ibadet':      ['cami', 'mosque', 'moschee', 'namaz', 'ditib', 'ibadet'],
+        'turk_market': ['market', 'türk market', 'turk market', 'halal', 'helal', 'bakkal', 'türkisch'],
+        'yeme_icme':   ['restoran', 'restaurant', 'kebap', 'döner', 'doner', 'cafe', 'kafe', 'yeme', 'içme', 'lokal'],
+        'tuv':         ['tüv', 'tuv', 'muayene', 'gtü', 'fahrzeug'],
+        'resmi_kurum': ['belediye', 'ausländer', 'auslaender', 'jobcenter', 'finanzamt', 'bürgeramt', 'buergeramt', 'zulassung', 'behörde'],
+        'alisveris':   ['alışveriş', 'alisveris', 'mall', 'avm', 'shopping', 'einkauf'],
+        'gezi':        ['gezi', 'müze', 'muze', 'tarih', 'dom', 'park', 'kültür', 'kultur', 'sehenswürdigkeit'],
+        'werkstatt':   ['oto servis', 'tamirci', 'werkstatt', 'garaj', 'kfz'],
+    }
+
+    def _sehir_url(sehir):
+        es = sehir.eyalet.slug if sehir.eyalet else 'rlp'
+        return f'/{es}/{sehir.slug}/'
+
+    def _niyet_kategori(kelimeler):
+        for slug, anahtar_list in KATEGORI_ANAHTAR.items():
+            for anahtar in anahtar_list:
+                if any(anahtar in k for k in kelimeler):
+                    return slug
+        return None
+
+    # Tüm aktif şehirleri al (cache-friendly: küçük tablo)
+    tum_sehirler = list(Stadt.objects.select_related('eyalet').all())
+
+    # ── 1. KADEME: Tek başına şehir adı / slug eşleşmesi ──────────────────────
+    for sehir in tum_sehirler:
+        if q_lower == sehir.name.lower() or q_lower == sehir.slug.lower():
+            return _redirect(_sehir_url(sehir))
+
+    # ── 2. KADEME: Şehir + Kategori niyet eşleşmesi ───────────────────────────
+    bulunan_sehir = None
+    kalan_kelimeler = list(q_words)
+
+    for sehir in tum_sehirler:
+        sehir_adi_lower = sehir.name.lower()
+        sehir_slug_lower = sehir.slug.lower()
+        if sehir_adi_lower in q_lower or sehir_slug_lower in q_lower:
+            bulunan_sehir = sehir
+            # Şehir adını query'den çıkar, kalanı kategori için kullan
+            kalan_kelimeler = [
+                w for w in q_words
+                if w not in sehir_adi_lower.split() and w != sehir_slug_lower
+            ]
+            break
+
+    if bulunan_sehir and kalan_kelimeler:
+        bulunan_kategori = _niyet_kategori(kalan_kelimeler)
+        if bulunan_kategori:
+            temel_url = _sehir_url(bulunan_sehir)
+            return _redirect(f'{temel_url}yerler/#kategori-{bulunan_kategori}')
+
+    # ── 3. KADEME: Fallback — standart arama + şehir "top hit" ────────────────
+    def _eyalet_slug(obj):
+        if obj.scope == 'stadt' and obj.stadt and obj.stadt.eyalet:
+            return obj.stadt.eyalet.slug
+        return 'rlp'
+
+    def _yer_eyalet_slug(obj):
+        if obj.stadt and obj.stadt.eyalet:
+            return obj.stadt.eyalet.slug
+        return 'rlp'
+
     sonuclar = []
 
-    if q:
-        def _eyalet_slug(obj):
-            """Nesnenin eyalet slug'ını döndür, yoksa 'rlp' kullan."""
-            if obj.scope == 'stadt' and obj.stadt and obj.stadt.eyalet:
-                return obj.stadt.eyalet.slug
-            return 'rlp'
+    konular = Konu.objects.filter(baslik__icontains=q).select_related('stadt__eyalet')[:5]
+    for obj in konular:
+        es = _eyalet_slug(obj)
+        prefix = f'/{es}/{obj.stadt.slug}' if obj.scope == 'stadt' and obj.stadt else f'/{es}'
+        sonuclar.append({
+            'tip': 'Forum', 'icon': 'bi-chat-dots', 'baslik': obj.baslik,
+            'ozet': obj.icerik[:120],
+            'url': f'{prefix}/forum/konu/{obj.pk}/',
+            'stadt': obj.stadt.name if obj.stadt else 'RLP',
+        })
 
-        def _yer_eyalet_slug(obj):
-            if obj.stadt and obj.stadt.eyalet:
-                return obj.stadt.eyalet.slug
-            return 'rlp'
+    yazilar = BlogYazisi.objects.filter(yayinda=True, baslik__icontains=q).select_related('stadt__eyalet')[:5]
+    for obj in yazilar:
+        es = _eyalet_slug(obj)
+        prefix = f'/{es}/{obj.stadt.slug}' if obj.scope == 'stadt' and obj.stadt else f'/{es}'
+        sonuclar.append({
+            'tip': 'Blog', 'icon': 'bi-pencil-square', 'baslik': obj.baslik,
+            'ozet': obj.ozet or obj.icerik[:120],
+            'url': f'{prefix}/blog/{obj.slug}/',
+            'stadt': obj.stadt.name if obj.stadt else 'RLP',
+        })
 
-        konular = Konu.objects.filter(baslik__icontains=q).select_related('stadt__eyalet')[:5]
-        for obj in konular:
-            es = _eyalet_slug(obj)
-            prefix = f'/{es}/{obj.stadt.slug}' if obj.scope == 'stadt' and obj.stadt else f'/{es}'
-            sonuclar.append({
-                'tip': 'Forum', 'icon': 'bi-chat-dots', 'baslik': obj.baslik,
-                'ozet': obj.icerik[:120],
-                'url': f'{prefix}/forum/konu/{obj.pk}/',
-                'stadt': obj.stadt.name if obj.stadt else 'RLP',
-            })
+    duyurular = Duyuru.objects.filter(yayinda=True, baslik__icontains=q).select_related('stadt__eyalet')[:5]
+    for obj in duyurular:
+        es = _eyalet_slug(obj)
+        prefix = f'/{es}/{obj.stadt.slug}' if obj.scope == 'stadt' and obj.stadt else f'/{es}'
+        sonuclar.append({
+            'tip': 'Duyuru', 'icon': 'bi-megaphone', 'baslik': obj.baslik,
+            'ozet': obj.icerik[:120],
+            'url': f'{prefix}/duyurular/{obj.pk}/',
+            'stadt': obj.stadt.name if obj.stadt else 'RLP',
+        })
 
-        yazilar = BlogYazisi.objects.filter(yayinda=True, baslik__icontains=q).select_related('stadt__eyalet')[:5]
-        for obj in yazilar:
-            es = _eyalet_slug(obj)
-            prefix = f'/{es}/{obj.stadt.slug}' if obj.scope == 'stadt' and obj.stadt else f'/{es}'
-            sonuclar.append({
-                'tip': 'Blog', 'icon': 'bi-pencil-square', 'baslik': obj.baslik,
-                'ozet': obj.ozet or obj.icerik[:120],
-                'url': f'{prefix}/blog/{obj.slug}/',
-                'stadt': obj.stadt.name if obj.stadt else 'RLP',
-            })
+    kaynaklar = Kaynak.objects.filter(yayinda=True, baslik__icontains=q).select_related('stadt__eyalet')[:5]
+    for obj in kaynaklar:
+        es = _eyalet_slug(obj)
+        prefix = f'/{es}/{obj.stadt.slug}' if obj.scope == 'stadt' and obj.stadt else f'/{es}'
+        url = obj.url if obj.tip == 'link' else f'{prefix}/rehber/{obj.slug}/'
+        sonuclar.append({
+            'tip': 'Kaynak', 'icon': 'bi-journal-bookmark-fill', 'baslik': obj.baslik,
+            'ozet': obj.ozet,
+            'url': url,
+            'stadt': obj.stadt.name if obj.stadt else 'RLP',
+        })
 
-        duyurular = Duyuru.objects.filter(yayinda=True, baslik__icontains=q).select_related('stadt__eyalet')[:5]
-        for obj in duyurular:
-            es = _eyalet_slug(obj)
-            prefix = f'/{es}/{obj.stadt.slug}' if obj.scope == 'stadt' and obj.stadt else f'/{es}'
-            sonuclar.append({
-                'tip': 'Duyuru', 'icon': 'bi-megaphone', 'baslik': obj.baslik,
-                'ozet': obj.icerik[:120],
-                'url': f'{prefix}/duyurular/{obj.pk}/',
-                'stadt': obj.stadt.name if obj.stadt else 'RLP',
-            })
+    yerler = Yer.objects.filter(ad__icontains=q).select_related('stadt__eyalet')[:5]
+    for obj in yerler:
+        es = _yer_eyalet_slug(obj)
+        prefix = f'/{es}/{obj.stadt.slug}' if obj.stadt else f'/{es}'
+        sonuclar.append({
+            'tip': 'Yer', 'icon': 'bi-geo-alt', 'baslik': obj.ad,
+            'ozet': obj.adres,
+            'url': f'{prefix}/yerler/{obj.pk}/',
+            'stadt': obj.stadt.name if obj.stadt else 'RLP',
+        })
 
-        kaynaklar = Kaynak.objects.filter(yayinda=True, baslik__icontains=q).select_related('stadt__eyalet')[:5]
-        for obj in kaynaklar:
-            es = _eyalet_slug(obj)
-            prefix = f'/{es}/{obj.stadt.slug}' if obj.scope == 'stadt' and obj.stadt else f'/{es}'
-            url = obj.url if obj.tip == 'link' else f'{prefix}/rehber/{obj.slug}/'
-            sonuclar.append({
-                'tip': 'Kaynak', 'icon': 'bi-journal-bookmark-fill', 'baslik': obj.baslik,
-                'ozet': obj.ozet,
-                'url': url,
-                'stadt': obj.stadt.name if obj.stadt else 'RLP',
-            })
-
-        yerler = Yer.objects.filter(ad__icontains=q).select_related('stadt__eyalet')[:5]
-        for obj in yerler:
-            es = _yer_eyalet_slug(obj)
-            prefix = f'/{es}/{obj.stadt.slug}' if obj.stadt else f'/{es}'
-            sonuclar.append({
-                'tip': 'Yer', 'icon': 'bi-geo-alt', 'baslik': obj.ad,
-                'ozet': obj.adres,
-                'url': f'{prefix}/yerler/{obj.pk}/',
-                'stadt': obj.stadt.name if obj.stadt else 'RLP',
-            })
-
-    return render(request, 'core/arama.html', {'q': q, 'sonuclar': sonuclar})
+    return render(request, 'core/arama.html', {
+        'q': q,
+        'sonuclar': sonuclar,
+        'primary_city_match': bulunan_sehir,
+        'primary_city_url': _sehir_url(bulunan_sehir) if bulunan_sehir else None,
+    })
 
 
 def iletisim(request):
