@@ -1,26 +1,105 @@
 {% extends 'base.html' %}
-{% block title %}Gerekli Dokümanlar — {% if stadt %}{{ stadt.name }}{% else %}Rehber{% endif %}{% endblock %}
-{% block breadcrumb %}<li class="breadcrumb-item active">Gerekli Dokümanlar</li>{% endblock %}
+{% block title %}Formlar & Belgeler — {% if stadt %}{{ stadt.name }}{% else %}Tüm Almanya{% endif %}{% endblock %}
+{% block breadcrumb %}<li class="breadcrumb-item active">Formlar & Belgeler</li>{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-  <h4 class="mb-4"><i class="bi bi-file-earmark-text me-2 text-primary"></i>Gerekli Dokümanlar</h4>
+<style>
+  .belge-kart { border: 1px solid #e5e7eb; border-radius: 10px; background: #fff; transition: border-color .15s, box-shadow .15s; }
+  .belge-kart:hover { border-color: #c1c9d2; box-shadow: 0 4px 16px rgba(0,0,0,.07); }
+  .pill-kat { border: 1px solid #d1d5db; color: #374151; font-size: .8125rem; border-radius: 50px; padding: .35rem .9rem; text-decoration: none; white-space: nowrap; transition: all .15s; }
+  .pill-kat:hover:not(.pill-active) { background: #f3f4f6; }
+  .pill-active { background: #032A4A !important; color: #fff !important; border-color: #032A4A !important; }
+</style>
 
-  {% for kat_slug, kat_ad, kaynaklar in kategoriler %}
-  <h6 class="text-muted text-uppercase small fw-bold mt-4 mb-2" id="{{ kat_slug }}">{{ kat_ad }}</h6>
-  <div class="row g-3">
-    {% for s in kaynaklar %}
-    <div class="col-md-4 col-6">
-      <a href="{{ s.url }}" target="_blank" rel="noopener" class="rehber-kategori">
-        <span class="icon"><i class="bi {{ s.icon }}"></i></span>
-        <strong class="d-block">{{ s.baslik }}</strong>
-        <small class="text-muted">{{ s.ozet|truncatechars:60 }}</small>
-      </a>
-    </div>
+<div class="container mt-4 mb-5">
+  <div class="mb-4">
+    <h4 class="fw-bold mb-1"><i class="bi bi-folder2-open me-2 text-primary"></i>Formlar &amp; Belgeler</h4>
+    <p class="text-muted mb-0" style="font-size:.9rem;">
+      {% if stadt %}{{ stadt.name }} için resmi form ve belgeler{% else %}Federal — Tüm Almanya için geçerli belgeler{% endif %}
+    </p>
+  </div>
+
+  <!-- Kategori Filtreleri -->
+  <div class="d-flex flex-wrap gap-2 mb-4">
+    <a href="?" class="pill-kat {% if not aktif_kat %}pill-active{% endif %}">
+      <i class="bi bi-grid me-1"></i>Tümü
+    </a>
+    {% for k, v in belge_kategoriler %}
+    <a href="?kat={{ k }}" class="pill-kat {% if aktif_kat == k %}pill-active{% endif %}">{{ v }}</a>
     {% endfor %}
   </div>
-  {% empty %}
-  <p class="text-muted">Henüz doküman eklenmemiş.</p>
-  {% endfor %}
+
+  <!-- Belgeler -->
+  {% if aktif_kat %}
+  <div class="row g-3">
+    {% for b in belgeler %}
+    <div class="col-md-6 col-lg-4">
+      <div class="belge-kart p-4 h-100 d-flex flex-column">
+        <div class="d-flex align-items-start gap-3 mb-2">
+          {% if b.dosya_uzantisi == 'pdf' %}
+            <i class="bi bi-file-earmark-pdf-fill text-danger flex-shrink-0" style="font-size:1.6rem;"></i>
+          {% elif b.dosya_uzantisi == 'docx' %}
+            <i class="bi bi-file-earmark-word-fill text-primary flex-shrink-0" style="font-size:1.6rem;"></i>
+          {% else %}
+            <i class="bi bi-file-earmark-arrow-up-fill text-secondary flex-shrink-0" style="font-size:1.6rem;"></i>
+          {% endif %}
+          <div class="flex-grow-1">
+            <p class="fw-semibold mb-0" style="font-size:.9rem; color:#111827; line-height:1.4;">{{ b.baslik }}</p>
+            {% if b.ozet %}<p class="text-muted mb-0 mt-1" style="font-size:.8rem;">{{ b.ozet }}</p>{% endif %}
+          </div>
+        </div>
+        <div class="mt-auto pt-3">
+          <a href="{{ b.indirme_url }}" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+            {% if b.dosya_uzantisi == 'pdf' %}<i class="bi bi-file-earmark-pdf me-1"></i>PDF Aç
+            {% elif b.dosya_uzantisi == 'docx' %}<i class="bi bi-download me-1"></i>İndir
+            {% else %}<i class="bi bi-box-arrow-up-right me-1"></i>Aç{% endif %}
+          </a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p class="text-muted col-12">Bu kategoride belge yok.</p>
+    {% endfor %}
+  </div>
+  {% else %}
+    {% for kat_slug, kat_ad, items in kategoriler %}
+    <h6 class="text-uppercase fw-bold text-muted mt-4 mb-3" style="font-size:.72rem; letter-spacing:.07em;">
+      <i class="bi bi-bookmark-fill me-1 text-primary"></i>{{ kat_ad }}
+    </h6>
+    <div class="row g-3 mb-2">
+      {% for b in items %}
+      <div class="col-md-6 col-lg-4">
+        <div class="belge-kart p-4 h-100 d-flex flex-column">
+          <div class="d-flex align-items-start gap-3 mb-2">
+            {% if b.dosya_uzantisi == 'pdf' %}
+              <i class="bi bi-file-earmark-pdf-fill text-danger flex-shrink-0" style="font-size:1.6rem;"></i>
+            {% elif b.dosya_uzantisi == 'docx' %}
+              <i class="bi bi-file-earmark-word-fill text-primary flex-shrink-0" style="font-size:1.6rem;"></i>
+            {% else %}
+              <i class="bi bi-file-earmark-arrow-up-fill text-secondary flex-shrink-0" style="font-size:1.6rem;"></i>
+            {% endif %}
+            <div class="flex-grow-1">
+              <p class="fw-semibold mb-0" style="font-size:.9rem; color:#111827; line-height:1.4;">{{ b.baslik }}</p>
+              {% if b.ozet %}<p class="text-muted mb-0 mt-1" style="font-size:.8rem;">{{ b.ozet }}</p>{% endif %}
+            </div>
+          </div>
+          <div class="mt-auto pt-3">
+            <a href="{{ b.indirme_url }}" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+              {% if b.dosya_uzantisi == 'pdf' %}<i class="bi bi-file-earmark-pdf me-1"></i>PDF Aç
+              {% elif b.dosya_uzantisi == 'docx' %}<i class="bi bi-download me-1"></i>İndir
+              {% else %}<i class="bi bi-box-arrow-up-right me-1"></i>Aç{% endif %}
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% empty %}
+    <div class="text-center text-muted py-5">
+      <i class="bi bi-folder2-open fs-1 d-block mb-2 opacity-25"></i>
+      Henüz belge eklenmemiş.
+    </div>
+    {% endfor %}
+  {% endif %}
 </div>
 {% endblock %}

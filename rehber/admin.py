@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Kaynak, BultenAbone
+from .models import Kaynak, BultenAbone, Belge
 
 @admin.register(Kaynak)
 class KaynakAdmin(admin.ModelAdmin):
@@ -7,6 +7,18 @@ class KaynakAdmin(admin.ModelAdmin):
     list_filter  = ['tip', 'kategori', 'yayinda', 'eyalet', 'stadt', 'scope']
     prepopulated_fields = {'slug': ('baslik',)}
     list_editable = ['sira', 'yayinda']
+
+@admin.register(Belge)
+class BelgeAdmin(admin.ModelAdmin):
+    list_display  = ['baslik', 'kategori', 'stadt', 'kapsam_goster', 'yayinda', 'sira']
+    list_filter   = ['kategori', 'yayinda', 'stadt']
+    list_editable = ['sira', 'yayinda']
+    search_fields = ['baslik', 'ozet']
+
+    @admin.display(description='Kapsam')
+    def kapsam_goster(self, obj):
+        return obj.kapsam
+
 
 @admin.register(BultenAbone)
 class BultenAboneAdmin(admin.ModelAdmin):

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Kaynak, KAYNAK_KATEGORI
+from .models import Kaynak, KAYNAK_KATEGORI, Belge, BELGE_KATEGORI
 
 
 def liste(request, eyalet_slug='rlp', stadt_slug=None):
@@ -11,36 +11,27 @@ def liste(request, eyalet_slug='rlp', stadt_slug=None):
 
 
 def belgeler(request, eyalet_slug='rlp', stadt_slug=None):
-    from django.db.models import Q
     from stadt.models import Stadt
     stadt = get_object_or_404(Stadt, slug=stadt_slug, aktiv=True) if stadt_slug else None
 
-    BELGE_KATEGORILER = [
-        ('konut', 'Konut & Kira'),
-    ]
-    belge_kat_list = [k for k, _ in BELGE_KATEGORILER]
+    aktif_kat = request.GET.get('kat', '')
 
-    if stadt:
-        qs = Kaynak.objects.filter(
-            Q(stadt=stadt, scope='stadt') | Q(scope='eyalet', eyalet__slug=eyalet_slug) | Q(scope='almanya'),
-            yayinda=True, kategori__in=belge_kat_list,
-        ).order_by('sira')
-    else:
-        qs = Kaynak.objects.filter(
-            Q(scope='eyalet', eyalet__slug=eyalet_slug) | Q(scope='almanya'),
-            yayinda=True, kategori__in=belge_kat_list,
-        ).order_by('sira')
+    base_qs = Belge.objects.filter(yayinda=True, stadt=stadt)
+    filtered_qs = base_qs.filter(kategori=aktif_kat) if aktif_kat else base_qs
 
     kategoriler = []
-    for k, v in BELGE_KATEGORILER:
-        items = list(qs.filter(kategori=k))
+    for k, v in BELGE_KATEGORI:
+        items = list(base_qs.filter(kategori=k))
         if items:
             kategoriler.append((k, v, items))
 
     return render(request, 'rehber/belgeler.html', {
-        'kategoriler': kategoriler,
-        'stadt':       stadt,
-        'eyalet_slug': eyalet_slug,
+        'belgeler':         filtered_qs,
+        'kategoriler':      kategoriler,
+        'belge_kategoriler': BELGE_KATEGORI,
+        'aktif_kat':        aktif_kat,
+        'stadt':            stadt,
+        'eyalet_slug':      eyalet_slug,
     })
 
 
