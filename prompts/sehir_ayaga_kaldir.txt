@@ -23,20 +23,16 @@ KURAL: ASLA HALÜSİNASYON YAPMA. Her URL gerçek ve erişilebilir olmalıdır.
 ADIM 2 — MİGRASYON ÜRETİMİ
 ====================================================================
 
-DOSYA ADI: stadt/migrations/XXXX_update_city_action_links.py
-(XXXX = mevcut en son migrasyon numarasının bir fazlası. Şu an son migrasyon: 0022_worms_action_links)
+İKİ DOSYA üretilecek — sırayla:
 
-PYTHON ŞABLONU:
+--------------------------------------------------------------------
+DOSYA 1: stadt/migrations/XXXX_<sehir_slug>_action_links.py
+(XXXX = mevcut en son migrasyon numarasının bir fazlası. Şu an son migrasyon: 0023_worms_aktiv — bir sonraki çift: 0024 + 0025)
 
 from django.db import migrations
 
 CITY_DATA = {
-    'mainz': {
-        'termin_url':            'https://...',
-        'auslaenderbehorde_url': 'https://...',
-        'rss_duyuru_url':        'https://...',
-    },
-    'berlin': {
+    '<slug>': {
         'termin_url':            'https://...',
         'auslaenderbehorde_url': 'https://...',
         'rss_duyuru_url':        'https://...',
@@ -61,10 +57,35 @@ def reverse_update(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('stadt', '0014_add_rss_duyuru_url'),
+        ('stadt', '<bir önceki migrasyon>'),
     ]
     operations = [
         migrations.RunPython(update_cities, reverse_update),
     ]
 
-KURAL: Çıktı olarak SADECE doğrulanmış linklerle dolu bu Python kodunu ver.
+--------------------------------------------------------------------
+DOSYA 2: stadt/migrations/XXXX_<sehir_slug>_aktiv.py
+(XXXX = Dosya 1'in numarasının bir fazlası)
+
+AMAÇ: Şehir sayfası 404 vermemesi için aktiv=True yapılır.
+
+from django.db import migrations
+
+def aktivlestir(apps, schema_editor):
+    Stadt = apps.get_model('stadt', 'Stadt')
+    Stadt.objects.filter(slug='<slug>').update(aktiv=True)
+
+def geri_al(apps, schema_editor):
+    Stadt = apps.get_model('stadt', 'Stadt')
+    Stadt.objects.filter(slug='<slug>').update(aktiv=False)
+
+class Migration(migrations.Migration):
+    dependencies = [
+        ('stadt', 'XXXX_<sehir_slug>_action_links'),
+    ]
+    operations = [
+        migrations.RunPython(aktivlestir, geri_al),
+    ]
+
+--------------------------------------------------------------------
+KURAL: Çıktı olarak SADECE doğrulanmış linklerle dolu bu iki Python dosyasını ver.
