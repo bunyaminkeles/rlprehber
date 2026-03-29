@@ -263,6 +263,9 @@
 
 </div>{# /container #}
 
+{% endblock %}
+
+{% block extra_js %}
 <script>
   if (document.getElementById('sidebar-nav')) {
     new bootstrap.ScrollSpy(document.body, { target: '#sidebar-nav', offset: 100 });
@@ -277,12 +280,10 @@
     sections.forEach(s => s.classList.remove('mobil-aktif'));
   }
 
-  // Kategoriler butonuna tıkla → listeyi göster/gizle
   btnAc.addEventListener('click', () => {
     katListe.classList.toggle('mobil-kat-liste-gizli');
   });
 
-  // Kategori seçildi → listeyi gizle, ilgili section'ı göster
   document.querySelectorAll('.mobil-kat-item').forEach(btn => {
     btn.addEventListener('click', () => {
       const kat = btn.dataset.kat;
@@ -296,7 +297,6 @@
     });
   });
 
-  // Geri butonuna tıkla → section'ı gizle, Kategoriler butonuna dön
   document.querySelectorAll('.mobil-geri').forEach(btn => {
     btn.addEventListener('click', () => {
       hideAllSections();
