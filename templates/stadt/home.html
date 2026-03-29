@@ -15,8 +15,9 @@
   /* Sağ alt yüzen buton (FAB) */
   .fab-kategoriler { position: fixed; bottom: 20px; right: 20px; width: 52px; height: 52px; z-index: 1045; display: flex; align-items: center; justify-content: center; }
   @media (max-width: 991.98px) {
-    .mobil-kat-section { display: none !important; }
-    .mobil-kat-section.mobil-aktif { display: block !important; }
+    .mobil-kat-section { display: none; }
+    .mobil-kat-section.mobil-aktif { display: block; }
+    .mobil-kat-liste-gizli { display: none; }
   }
 </style>
 
@@ -123,7 +124,7 @@
   </div>
 
   <!-- Mobil: Inline Kategori Listesi (başta gizli) -->
-  <div id="mobil-kat-liste" class="d-none mb-3">
+  <div id="mobil-kat-liste" class="mobil-kat-liste-gizli mb-3">
     <div class="list-group list-group-flush">
       {% for k, v in tum_kategoriler %}
       <button type="button" class="list-group-item list-group-item-action fw-medium mobil-kat-item" data-kat="{{ k }}">
@@ -276,14 +277,14 @@
 
   // Kategoriler butonuna tıkla → listeyi göster/gizle
   btnAc.addEventListener('click', () => {
-    katListe.classList.toggle('d-none');
+    katListe.classList.toggle('mobil-kat-liste-gizli');
   });
 
   // Kategori seçildi → listeyi gizle, ilgili section'ı göster
   document.querySelectorAll('.mobil-kat-item').forEach(btn => {
     btn.addEventListener('click', () => {
       const kat = btn.dataset.kat;
-      katListe.classList.add('d-none');
+      katListe.classList.add('mobil-kat-liste-gizli');
       hideAllSections();
       const target = document.querySelector(`.mobil-kat-section[data-kat="${kat}"]`);
       if (target) {
@@ -297,7 +298,7 @@
   document.querySelectorAll('.mobil-geri').forEach(btn => {
     btn.addEventListener('click', () => {
       hideAllSections();
-      katListe.classList.add('d-none');
+      katListe.classList.add('mobil-kat-liste-gizli');
       btnAc.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
