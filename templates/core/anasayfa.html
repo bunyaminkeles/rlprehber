@@ -300,26 +300,23 @@
     </div>
 
 
-    <!-- CANLI AKIŞ: İlanlar + Forum -->
+    <!-- CANLI AKIŞ: İlanlar | Forum | Duyurular -->
     <section class="py-5">
         <div class="container">
             <div class="row g-4">
 
                 <!-- Sol: Güncel İlanlar -->
-                <div class="col-md-6">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <h5 class="fw-bold mb-0" style="font-size: 0.9375rem; color: #111827;">
-                            <i class="bi bi-tags me-2" style="color: #059669;"></i>Güncel İlanlar
-                        </h5>
-                        <a href="/rlp/mainz/ilan/" class="text-decoration-none" style="font-size: 0.8rem; color: #9ca3af;">Tümünü gör →</a>
-                    </div>
-                    <div class="vstack gap-0">
+                <div class="col-lg-4 d-flex flex-column">
+                    <h5 class="fw-bold mb-3" style="font-size: 0.9375rem; color: #111827;">
+                        <i class="bi bi-tags me-2" style="color: #059669;"></i>Güncel İlanlar
+                    </h5>
+                    <div class="vstack gap-0 flex-grow-1">
                         {% for ilan in son_satilik|slice:":4" %}
                         <a href="/{{ ilan.eyalet.slug|default:'rlp' }}/ilan/{{ ilan.pk }}/"
                            class="d-flex justify-content-between align-items-center py-3 text-decoration-none"
                            style="border-bottom: 1px solid #f3f4f6; color: inherit;">
                             <div>
-                                <p class="fw-semibold mb-0" style="font-size: 0.875rem; color: #111827; line-height: 1.4;">{{ ilan.baslik|truncatechars:48 }}</p>
+                                <p class="fw-semibold mb-0" style="font-size: 0.875rem; color: #111827; line-height: 1.4;">{{ ilan.baslik|truncatechars:45 }}</p>
                                 <span style="font-size: 0.72rem; color: #9ca3af;">
                                     {{ ilan.eyalet.kod|default:'RLP' }}{% if ilan.stadt %} · {{ ilan.stadt.name|truncatechars:10 }}{% endif %}
                                     · {{ ilan.olusturulma|timesince }} önce
@@ -333,24 +330,24 @@
                         <p style="font-size: 0.875rem; color: #9ca3af;">Henüz ilan yok.</p>
                         {% endfor %}
                     </div>
+                    <div class="mt-3">
+                        <a href="/rlp/mainz/ilan/" class="text-decoration-none fw-semibold" style="font-size: 0.8125rem; color: #032A4A;">Tümünü gör <i class="bi bi-arrow-right ms-1"></i></a>
+                    </div>
                 </div>
 
-                <!-- Sağ: Topluluktan Son Sorular -->
-                <div class="col-md-6">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <h5 class="fw-bold mb-0" style="font-size: 0.9375rem; color: #111827;">
-                            <i class="bi bi-chat-text me-2" style="color: #6366f1;"></i>Topluluktan Son Sorular
-                        </h5>
-                        <a href="/rlp/mainz/forum/" class="text-decoration-none" style="font-size: 0.8rem; color: #9ca3af;">Foruma git →</a>
-                    </div>
-                    <div class="vstack gap-0">
+                <!-- Orta: Topluluktan Son Sorular -->
+                <div class="col-lg-4 d-flex flex-column">
+                    <h5 class="fw-bold mb-3" style="font-size: 0.9375rem; color: #111827;">
+                        <i class="bi bi-chat-text me-2" style="color: #6366f1;"></i>Topluluktan Son Sorular
+                    </h5>
+                    <div class="vstack gap-0 flex-grow-1">
                         {% for konu in son_konular|slice:":4" %}
                         <a href="/{% if konu.stadt %}{{ konu.stadt.eyalet.slug|default:'rlp' }}/{{ konu.stadt.slug }}/{% elif konu.eyalet %}{{ konu.eyalet.slug }}/mainz/{% else %}rlp/mainz/{% endif %}forum/konu/{{ konu.pk }}/"
                            class="d-flex align-items-start py-3 text-decoration-none"
                            style="border-bottom: 1px solid #f3f4f6;">
                             <i class="bi bi-chat-dots me-3 flex-shrink-0 mt-1" style="font-size: 0.8rem; color: #c4b5fd;"></i>
                             <div>
-                                <p class="fw-semibold mb-0" style="font-size: 0.875rem; color: #111827; line-height: 1.4;">{{ konu.baslik|truncatechars:55 }}</p>
+                                <p class="fw-semibold mb-0" style="font-size: 0.875rem; color: #111827; line-height: 1.4;">{{ konu.baslik|truncatechars:50 }}</p>
                                 <span style="font-size: 0.72rem; color: #9ca3af;">
                                     {% if konu.yazar %}{{ konu.yazar.username }}{% else %}anonim{% endif %}
                                     · {{ konu.olusturulma|timesince }} önce
@@ -360,6 +357,35 @@
                         {% empty %}
                         <p style="font-size: 0.875rem; color: #9ca3af;">Henüz soru yok.</p>
                         {% endfor %}
+                    </div>
+                    <div class="mt-3">
+                        <a href="/rlp/mainz/forum/" class="text-decoration-none fw-semibold" style="font-size: 0.8125rem; color: #032A4A;">Foruma git <i class="bi bi-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+
+                <!-- Sağ: Duyurular -->
+                <div class="col-lg-4 d-flex flex-column">
+                    <h5 class="fw-bold mb-3" style="font-size: 0.9375rem; color: #111827;">
+                        <i class="bi bi-megaphone me-2" style="color: #f59e0b;"></i>Duyurular
+                    </h5>
+                    <div class="vstack gap-0 flex-grow-1">
+                        {% for d in son_duyurular|slice:":4" %}
+                        <a href="/{% if d.stadt %}{{ d.stadt.eyalet.slug|default:'rlp' }}/{{ d.stadt.slug }}/{% else %}rlp/mainz/{% endif %}duyurular/{{ d.pk }}/"
+                           class="d-flex align-items-start py-3 text-decoration-none"
+                           style="border-bottom: 1px solid #f3f4f6;">
+                            <div>
+                                <p class="fw-semibold mb-0" style="font-size: 0.875rem; color: #111827; line-height: 1.4;">{{ d.baslik|truncatechars:50 }}</p>
+                                <span style="font-size: 0.72rem; color: #9ca3af;">
+                                    {{ d.get_kategori_display }} · {{ d.olusturulma|timesince }} önce
+                                </span>
+                            </div>
+                        </a>
+                        {% empty %}
+                        <p style="font-size: 0.875rem; color: #9ca3af;">Henüz duyuru yok.</p>
+                        {% endfor %}
+                    </div>
+                    <div class="mt-3">
+                        <a href="/rlp/mainz/duyurular/" class="text-decoration-none fw-semibold" style="font-size: 0.8125rem; color: #032A4A;">Tümünü gör <i class="bi bi-arrow-right ms-1"></i></a>
                     </div>
                 </div>
 
@@ -526,65 +552,6 @@
                                 {% endfor %}
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- ── Kolon 3: Duyurular + Güncel İlanlar ── -->
-                <div class="col-lg-4">
-
-                    <!-- Kullanıcı Duyuruları -->
-                    {% if son_duyurular %}
-                    <div class="mb-4">
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <p class="fw-bold mb-0" style="font-size: 0.9375rem; color: #111827;">
-                                <i class="bi bi-megaphone me-2" style="color: #f59e0b; font-size: 0.875rem;"></i>Duyurular
-                            </p>
-                            <a href="/rlp/mainz/duyurular/" class="text-decoration-none" style="font-size: 0.78rem; color: #9ca3af;">Tümü →</a>
-                        </div>
-                        <div class="vstack gap-2">
-                            {% for d in son_duyurular|slice:":3" %}
-                            <a href="/{% if d.stadt %}{{ d.stadt.eyalet.slug|default:'rlp' }}/{{ d.stadt.slug }}/{% else %}rlp/mainz/{% endif %}duyurular/{{ d.pk }}/"
-                               class="text-decoration-none nabiz-ilan-item d-block rounded-3 p-3"
-                               style="background: #fff; border: 1px solid #f3f4f6;">
-                                <p class="fw-semibold mb-1" style="font-size: 0.875rem; color: #111827; line-height: 1.4;">{{ d.baslik|truncatechars:60 }}</p>
-                                <div class="d-flex align-items-center gap-2">
-                                    <span class="rounded-2 px-2 py-1" style="font-size: 0.7rem; font-weight: 600; background: #fef3c7; color: #92400e; letter-spacing: 0.03em;">{{ d.get_kategori_display }}</span>
-                                    <span style="font-size: 0.72rem; color: #d1d5db;">{{ d.olusturulma|timesince }} önce</span>
-                                </div>
-                            </a>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    {% endif %}
-
-                    <!-- Güncel İlanlar -->
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <p class="fw-bold mb-0" style="font-size: 0.9375rem; color: #111827;">
-                            <i class="bi bi-tag me-2" style="color: #059669; font-size: 0.875rem;"></i>Güncel İlanlar
-                        </p>
-                        <a href="/rlp/mainz/ilan/" class="text-decoration-none" style="font-size: 0.78rem; color: #9ca3af;">Tümü →</a>
-                    </div>
-                    <div class="vstack gap-2">
-                        {% for ilan in son_satilik|slice:":4" %}
-                        <a href="/{{ ilan.eyalet.slug|default:'rlp' }}/ilan/{{ ilan.pk }}/"
-                            class="text-decoration-none nabiz-ilan-item d-block rounded-3 p-3"
-                            style="background: #fff; border: 1px solid #f3f4f6;">
-                            <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
-                                <p class="fw-semibold mb-0" style="font-size: 0.875rem; color: #111827; line-height: 1.4;">{{ ilan.baslik|truncatechars:50 }}</p>
-                                {% if ilan.fiyat %}
-                                <span class="fw-bold flex-shrink-0" style="font-size: 0.8125rem; color: #059669;">{{ ilan.fiyat }} €</span>
-                                {% endif %}
-                            </div>
-                            <div class="d-flex align-items-center gap-2">
-                                <span class="rounded-2 px-2 py-1" style="font-size: 0.7rem; font-weight: 600; background: #f3f4f6; color: #6b7280; letter-spacing: 0.03em;">
-                                    {{ ilan.eyalet.kod|default:'RLP' }}{% if ilan.stadt %} · {{ ilan.stadt.name|truncatechars:10 }}{% endif %}
-                                </span>
-                                <span style="font-size: 0.72rem; color: #d1d5db;">{{ ilan.olusturulma|timesince }} önce</span>
-                            </div>
-                        </a>
-                        {% empty %}
-                        <p style="font-size: 0.875rem; color: #9ca3af;">Henüz yeni ilan yok.</p>
-                        {% endfor %}
                     </div>
                 </div>
 
