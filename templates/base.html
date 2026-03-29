@@ -189,15 +189,19 @@
         // Sıradaki ezan vakti — konum varsa kullanıcı konumu, yoksa Mainz
         const prayerEl = document.getElementById('next-prayer');
         if (prayerEl) {
-            const todayStr = (() => {
-                const d = new Date();
-                return `${String(d.getDate()).padStart(2,'0')}-${String(d.getMonth()+1).padStart(2,'0')}-${d.getFullYear()}`;
-            })();
+            const dateStr = (d) =>
+                `${String(d.getDate()).padStart(2,'0')}-${String(d.getMonth()+1).padStart(2,'0')}-${d.getFullYear()}`;
 
-            const getSonraki = async (url) => {
-                const res  = await fetch(url);
-                const json = await res.json();
-                const t    = json.data.timings;
+            const todayStr    = dateStr(new Date());
+            const tomorrowStr = dateStr(new Date(Date.now() + 864e5));
+
+            const getTimings = async (url) => {
+                const res = await fetch(url);
+                return (await res.json()).data.timings;
+            };
+
+            const getSonraki = async (baseUrl, tomorrowUrl) => {
+                const t = await getTimings(baseUrl);
                 const LIST = [
                     { ad: 'İmsak',  saat: t.Imsak   },
                     { ad: 'Güneş',  saat: t.Sunrise  },
@@ -207,28 +211,30 @@
                     { ad: 'Yatsı',  saat: t.Isha    },
                 ];
                 const nowMin = new Date().getHours() * 60 + new Date().getMinutes();
-                return LIST.find(v => {
+                const bugun = LIST.find(v => {
                     const [h, m] = v.saat.split(':').map(Number);
                     return (h * 60 + m) > nowMin;
-                }) || null;
+                });
+                if (bugun) return bugun;
+                // Tüm vakitler geçti → yarının İmsak'ı
+                const t2 = await getTimings(tomorrowUrl);
+                return { ad: 'İmsak (yarın)', saat: t2.Imsak };
             };
 
             const renderVakit = (sonraki, konumlu) => {
-                if (!sonraki) {
-                    prayerEl.innerHTML = '<i class="bi bi-moon-stars me-1" style="opacity:.7;"></i><strong>Tüm vakitler geçti</strong>';
-                    return;
-                }
                 prayerEl.innerHTML =
                     `<i class="bi bi-moon-stars me-1" style="opacity:.7;"></i>` +
                     (konumlu ? '' : 'Mainz — ') +
                     `<strong>${sonraki.ad} ${sonraki.saat}</strong>`;
             };
 
-            const mainzUrl = `https://api.aladhan.com/v1/timingsByCity/${todayStr}?city=Mainz&country=Germany&method=13`;
-
             const loadMainz = async () => {
                 try {
-                    renderVakit(await getSonraki(mainzUrl), false);
+                    const v = await getSonraki(
+                        `https://api.aladhan.com/v1/timingsByCity/${todayStr}?city=Mainz&country=Germany&method=13`,
+                        `https://api.aladhan.com/v1/timingsByCity/${tomorrowStr}?city=Mainz&country=Germany&method=13`
+                    );
+                    renderVakit(v, false);
                 } catch {
                     prayerEl.innerHTML = '<i class="bi bi-moon-stars me-1" style="opacity:.7;"></i>--:--';
                 }
@@ -238,8 +244,11 @@
                 navigator.geolocation.getCurrentPosition(
                     async ({ coords }) => {
                         try {
-                            const url = `https://api.aladhan.com/v1/timings/${todayStr}?latitude=${coords.latitude}&longitude=${coords.longitude}&method=13`;
-                            renderVakit(await getSonraki(url), true);
+                            const v = await getSonraki(
+                                `https://api.aladhan.com/v1/timings/${todayStr}?latitude=${coords.latitude}&longitude=${coords.longitude}&method=13`,
+                                `https://api.aladhan.com/v1/timings/${tomorrowStr}?latitude=${coords.latitude}&longitude=${coords.longitude}&method=13`
+                            );
+                            renderVakit(v, true);
                         } catch {
                             await loadMainz();
                         }
