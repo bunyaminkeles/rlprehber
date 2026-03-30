@@ -257,7 +257,7 @@ def arama(request):
             'stadt': obj.stadt.name if obj.stadt else 'RLP',
         })
 
-    kaynaklar = Kaynak.objects.filter(yayinda=True, baslik__icontains=q).select_related('stadt__eyalet')[:20]
+    kaynaklar = Kaynak.objects.filter(yayinda=True, baslik__icontains=q).select_related('stadt__eyalet')
     for obj in kaynaklar:
         es = _eyalet_slug(obj)
         prefix = f'/{es}/{obj.stadt.slug}' if obj.scope == 'stadt' and obj.stadt else f'/{es}'
