@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'duyurular',
     'forum',
     'blog',
-    'ilan',
+    'ilan.apps.IlanConfig',
     'takvim',
     'yerler',
     'linkler',
