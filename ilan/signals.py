@@ -21,5 +21,5 @@ def ilan_onay_bildirimi(sender, instance, created, **kwargs):
             message=message,
             from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'info@almanyalirehber.com'),
             recipient_list=['info@analizus.com'],  # E-postanın gönderileceği admin adresi
-            fail_silently=False,
+            fail_silently=True,
         )
