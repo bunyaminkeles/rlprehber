@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'core',
     'accounts',
     'rehber',
-    'duyurular',
+    'duyurular.apps.DuyurularConfig',
     'forum',
     'blog',
     'ilan.apps.IlanConfig',
