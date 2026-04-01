@@ -25,7 +25,15 @@ Gereksiz kibarlıklar, giriş/çıkış cümleleri veya uzun felsefi açıklamal
 - **Taş (Sabit) vs Su (Akışkan):** Resmi/Admin içerikleri (KdU, Formlar) ağırbaşlı statik kartlar; ilanlar, RSS haberleri ve UGC (Kullanıcı içerikleri) ise sayfa altında akan, temiz grid'ler halinde tasarlanacak.
 - **Gürültüyü Sil:** Eğer bir özellik karmaşa yaratıyorsa, onu koda ekleme. Sadeliği dayat. Karar felci (Choice Paralysis) yaratma.
 
-### 4. Ana Sayfa Sabit Bölüm Kalıpları
+### 4. Toplu E-posta Kuralları
+
+- **`duyuru_gonder` komutu** tüm kayıtlı kullanıcılara gider; konu başlığına şehir adı (örn. "Mainz") yazma.
+- Konu başlığı genel/platform geneli olmalı (örn. "Almanyalı Rehber – Yeni Duyuru").
+- Şehre özel içerik e-postanın **gövdesinde** belirtilebilir; başlıkta değil.
+
+---
+
+### 5. Ana Sayfa Sabit Bölüm Kalıpları
 
 #### Kariyer Kart Grid (templates/core/anasayfa.html)
 "Kariyer ve Gelecek İnşası" bölümünde kartlar `row-cols-lg-4` grid'indedir.
