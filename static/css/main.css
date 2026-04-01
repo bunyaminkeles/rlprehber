@@ -14,6 +14,8 @@ body {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   font-size: 0.95rem;
 }
+/* Yandex Metrica enjekte ettiği gizli div'ler layout'u bozmasın */
+.__ymDebugger, .__ymContent, .__ymHidden { display: none !important; }
 
 /* Navbar */
 .navbar {
