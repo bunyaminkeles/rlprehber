@@ -41,6 +41,7 @@ OLD_MAINZ_REDIRECTS = [
 
 urlpatterns = [
     path('robots.txt',  TemplateView.as_view(template_name='robots.txt',  content_type='text/plain')),
+    path('favicon.ico', RedirectView.as_view(url='/static/img/favicon.svg', permanent=True)),
     path('sitemap.xml', sitemap, {'sitemaps': SITEMAPS}, name='django.contrib.sitemaps.views.sitemap'),
     path('googlef882ed2d634aa7da.html',          TemplateView.as_view(template_name='googlef882ed2d634aa7da.html',          content_type='text/html')),
     path('BingSiteAuth.xml',                     TemplateView.as_view(template_name='BingSiteAuth.xml',                     content_type='text/xml')),
