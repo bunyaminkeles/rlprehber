@@ -176,22 +176,40 @@
         <div class="offcanvas-body oc-body">
 
             <p class="oc-section-label">Federal Formlar & Belgeler</p>
-            <div class="vstack gap-0 oc-list">
-                {% for b in son_belgeler %}
-                <a href="{{ b.indirme_url }}" target="_blank" rel="noopener" class="oc-list-item text-decoration-none">
-                    <div class="tas-icon-box flex-shrink-0" style="width: 34px; height: 34px; background: rgba(3,42,74,0.06);">
-                        <i class="bi bi-file-earmark-pdf" style="font-size: 0.85rem; color: #032A4A;"></i>
+
+            {% if belgeler_gruplari %}
+                {% for grup in belgeler_gruplari %}
+                <div class="mb-2">
+                    <button class="d-flex align-items-center justify-content-between w-100 text-start fw-semibold px-0 py-2 bg-transparent border-0"
+                            style="font-size: 0.8125rem; color: #374151; border-bottom: 1px solid #f3f4f6 !important; cursor: pointer;"
+                            data-bs-toggle="collapse" data-bs-target="#belge-grup-{{ grup.slug }}" aria-expanded="true">
+                        <span>{{ grup.ad }}</span>
+                        <span class="d-flex align-items-center gap-2">
+                            <span style="font-size: 0.72rem; color: #9ca3af;">{{ grup.belgeler|length }}</span>
+                            <i class="bi bi-chevron-down" style="font-size: 0.7rem; color: #9ca3af; transition: transform 0.2s;"></i>
+                        </span>
+                    </button>
+                    <div class="collapse show" id="belge-grup-{{ grup.slug }}">
+                        <div class="vstack gap-0 oc-list">
+                            {% for b in grup.belgeler %}
+                            <a href="{{ b.indirme_url }}" target="_blank" rel="noopener" class="oc-list-item text-decoration-none">
+                                <div class="tas-icon-box flex-shrink-0" style="width: 34px; height: 34px; background: rgba(3,42,74,0.06);">
+                                    <i class="bi bi-file-earmark-pdf" style="font-size: 0.85rem; color: #032A4A;"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="fw-semibold mb-0" style="font-size: 0.875rem; color: #111827; line-height: 1.4;">{{ b.baslik }}</p>
+                                    {% if b.ozet %}<p class="mb-0" style="font-size: 0.78rem; color: #9ca3af;">{{ b.ozet|truncatechars:80 }}</p>{% endif %}
+                                </div>
+                                <i class="bi bi-arrow-up-right flex-shrink-0" style="font-size: 0.85rem; color: #d1d5db;"></i>
+                            </a>
+                            {% endfor %}
+                        </div>
                     </div>
-                    <div class="flex-grow-1">
-                        <p class="fw-semibold mb-0" style="font-size: 0.875rem; color: #111827; line-height: 1.4;">{{ b.baslik }}</p>
-                        {% if b.ozet %}<p class="mb-0" style="font-size: 0.78rem; color: #9ca3af;">{{ b.ozet|truncatechars:80 }}</p>{% endif %}
-                    </div>
-                    <i class="bi bi-arrow-up-right flex-shrink-0" style="font-size: 0.85rem; color: #d1d5db;"></i>
-                </a>
-                {% empty %}
-                <p style="font-size: 0.875rem; color: #9ca3af; padding: .75rem 0;">Henüz belge eklenmemiş.</p>
+                </div>
                 {% endfor %}
-            </div>
+            {% else %}
+                <p style="font-size: 0.875rem; color: #9ca3af; padding: .75rem 0;">Henüz belge eklenmemiş.</p>
+            {% endif %}
 
             <div class="mt-4 pt-3" style="border-top: 1px solid #f3f4f6;">
                 <a href="/rlp/rehber/belgeler/" data-bs-dismiss="offcanvas"
@@ -798,6 +816,11 @@
 .oc-list .oc-list-item:first-child {
     border-top: none;
     padding-top: 0;
+}
+
+/* Belge grup collapse chevron */
+[data-bs-toggle="collapse"][aria-expanded="false"] .bi-chevron-down {
+    transform: rotate(-90deg);
 }
 
 /* KdU bilgi kutusu */

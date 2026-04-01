@@ -8,7 +8,7 @@ from ilan.models import Ilan
 from takvim.models import Etkinlik
 from forum.models import Konu
 from ilan.models import SATILIK_KATEGORILER, ARANIYOR_KATEGORILER
-from rehber.models import Kaynak, Belge
+from rehber.models import Kaynak, Belge, BELGE_KATEGORI
 from almanca import engine as almanca_engine
 from blog.models import BlogYazisi
 
@@ -95,7 +95,16 @@ def anasayfa(request):
     ]
 
     son_blog_yazilari = BlogYazisi.objects.filter(yayinda=True).order_by('-olusturulma')[:3]
-    son_belgeler = Belge.objects.filter(yayinda=True, stadt__isnull=True).order_by('kategori', 'sira')
+
+    _belge_kat_display = dict(BELGE_KATEGORI)
+    _belgeler_qs = Belge.objects.filter(yayinda=True, stadt__isnull=True).order_by('kategori', 'sira')
+    _b_gruplar = defaultdict(list)
+    for b in _belgeler_qs:
+        _b_gruplar[b.kategori].append(b)
+    belgeler_gruplari = [
+        {'ad': _belge_kat_display.get(kat, kat), 'slug': kat, 'belgeler': items}
+        for kat, items in _b_gruplar.items()
+    ]
 
     return render(request, 'core/anasayfa.html', {
         'sehirler':           sehirler,
@@ -106,7 +115,7 @@ def anasayfa(request):
         'tagesschau':       _tagesschau_haberleri(),
         'dw_turkce':        _dw_turkce_haberleri(),
         'ulusal_kaynaklar': ulusal_kaynaklar,
-        'son_belgeler':     son_belgeler,
+        'belgeler_gruplari': belgeler_gruplari,
     })
 
 
