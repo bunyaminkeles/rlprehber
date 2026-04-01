@@ -290,21 +290,39 @@
                 }
             };
 
+            const loadKonumCoords = async (lat, lon) => {
+                try {
+                    const v = await getSonraki(
+                        `https://api.aladhan.com/v1/timings/${todayStr}?latitude=${lat}&longitude=${lon}&method=13`,
+                        `https://api.aladhan.com/v1/timings/${tomorrowStr}?latitude=${lat}&longitude=${lon}&method=13`
+                    );
+                    renderVakit(v, true);
+                } catch {
+                    await loadMainz();
+                }
+            };
+
             const loadKonum = () => {
+                // Cache'te taze koordinat varsa (30 dk) tarayıcıya sorma
+                try {
+                    const cached = JSON.parse(localStorage.getItem('konum_coords') || 'null');
+                    if (cached && (Date.now() - cached.ts) < 60 * 60 * 1000) {
+                        loadKonumCoords(cached.lat, cached.lon);
+                        return;
+                    }
+                } catch {}
+
                 navigator.geolocation.getCurrentPosition(
                     async ({ coords }) => {
                         try {
-                            const v = await getSonraki(
-                                `https://api.aladhan.com/v1/timings/${todayStr}?latitude=${coords.latitude}&longitude=${coords.longitude}&method=13`,
-                                `https://api.aladhan.com/v1/timings/${tomorrowStr}?latitude=${coords.latitude}&longitude=${coords.longitude}&method=13`
-                            );
-                            renderVakit(v, true);
-                        } catch {
-                            await loadMainz();
-                        }
+                            localStorage.setItem('konum_coords', JSON.stringify({
+                                lat: coords.latitude, lon: coords.longitude, ts: Date.now()
+                            }));
+                        } catch {}
+                        await loadKonumCoords(coords.latitude, coords.longitude);
                     },
                     async () => { await loadMainz(); },
-                    { timeout: 6000, maximumAge: 600000 }
+                    { timeout: 6000, maximumAge: 1800000 }
                 );
             };
 
