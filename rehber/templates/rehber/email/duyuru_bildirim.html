@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ konu }}</title>
+</head>
+<body style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
+
+    <div style="background-color: #f8f9fa; border-radius: 8px; padding: 24px; margin-bottom: 20px;">
+        <h2 style="margin-top: 0; color: #1a1a2e;">Merhaba{% if kullanici_adi %} {{ kullanici_adi }}{% endif %},</h2>
+
+        <p>
+            Mainz'da önemli bir etkinlik var! <strong>Çarşamba, 1 Nisan 2026</strong> günü Zoom üzerinden
+            <strong>Quereinstieg</strong> (yandan öğretmenliğe geçiş) hakkında bilgilendirme toplantısı düzenleniyor.
+        </p>
+
+        <div style="background: #fff; border-left: 4px solid #4a90d9; padding: 16px; border-radius: 4px; margin: 20px 0;">
+            <p style="margin: 0 0 10px 0;"><strong>Kimler katılabilir?</strong></p>
+            <ul style="margin: 0; padding-left: 20px;">
+                <li>Mühendisler</li>
+                <li>Eczacılar</li>
+                <li>Fen-Edebiyat mezunları</li>
+            </ul>
+            <p style="margin: 10px 0 0 0;">Kısacası: <strong>Öğretmenlik diploması olmayan herkes başvurabilir.</strong></p>
+        </div>
+
+        <p>
+            Toplantı Zoom üzerinden gerçekleşecektir.
+            <strong>Zoom bağlantısına</strong> aşağıdaki düğme aracılığıyla duyurular sayfamızdan ulaşabilirsiniz:
+        </p>
+
+        <div style="text-align: center; margin: 24px 0;">
+            <a href="{{ duyuru_url }}"
+               style="background-color: #4a90d9; color: white; padding: 12px 28px; border-radius: 6px;
+                      text-decoration: none; font-weight: bold; display: inline-block;">
+                Duyuruya Git &amp; Zoom Linkini Al
+            </a>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 24px 0;">
+
+        <p style="margin-bottom: 6px;"><strong>Almanya, eyalet ve şehrinize özel duyurular için:</strong></p>
+        <p>
+            Ana sayfamızdan bültenimize abone olabilirsiniz — Tüm Almanya geneli, eyalet ve şehrinize
+            özel güncel duyurular ve ilanlar doğrudan e-postanıza gelsin.
+            Kendi duyurularınızı da sitemize ekleyebilirsiniz!
+        </p>
+
+        <div style="text-align: center; margin: 16px 0;">
+            <a href="https://almanyalirehber.com"
+               style="background-color: #28a745; color: white; padding: 10px 24px; border-radius: 6px;
+                      text-decoration: none; font-weight: bold; display: inline-block;">
+                Ana Sayfaya Git
+            </a>
+        </div>
+    </div>
+
+    <p style="font-size: 0.8em; color: #999; text-align: center;">
+        Bu e-postayı Almanyalı Rehber'e kayıtlı olduğunuz için aldınız.<br>
+        Sorularınız için: <a href="mailto:info@analizus.com" style="color: #4a90d9;">info@analizus.com</a>
+    </p>
+</body>
+</html>
