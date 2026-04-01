@@ -150,6 +150,7 @@ def quiz(request, slug, eyalet_slug='rlp'):
             'slug': slug, 'thema': thema, 'tr': tr,
             'dogru': dogru_sayi, 'yanlis': yanlis_sayi, 'toplam': toplam,
             'mod': mod, 'eyalet_slug': eyalet_slug,
+            'yanlis_sorular': _yanlis_listesi(slug, yanlis_ids, cevaplar),
         })
 
     request.session[f'alm_soru_{slug}'] = {
