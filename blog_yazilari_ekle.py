@@ -403,7 +403,7 @@ for d in YAZILAR:
     eyalet = rlp if scope == 'eyalet' else None
     _, created = BlogYazisi.objects.update_or_create(
         slug=d['slug'],
-        defaults={**d, 'yazar': yazar, 'yayinda': True, 'eyalet': eyalet},
+        defaults={**d, 'yazar': yazar, 'yayinda': True, 'scope': scope, 'eyalet': eyalet},
     )
     if created:
         eklendi += 1
