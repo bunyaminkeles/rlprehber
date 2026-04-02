@@ -8,8 +8,10 @@ django.setup()
 
 from django.contrib.auth.models import User
 from blog.models import BlogYazisi
+from stadt.models import Eyalet
 
 yazar = User.objects.filter(is_superuser=True).first()
+rlp = Eyalet.objects.get(slug='rlp')
 
 YAZILAR = [
     {
@@ -402,7 +404,7 @@ eklendi = guncellendi = 0
 for d in YAZILAR:
     _, created = BlogYazisi.objects.update_or_create(
         slug=d['slug'],
-        defaults={**d, 'yazar': yazar, 'yayinda': True},
+        defaults={**d, 'yazar': yazar, 'yayinda': True, 'eyalet': rlp},
     )
     if created:
         eklendi += 1
