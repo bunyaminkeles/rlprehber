@@ -99,7 +99,6 @@ YAZILAR = [
         'slug': 'almanyada-diploma-denkligi-zab-rehberi',
         'kapak_resmi': 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80',
         'ozet': 'ZAB Zeugnisbewertung nedir, Anabin\'de nasıl kontrol yapılır, belgeler nasıl hazırlanır? Mavi Kart ve nitelikli çalışan vizesi için diploma denkliği sürecinin tam rehberi.',
-        'scope': 'eyalet',
         'icerik': '''
 <p class="lead">Almanya'da kariyerinize başlamak, nitelikli çalışan vizesi almak veya Mavi Kart (Blaue Karte) başvurusu yapmak istiyorsunuz. Harika bir iş buldunuz ancak sistem önünüze o meşhur engeli çıkardı: <em>"Diplomanızın Almanya'da geçerli olduğunu kanıtlamalısınız."</em></p>
 
@@ -286,7 +285,6 @@ YAZILAR = [
         'baslik': 'Karfreitag Nedir? Almanya\'da Sessiz Cuma\'nın Anlamı ve Kuralları',
         'slug': 'karfreitag-nedir-almanyada-sessiz-cuma',
         'kapak_resmi': 'https://images.unsplash.com/photo-1455849318743-b2233052fcff?w=1200&q=80',
-        'scope': 'eyalet',
         'ozet': "Karfreitag (Kutsal Cuma), Almanya'nın en sessiz resmi tatilidir. Müzik yasağı, kapalı dükkanlar ve eyaletten eyalete değişen kurallarla birlikte bu günü nasıl geçirmelisiniz?",
         'icerik': '''
 <p class="lead">Almanya'da yaşıyorsanız ya da Paskalya döneminde buradaysanız, Karfreitag'ı (Kutsal Cuma / Kara Cuma) mutlaka duymuşsunuzdur. Bu gün yalnızca bir resmi tatil değil; Almanya'nın en katı sessizlik kurallarının uygulandığı, alışılageldik hayatın durduğu özel bir gündür.</p>
@@ -341,7 +339,6 @@ Karfreitag Almanya'nın en sessiz günüdür. Alışverişinizi önceden yapın,
         'baslik': 'WBS Nedir? Almanya\'da Sosyal Konut Hakkı (Wohnberechtigungsschein) Rehberi',
         'slug': 'wbs-nedir-almanyada-sosyal-konut-hakki-rehberi',
         'kapak_resmi': 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80',
-        'scope': 'eyalet',
         'ozet': "WBS (Wohnberechtigungsschein), Almanya'da düşük gelirli hanelerin sosyal konutlara başvurmasını sağlayan belgedir. Kim alabilir, nasıl başvurulur, hangi avantajlar sağlar?",
         'icerik': '''
 <p class="lead">Almanya'da kira fiyatları her yıl artarken, sosyal konut sistemi düşük ve orta gelirli haneler için önemli bir güvence sunuyor. Bu sistemin anahtarı ise <strong>WBS — Wohnberechtigungsschein</strong> (Konut Hakkı Belgesi).</p>
@@ -402,9 +399,11 @@ WBS, Almanya'da düşük ve orta gelirli hanelerin uygun fiyatlı konuta erişme
 
 eklendi = guncellendi = 0
 for d in YAZILAR:
+    scope = d.get('scope', 'genel')
+    eyalet = rlp if scope == 'eyalet' else None
     _, created = BlogYazisi.objects.update_or_create(
         slug=d['slug'],
-        defaults={**d, 'yazar': yazar, 'yayinda': True, 'eyalet': rlp},
+        defaults={**d, 'yazar': yazar, 'yayinda': True, 'eyalet': eyalet},
     )
     if created:
         eklendi += 1

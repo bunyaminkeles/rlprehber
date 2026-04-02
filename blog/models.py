@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 
 SCOPE_SECENEKLERI = [
     ('stadt', 'Şehre Özel'),
-    ('eyalet', 'RLP Geneli'),
+    ('eyalet', 'Eyalet Geneli'),
+    ('genel', 'Almanya Geneli'),
 ]
 
 class BlogYazisi(models.Model):

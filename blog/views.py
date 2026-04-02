@@ -9,11 +9,16 @@ def liste(request, eyalet_slug='rlp', stadt_slug=None):
 
     if stadt:
         yazilar = BlogYazisi.objects.filter(
-            Q(stadt=stadt, scope='stadt') | Q(scope='eyalet', eyalet__slug=eyalet_slug),
+            Q(stadt=stadt, scope='stadt') |
+            Q(scope='eyalet', eyalet__slug=eyalet_slug) |
+            Q(scope='genel'),
             yayinda=True
         )
     else:
-        yazilar = BlogYazisi.objects.filter(scope='eyalet', eyalet__slug=eyalet_slug, yayinda=True)
+        yazilar = BlogYazisi.objects.filter(
+            Q(scope='eyalet', eyalet__slug=eyalet_slug) | Q(scope='genel'),
+            yayinda=True
+        )
 
     return render(request, 'blog/liste.html', {
         'yazilar':      yazilar,
