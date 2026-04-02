@@ -9,12 +9,20 @@ Aşağıdaki metni kopyala, **sadece üstteki şehir ve yer listesini** değişt
 Şehir ve yerleri doldur:
 
 ```
-Şehir: Berlin
-Şehir slug: berlin
+Şehir: Hamburg
+Şehir slug: hamburg
 
 Yerler:
-1. Berliner Fernsehturm — Resim: https://upload.wikimedia.org/... — Kaynak: https://commons.wikimedia.org/wiki/User:...
-2. Brandenburger Tor — Resim: https://... — Kaynak: https://...
+1. Hamburger Rathaus (Belediye Sarayı) — Resim: https://commons.wikimedia.org/wiki/File:Hamburg_Rathausmarkt_und_Rathaus.jpg — Kaynak: https://commons.wikimedia.org/wiki/User:Arnoldius
+
+2. St. Michaelis Kirche (Aziz Michael Kilisesi - "Michel") — Resim: https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/St._-_Michaelis_-_Kirche%2C_Heemsen.jpg/640px-St._-_Michaelis_-_Kirche%2C_Heemsen.jpg — Kaynak: https://commons.wikimedia.org/wiki/User:Kiwi05
+
+3. Speicherstadt (Depolar Bölgesi) — Resim: https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Hamburg%2C_Speicherstadt%2C_Wasserschloss_--_2016_--_3265-71.jpg/640px-Hamburg%2C_Speicherstadt%2C_Wasserschloss_--_2016_--_3265-71.jpg — Kaynak: https://www.wikidata.org/wiki/Q34788025
+//
+4. Elbphilharmonie (Elbe Filarmoni Salonu) — Resim: https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Elbphilharmonie_Eastside_View_With_Sandtorkai_Quay_Magellan_Terraces_Sandtorpark_2022-06-04_16-32.jpg/640px-Elbphilharmonie_Eastside_View_With_Sandtorkai_Quay_Magellan_Terraces_Sandtorpark_2022-06-04_16-32.jpg — Kaynak: https://commons.wikimedia.org/wiki/User:Axel_Tschentscher
+
+5. Alter Elbtunnel (Eski Elbe Tüneli) - Resim: https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Hamburg%2C_Alter_Elbtunnel%2C_S%C3%BCdeingang_--_2025_--_2826.jpg/640px-Hamburg%2C_Alter_Elbtunnel%2C_S%C3%BCdeingang_--_2025_--_2826.jpg - Kaynak: https://www.wikidata.org/wiki/Q34788025
+
 ```
 
 Sonra aşağıdaki tam promptu Gemini'ye gönder 👇
