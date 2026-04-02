@@ -78,6 +78,10 @@ class Command(BaseCommand):
                 if alan in yer_veri:
                     setattr(yer, alan, yer_veri[alan])
 
+            # kapak_resmi verilmişse yüklenmiş fotoğrafı temizle (template kapak_foto'yu önceliklendirir)
+            if 'kapak_resmi' in yer_veri and yer_veri['kapak_resmi']:
+                yer.kapak_foto = None
+
             if stadt and not yer.stadt_id:
                 yer.stadt = stadt
 
