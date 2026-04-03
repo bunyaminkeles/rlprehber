@@ -109,7 +109,6 @@
 <div class="blog-hero">
   <div class="container">
     <h2 class="fw-bold mb-1"><i class="bi bi-pencil-square me-2"></i>Blog</h2>
-    <p class="mb-0 opacity-75">{% if stadt %}{{ stadt.name }}'dan{% else %}RLP'den{% endif %} deneyimler, ipuçları ve keşfedilecek yerler</p>
   </div>
 </div>
 
@@ -130,6 +129,13 @@
           <div class="blog-card-meta">
             <span class="author-avatar">{{ y.yazar.username|first|upper }}</span>
             <span>{{ y.yazar.username }}</span>
+            {% if y.scope == 'genel' %}
+              <span class="ms-1 badge" style="background:#e8f4fd;color:#2b6cb0;font-weight:500;font-size:0.72rem;">🇩🇪 Almanya</span>
+            {% elif y.scope == 'eyalet' and y.eyalet %}
+              <span class="ms-1 badge" style="background:#f0fdf4;color:#276749;font-weight:500;font-size:0.72rem;">{{ y.eyalet.name }}</span>
+            {% elif y.scope == 'stadt' and y.stadt %}
+              <span class="ms-1 badge" style="background:#fefce8;color:#92400e;font-weight:500;font-size:0.72rem;">{{ y.stadt.name }}</span>
+            {% endif %}
             <span class="ms-auto">{{ y.olusturulma|date:"d.m.Y" }}</span>
           </div>
         </div>
