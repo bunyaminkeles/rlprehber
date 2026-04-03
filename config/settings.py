@@ -165,15 +165,15 @@ ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-# E-posta — Resend HTTP API (django-anymail)
-if config('RESEND_API_KEY', default=''):
-    EMAIL_BACKEND       = 'anymail.backends.resend.EmailBackend'
-    ANYMAIL = {
-        'RESEND_API_KEY': config('RESEND_API_KEY'),
-    }
-    DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='Almanyalı Rehber <info@almanyalirehber.com>')
-else:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# E-posta — SMTP (mail.analizus.com)
+EMAIL_BACKEND    = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST       = config('EMAIL_HOST', default='mail.analizus.com')
+EMAIL_PORT       = config('EMAIL_PORT', default=465, cast=int)
+EMAIL_USE_SSL    = config('EMAIL_USE_SSL', default=True, cast=bool)
+EMAIL_USE_TLS    = config('EMAIL_USE_TLS', default=False, cast=bool)
+EMAIL_HOST_USER  = config('EMAIL_HOST_USER', default='info@analizus.com')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='Almanyalı Rehber <info@analizus.com>')
 
 # Zamanlanmış görevler
 CRONJOBS = [
