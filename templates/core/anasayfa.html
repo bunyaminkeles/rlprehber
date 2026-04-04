@@ -33,11 +33,11 @@
     {% if sehirler %}
     <section class="py-4">
         <div class="container">
-            <h2 class="fw-bold mb-1" style="font-size: 1.1rem; color: #111827;">Şehrinizi Tanıyor musunuz?</h2>
-            <p class="mb-4" style="font-size: 0.875rem; color: #9ca3af;">Yukarıdaki arama çubuğuna şehrinizin adını yazın — randevu, rehber, ilan ve daha fazlası sizi bekliyor.</p>
-            <div class="row g-3 justify-content-center">
+            <h2 class="fw-bold mb-1" style="font-size: 1.1rem; color: #111827;">Şehrinizi Seçin</h2>
+            <p class="mb-4" style="font-size: 0.875rem; color: #9ca3af;">Şehrinize özel rehber, duyurular, ilanlar ve daha fazlası</p>
+            <div class="row g-3">
                 {% for s in sehirler %}
-                <div class="col-6 col-md-4">
+                <div class="col-6 col-md-3">
                     <a href="/{{ s.eyalet.slug }}/{{ s.slug }}/"
                        class="sehir-kart d-block text-decoration-none rounded-3 overflow-hidden position-relative"
                        style="height: 200px;">
