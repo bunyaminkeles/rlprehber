@@ -380,9 +380,16 @@
     setActivePill(kat);
   }
 
-  // ── Başlangıç: ilk kategoriyi göster (her ekranda) ──────────
-  const first = sections[0];
-  if (first) showSection(first.dataset.kat);
+  // ── Başlangıç: hash varsa o kategoriyi, yoksa ilkini göster ──
+  const hashKat = window.location.hash.replace('#kategori-', '');
+  const hashMatch = hashKat && [...sections].find(s => s.dataset.kat === hashKat);
+  if (hashMatch) {
+    showSection(hashKat);
+    setTimeout(() => document.getElementById('kat-pill-nav').scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+  } else {
+    const first = sections[0];
+    if (first) showSection(first.dataset.kat);
+  }
 
   // ── Pill tıklama ──────────────────────────────────────────────
   pills.forEach(pill => {
