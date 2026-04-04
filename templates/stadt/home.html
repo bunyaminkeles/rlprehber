@@ -14,22 +14,36 @@
   /* Hero fotoğraf */
   .hero-photo {
     position: relative;
-    min-height: 340px;
-    display: flex;
-    align-items: center;
+    overflow: hidden;
+  }
+  .hero-photo-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 420px;
+    object-fit: cover;
   }
   .hero-photo-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(3,42,74,0.55) 0%, rgba(3,42,74,0.75) 100%);
+    background: linear-gradient(to bottom, rgba(3,42,74,0.45) 0%, rgba(3,42,74,0.72) 100%);
+  }
+  .hero-photo-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 </style>
 
 <!-- BÖLÜM 1: Hero -->
 {% if stadt.kapak_resmi_url %}
-<section class="hero hero-photo" style="background-image: url('{{ stadt.kapak_resmi_url }}'); background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important;">
+<section class="hero hero-photo">
+  <img src="{{ stadt.kapak_resmi_url }}" alt="{{ stadt.name }}" class="hero-photo-img">
   <div class="hero-photo-overlay"></div>
-  <div class="container text-center position-relative w-100">
+  <div class="hero-photo-content">
+  <div class="container text-center">
 {% else %}
 <section class="hero">
   <div class="container text-center">
@@ -50,6 +64,7 @@
       <i class="bi bi-envelope-paper me-1"></i>Ausländerbehörde
     </a>
   </div>
+  {% if stadt.kapak_resmi_url %}</div>{% endif %}
 </section>
 
 <!-- Hızlı Erişim Hap Linkleri -->
