@@ -213,7 +213,7 @@ def arama(request):
         bulunan_kategori = _niyet_kategori(kalan_kelimeler)
         if bulunan_kategori:
             temel_url = _sehir_url(bulunan_sehir)
-            return _redirect(f'{temel_url}yerler/#kategori-{bulunan_kategori}')
+            return _redirect(f'{temel_url}#kategori-{bulunan_kategori}')
 
     # ── 3. KADEME: Fallback — standart arama + şehir "top hit" ────────────────
     def _eyalet_slug(obj):
