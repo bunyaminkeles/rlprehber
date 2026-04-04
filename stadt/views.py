@@ -8,8 +8,60 @@ from rehber.models import Kaynak
 from blog.models import BlogYazisi
 import feedparser
 import logging
+import requests
+from django.core.cache import cache
 
 logger = logging.getLogger(__name__)
+
+_HAVA_IKONLARI = {
+    0:  ('bi-sun',                  'Açık'),
+    1:  ('bi-cloud-sun',            'Az Bulutlu'),
+    2:  ('bi-cloud-sun',            'Parçalı Bulutlu'),
+    3:  ('bi-clouds',               'Bulutlu'),
+    45: ('bi-cloud-fog2',           'Sisli'),
+    48: ('bi-cloud-fog2',           'Sisli'),
+    51: ('bi-cloud-drizzle',        'Çiseleyen'),
+    53: ('bi-cloud-drizzle',        'Çiseleyen'),
+    55: ('bi-cloud-drizzle',        'Çiseleyen'),
+    61: ('bi-cloud-rain',           'Yağmurlu'),
+    63: ('bi-cloud-rain',           'Yağmurlu'),
+    65: ('bi-cloud-rain-heavy',     'Sağanak'),
+    71: ('bi-cloud-snow',           'Karlı'),
+    73: ('bi-cloud-snow',           'Karlı'),
+    75: ('bi-cloud-snow',           'Yoğun Kar'),
+    80: ('bi-cloud-rain',           'Sağanak'),
+    81: ('bi-cloud-rain-heavy',     'Sağanak'),
+    82: ('bi-cloud-rain-heavy',     'Kuvvetli Sağanak'),
+    95: ('bi-cloud-lightning-rain', 'Fırtınalı'),
+    99: ('bi-cloud-lightning-rain', 'Fırtınalı'),
+}
+
+def _hava_durumu(lat, lng, cache_key):
+    cached = cache.get(cache_key)
+    if cached is not None:
+        return cached
+    try:
+        url = (
+            f'https://api.open-meteo.com/v1/forecast'
+            f'?latitude={lat}&longitude={lng}'
+            f'&current=temperature_2m,weather_code'
+            f'&timezone=Europe%2FBerlin'
+        )
+        r = requests.get(url, timeout=4)
+        r.raise_for_status()
+        data = r.json()['current']
+        kod  = data['weather_code']
+        icon, aciklama = _HAVA_IKONLARI.get(kod, ('bi-cloud', ''))
+        sonuc = {
+            'sicaklik': round(data['temperature_2m']),
+            'icon':     icon,
+            'aciklama': aciklama,
+        }
+        cache.set(cache_key, sonuc, 1800)
+        return sonuc
+    except Exception:
+        cache.set(cache_key, None, 300)
+        return None
 
 # Şehir sayfasındaki dizin sekmesi → Kaynak kategorileri eşleşmesi
 _YER_TAB_KAYNAK = {
@@ -119,12 +171,17 @@ def home(request, eyalet_slug='rlp', stadt_slug=None):
         scope='eyalet', eyalet__slug=eyalet_slug, yayinda=True
     ).order_by('-olusturulma')[:3]
 
+    hava = None
+    if stadt.lat and stadt.lng:
+        hava = _hava_durumu(stadt.lat, stadt.lng, f'hava_{stadt.slug}')
+
     return render(request, 'stadt/home.html', {
         'stadt':               stadt,
         'eyalet_slug':         eyalet_slug,
         'yaklasan':            yaklasan,
         'belediye_haberleri':  belediye_haberleri,
         'kategoriler':         kategoriler,
+        'hava':                hava,
         'tum_kategoriler':     [(k.slug, k.ad) for k in yer_kategorileri],
         'son_blog_yazilari':   son_blog_yazilari,
     })
