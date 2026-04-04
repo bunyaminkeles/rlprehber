@@ -155,10 +155,10 @@
   <div class="blog-header">
     <h1>{{ yazi.baslik }}</h1>
     <div class="blog-meta">
-      <span class="author-chip">
+      <a href="{% url 'mesajlar:baslat' yazi.yazar.username %}" class="author-chip text-decoration-none" title="Mesaj gönder">
         <span class="author-avatar">{{ yazi.yazar.username|first|upper }}</span>
         {{ yazi.yazar.username }}
-      </span>
+      </a>
       <span><i class="bi bi-calendar3 me-1"></i>{{ yazi.olusturulma|date:"d F Y" }}</span>
     </div>
   </div>

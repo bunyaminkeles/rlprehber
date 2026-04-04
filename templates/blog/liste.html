@@ -127,8 +127,10 @@
           <h5 class="blog-card-title">{{ y.baslik }}</h5>
           <p class="blog-card-ozet">{{ y.ozet|default:y.icerik|striptags|truncatechars:130 }}</p>
           <div class="blog-card-meta">
-            <span class="author-avatar">{{ y.yazar.username|first|upper }}</span>
-            <span>{{ y.yazar.username }}</span>
+            <a href="{% url 'mesajlar:baslat' y.yazar.username %}" class="d-inline-flex align-items-center gap-1 text-decoration-none text-muted" title="Mesaj gönder">
+              <span class="author-avatar">{{ y.yazar.username|first|upper }}</span>
+              <span>{{ y.yazar.username }}</span>
+            </a>
             {% if y.scope == 'genel' %}
               <span class="ms-1 badge" style="background:#e8f4fd;color:#2b6cb0;font-weight:500;font-size:0.72rem;">🇩🇪 Almanya</span>
             {% elif y.scope == 'eyalet' and y.eyalet %}
