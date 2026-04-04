@@ -162,17 +162,22 @@ def arama(request):
 
     # ── Niyet Motoru yardımcıları ─────────────────────────────────────────────
     KATEGORI_ANAHTAR = {
-        'saglik':      ['hastane', 'doktor', 'klinik', 'sağlık', 'saglik', 'eczane', 'hospital', 'arzt'],
-        'egitim':      ['okul', 'üniversite', 'universite', 'kurs', 'dil kursu', 'sprachschule', 'vhs', 'almanca', 'schule', 'uni'],
-        'ibadet':      ['cami', 'mosque', 'moschee', 'namaz', 'ditib', 'ibadet'],
-        'turk_market': ['market', 'türk market', 'turk market', 'halal', 'helal', 'bakkal', 'türkisch'],
-        'yeme_icme':   ['restoran', 'restaurant', 'kebap', 'döner', 'doner', 'cafe', 'kafe', 'yeme', 'içme', 'lokal'],
-        'tuv':         ['tüv', 'tuv', 'muayene', 'gtü', 'fahrzeug'],
-        'resmi_kurum': ['belediye', 'ausländer', 'auslaender', 'jobcenter', 'finanzamt', 'bürgeramt', 'buergeramt', 'zulassung', 'behörde'],
+        'saglik':      ['hastane', 'doktor', 'klinik', 'sağlık', 'saglik', 'eczane', 'hospital', 'arzt', 'krankenhaus', 'notfall'],
+        'egitim':      ['okul', 'üniversite', 'universite', 'kurs', 'dil kursu', 'sprachschule', 'vhs', 'almanca', 'schule', 'uni', 'kindergarten', 'anaokulu', 'kitap'],
+        'ibadet':      ['cami', 'mosque', 'moschee', 'namaz', 'ditib', 'ibadet', 'cemevi', 'kilise'],
+        'turk_market': ['market', 'türk market', 'turk market', 'halal', 'helal', 'bakkal', 'türkisch', 'kasap', 'manav'],
+        'yeme_icme':   ['restoran', 'restaurant', 'kebap', 'döner', 'doner', 'cafe', 'kafe', 'yeme', 'içme', 'lokal', 'pizza', 'fastfood'],
+        'tuv':         ['tüv', 'tuv', 'muayene', 'gtü', 'fahrzeug', 'dekra', 'egzoz'],
+        'resmi_kurum': ['belediye', 'ausländer', 'auslaender', 'jobcenter', 'finanzamt', 'bürgeramt', 'buergeramt',
+                        'zulassung', 'behörde', 'kdu', 'kira', 'konut', 'sgb', 'sozialamt', 'amt', 'büro',
+                        'randevu', 'termin', 'başkonsolosluk', 'konsolosluk', 'pasaport', 'vize'],
         'alisveris':   ['alışveriş', 'alisveris', 'mall', 'avm', 'shopping', 'einkauf'],
         'gezi':        ['gezi', 'müze', 'muze', 'tarih', 'dom', 'park', 'kültür', 'kultur', 'sehenswürdigkeit'],
-        'werkstatt':   ['oto servis', 'tamirci', 'werkstatt', 'garaj', 'kfz'],
+        'werkstatt':   ['oto servis', 'tamirci', 'werkstatt', 'garaj', 'kfz', 'araba', 'oto'],
     }
+
+    # Belge/döküman aramaları için özel yönlendirme
+    BELGE_ANAHTAR = ['belge', 'belgeler', 'form', 'pdf', 'evrak', 'dilekçe', 'antrag', 'formular', 'dokuman', 'döküman']
 
     def _sehir_url(sehir):
         es = sehir.eyalet.slug if sehir.eyalet else 'rlp'
@@ -210,10 +215,23 @@ def arama(request):
             break
 
     if bulunan_sehir and kalan_kelimeler:
+        # Belge araması → şehir rehber/belgeler sayfası
+        if any(b in ' '.join(kalan_kelimeler) for b in BELGE_ANAHTAR):
+            temel_url = _sehir_url(bulunan_sehir)
+            eyalet_s = bulunan_sehir.eyalet.slug if bulunan_sehir.eyalet else 'rlp'
+            return _redirect(f'/{eyalet_s}/{bulunan_sehir.slug}/rehber/belgeler/')
         bulunan_kategori = _niyet_kategori(kalan_kelimeler)
         if bulunan_kategori:
             temel_url = _sehir_url(bulunan_sehir)
             return _redirect(f'{temel_url}#kategori-{bulunan_kategori}')
+        # Şehir bulundu ama kategori yok → şehir ana sayfasına git
+        return _redirect(_sehir_url(bulunan_sehir))
+
+    # Şehir yok ama belge araması → ulusal belgeler sayfası
+    if any(b in q_lower for b in BELGE_ANAHTAR):
+        return _redirect('/')
+
+    # Şehir yok ama kategori araması → arama sonuçlarında göster (fallback devam)
 
     # ── 3. KADEME: Fallback — standart arama + şehir "top hit" ────────────────
     def _eyalet_slug(obj):
@@ -261,7 +279,11 @@ def arama(request):
             'stadt': obj.stadt.name if obj.stadt else 'RLP',
         })
 
-    kaynaklar = Kaynak.objects.filter(yayinda=True, baslik__icontains=q).select_related('stadt__eyalet')
+    from django.db.models import Q as DQ
+    kaynaklar = Kaynak.objects.filter(
+        DQ(baslik__icontains=q) | DQ(ozet__icontains=q),
+        yayinda=True
+    ).select_related('stadt__eyalet')
     for obj in kaynaklar:
         es = _eyalet_slug(obj)
         prefix = f'/{es}/{obj.stadt.slug}' if obj.scope == 'stadt' and obj.stadt else f'/{es}'
