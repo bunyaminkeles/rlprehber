@@ -36,6 +36,8 @@
         <img src="{{ stadt.kapak_resmi_url }}" alt="{{ stadt.name }}" class="hero-photo-img" referrerpolicy="no-referrer">
       </div>
       <div class="col-md-8 text-center text-md-start">
+      {% elif stadt.eyalet.arma_url %}
+      <div class="col-md-9 text-center text-md-start">
       {% else %}
       <div class="col-12 text-center">
       {% endif %}
@@ -78,6 +80,15 @@
         </form>
 
       </div>
+
+      {% if not stadt.kapak_resmi_url and stadt.eyalet.arma_url %}
+      <div class="col-md-3 text-center">
+        <img src="{{ stadt.eyalet.arma_url }}" alt="{{ stadt.eyalet.ad }} arması"
+             referrerpolicy="no-referrer"
+             style="max-height: 120px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)); opacity: 0.85;">
+      </div>
+      {% endif %}
+
     </div>
   </div>
 </section>
