@@ -35,12 +35,8 @@
       <div class="col-md-4 hero-photo-col">
         <img src="{{ stadt.kapak_resmi_url }}" alt="{{ stadt.name }}" class="hero-photo-img" referrerpolicy="no-referrer">
       </div>
-      <div class="col-md-8 text-center text-md-start">
-      {% elif stadt.eyalet.arma_url %}
-      <div class="col-md-9 text-center text-md-start">
-      {% else %}
-      <div class="col-12 text-center">
       {% endif %}
+      <div class="{% if stadt.kapak_resmi_url or stadt.eyalet.arma_url %}col-md-{% if stadt.kapak_resmi_url and stadt.eyalet.arma_url %}5{% elif stadt.kapak_resmi_url or stadt.eyalet.arma_url %}9{% endif %} text-center text-md-start{% else %}col-12 text-center{% endif %}">
 
         {% if hava %}
         <div class="mb-2">
@@ -81,7 +77,7 @@
 
       </div>
 
-      {% if not stadt.kapak_resmi_url and stadt.eyalet.arma_url %}
+      {% if stadt.eyalet.arma_url %}
       <div class="col-md-3 text-center">
         <img src="{{ stadt.eyalet.arma_url }}" alt="{{ stadt.eyalet.ad }} arması"
              referrerpolicy="no-referrer"
