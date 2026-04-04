@@ -40,6 +40,13 @@
       <div class="col-12 text-center">
       {% endif %}
 
+        {% if hava %}
+        <div class="mb-2">
+          <span class="badge rounded-pill px-3 py-2" style="background: rgba(255,255,255,0.18); font-size: 0.9rem; backdrop-filter: blur(4px);">
+            <i class="bi {{ hava.icon }} me-1"></i>{{ hava.sicaklik }}°C — {{ hava.aciklama }}
+          </span>
+        </div>
+        {% endif %}
         <h1><i class="bi bi-geo-alt-fill me-2"></i>{{ stadt.name }}</h1>
         {% if stadt.beschreibung %}
         <p class="mb-3">{{ stadt.beschreibung }}</p>
