@@ -13,9 +13,6 @@
   .kat-pill.active { background-color: #032A4A !important; color: #fff !important; border-color: #032A4A !important; }
   /* Hero fotoğraf */
   .hero-photo {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     position: relative;
     min-height: 340px;
     display: flex;
@@ -30,7 +27,7 @@
 
 <!-- BÖLÜM 1: Hero -->
 {% if stadt.kapak_resmi_url %}
-<section class="hero hero-photo" style="background-image: url('{{ stadt.kapak_resmi_url }}');">
+<section class="hero hero-photo" style="background-image: url('{{ stadt.kapak_resmi_url }}'); background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important;">
   <div class="hero-photo-overlay"></div>
   <div class="container text-center position-relative w-100">
 {% else %}
