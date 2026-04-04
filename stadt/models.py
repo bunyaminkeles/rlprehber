@@ -42,6 +42,7 @@ class Stadt(models.Model):
     termin_url = models.URLField(blank=True, verbose_name='Randevu URL')
     rss_duyuru_url = models.URLField(blank=True, verbose_name='Belediye RSS / Haber URL')
     beschreibung = models.TextField(blank=True, verbose_name='Açıklama')
+    kapak_resmi_url = models.URLField(blank=True, verbose_name='Kapak Fotoğrafı URL')
     aktiv = models.BooleanField(default=False, verbose_name='Aktif')
 
     class Meta:

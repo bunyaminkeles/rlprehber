@@ -29,6 +29,36 @@
         </div>
     </section>
 
+    <!-- ŞEHİR KARTLARI -->
+    {% if sehirler %}
+    <section class="py-4">
+        <div class="container">
+            <h2 class="fw-bold mb-1" style="font-size: 1.1rem; color: #111827;">Şehrinizi Seçin</h2>
+            <p class="mb-4" style="font-size: 0.875rem; color: #9ca3af;">Şehrinize özel rehber, duyurular, ilanlar ve daha fazlası</p>
+            <div class="row g-3">
+                {% for s in sehirler %}
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="/{{ s.eyalet.slug }}/{{ s.slug }}/"
+                       class="sehir-kart d-block text-decoration-none rounded-3 overflow-hidden position-relative"
+                       style="height: 140px;">
+                        {% if s.kapak_resmi_url %}
+                        <div class="sehir-kart-bg" style="background-image: url('{{ s.kapak_resmi_url }}');"></div>
+                        {% else %}
+                        <div class="sehir-kart-bg sehir-kart-fallback"></div>
+                        {% endif %}
+                        <div class="sehir-kart-overlay"></div>
+                        <div class="sehir-kart-icerik position-absolute bottom-0 start-0 p-3 w-100">
+                            <div class="fw-bold text-white" style="font-size: 1rem; text-shadow: 0 1px 3px rgba(0,0,0,0.5);">{{ s.name }}</div>
+                            {% if s.eyalet %}<div class="text-white-50" style="font-size: 0.7rem;">{{ s.eyalet.ad }}</div>{% endif %}
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
     <!-- "TAŞ" (STONE) BLOCK: Sabit Kurallar -->
     <section class="py-4">
         <div class="container">
@@ -611,6 +641,27 @@
 
 {% block extra_css %}
 <style>
+
+/* ─── ŞEHİR KARTLARI ────────────────────────────────────────── */
+.sehir-kart-bg {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.35s ease;
+}
+.sehir-kart-fallback {
+    background: linear-gradient(135deg, #032A4A 0%, #1a5276 100%);
+}
+.sehir-kart-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.1) 60%);
+}
+.sehir-kart {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: box-shadow 0.2s ease;
+}
+.sehir-kart:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+.sehir-kart:hover .sehir-kart-bg { transform: scale(1.05); }
 
 /* ─── GENEL KART HOVER ───────────────────────────────────────── */
 /* Zıplama yok. Sadece gölge derinleşir, çerçeve koyulaşır. */

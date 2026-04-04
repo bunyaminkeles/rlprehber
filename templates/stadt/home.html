@@ -11,11 +11,32 @@
   .kat-pill-nav::-webkit-scrollbar { display: none; }
   .kat-pill { white-space: nowrap; }
   .kat-pill.active { background-color: #032A4A !important; color: #fff !important; border-color: #032A4A !important; }
+  /* Hero fotoğraf */
+  .hero-photo {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+  }
+  .hero-photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(3,42,74,0.55) 0%, rgba(3,42,74,0.75) 100%);
+  }
 </style>
 
 <!-- BÖLÜM 1: Hero -->
+{% if stadt.kapak_resmi_url %}
+<section class="hero hero-photo" style="background-image: url('{{ stadt.kapak_resmi_url }}');">
+  <div class="hero-photo-overlay"></div>
+  <div class="container text-center position-relative w-100">
+{% else %}
 <section class="hero">
   <div class="container text-center">
+{% endif %}
     <h1><i class="bi bi-geo-alt-fill me-2"></i>{{ stadt.name }}</h1>
     {% if stadt.beschreibung %}
     <p class="mb-4">{{ stadt.beschreibung }}</p>

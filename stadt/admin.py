@@ -25,7 +25,7 @@ class EyaletAdmin(admin.ModelAdmin):
 
 @admin.register(Stadt)
 class StadtAdmin(admin.ModelAdmin):
-    list_display = ('name', 'eyalet', 'slug', 'typ', 'population', 'aktiv')
+    list_display = ('name', 'eyalet', 'slug', 'typ', 'population', 'kapak_resmi_url', 'aktiv')
     list_filter = ('eyalet', 'typ', 'aktiv')
     list_editable = ('aktiv',)
     prepopulated_fields = {'slug': ('name',)}
