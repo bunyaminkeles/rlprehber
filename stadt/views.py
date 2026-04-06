@@ -171,11 +171,6 @@ def home(request, eyalet_slug='rlp', stadt_slug=None):
         scope='eyalet', eyalet__slug=eyalet_slug, yayinda=True
     ).order_by('-olusturulma')[:3]
 
-    konut_belgeler = list(Kaynak.objects.filter(
-        Q(stadt=stadt, scope='stadt') | Q(scope='eyalet', eyalet__slug=eyalet_slug) | Q(scope='almanya'),
-        yayinda=True, kategori='konut',
-    ).order_by('sira'))
-
     hava = None
     if stadt.lat and stadt.lng:
         hava = _hava_durumu(stadt.lat, stadt.lng, f'hava_{stadt.slug}')
@@ -189,5 +184,4 @@ def home(request, eyalet_slug='rlp', stadt_slug=None):
         'hava':                hava,
         'tum_kategoriler':     [(k.slug, k.ad) for k in yer_kategorileri],
         'son_blog_yazilari':   son_blog_yazilari,
-        'konut_belgeler':      konut_belgeler,
     })

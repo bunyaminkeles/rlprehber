@@ -10,34 +10,61 @@ def liste(request, eyalet_slug='rlp', stadt_slug=None):
     return HttpResponsePermanentRedirect(f'/{eyalet_slug}/yerler/')
 
 
+class _KaynakBelgeAdapter:
+    """Kaynak nesnesini Belge arayüzüne uyumlu hale getirir (belgeler sayfası için)."""
+    dosya_uzantisi = 'pdf'
+    dosya = None
+
+    def __init__(self, kaynak):
+        self.baslik = kaynak.baslik
+        self.ozet = kaynak.ozet
+        self.indirme_url = kaynak.url or '#'
+
+
 def belgeler(request, eyalet_slug='rlp', stadt_slug=None):
     from stadt.models import Stadt
+    from django.db.models import Q
     stadt = get_object_or_404(Stadt, slug=stadt_slug, aktiv=True) if stadt_slug else None
 
     aktif_kat = request.GET.get('kat', '')
 
     # Şehir bağlamı varsa o şehir + federal; yoksa sadece federal
     if stadt:
-        from django.db.models import Q
         base_qs = Belge.objects.filter(yayinda=True).filter(Q(stadt=stadt) | Q(stadt__isnull=True))
     else:
         base_qs = Belge.objects.filter(yayinda=True, stadt__isnull=True)
 
-    filtered_qs = base_qs.filter(kategori=aktif_kat) if aktif_kat else base_qs
+    # Şehir sayfasındaki konut Kaynakları (Kaynak modeli) belgeler sayfasına dahil et
+    konut_kaynaklar = []
+    if stadt:
+        konut_qs = Kaynak.objects.filter(
+            Q(stadt=stadt, scope='stadt') | Q(scope='eyalet', eyalet__slug=eyalet_slug) | Q(scope='almanya'),
+            yayinda=True, kategori='konut',
+        ).order_by('sira')
+        konut_kaynaklar = [_KaynakBelgeAdapter(k) for k in konut_qs]
 
     kategoriler = []
     for k, v in BELGE_KATEGORI:
         items = list(base_qs.filter(kategori=k))
+        if k == 'konut':
+            items = konut_kaynaklar + items
         if items:
             kategoriler.append((k, v, items))
 
+    if aktif_kat == 'konut':
+        filtered_list = konut_kaynaklar + list(base_qs.filter(kategori='konut'))
+    elif aktif_kat:
+        filtered_list = list(base_qs.filter(kategori=aktif_kat))
+    else:
+        filtered_list = list(base_qs)
+
     return render(request, 'rehber/belgeler.html', {
-        'belgeler':         filtered_qs,
-        'kategoriler':      kategoriler,
+        'belgeler':          filtered_list,
+        'kategoriler':       kategoriler,
         'belge_kategoriler': BELGE_KATEGORI,
-        'aktif_kat':        aktif_kat,
-        'stadt':            stadt,
-        'eyalet_slug':      eyalet_slug if stadt else '',
+        'aktif_kat':         aktif_kat,
+        'stadt':             stadt,
+        'eyalet_slug':       eyalet_slug if stadt else '',
     })
 
 
