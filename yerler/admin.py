@@ -24,9 +24,9 @@ class YerFotoInline(admin.TabularInline):
 
 @admin.register(Yer)
 class YerAdmin(admin.ModelAdmin):
-    list_display  = ['ad', 'tur', 'kategori', 'eyalet', 'stadt', 'paket', 'paket_bitis', 'aktif_flag']
+    list_display  = ['ad', 'tur', 'kategori', 'eyalet', 'stadt', 'aktif', 'paket', 'paket_bitis']
     list_filter   = ['tur', 'paket', 'aktif', 'kategori', 'eyalet', 'stadt', 'scope']
-    list_editable = ['tur', 'paket']
+    list_editable = ['tur', 'paket', 'aktif']
     search_fields = ['ad', 'adres']
     actions       = [aktif_yap, pasif_yap]
     inlines       = [YerFotoInline]
