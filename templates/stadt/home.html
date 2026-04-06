@@ -53,27 +53,17 @@
         {% else %}
         <p class="mb-3">{{ stadt.get_typ_display }}{% if stadt.eyalet %} — {{ stadt.eyalet.ad }}{% endif %}</p>
         {% endif %}
-        <div class="mb-3">
-          <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/forum/" class="btn btn-outline-light me-2 mb-2">
-            <i class="bi bi-chat-dots me-1"></i>Soru &amp; Cevap
-          </a>
-          <a href="{{ stadt.termin_url|default:'#' }}"{% if stadt.termin_url %} target="_blank" rel="noopener"{% endif %} class="btn btn-light me-2 mb-2">
+        <div class="mb-3 d-flex flex-wrap gap-2">
+          <a href="{{ stadt.termin_url|default:'#' }}"{% if stadt.termin_url %} target="_blank" rel="noopener"{% endif %} class="btn btn-light">
             <i class="bi bi-calendar-check me-1"></i>Belediye Randevu
           </a>
-          <a href="{{ stadt.auslaenderbehorde_url|default:'#' }}"{% if stadt.auslaenderbehorde_url %} target="_blank" rel="noopener"{% endif %} class="btn btn-outline-light me-2 mb-2">
+          <a href="{{ stadt.auslaenderbehorde_url|default:'#' }}"{% if stadt.auslaenderbehorde_url %} target="_blank" rel="noopener"{% endif %} class="btn btn-outline-light">
             <i class="bi bi-envelope-paper me-1"></i>Ausländerbehörde
           </a>
+          <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/rehber/belgeler/" class="btn btn-outline-light">
+            <i class="bi bi-file-earmark-pdf me-1"></i>Resmi Belgeler
+          </a>
         </div>
-        <form action="{% url 'core:arama' %}" method="get" role="search">
-          <div class="d-flex align-items-center rounded-3 bg-white px-3" style="max-width:480px; {% if not stadt.kapak_resmi_url %}margin: 0 auto;{% endif %} box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
-            <i class="bi bi-search me-2" style="color: #9ca3af; font-size: 0.9rem;"></i>
-            <input id="sehir-search-input" type="search" name="q" class="form-control border-0 shadow-none bg-transparent"
-              placeholder="{{ stadt.name }} ara..."
-              style="padding: 0.75rem 0; font-size: 0.9rem; color: #111;">
-            <button class="btn btn-sm fw-semibold rounded-2 flex-shrink-0" type="submit"
-              style="background: #032A4A; color: #fff; padding: 0.4rem 1rem; font-size: 0.8rem;">Ara</button>
-          </div>
-        </form>
 
       </div>
 
@@ -89,24 +79,20 @@
   </div>
 </section>
 
-<!-- Hızlı Erişim Hap Linkleri -->
-<div class="container text-center mt-3 mb-3">
-  <div class="d-inline-flex flex-wrap justify-content-center gap-2">
-    <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/blog/" class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-medium">
-      <i class="bi bi-pencil-square me-1"></i>Blog
-    </a>
-    <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/duyurular/" class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-medium">
-      <i class="bi bi-megaphone me-1"></i>Duyurular
-    </a>
-    <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/ilan/" class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-medium">
-      <i class="bi bi-tags me-1"></i>İlanlar
-    </a>
-    <a href="/{{ eyalet_slug }}/almanca/" class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-medium">
-      <i class="bi bi-translate me-1"></i>Almanca Pratik
-    </a>
-    <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/rehber/belgeler/" class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-medium">
-      <i class="bi bi-file-earmark-pdf me-1"></i>Resmi Belgeler
-    </a>
+<!-- Arama Çubuğu -->
+<div class="py-4" style="background:#fff;">
+  <div class="container">
+    <form action="{% url 'core:arama' %}" method="get" role="search">
+      <div class="d-flex align-items-center rounded-3 bg-white px-4 mx-auto"
+           style="max-width:720px; box-shadow: 0 4px 24px rgba(3,42,74,0.13); border: 1.5px solid #e2e8f0;">
+        <i class="bi bi-search me-3" style="color:#9ca3af; font-size:1.2rem; flex-shrink:0;"></i>
+        <input id="sehir-search-input" type="search" name="q" class="form-control border-0 shadow-none bg-transparent"
+          placeholder="{{ stadt.name }} ara..."
+          style="padding: 1rem 0; font-size: 1.05rem; color: #111;">
+        <button class="btn fw-semibold rounded-2 flex-shrink-0" type="submit"
+          style="background:#032A4A; color:#fff; padding:0.55rem 1.5rem; font-size:0.95rem;">Ara</button>
+      </div>
+    </form>
   </div>
 </div>
 
@@ -331,13 +317,16 @@
   if (!input) return;
   const sehir = '{{ stadt.name }}';
   const ipuclari = [
-    sehir + ' cami...',
-    sehir + ' hastane...',
-    sehir + ' iş ilanı...',
-    sehir + ' Ausländerbehörde...',
-    sehir + ' TÜV...',
+    sehir + ' Jobcenter randevu...',
+    'KdU limitleri ' + sehir + '...',
+    'Türkçe konuşan doktor ' + sehir + '...',
+    'Evden çıkış formu Kündigung...',
+    sehir + ' Ausländerbehörde randevu...',
+    'Yabancı diploma tanıma Anerkennung...',
     sehir + ' Türk market...',
-    sehir + ' okul...',
+    'Elterngeld nasıl alınır...',
+    sehir + ' TÜV istasyonu...',
+    'Krankenversicherung değiştirme...',
   ];
   let idx = 0;
   function yaz(metin, cb) {

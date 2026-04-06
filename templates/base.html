@@ -112,6 +112,22 @@
     </button>
     <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav ms-auto gap-1 align-items-center">
+        {% if stadt %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              <i class="bi bi-people me-1"></i>Topluluk
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/forum/"><i class="bi bi-chat-square-text me-2"></i>Soru &amp; Cevap</a></li>
+              <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/blog/"><i class="bi bi-pencil-square me-2"></i>Blog</a></li>
+              <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/duyurular/"><i class="bi bi-megaphone me-2"></i>Duyurular</a></li>
+              <li><a class="dropdown-item" href="/{{ eyalet_slug }}/{{ stadt.slug }}/ilan/"><i class="bi bi-tags me-2"></i>İlanlar</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/{{ eyalet_slug }}/almanca/"><i class="bi bi-translate me-1"></i>Almanca</a>
+          </li>
+        {% endif %}
         {% if user.is_authenticated %}
           {% load mesajlar_tags %}
           {% okunmamis_sayi request.user as okunmamis %}
