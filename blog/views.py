@@ -8,10 +8,11 @@ def liste(request, eyalet_slug='rlp', stadt_slug=None):
     stadt = get_object_or_404(Stadt, slug=stadt_slug, aktiv=True) if stadt_slug else None
 
     if stadt:
-        # Şehir bağlamı → sadece o eyalete ait yazılar
-        yazilar = BlogYazisi.objects.filter(
-            scope='eyalet', eyalet__slug=eyalet_slug,
-            yayinda=True
+        # Şehir bağlamı → şehre özel + eyalete özel + almanya geneli
+        yazilar = BlogYazisi.objects.filter(yayinda=True).filter(
+            Q(scope='genel') |
+            Q(scope='eyalet', eyalet__slug=eyalet_slug) |
+            Q(scope='stadt', stadt=stadt)
         )
     else:
         # Eyalet / ana sayfa bağlamı → tüm yazılar
