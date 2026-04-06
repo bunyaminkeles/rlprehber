@@ -368,27 +368,25 @@
   <!-- BÖLÜM 2b: Son Blog Yazıları -->
   {% if son_blog_yazilari %}
   <hr class="my-4">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h4 class="mb-0"><i class="bi bi-pencil-square me-2 text-primary"></i>Blog</h4>
-    <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/blog/" class="btn btn-sm btn-outline-primary">Tümü</a>
-  </div>
-  <div class="row g-3">
+  <h4 class="mb-3"><i class="bi bi-pencil-square me-2 text-primary"></i>Blog</h4>
+  <div class="d-flex flex-column gap-2">
     {% for y in son_blog_yazilari %}
-    <div class="col-md-4">
-      <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/blog/{{ y.slug }}/" class="text-decoration-none text-dark">
-        <div class="card h-100">
-          {% if y.kapak_resmi %}
-          <img src="{{ y.kapak_resmi }}" alt="{{ y.baslik }}" style="height:140px;object-fit:cover" class="card-img-top">
-          {% endif %}
-          <div class="card-body">
-            <h6 class="fw-bold mb-1">{{ y.baslik }}</h6>
-            <p class="small text-muted mb-0">{{ y.ozet|default:y.icerik|striptags|truncatechars:80 }}</p>
-          </div>
-          <div class="card-footer text-muted small">{{ y.olusturulma|date:"d.m.Y" }}</div>
+    <a href="/{{ eyalet_slug }}/{% if y.scope == 'genel' or y.scope == 'eyalet' %}{% else %}{{ stadt.slug }}/{% endif %}blog/{{ y.slug }}/" class="text-decoration-none">
+      <div class="d-flex align-items-center gap-3 p-2 rounded hover-bg" style="border:1px solid #e5e7eb;">
+        {% if y.kapak_resmi %}
+        <img src="{{ y.kapak_resmi }}" alt="{{ y.baslik }}" style="width:64px;height:48px;object-fit:cover;border-radius:6px;flex-shrink:0;">
+        {% endif %}
+        <div class="flex-grow-1 min-width-0">
+          <div class="fw-semibold text-dark" style="font-size:0.9rem;">{{ y.baslik }}</div>
+          <div class="text-muted small">{{ y.olusturulma|date:"d.m.Y" }}</div>
         </div>
-      </a>
-    </div>
+        <i class="bi bi-chevron-right text-muted flex-shrink-0"></i>
+      </div>
+    </a>
     {% endfor %}
+  </div>
+  <div class="text-end mt-2">
+    <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/blog/" class="btn btn-sm btn-outline-primary">Tümü →</a>
   </div>
   {% endif %}
 
