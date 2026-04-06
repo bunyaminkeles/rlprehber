@@ -1018,6 +1018,58 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 </script>
+
+<script>
+// ── Animasyonlu placeholder ───────────────────────────────────
+(function () {
+  const input = document.getElementById('main-search-input');
+  if (!input) return;
+
+  const ipuclari = [
+    'Mainz cami...',
+    'Berlin Ausländerbehörde...',
+    'Frankfurt Türk market...',
+    'KdU Köln...',
+    'Hamburg hastanesi...',
+    'Almanca kursu...',
+    'Wiesbaden iş ilanı...',
+    'Düsseldorf TÜV...',
+  ];
+
+  let index = 0;
+  let yazıyor = false;
+
+  function yazdir(metin, cb) {
+    yazıyor = true;
+    input.placeholder = '';
+    let i = 0;
+    const iv = setInterval(() => {
+      if (input === document.activeElement) { clearInterval(iv); yazıyor = false; return; }
+      input.placeholder = metin.slice(0, ++i);
+      if (i >= metin.length) { clearInterval(iv); yazıyor = false; setTimeout(cb, 1800); }
+    }, 55);
+  }
+
+  function sil(cb) {
+    const iv = setInterval(() => {
+      if (input === document.activeElement) { clearInterval(iv); return; }
+      const p = input.placeholder;
+      if (!p.length) { clearInterval(iv); cb(); return; }
+      input.placeholder = p.slice(0, -1);
+    }, 30);
+  }
+
+  function dongu() {
+    if (input === document.activeElement) { setTimeout(dongu, 500); return; }
+    yazdir(ipuclari[index], () => sil(() => {
+      index = (index + 1) % ipuclari.length;
+      setTimeout(dongu, 300);
+    }));
+  }
+
+  setTimeout(dongu, 1200);
+})();
+</script>
 {% endblock %}
 
 {% endblock %}

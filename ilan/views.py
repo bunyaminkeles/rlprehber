@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
 from django.utils import timezone
+from django.http import JsonResponse
 from .models import Ilan, IlanYorum, ILAN_KATEGORI, SATILIK_KATEGORILER, ARANIYOR_KATEGORILER
 from linkler.models import OnemliLink
 from accounts.utils import email_dogrulandi_mi, dogrulama_maili_gonder
@@ -48,6 +49,27 @@ def liste(request, eyalet_slug='rlp', stadt_slug=None):
         'stadt':                stadt,
         'eyalet_slug':          eyalet_slug,
     })
+
+
+def detay_json(request, pk, eyalet_slug='rlp', stadt_slug=None):
+    """Offcanvas için ilan detayını JSON olarak döner."""
+    bugun = timezone.localdate()
+    ilan = get_object_or_404(
+        Ilan.objects.select_related('sahip', 'stadt', 'eyalet'),
+        pk=pk, aktif=True, onaylandi=True, yayin_bitis__gte=bugun
+    )
+    data = {
+        'baslik':    ilan.baslik,
+        'icerik':    ilan.icerik,
+        'kategori':  ilan.get_kategori_display(),
+        'fiyat':     str(ilan.fiyat) if ilan.fiyat else '',
+        'resim_url': ilan.resim.url if ilan.resim else '',
+        'sahip':     ilan.sahip.get_full_name() or ilan.sahip.username,
+        'tarih':     ilan.olusturulma.strftime('%d.%m.%Y'),
+        'stadt':     ilan.stadt.name if ilan.stadt else '',
+        'iletisim':  ilan.iletisim if request.user.is_authenticated else '',
+    }
+    return JsonResponse(data)
 
 
 def detay(request, pk, eyalet_slug='rlp', stadt_slug=None):

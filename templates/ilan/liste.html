@@ -60,13 +60,14 @@
           <div class="row g-3">
             {% for i in satilik %}
             <div class="col-md-4 col-6">
-              <div class="card h-100">
+              <div class="card h-100 ilan-kart" role="button"
+                   data-ilan-pk="{{ i.pk }}"
+                   data-json-url="/{{ eyalet_slug }}/{{ stadt.slug }}/ilan/{{ i.pk }}/json/"
+                   data-bs-toggle="offcanvas" data-bs-target="#ilanOffcanvas">
                 <div class="card-body">
                   <span class="badge bg-primary mb-1" style="font-size:.7rem;">{{ i.get_kategori_display }}</span>
-                  <h6 class="card-title mt-1">
-                    <a href="/{{ stadt.slug }}/ilan/{{ i.pk }}/" class="text-dark text-decoration-none">{{ i.baslik }}</a>
-                  </h6>
-                  <p class="small text-muted">{{ i.icerik|truncatechars:80 }}</p>
+                  <h6 class="card-title mt-1 mb-1">{{ i.baslik }}</h6>
+                  <p class="small text-muted mb-1">{{ i.icerik|truncatechars:80 }}</p>
                   {% if i.fiyat %}<strong class="text-primary">{{ i.fiyat }} €</strong>{% endif %}
                 </div>
               </div>
@@ -87,13 +88,14 @@
           <div class="row g-3">
             {% for i in araniyor %}
             <div class="col-md-4 col-6">
-              <div class="card h-100 border-warning border-opacity-50">
+              <div class="card h-100 border-warning border-opacity-50 ilan-kart" role="button"
+                   data-ilan-pk="{{ i.pk }}"
+                   data-json-url="/{{ eyalet_slug }}/{{ stadt.slug }}/ilan/{{ i.pk }}/json/"
+                   data-bs-toggle="offcanvas" data-bs-target="#ilanOffcanvas">
                 <div class="card-body">
                   <span class="badge bg-warning text-dark mb-1" style="font-size:.7rem;">{{ i.get_kategori_display }}</span>
-                  <h6 class="card-title mt-1">
-                    <a href="/{{ stadt.slug }}/ilan/{{ i.pk }}/" class="text-dark text-decoration-none">{{ i.baslik }}</a>
-                  </h6>
-                  <p class="small text-muted">{{ i.icerik|truncatechars:80 }}</p>
+                  <h6 class="card-title mt-1 mb-1">{{ i.baslik }}</h6>
+                  <p class="small text-muted mb-0">{{ i.icerik|truncatechars:80 }}</p>
                 </div>
               </div>
             </div>
@@ -109,10 +111,75 @@
   </div>
 </div>
 
+<!-- İlan Detay Offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="ilanOffcanvas" aria-labelledby="ilanOffcanvasLabel" style="width:min(480px,100vw)">
+  <div class="offcanvas-header border-bottom">
+    <h5 class="offcanvas-title fw-bold" id="ilanOffcanvasLabel">Yükleniyor…</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Kapat"></button>
+  </div>
+  <div class="offcanvas-body" id="ilanOffcanvasBody">
+    <div class="d-flex justify-content-center mt-5">
+      <div class="spinner-border text-primary" role="status"></div>
+    </div>
+  </div>
+</div>
+
 <style>
 .ilan-platform-link:hover {
   background-color: #f0f4ff !important;
   border-color: #6c8ebf !important;
 }
+.ilan-kart { cursor: pointer; transition: box-shadow 0.15s; }
+.ilan-kart:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const offcanvasEl = document.getElementById('ilanOffcanvas');
+  const titleEl     = document.getElementById('ilanOffcanvasLabel');
+  const bodyEl      = document.getElementById('ilanOffcanvasBody');
+  const bsOffcanvas = new bootstrap.Offcanvas(offcanvasEl);
+
+  document.querySelectorAll('.ilan-kart').forEach(function (kart) {
+    kart.addEventListener('click', function () {
+      const url = kart.dataset.jsonUrl;
+
+      titleEl.textContent = 'Yükleniyor…';
+      bodyEl.innerHTML = '<div class="d-flex justify-content-center mt-5"><div class="spinner-border text-primary" role="status"></div></div>';
+      bsOffcanvas.show();
+
+      fetch(url)
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          titleEl.textContent = d.baslik;
+
+          var resimHtml = d.resim_url
+            ? '<img src="' + d.resim_url + '" class="img-fluid rounded-3 mb-3 w-100" style="max-height:220px;object-fit:cover" alt="">'
+            : '';
+
+          var fiyatHtml = d.fiyat
+            ? '<p class="fs-5 fw-bold text-primary mb-3">' + d.fiyat + ' €</p>'
+            : '';
+
+          var iletisimHtml = d.iletisim
+            ? '<a href="mailto:' + d.iletisim + '" class="btn btn-outline-primary w-100 mt-3 rounded-pill"><i class="bi bi-envelope me-1"></i>' + d.iletisim + '</a>'
+            : '';
+
+          bodyEl.innerHTML =
+            resimHtml +
+            '<div class="d-flex justify-content-between align-items-center mb-3">' +
+              '<span class="badge bg-secondary rounded-pill">' + d.kategori + '</span>' +
+              '<span class="text-muted small"><i class="bi bi-person me-1"></i>' + d.sahip + ' · ' + d.tarih + '</span>' +
+            '</div>' +
+            fiyatHtml +
+            '<p class="text-body lh-base">' + d.icerik.replace(/\n/g, '<br>') + '</p>' +
+            iletisimHtml;
+        })
+        .catch(function () {
+          bodyEl.innerHTML = '<div class="alert alert-danger">Bilgiler yüklenirken bir hata oluştu.</div>';
+        });
+    });
+  });
+});
+</script>
 {% endblock %}
