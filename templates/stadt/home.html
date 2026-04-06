@@ -110,90 +110,8 @@
   </div>
 </div>
 
+<!-- BÖLÜM 3: Önemli Yerler Dizini -->
 <div class="container mt-3">
-
-  <!-- BÖLÜM 2: Yaklaşan Günler + Belediye Haberleri -->
-  <div class="row g-3">
-    <!-- Yaklaşan Günler -->
-    <div class="col-md-6">
-      <div class="card h-100">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <span><i class="bi bi-calendar3 me-2"></i>Yaklaşan Günler</span>
-          <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/takvim/" class="btn btn-sm btn-outline-primary">Takvim</a>
-        </div>
-        <div class="card-body p-0">
-          {% for e in yaklasan %}
-          <div class="d-flex align-items-center p-3 border-bottom">
-            <div class="me-3 text-center" style="min-width:48px">
-              <div class="fw-bold text-primary" style="font-size:1.3rem">{{ e.tarih|date:"d" }}</div>
-              <div class="text-muted" style="font-size:0.75rem">{{ e.tarih|date:"M" }}</div>
-            </div>
-            <div>
-              <div class="fw-semibold">{{ e.baslik }}</div>
-              <small class="text-muted">{{ e.get_tur_display }}</small>
-            </div>
-          </div>
-          {% empty %}
-          <p class="text-muted p-3 mb-0">Yaklaşan etkinlik yok.</p>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-    <!-- Belediye Haberleri (RSS) -->
-    {% if belediye_haberleri %}
-    <div class="col-md-6">
-      <div class="card h-100">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <span><i class="bi bi-newspaper me-2"></i>Belediye Haberleri</span>
-          {% if stadt.rss_duyuru_url %}
-          <a href="{{ stadt.rss_duyuru_url }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-primary">Tümü</a>
-          {% endif %}
-        </div>
-        <div class="card-body p-0">
-          {% for h in belediye_haberleri %}
-          <a href="{{ h.link }}" target="_blank" rel="noopener" class="d-flex align-items-start p-3 border-bottom text-decoration-none text-dark hover-bg">
-            <div class="flex-grow-1">
-              <div class="fw-semibold" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ h.baslik }}</div>
-              {% if h.tarih %}<small class="text-muted">{{ h.tarih }}</small>{% endif %}
-            </div>
-            <i class="bi bi-box-arrow-up-right text-muted ms-2 mt-1 flex-shrink-0"></i>
-          </a>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-    {% endif %}
-  </div>{# /row Bölüm 2 #}
-
-  <!-- BÖLÜM 2b: Son Blog Yazıları -->
-  {% if son_blog_yazilari %}
-  <hr class="my-4">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h4 class="mb-0"><i class="bi bi-pencil-square me-2 text-primary"></i>Blog</h4>
-    <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/blog/" class="btn btn-sm btn-outline-primary">Tümü</a>
-  </div>
-  <div class="row g-3">
-    {% for y in son_blog_yazilari %}
-    <div class="col-md-4">
-      <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/blog/{{ y.slug }}/" class="text-decoration-none text-dark">
-        <div class="card h-100">
-          {% if y.kapak_resmi %}
-          <img src="{{ y.kapak_resmi }}" alt="{{ y.baslik }}" style="height:140px;object-fit:cover" class="card-img-top">
-          {% endif %}
-          <div class="card-body">
-            <h6 class="fw-bold mb-1">{{ y.baslik }}</h6>
-            <p class="small text-muted mb-0">{{ y.ozet|default:y.icerik|striptags|truncatechars:80 }}</p>
-          </div>
-          <div class="card-footer text-muted small">{{ y.olusturulma|date:"d.m.Y" }}</div>
-        </div>
-      </a>
-    </div>
-    {% endfor %}
-  </div>
-  {% endif %}
-
-  <!-- BÖLÜM 3: Önemli Yerler Dizini -->
-  <hr class="my-4">
   <h4 class="mb-3"><i class="bi bi-geo-alt me-2 text-primary"></i>{{ stadt.name }}'da Önemli Yerler</h4>
 
   <!-- Yatay Kategori Pill Navigasyonu -->
@@ -319,6 +237,90 @@
 
     </div>{# /col-lg-9 #}
   </div>{# /row Bölüm 3 #}
+
+</div>
+
+<div class="container mt-3">
+
+  <!-- BÖLÜM 2: Yaklaşan Günler + Belediye Haberleri -->
+  <div class="row g-3">
+    <!-- Yaklaşan Günler -->
+    <div class="col-md-6">
+      <div class="card h-100">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span><i class="bi bi-calendar3 me-2"></i>Yaklaşan Günler</span>
+          <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/takvim/" class="btn btn-sm btn-outline-primary">Takvim</a>
+        </div>
+        <div class="card-body p-0">
+          {% for e in yaklasan %}
+          <div class="d-flex align-items-center p-3 border-bottom">
+            <div class="me-3 text-center" style="min-width:48px">
+              <div class="fw-bold text-primary" style="font-size:1.3rem">{{ e.tarih|date:"d" }}</div>
+              <div class="text-muted" style="font-size:0.75rem">{{ e.tarih|date:"M" }}</div>
+            </div>
+            <div>
+              <div class="fw-semibold">{{ e.baslik }}</div>
+              <small class="text-muted">{{ e.get_tur_display }}</small>
+            </div>
+          </div>
+          {% empty %}
+          <p class="text-muted p-3 mb-0">Yaklaşan etkinlik yok.</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <!-- Belediye Haberleri (RSS) -->
+    {% if belediye_haberleri %}
+    <div class="col-md-6">
+      <div class="card h-100">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span><i class="bi bi-newspaper me-2"></i>Belediye Haberleri</span>
+          {% if stadt.rss_duyuru_url %}
+          <a href="{{ stadt.rss_duyuru_url }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-primary">Tümü</a>
+          {% endif %}
+        </div>
+        <div class="card-body p-0">
+          {% for h in belediye_haberleri %}
+          <a href="{{ h.link }}" target="_blank" rel="noopener" class="d-flex align-items-start p-3 border-bottom text-decoration-none text-dark hover-bg">
+            <div class="flex-grow-1">
+              <div class="fw-semibold" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ h.baslik }}</div>
+              {% if h.tarih %}<small class="text-muted">{{ h.tarih }}</small>{% endif %}
+            </div>
+            <i class="bi bi-box-arrow-up-right text-muted ms-2 mt-1 flex-shrink-0"></i>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>{# /row Bölüm 2 #}
+
+  <!-- BÖLÜM 2b: Son Blog Yazıları -->
+  {% if son_blog_yazilari %}
+  <hr class="my-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="mb-0"><i class="bi bi-pencil-square me-2 text-primary"></i>Blog</h4>
+    <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/blog/" class="btn btn-sm btn-outline-primary">Tümü</a>
+  </div>
+  <div class="row g-3">
+    {% for y in son_blog_yazilari %}
+    <div class="col-md-4">
+      <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/blog/{{ y.slug }}/" class="text-decoration-none text-dark">
+        <div class="card h-100">
+          {% if y.kapak_resmi %}
+          <img src="{{ y.kapak_resmi }}" alt="{{ y.baslik }}" style="height:140px;object-fit:cover" class="card-img-top">
+          {% endif %}
+          <div class="card-body">
+            <h6 class="fw-bold mb-1">{{ y.baslik }}</h6>
+            <p class="small text-muted mb-0">{{ y.ozet|default:y.icerik|striptags|truncatechars:80 }}</p>
+          </div>
+          <div class="card-footer text-muted small">{{ y.olusturulma|date:"d.m.Y" }}</div>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
 
 </div>{# /container #}
 
