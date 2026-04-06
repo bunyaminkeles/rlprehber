@@ -275,9 +275,6 @@
       <div class="card h-100">
         <div class="card-header d-flex justify-content-between align-items-center">
           <span><i class="bi bi-newspaper me-2"></i>Belediye Haberleri</span>
-          {% if stadt.rss_duyuru_url %}
-          <a href="{{ stadt.rss_duyuru_url }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-primary">Tümü</a>
-          {% endif %}
         </div>
         <div class="card-body p-0">
           {% for h in belediye_haberleri %}
