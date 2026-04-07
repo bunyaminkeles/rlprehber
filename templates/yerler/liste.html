@@ -1,7 +1,10 @@
 <!-- TEST: KANARYA v4 -->
 {% extends 'base.html' %}
 {% block title %}Önemli Yerler — {{ stadt.name }}{% endblock %}
-{% block breadcrumb %}<li class="breadcrumb-item active">Önemli Yerler</li>{% endblock %}
+{% block breadcrumb %}
+  {% if stadt %}<li class="breadcrumb-item"><a href="/{{ eyalet_slug }}/{{ stadt.slug }}/">{{ stadt.name }}</a></li>{% endif %}
+  <li class="breadcrumb-item active">Önemli Yerler</li>
+{% endblock %}
 
 {% block content %}
 <style>
