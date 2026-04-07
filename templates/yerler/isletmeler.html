@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}İşletmeler — {{ stadt.name }}{% endblock %}
-{% block breadcrumb %}<li class="breadcrumb-item active">İşletmeler</li>{% endblock %}
+{% block breadcrumb %}
+  {% if stadt %}<li class="breadcrumb-item"><a href="/{{ eyalet_slug }}/{{ stadt.slug }}/">{{ stadt.name }}</a></li>{% endif %}
+  <li class="breadcrumb-item active">İşletmeler</li>
+{% endblock %}
 
 {% block content %}
 <div class="container mt-4">

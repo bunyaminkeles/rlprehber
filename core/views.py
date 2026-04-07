@@ -154,6 +154,8 @@ def arama(request):
     from django.shortcuts import redirect as _redirect
 
     q = request.GET.get('q', '').strip()
+    stad_param = request.GET.get('stad', '').strip()
+    eyalet_param = request.GET.get('eyalet', 'rlp').strip()
     if not q:
         return render(request, 'core/arama.html', {'q': q, 'sonuclar': []})
 
@@ -177,7 +179,11 @@ def arama(request):
     }
 
     # Belge/döküman aramaları için özel yönlendirme
-    BELGE_ANAHTAR = ['belge', 'belgeler', 'form', 'pdf', 'evrak', 'dilekçe', 'antrag', 'formular', 'dokuman', 'döküman']
+    BELGE_ANAHTAR = [
+        'belge', 'belgeler', 'form', 'pdf', 'evrak', 'dilekçe', 'antrag', 'formular', 'dokuman', 'döküman',
+        'kdu', 'konut yardımı', 'wohngeld', 'wbs', 'wohnberechtigungsschein',
+        'mietbescheinigung', 'schufa', 'anmeldebescheinigung', 'abmeldebescheinigung',
+    ]
 
     def _sehir_url(sehir):
         es = sehir.eyalet.slug if sehir.eyalet else 'rlp'
@@ -193,47 +199,55 @@ def arama(request):
     # Tüm aktif şehirleri al (cache-friendly: küçük tablo)
     tum_sehirler = list(Stadt.objects.select_related('eyalet').all())
 
+    # ── 0. KADEME: Form'dan gelen şehir bağlamı (stad parametresi) ───────────
+    form_sehir = None
+    if stad_param:
+        form_sehir = next((s for s in tum_sehirler if s.slug == stad_param), None)
+
     # ── 1. KADEME: Tek başına şehir adı / slug eşleşmesi ──────────────────────
     for sehir in tum_sehirler:
         if q_lower == sehir.name.lower() or q_lower == sehir.slug.lower():
             return _redirect(_sehir_url(sehir))
 
     # ── 2. KADEME: Şehir + Kategori niyet eşleşmesi ───────────────────────────
-    bulunan_sehir = None
+    bulunan_sehir = form_sehir  # form bağlamı varsa başlangıç değeri olarak kullan
     kalan_kelimeler = list(q_words)
 
-    for sehir in tum_sehirler:
-        sehir_adi_lower = sehir.name.lower()
-        sehir_slug_lower = sehir.slug.lower()
-        if sehir_adi_lower in q_lower or sehir_slug_lower in q_lower:
-            bulunan_sehir = sehir
-            # Şehir adını query'den çıkar, kalanı kategori için kullan
-            kalan_kelimeler = [
-                w for w in q_words
-                if w not in sehir_adi_lower.split() and w != sehir_slug_lower
-            ]
-            break
+    if not bulunan_sehir:
+        for sehir in tum_sehirler:
+            sehir_adi_lower = sehir.name.lower()
+            sehir_slug_lower = sehir.slug.lower()
+            if sehir_adi_lower in q_lower or sehir_slug_lower in q_lower:
+                bulunan_sehir = sehir
+                kalan_kelimeler = [
+                    w for w in q_words
+                    if w not in sehir_adi_lower.split() and w != sehir_slug_lower
+                ]
+                break
 
     if bulunan_sehir and kalan_kelimeler:
         # Belge araması → şehir rehber/belgeler sayfası
         if any(b in ' '.join(kalan_kelimeler) for b in BELGE_ANAHTAR):
-            temel_url = _sehir_url(bulunan_sehir)
             eyalet_s = bulunan_sehir.eyalet.slug if bulunan_sehir.eyalet else 'rlp'
             return _redirect(f'/{eyalet_s}/{bulunan_sehir.slug}/rehber/belgeler/')
         bulunan_kategori = _niyet_kategori(kalan_kelimeler)
         if bulunan_kategori:
             temel_url = _sehir_url(bulunan_sehir)
             return _redirect(f'{temel_url}#kategori-{bulunan_kategori}')
-        # Şehir bulundu ama kategori yok → şehir ana sayfasına git
+        # Şehir bulundu ama kategori yok → DB aramasına düş (aşağıda devam eder)
+    elif bulunan_sehir and not kalan_kelimeler:
+        # Sadece şehir adı yazıldı → şehir ana sayfasına git
         return _redirect(_sehir_url(bulunan_sehir))
 
-    # Şehir yok ama belge araması → ulusal belgeler sayfası
+    # Şehir yok ama belge araması → federal belgeler sayfası
     if any(b in q_lower for b in BELGE_ANAHTAR):
-        return _redirect('/')
+        return _redirect('/rehber/belgeler/')
 
     # Şehir yok ama kategori araması → arama sonuçlarında göster (fallback devam)
 
-    # ── 3. KADEME: Fallback — standart arama + şehir "top hit" ────────────────
+    # ── 3. KADEME: Fallback — standart arama (şehir bağlamı varsa önce onu göster)
+    from django.db.models import Q as DQ
+
     def _eyalet_slug(obj):
         if obj.scope == 'stadt' and obj.stadt and obj.stadt.eyalet:
             return obj.stadt.eyalet.slug
@@ -243,6 +257,12 @@ def arama(request):
         if obj.stadt and obj.stadt.eyalet:
             return obj.stadt.eyalet.slug
         return 'rlp'
+
+    # Şehir bağlamı varsa: o şehre ait + federal içerik; yoksa: tüm içerik
+    def _sehir_filtre(qs, sehir):
+        if sehir:
+            return qs.filter(DQ(stadt=sehir) | DQ(stadt__isnull=True))
+        return qs
 
     sonuclar = []
 
@@ -279,10 +299,9 @@ def arama(request):
             'stadt': obj.stadt.name if obj.stadt else 'RLP',
         })
 
-    from django.db.models import Q as DQ
-    kaynaklar = Kaynak.objects.filter(
-        DQ(baslik__icontains=q) | DQ(ozet__icontains=q),
-        yayinda=True
+    kaynaklar = _sehir_filtre(
+        Kaynak.objects.filter(DQ(baslik__icontains=q) | DQ(ozet__icontains=q), yayinda=True),
+        bulunan_sehir
     ).select_related('stadt__eyalet')
     for obj in kaynaklar:
         es = _eyalet_slug(obj)
@@ -304,6 +323,26 @@ def arama(request):
             'ozet': obj.adres,
             'url': f'{prefix}/yerler/{obj.pk}/',
             'stadt': obj.stadt.name if obj.stadt else 'RLP',
+        })
+
+    from rehber.models import Belge
+    belgeler = _sehir_filtre(
+        Belge.objects.filter(DQ(baslik__icontains=q) | DQ(ozet__icontains=q), yayinda=True),
+        bulunan_sehir
+    ).select_related('stadt__eyalet')[:10]
+    for obj in belgeler:
+        if obj.stadt:
+            es = obj.stadt.eyalet.slug if obj.stadt.eyalet else 'rlp'
+            url = f'/{es}/{obj.stadt.slug}/rehber/belgeler/'
+            stadt_ad = obj.stadt.name
+        else:
+            url = '/rehber/belgeler/'
+            stadt_ad = 'Tüm Almanya'
+        sonuclar.append({
+            'tip': 'Resmi Belge', 'icon': 'bi-file-earmark-text', 'baslik': obj.baslik,
+            'ozet': obj.ozet,
+            'url': url,
+            'stadt': stadt_ad,
         })
 
     return render(request, 'core/arama.html', {

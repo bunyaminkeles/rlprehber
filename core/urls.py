@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 from forum import views as forum_views
+from rehber import views as rehber_views
 
 app_name = 'core'
 
@@ -8,6 +9,7 @@ urlpatterns = [
     path('', views.anasayfa, name='anasayfa'),
     path('hakkinda/', views.hakkinda, name='hakkinda'),
     path('arama/', views.arama, name='arama'),
+    path('rehber/belgeler/', rehber_views.belgeler, name='belgeler_federal'),
     path('iletisim/', views.iletisim, name='iletisim'),
     path('dashboard/', views.dashboard, name='dashboard'),
 
