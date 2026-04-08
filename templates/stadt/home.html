@@ -12,6 +12,16 @@
   .kat-pill-nav::-webkit-scrollbar { display: none; }
   .kat-pill { white-space: nowrap; }
   .kat-pill.active { background-color: #032A4A !important; color: #fff !important; border-color: #032A4A !important; }
+  /* Yer kartı hover */
+  .yer-kart {
+    cursor: pointer;
+    transition: transform .18s ease, box-shadow .18s ease;
+    border: 1px solid #e5e7eb;
+  }
+  .yer-kart:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(3,42,74,0.13) !important;
+  }
   /* Hero fotoğraf */
   .hero-photo-img {
     width: 100%;
@@ -258,19 +268,16 @@
           <div class="row g-3 mb-3">
             {% for yer in grup.yerler %}
             <div class="col-md-4 col-sm-6">
-              <div class="card h-100">
-                <div class="card-body d-flex flex-column">
-                  <h6 class="card-title mb-1">
-                    <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/" class="text-dark text-decoration-none">{{ yer.ad }}</a>
-                  </h6>
-                  <p class="small text-muted mb-2 flex-grow-1"><i class="bi bi-geo-alt me-1"></i>{{ yer.adres }}</p>
-                  <div class="d-flex gap-2 mt-2 flex-wrap">
-                    <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/" class="btn btn-sm btn-primary"><i class="bi bi-info-circle me-1"></i>Detay</a>
-                    {% if yer.maps_url %}<a href="{{ yer.maps_url }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary"><i class="bi bi-map me-1"></i>Harita</a>{% endif %}
-                    {% if yer.website %}<a href="{{ yer.website }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary"><i class="bi bi-globe me-1"></i>Web</a>{% endif %}
+              <a href="{% if yer.website %}{{ yer.website }}{% elif yer.maps_url %}{{ yer.maps_url }}{% else %}/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/{% endif %}"
+                 {% if yer.website or yer.maps_url %}target="_blank" rel="noopener"{% endif %}
+                 class="text-decoration-none">
+                <div class="card h-100 yer-kart">
+                  <div class="card-body d-flex flex-column">
+                    <h6 class="card-title mb-1" style="color:#111;">{{ yer.ad }}</h6>
+                    <p class="small text-muted mb-0 flex-grow-1"><i class="bi bi-geo-alt me-1"></i>{{ yer.adres }}</p>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
             {% endfor %}
           </div>
@@ -280,34 +287,35 @@
           <p class="rehber-alt-baslik"><i class="bi bi-bookmark-fill me-1"></i>{{ alt_ad }}</p>
           <div class="row g-3 mb-3">
             {% for s in kaynaklar %}
+            {% if s.tip == 'link' or not s.slug %}
+              {% if s.url %}
             <div class="col-md-4 col-sm-6">
-              <div class="card h-100">
-                <div class="card-body d-flex flex-column">
-                  <h6 class="card-title mb-1">
-                    <i class="bi {{ s.icon }} me-1 text-primary"></i>
-                    <span class="text-dark">{{ s.baslik }}</span>
-                  </h6>
-                  {% if s.ozet %}<p class="small text-muted mb-2 flex-grow-1">{{ s.ozet|truncatechars:90 }}</p>{% endif %}
-                  <div class="mt-auto">
-                    {% if s.tip == 'link' or not s.slug %}
-                      {% if s.kategori == 'konut' %}
-                      <a href="{{ s.url|default:'#' }}" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
-                        <i class="bi bi-file-earmark-pdf me-1"></i>PDF Aç
-                      </a>
-                      {% else %}
-                      <a href="{{ s.url|default:'#' }}" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
-                        <i class="bi bi-box-arrow-up-right me-1"></i>Git
-                      </a>
-                      {% endif %}
-                    {% else %}
-                      <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/rehber/{{ s.slug }}/" class="btn btn-sm btn-primary">
-                        <i class="bi bi-info-circle me-1"></i>Detay
-                      </a>
-                    {% endif %}
+              <a href="{{ s.url }}" target="_blank" rel="noopener" class="text-decoration-none">
+                <div class="card h-100 yer-kart">
+                  <div class="card-body d-flex flex-column">
+                    <h6 class="card-title mb-1" style="color:#111;">
+                      <i class="bi {{ s.icon }} me-1 text-primary"></i>{{ s.baslik }}
+                    </h6>
+                    {% if s.ozet %}<p class="small text-muted mb-0 flex-grow-1">{{ s.ozet|truncatechars:90 }}</p>{% endif %}
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
+              {% endif %}
+            {% else %}
+            <div class="col-md-4 col-sm-6">
+              <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/rehber/{{ s.slug }}/" class="text-decoration-none">
+                <div class="card h-100 yer-kart">
+                  <div class="card-body d-flex flex-column">
+                    <h6 class="card-title mb-1" style="color:#111;">
+                      <i class="bi {{ s.icon }} me-1 text-primary"></i>{{ s.baslik }}
+                    </h6>
+                    {% if s.ozet %}<p class="small text-muted mb-0 flex-grow-1">{{ s.ozet|truncatechars:90 }}</p>{% endif %}
+                  </div>
+                </div>
+              </a>
+            </div>
+            {% endif %}
             {% endfor %}
           </div>
           {% endfor %}
@@ -317,19 +325,16 @@
           <div class="row g-3 mb-3">
             {% for yer in grup.yerler %}
             <div class="col-md-4 col-sm-6">
-              <div class="card h-100">
-                <div class="card-body d-flex flex-column">
-                  <h6 class="card-title mb-1">
-                    <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/" class="text-dark text-decoration-none">{{ yer.ad }}</a>
-                  </h6>
-                  <p class="small text-muted mb-2 flex-grow-1"><i class="bi bi-geo-alt me-1"></i>{{ yer.adres }}</p>
-                  <div class="d-flex gap-2 mt-2 flex-wrap">
-                    <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/" class="btn btn-sm btn-primary"><i class="bi bi-info-circle me-1"></i>Detay</a>
-                    {% if yer.maps_url %}<a href="{{ yer.maps_url }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary"><i class="bi bi-map me-1"></i>Harita</a>{% endif %}
-                    {% if yer.website %}<a href="{{ yer.website }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary"><i class="bi bi-globe me-1"></i>Web</a>{% endif %}
+              <a href="{% if yer.website %}{{ yer.website }}{% elif yer.maps_url %}{{ yer.maps_url }}{% else %}/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/{% endif %}"
+                 {% if yer.website or yer.maps_url %}target="_blank" rel="noopener"{% endif %}
+                 class="text-decoration-none">
+                <div class="card h-100 yer-kart">
+                  <div class="card-body d-flex flex-column">
+                    <h6 class="card-title mb-1" style="color:#111;">{{ yer.ad }}</h6>
+                    <p class="small text-muted mb-0 flex-grow-1"><i class="bi bi-geo-alt me-1"></i>{{ yer.adres }}</p>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
             {% endfor %}
           </div>
@@ -524,4 +529,5 @@
   if (searchInput) searchInput.value = '';
   window.addEventListener('pageshow', () => { if (searchInput) searchInput.value = ''; });
 </script>
+
 {% endblock %}
