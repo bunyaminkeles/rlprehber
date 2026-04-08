@@ -166,6 +166,7 @@
 </nav>
 
 {# Breadcrumb — şehir bağlamında #}
+{% block breadcrumb_nav %}
 {% if stadt %}
 <div class="container mt-2">
   <nav aria-label="breadcrumb">
@@ -177,6 +178,7 @@
   </nav>
 </div>
 {% endif %}
+{% endblock %}
 
 <!-- Flash mesajları -->
 {% if messages %}
