@@ -359,26 +359,46 @@
             };
 
             if ('geolocation' in navigator) {
-                const tercih = localStorage.getItem('konum_tercihi');
-                if (tercih === 'kabul') {
+                // Tarayıcının mevcut izin durumunu kontrol et
+                let permState = 'prompt';
+                if (navigator.permissions) {
+                    try {
+                        const perm = await navigator.permissions.query({ name: 'geolocation' });
+                        permState = perm.state;
+                    } catch {}
+                }
+
+                if (permState === 'granted') {
+                    // Tarayıcı zaten izin vermiş — banner gösterme, localStorage güncelle
+                    localStorage.setItem('konum_tercihi', 'kabul');
                     loadKonum();
-                } else if (tercih === 'ret') {
+                } else if (permState === 'denied') {
+                    // Tarayıcı izni kalıcı reddedilmiş
+                    localStorage.setItem('konum_tercihi', 'ret');
                     await loadMainz();
                 } else {
-                    // İlk ziyaret — açıklama banner'ını göster
-                    const banner = document.getElementById('konum-izni-banner');
-                    if (banner) banner.classList.remove('d-none');
-
-                    document.getElementById('konum-izni-kabul').addEventListener('click', () => {
-                        localStorage.setItem('konum_tercihi', 'kabul');
-                        banner.classList.add('d-none');
+                    // 'prompt' — daha önce karar verilmemiş, localStorage'a bak
+                    const tercih = localStorage.getItem('konum_tercihi');
+                    if (tercih === 'kabul') {
                         loadKonum();
-                    });
-                    document.getElementById('konum-izni-ret').addEventListener('click', async () => {
-                        localStorage.setItem('konum_tercihi', 'ret');
-                        banner.classList.add('d-none');
+                    } else if (tercih === 'ret') {
                         await loadMainz();
-                    });
+                    } else {
+                        // İlk ziyaret — açıklama banner'ını göster
+                        const banner = document.getElementById('konum-izni-banner');
+                        if (banner) banner.classList.remove('d-none');
+
+                        document.getElementById('konum-izni-kabul').addEventListener('click', () => {
+                            localStorage.setItem('konum_tercihi', 'kabul');
+                            banner.classList.add('d-none');
+                            loadKonum();
+                        });
+                        document.getElementById('konum-izni-ret').addEventListener('click', async () => {
+                            localStorage.setItem('konum_tercihi', 'ret');
+                            banner.classList.add('d-none');
+                            await loadMainz();
+                        });
+                    }
                 }
             } else {
                 await loadMainz();
