@@ -1,4 +1,5 @@
 from django.contrib import admin
+from unfold.admin import ModelAdmin, TabularInline
 from .models import Yer, YerFoto, ReklamPaketi, YerKategori
 
 
@@ -15,7 +16,7 @@ def pasif_yap(modeladmin, request, queryset):
 
 # ── Yer ─────────────────────────────────────────────────────────────────────
 
-class YerFotoInline(admin.TabularInline):
+class YerFotoInline(TabularInline):
     model    = YerFoto
     extra    = 3
     fields   = ['foto', 'url', 'sira']
@@ -23,7 +24,9 @@ class YerFotoInline(admin.TabularInline):
 
 
 @admin.register(Yer)
-class YerAdmin(admin.ModelAdmin):
+class YerAdmin(ModelAdmin):
+    compressed_fields = True
+    warn_unsaved_changes = True
     list_display  = ['ad', 'tur', 'kategori', 'eyalet', 'stadt', 'aktif_flag', 'paket', 'paket_bitis']
     list_display_links = ['ad']
     list_filter   = ['tur', 'paket', 'aktif', 'kategori', 'eyalet', 'stadt', 'scope']
@@ -56,7 +59,9 @@ class YerAdmin(admin.ModelAdmin):
 # ── YerKategori ──────────────────────────────────────────────────────────────
 
 @admin.register(YerKategori)
-class YerKategoriAdmin(admin.ModelAdmin):
+class YerKategoriAdmin(ModelAdmin):
+    compressed_fields = True
+    warn_unsaved_changes = True
     list_display  = ['ad', 'slug', 'tur', 'sira']
     list_editable = ['tur', 'sira']
     list_filter   = ['tur']
@@ -66,7 +71,9 @@ class YerKategoriAdmin(admin.ModelAdmin):
 # ── ReklamPaketi ─────────────────────────────────────────────────────────────
 
 @admin.register(ReklamPaketi)
-class ReklamPaketiAdmin(admin.ModelAdmin):
+class ReklamPaketiAdmin(ModelAdmin):
+    compressed_fields = True
+    warn_unsaved_changes = True
     list_display  = ['ad', 'fiyat', 'sure_etiketi', 'vurgulu', 'aktif_flag', 'sira']
     list_editable = ['vurgulu', 'sira']
     list_filter   = ['aktif', 'vurgulu']

@@ -1,11 +1,13 @@
 from django.contrib import admin
-from django.utils.html import format_html, mark_safe
+from django.utils.html import mark_safe
+from unfold.admin import ModelAdmin
 from .models import GlobalSetting, SubscriptionPlan, BusinessCategory, LocalBusiness, BusinessAnalytics
 
 
 @admin.register(GlobalSetting)
-class GlobalSettingAdmin(admin.ModelAdmin):
-    """Singleton — sadece tek satır düzenlenebilir."""
+class GlobalSettingAdmin(ModelAdmin):
+    compressed_fields = True
+    warn_unsaved_changes = True
 
     def has_add_permission(self, request):
         return not GlobalSetting.objects.exists()
@@ -15,19 +17,25 @@ class GlobalSettingAdmin(admin.ModelAdmin):
 
 
 @admin.register(SubscriptionPlan)
-class SubscriptionPlanAdmin(admin.ModelAdmin):
+class SubscriptionPlanAdmin(ModelAdmin):
+    compressed_fields = True
+    warn_unsaved_changes = True
     list_display = ('name', 'price', 'duration_days', 'is_active')
     list_editable = ('is_active',)
 
 
 @admin.register(BusinessCategory)
-class BusinessCategoryAdmin(admin.ModelAdmin):
+class BusinessCategoryAdmin(ModelAdmin):
+    compressed_fields = True
+    warn_unsaved_changes = True
     list_display = ('name', 'slug', 'icon')
     prepopulated_fields = {'slug': ('name',)}
 
 
 @admin.register(LocalBusiness)
-class LocalBusinessAdmin(admin.ModelAdmin):
+class LocalBusinessAdmin(ModelAdmin):
+    compressed_fields = True
+    warn_unsaved_changes = True
     list_display = (
         'name',
         'city',
@@ -58,7 +66,7 @@ class LocalBusinessAdmin(admin.ModelAdmin):
         ('Abonelik & Yönetim', {
             'fields': (
                 'subscription_plan',
-                ('start_date', 'end_date'),   # yan yana
+                ('start_date', 'end_date'),
                 ('is_published', 'is_verified'),
             ),
         }),
@@ -76,7 +84,9 @@ class LocalBusinessAdmin(admin.ModelAdmin):
 
 
 @admin.register(BusinessAnalytics)
-class BusinessAnalyticsAdmin(admin.ModelAdmin):
+class BusinessAnalyticsAdmin(ModelAdmin):
+    compressed_fields = True
+    warn_unsaved_changes = True
     list_display = ('business', 'date', 'views', 'whatsapp_clicks')
     list_filter = ('date', 'business__city')
     readonly_fields = ('business', 'date', 'views', 'whatsapp_clicks')
