@@ -27,7 +27,7 @@ ADIM 2 — MİGRASYON ÜRETİMİ
 
 --------------------------------------------------------------------
 DOSYA 1: stadt/migrations/XXXX_<sehir_slug>_action_links.py
-(XXXX = mevcut en son migrasyon numarasının bir fazlası. Şu an son migrasyon: 0039_seed_altenkirchen — bir sonraki çift: 0040 + 0041)
+(XXXX = mevcut en son migrasyon numarasının bir fazlası. Şu an son migrasyon: 0040_seed_westerburg — bir sonraki çift: 0041 + 0042)
 
 from django.db import migrations
 
@@ -57,7 +57,7 @@ def reverse_update(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('stadt', '0039_seed_altenkirchen'),
+        ('stadt', '0040_seed_westerburg'),
     ]
     operations = [
         migrations.RunPython(update_cities, reverse_update),
@@ -173,7 +173,7 @@ def unseed(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('yerler', '<bir önceki yerler migrasyonu>'),  # Şu an son: 0035_seed_altenkirchen_yerler → bir sonraki: 0036
+        ('yerler', '<bir önceki yerler migrasyonu>'),  # Şu an son: 0036_seed_westerburg_yerler → bir sonraki: 0037
         ('stadt',  '<sehir_slug>_aktiv'),
     ]
     operations = [ migrations.RunPython(seed, unseed) ]
