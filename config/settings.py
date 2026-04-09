@@ -86,8 +86,23 @@ UNFOLD = {
             "950": "23 37 84",
         },
     },
+    "SITE_URL": "https://almanyalirehber.com",
     "SIDEBAR": {
+        "show_search": False,
+        "show_all_applications": False,
         "navigation": [
+            {
+                "title": "🇩🇪 Almanyalı Rehber",
+                "separator": False,
+                "collapsible": False,
+                "items": [
+                    {
+                        "title": "Siteye Git →",
+                        "icon": "open_in_new",
+                        "link": "https://almanyalirehber.com",
+                    },
+                ],
+            },
             {
                 "title": "💼 Ekosistem & Ticaret",
                 "separator": False,
