@@ -70,32 +70,12 @@
 </head>
 <body>
 
-<!-- Konum İzni Banner'ı -->
-<div id="konum-izni-banner" class="d-none" style="position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);z-index:9999;max-width:420px;width:calc(100% - 2rem);">
-    <div class="card shadow-lg border-0" style="background:#1E293B;color:#F1F5F9;border-radius:12px;">
-        <div class="card-body py-3 px-4">
-            <div class="d-flex align-items-start gap-3">
-                <i class="bi bi-geo-alt-fill fs-4 mt-1" style="color:#60A5FA;flex-shrink:0;"></i>
-                <div>
-                    <div class="fw-semibold mb-1" style="font-size:.9rem;">Ezan vakitleri için konum</div>
-                    <div class="opacity-75" style="font-size:.8rem;">Bulunduğunuz şehre göre doğru ezan vakitlerini gösterebilmek için konumunuza ihtiyacımız var. Reddederseniz Mainz vakitleri gösterilir.</div>
-                    <div class="d-flex gap-2 mt-3">
-                        <button id="konum-izni-kabul" class="btn btn-sm" style="background:#2563EB;color:#fff;border-radius:8px;font-size:.8rem;padding:.3rem .9rem;">İzin Ver</button>
-                        <button id="konum-izni-ret" class="btn btn-sm" style="background:transparent;color:#94A3B8;border:1px solid #334155;border-radius:8px;font-size:.8rem;padding:.3rem .9rem;">Hayır, Mainz yeterli</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Bilgi Şeridi (Ticker) -->
 <div class="py-1" style="background-color: #0F172A;">
     <div class="container d-flex justify-content-center align-items-center">
         <div class="d-flex gap-4 align-items-center" style="font-size: 0.75rem;">
             <span class="text-light opacity-75">Euro: <strong id="live-euro">...</strong> ₺</span>
             <span class="text-light opacity-75">Altın: <strong id="live-altin">...</strong> ₺</span>
-            <span class="text-light opacity-75 d-none d-md-block" id="next-prayer"></span>
             <span class="text-light opacity-75 d-none d-md-block">Tarih: <strong id="live-date">...</strong></span>
         </div>
     </div>
@@ -277,142 +257,6 @@
             }
         }
 
-        // Sıradaki ezan vakti — konum varsa kullanıcı konumu, yoksa Mainz
-        const prayerEl = document.getElementById('next-prayer');
-        if (prayerEl) {
-            const dateStr = (d) =>
-                `${String(d.getDate()).padStart(2,'0')}-${String(d.getMonth()+1).padStart(2,'0')}-${d.getFullYear()}`;
-
-            const todayStr    = dateStr(new Date());
-            const tomorrowStr = dateStr(new Date(Date.now() + 864e5));
-
-            const getTimings = async (url) => {
-                const res = await fetch(url);
-                return (await res.json()).data.timings;
-            };
-
-            const getSonraki = async (baseUrl, tomorrowUrl) => {
-                const t = await getTimings(baseUrl);
-                const LIST = [
-                    { ad: 'İmsak',  saat: t.Imsak   },
-                    { ad: 'Güneş',  saat: t.Sunrise  },
-                    { ad: 'Öğle',   saat: t.Dhuhr   },
-                    { ad: 'İkindi', saat: t.Asr     },
-                    { ad: 'Akşam',  saat: t.Maghrib },
-                    { ad: 'Yatsı',  saat: t.Isha    },
-                ];
-                const nowMin = new Date().getHours() * 60 + new Date().getMinutes();
-                const bugun = LIST.find(v => {
-                    const [h, m] = v.saat.split(':').map(Number);
-                    return (h * 60 + m) > nowMin;
-                });
-                if (bugun) return bugun;
-                // Tüm vakitler geçti → yarının İmsak'ı
-                const t2 = await getTimings(tomorrowUrl);
-                return { ad: 'İmsak', saat: t2.Imsak };
-            };
-
-            const renderVakit = (sonraki, konumlu) => {
-                prayerEl.innerHTML =
-                    `<i class="bi bi-moon-stars me-1" style="opacity:.7;"></i>` +
-                    (konumlu ? '' : 'Mainz — ') +
-                    `<strong>${sonraki.ad} ${sonraki.saat}</strong>`;
-            };
-
-            const loadMainz = async () => {
-                try {
-                    const v = await getSonraki(
-                        `https://api.aladhan.com/v1/timingsByCity/${todayStr}?city=Mainz&country=Germany&method=13`,
-                        `https://api.aladhan.com/v1/timingsByCity/${tomorrowStr}?city=Mainz&country=Germany&method=13`
-                    );
-                    renderVakit(v, false);
-                } catch {
-                    prayerEl.innerHTML = '<i class="bi bi-moon-stars me-1" style="opacity:.7;"></i>--:--';
-                }
-            };
-
-            const loadKonumCoords = async (lat, lon) => {
-                try {
-                    const v = await getSonraki(
-                        `https://api.aladhan.com/v1/timings/${todayStr}?latitude=${lat}&longitude=${lon}&method=13`,
-                        `https://api.aladhan.com/v1/timings/${tomorrowStr}?latitude=${lat}&longitude=${lon}&method=13`
-                    );
-                    renderVakit(v, true);
-                } catch {
-                    await loadMainz();
-                }
-            };
-
-            const loadKonum = () => {
-                // Cache'te taze koordinat varsa (30 dk) tarayıcıya sorma
-                try {
-                    const cached = JSON.parse(localStorage.getItem('konum_coords') || 'null');
-                    if (cached && (Date.now() - cached.ts) < 60 * 60 * 1000) {
-                        loadKonumCoords(cached.lat, cached.lon);
-                        return;
-                    }
-                } catch {}
-
-                navigator.geolocation.getCurrentPosition(
-                    async ({ coords }) => {
-                        try {
-                            localStorage.setItem('konum_coords', JSON.stringify({
-                                lat: coords.latitude, lon: coords.longitude, ts: Date.now()
-                            }));
-                        } catch {}
-                        await loadKonumCoords(coords.latitude, coords.longitude);
-                    },
-                    async () => { await loadMainz(); },
-                    { timeout: 6000, maximumAge: 1800000 }
-                );
-            };
-
-            if ('geolocation' in navigator) {
-                // Tarayıcının mevcut izin durumunu kontrol et
-                let permState = 'prompt';
-                if (navigator.permissions) {
-                    try {
-                        const perm = await navigator.permissions.query({ name: 'geolocation' });
-                        permState = perm.state;
-                    } catch {}
-                }
-
-                if (permState === 'granted') {
-                    // Tarayıcı zaten izin vermiş — banner gösterme, localStorage güncelle
-                    localStorage.setItem('konum_tercihi', 'kabul');
-                    loadKonum();
-                } else if (permState === 'denied') {
-                    // Tarayıcı izni kalıcı reddedilmiş
-                    localStorage.setItem('konum_tercihi', 'ret');
-                    await loadMainz();
-                } else {
-                    // 'prompt' — daha önce karar verilmemiş, localStorage'a bak
-                    const tercih = localStorage.getItem('konum_tercihi');
-                    if (tercih === 'kabul') {
-                        loadKonum();
-                    } else if (tercih === 'ret') {
-                        await loadMainz();
-                    } else {
-                        // İlk ziyaret — açıklama banner'ını göster
-                        const banner = document.getElementById('konum-izni-banner');
-                        if (banner) banner.classList.remove('d-none');
-
-                        document.getElementById('konum-izni-kabul').addEventListener('click', () => {
-                            localStorage.setItem('konum_tercihi', 'kabul');
-                            banner.classList.add('d-none');
-                            loadKonum();
-                        });
-                        document.getElementById('konum-izni-ret').addEventListener('click', async () => {
-                            localStorage.setItem('konum_tercihi', 'ret');
-                            banner.classList.add('d-none');
-                            await loadMainz();
-                        });
-                    }
-                }
-            } else {
-                await loadMainz();
-            }
-        }
     }
 
     document.addEventListener('DOMContentLoaded', updateTicker);
