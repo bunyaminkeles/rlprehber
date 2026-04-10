@@ -10,3 +10,8 @@ class BlogAdmin(ModelAdmin):
     list_display = ['baslik', 'yazar', 'eyalet', 'stadt', 'scope', 'yayinda', 'olusturulma']
     list_filter  = ['yayinda', 'eyalet', 'stadt', 'scope']
     prepopulated_fields = {'slug': ('baslik',)}
+    fieldsets = (
+        ('İçerik', {'fields': ('baslik', 'slug', 'icerik', 'ozet', 'kapak_resmi_dosya', 'kapak_resmi')}),
+        ('SEO', {'fields': ('seo_baslik', 'odak_kelime', 'etiketler'), 'classes': ('collapse',)}),
+        ('Yayın', {'fields': ('yazar', 'eyalet', 'stadt', 'scope', 'yayinda')}),
+    )

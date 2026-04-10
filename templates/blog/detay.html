@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}{{ yazi.baslik }} — Blog{% endblock %}
+{% block title %}{% if yazi.seo_baslik %}{{ yazi.seo_baslik }}{% else %}{{ yazi.baslik }}{% endif %} — Blog{% endblock %}
 {% block meta_description %}{% if yazi.ozet %}{{ yazi.ozet }}{% else %}{{ yazi.baslik }} — Almanyalı Rehber Blog{% endif %}{% endblock %}
-{% block og_title %}{{ yazi.baslik }}{% endblock %}
+{% block og_title %}{% if yazi.seo_baslik %}{{ yazi.seo_baslik }}{% else %}{{ yazi.baslik }}{% endif %}{% endblock %}
 {% block og_description %}{% if yazi.ozet %}{{ yazi.ozet }}{% else %}{{ yazi.baslik }} — Almanyalı Rehber Blog{% endif %}{% endblock %}
-{% if yazi.kapak_resmi %}{% block og_image %}<meta property="og:image" content="{{ yazi.kapak_resmi }}">{% endblock %}{% endif %}
-{% block twitter_title %}{{ yazi.baslik }}{% endblock %}
+{% if yazi.kapak_url %}{% block og_image %}<meta property="og:image" content="{{ yazi.kapak_url }}">{% endblock %}{% endif %}
+{% block twitter_title %}{% if yazi.seo_baslik %}{{ yazi.seo_baslik }}{% else %}{{ yazi.baslik }}{% endif %}{% endblock %}
 {% block twitter_description %}{% if yazi.ozet %}{{ yazi.ozet }}{% else %}{{ yazi.baslik }} — Almanyalı Rehber Blog{% endif %}{% endblock %}
 
 {% block schema %}
@@ -25,8 +25,9 @@
     "name": "Almanyalı Rehber",
     "url": "https://almanyalirehber.com"
   },
-  "url": "https://almanyalirehber.com{{ request.path }}"{% if yazi.kapak_resmi %},
-  "image": "{{ yazi.kapak_resmi }}"{% endif %}
+  "url": "https://almanyalirehber.com{{ request.path }}"{% if yazi.kapak_url %},
+  "image": "{{ yazi.kapak_url }}"{% endif %}{% if yazi.odak_kelime or yazi.etiketler %},
+  "keywords": "{% if yazi.odak_kelime %}{{ yazi.odak_kelime|escapejs }}{% if yazi.etiketler %}, {% endif %}{% endif %}{% if yazi.etiketler %}{{ yazi.etiketler|escapejs }}{% endif %}"{% endif %}
 }
 </script>
 {% endblock %}
@@ -36,7 +37,8 @@
   .blog-cover {
     width: 100%;
     max-height: 280px;
-    object-fit: cover;
+    object-fit: contain;
+    background: #f8f9fa;
     border-radius: 14px;
     display: block;
     margin-bottom: 2rem;
@@ -148,8 +150,8 @@
     <i class="bi bi-arrow-left-circle"></i> Tüm Yazılar
   </a>
 
-  {% if yazi.kapak_resmi %}
-    <img src="{{ yazi.kapak_resmi }}" alt="{{ yazi.baslik }}" class="blog-cover">
+  {% if yazi.kapak_url %}
+    <img src="{{ yazi.kapak_url }}" alt="{{ yazi.baslik }}" class="blog-cover">
   {% endif %}
 
   <div class="blog-header">
@@ -168,5 +170,13 @@
   <div class="blog-content">
     {{ yazi.icerik|safe }}
   </div>
+
+  {% if yazi.etiket_listesi %}
+  <div class="blog-tags">
+    {% for etiket in yazi.etiket_listesi %}
+      <span class="blog-tag">{{ etiket }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
 </div>
 {% endblock %}
