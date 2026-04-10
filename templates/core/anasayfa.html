@@ -495,11 +495,11 @@
                             class="text-decoration-none nabiz-makale-item py-3"
                             style="{% if not forloop.first %}border-top: 1px solid #f3f4f6;{% endif %}">
                             <p class="fw-semibold mb-1" style="font-size: 0.875rem; color: #111827; line-height: 1.45;">{{ yazi.baslik|truncatechars:65 }}</p>
-                            <p class="mb-2" style="font-size: 0.8rem; color: #9ca3af; line-height: 1.5;
+                            <p class="mb-2" style="font-size: 0.8125rem; color: #4b5563; line-height: 1.55;
                                 display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
                                 {% if yazi.ozet %}{{ yazi.ozet }}{% else %}{{ yazi.icerik|striptags|truncatechars:100 }}{% endif %}
                             </p>
-                            <span style="font-size: 0.72rem; color: #d1d5db;">
+                            <span style="font-size: 0.75rem; color: #9ca3af;">
                                 <i class="bi bi-clock me-1"></i>{{ yazi.olusturulma|timesince }} önce
                             </span>
                         </a>
@@ -538,7 +538,7 @@
                                     class="text-decoration-none nabiz-haber-item py-3"
                                     style="{% if not forloop.first %}border-top: 1px solid #f3f4f6;{% endif %}">
                                     <p class="fw-semibold mb-1" style="font-size: 0.875rem; color: #111827; line-height: 1.45;">{{ h.baslik }}</p>
-                                    <span style="font-size: 0.72rem; color: #d1d5db;">Tagesschau.de</span>
+                                    <span style="font-size: 0.75rem; color: #9ca3af;">Tagesschau.de</span>
                                 </a>
                                 {% empty %}
                                 <p style="font-size: 0.875rem; color: #9ca3af; padding: 0.75rem 0;">Haber akışına ulaşılamıyor.</p>
@@ -554,7 +554,7 @@
                                     class="text-decoration-none nabiz-haber-item py-3"
                                     style="{% if not forloop.first %}border-top: 1px solid #f3f4f6;{% endif %}">
                                     <p class="fw-semibold mb-1" style="font-size: 0.875rem; color: #111827; line-height: 1.45;">{{ h.baslik }}</p>
-                                    <span style="font-size: 0.72rem; color: #d1d5db;">DW Türkçe</span>
+                                    <span style="font-size: 0.75rem; color: #9ca3af;">DW Türkçe</span>
                                 </a>
                                 {% empty %}
                                 <p style="font-size: 0.875rem; color: #9ca3af; padding: 0.75rem 0;">Haber akışına ulaşılamıyor.</p>
