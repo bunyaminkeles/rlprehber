@@ -39,6 +39,7 @@ class Kaynak(models.Model):
     icerik      = models.TextField(blank=True, help_text='Sadece dahili sayfalar için kullanılır.')
     ozet        = models.CharField(max_length=300, blank=True)
     icon        = models.CharField(max_length=50, default='bi-info-circle')
+    randevu_url = models.URLField(blank=True, verbose_name='Randevu Linki', help_text='Varsa randevu/iletişim linki')
     sira        = models.PositiveIntegerField(default=0)
     yayinda     = models.BooleanField(default=True)
     guncelleme  = models.DateTimeField(auto_now=True)

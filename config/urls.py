@@ -35,7 +35,7 @@ OLD_MAINZ_REDIRECTS = [
     path('ilan/',      RedirectView.as_view(url='/rlp/mainz/ilan/',      permanent=True)),
     path('takvim/',    RedirectView.as_view(url='/rlp/mainz/takvim/',    permanent=True)),
     path('yerler/',    RedirectView.as_view(url='/rlp/mainz/yerler/',    permanent=True)),
-    path('linkler/',   RedirectView.as_view(url='/rlp/mainz/linkler/',   permanent=True)),
+    path('linkler/',   RedirectView.as_view(url='/rlp/mainz/yerler/',    permanent=True)),
     path('almanca/',   RedirectView.as_view(url='/rlp/almanca/',         permanent=True)),
 ]
 

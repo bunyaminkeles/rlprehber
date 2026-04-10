@@ -5,7 +5,7 @@ from django.db.models import Q
 from django.utils import timezone
 from django.http import JsonResponse
 from .models import Ilan, IlanYorum, ILAN_KATEGORI, SATILIK_KATEGORILER, ARANIYOR_KATEGORILER
-from linkler.models import OnemliLink
+from rehber.models import Kaynak
 from accounts.utils import email_dogrulandi_mi, dogrulama_maili_gonder
 
 
@@ -31,12 +31,14 @@ def liste(request, eyalet_slug='rlp', stadt_slug=None):
     araniyor = qs.filter(kategori__in=ARANIYOR_KATEGORILER)
 
     if stadt:
-        platformlar = OnemliLink.objects.filter(
+        platformlar = Kaynak.objects.filter(
             Q(stadt=stadt, scope='stadt') | Q(scope='eyalet', eyalet__slug=eyalet_slug),
-            kategori='ilan', aktif=True
+            kategori='ilan', yayinda=True, tip='link'
         ).order_by('sira')
     else:
-        platformlar = OnemliLink.objects.filter(scope='eyalet', eyalet__slug=eyalet_slug, kategori='ilan', aktif=True).order_by('sira')
+        platformlar = Kaynak.objects.filter(
+            scope='eyalet', eyalet__slug=eyalet_slug, kategori='ilan', yayinda=True, tip='link'
+        ).order_by('sira')
 
     return render(request, 'ilan/liste.html', {
         'satilik':              satilik,

@@ -21,10 +21,10 @@
       </h6>
       <div class="d-flex flex-column gap-2">
         {% for p in platformlar %}
-        <a href="/{{ stadt.slug }}/linkler/git/{{ p.pk }}/" target="_blank"
+        <a href="{{ p.url }}" target="_blank" rel="noopener"
            class="d-flex align-items-center gap-2 p-2 rounded border text-decoration-none text-dark bg-white ilan-platform-link">
           <i class="bi bi-box-arrow-up-right text-primary flex-shrink-0"></i>
-          <span class="small fw-semibold">{{ p.ad }}</span>
+          <span class="small fw-semibold">{{ p.baslik }}</span>
         </a>
         {% endfor %}
       </div>

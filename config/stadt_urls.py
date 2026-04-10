@@ -1,4 +1,5 @@
 from django.urls import path, include
+from django.views.generic import RedirectView
 from stadt import views as stadt_views
 
 urlpatterns = [
@@ -11,5 +12,7 @@ urlpatterns = [
     path('ilan/', include('ilan.urls')),
     path('yerler/', include('yerler.urls')),
     path('isletmeler/', include('yerler.isletme_urls')),
-    path('linkler/', include('linkler.urls')),
+    # linkler app kaldırıldı — eski URL'ler yerler'e yönlendiriliyor
+    path('linkler/', RedirectView.as_view(url='../yerler/', permanent=True)),
+    path('linkler/git/<int:pk>/', RedirectView.as_view(url='../../yerler/', permanent=True)),
 ]

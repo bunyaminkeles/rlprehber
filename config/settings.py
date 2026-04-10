@@ -62,7 +62,7 @@ INSTALLED_APPS = [
     'ilan.apps.IlanConfig',
     'takvim',
     'yerler',
-    'linkler',
+    'linkler',  # migration bağımlılığı nedeniyle kalıyor; aktif kullanım yok
     'almanca',
     'mesajlar',
     'businesses',
@@ -190,11 +190,6 @@ UNFOLD = {
                         "title": "Etkinlikler",
                         "icon": "event",
                         "link": reverse_lazy("admin:takvim_etkinlik_changelist"),
-                    },
-                    {
-                        "title": "Önemli Linkler",
-                        "icon": "link",
-                        "link": reverse_lazy("admin:linkler_onemlilink_changelist"),
                     },
                 ],
             },
