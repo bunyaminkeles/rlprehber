@@ -212,14 +212,14 @@
                 <div class="mb-2">
                     <button class="d-flex align-items-center justify-content-between w-100 text-start fw-semibold px-0 py-2 bg-transparent border-0"
                             style="font-size: 0.8125rem; color: #374151; border-bottom: 1px solid #f3f4f6 !important; cursor: pointer;"
-                            data-bs-toggle="collapse" data-bs-target="#belge-grup-{{ grup.slug }}" aria-expanded="true">
+                            data-bs-toggle="collapse" data-bs-target="#belge-grup-{{ grup.slug }}" aria-expanded="false">
                         <span>{{ grup.ad }}</span>
                         <span class="d-flex align-items-center gap-2">
                             <span style="font-size: 0.72rem; color: #9ca3af;">{{ grup.belgeler|length }}</span>
                             <i class="bi bi-chevron-down" style="font-size: 0.7rem; color: #9ca3af; transition: transform 0.2s;"></i>
                         </span>
                     </button>
-                    <div class="collapse show" id="belge-grup-{{ grup.slug }}">
+                    <div class="collapse" id="belge-grup-{{ grup.slug }}">
                         <div class="vstack gap-0 oc-list">
                             {% for b in grup.belgeler %}
                             <a href="{{ b.indirme_url }}" target="_blank" rel="noopener" class="oc-list-item text-decoration-none">
