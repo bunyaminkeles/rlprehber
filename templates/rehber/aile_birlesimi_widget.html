@@ -1,0 +1,479 @@
+{% extends 'base.html' %}
+{% block title %}Aile Birleşimi Rehberi — Almanya{% endblock %}
+
+{% block extra_css %}
+<style>
+  .ab-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    padding: 0.85rem 1.1rem;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    background: var(--card);
+    color: var(--text);
+    font-size: 0.95rem;
+    transition: border-color 0.15s, background 0.15s, transform 0.1s;
+    cursor: pointer;
+  }
+  .ab-option:hover { border-color: var(--primary); background: #f0f5fb; transform: translateX(3px); }
+  .ab-option .badge-label { font-weight: 700; margin-right: 0.4rem; }
+  .ab-option .option-desc { font-size: 0.82rem; color: var(--text-muted); }
+  .ab-option.opt-green:hover  { border-color: #198754; background: #f0faf4; }
+  .ab-option.opt-yellow:hover { border-color: #ffc107; background: #fffdf0; }
+  .ab-option.opt-red:hover    { border-color: #dc3545; background: #fff5f5; }
+  .ab-option.opt-blue:hover   { border-color: #0d6efd; background: #f0f4ff; }
+
+  #ab-card { transition: opacity 0.18s ease; }
+  #ab-card.fading { opacity: 0; }
+
+  .progress { height: 6px; border-radius: 4px; }
+  .outcome-icon { font-size: 2rem; }
+  .back-btn {
+    background: none; border: none;
+    color: var(--text-muted); font-size: 0.85rem; cursor: pointer; padding: 0.4rem 0.8rem;
+  }
+  .back-btn:hover { color: var(--text); }
+
+  .info-box-ab {
+    background: rgba(13,110,253,0.06);
+    border-left: 3px solid #0d6efd;
+    border-radius: 0 8px 8px 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.83rem;
+    margin-bottom: 1rem;
+  }
+  .checklist { list-style: none; padding: 0; margin: 0; }
+  .checklist li { padding: 0.3rem 0; font-size: 0.88rem; }
+  .checklist li::before { content: "✓ "; color: #198754; font-weight: 700; }
+  .checklist li.warn::before { content: "⚠ "; color: #ffc107; }
+  .checklist li.info::before { content: "ℹ "; color: #0d6efd; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4" style="max-width: 660px;">
+
+  <div class="mb-3">
+    <a href="{% if stadt %}/{{ eyalet_slug }}/{{ stadt.slug }}/rehber/{% else %}/{{ eyalet_slug }}/rehber/{% endif %}"
+       class="d-inline-flex align-items-center gap-1 text-muted text-decoration-none mb-3" style="font-size:0.85rem;">
+      <i class="bi bi-arrow-left"></i> Rehber
+    </a>
+    <h4 class="mb-0">
+      <i class="bi bi-house-heart me-2 text-primary"></i>Aile Birleşimi Rehberi
+    </h4>
+    <p class="text-muted small mt-1 mb-0">
+      Almanya'ya aile birleşimi için ne gerekiyor? Statünüze göre adım adım öğrenin.
+    </p>
+  </div>
+
+  <div class="card p-4" id="ab-card">
+    <div id="ab-content"></div>
+  </div>
+
+  <p class="text-muted text-center mt-3" style="font-size: 0.78rem;">
+    Bu araç bilgi amaçlıdır. Bireysel durumunuz için göçmenlik danışmanı veya avukat görüşü alın.
+  </p>
+</div>
+
+<script>
+const STEPS = {
+
+  // ── Adım 1: Almanya'daki kişinin statüsü ──────────────────────────────────
+  1: {
+    id: 1, total: 4,
+    question: 'Almanya\'da yaşayan kişi (sponson) kimdir?',
+    hint: 'Birleşmek istediğiniz aile üyesinin Almanya\'daki hukuki statüsü, başvuru sürecini ve koşulları doğrudan belirler.',
+    options: [
+      { label: 'Alman Vatandaşı',             desc: 'TC veya çift vatandaş',          next: 10, color: 'blue'   },
+      { label: 'Çalışma Vizesi / Mavi Kart',  desc: 'Nitelikli çalışan veya Mavi Kart', next: 20, color: 'green'  },
+      { label: 'Standart Oturma İzni',         desc: 'Niederlassungserlaubnis vb.',    next: 30, color: 'green'  },
+      { label: 'Mülteci / Koruma Statüsü',     desc: 'BAMF onaylı statü',             next: 40, color: 'yellow' },
+    ],
+  },
+
+  // ── Adım 10: Alman Vatandaşı → siz kimsiniz ───────────────────────────────
+  10: {
+    id: 2, total: 4,
+    question: 'Alman vatandaşıyla olan ilişkiniz nedir?',
+    hint: 'Alman vatandaşlarının aile üyelerini getirmesi en esnek yoldur. Gelir şartı yoktur, ancak koşullar ilişki türüne göre değişir.',
+    options: [
+      { label: 'Eş / Kayıtlı Partner', desc: 'Evli veya Eingetragene Lebenspartnerschaft', next: 11, color: 'green' },
+      { label: '18 Yaş Altı Çocuk',    desc: 'Alman vatandaşının çocuğu',                  next: 'outcome-alman-cocuk', color: 'green' },
+      { label: '18 Yaş Üstü Çocuk',    desc: 'Yetişkin çocuk',                             next: 'outcome-alman-yetiskin-cocuk', color: 'yellow' },
+    ],
+  },
+
+  11: {
+    id: 3, total: 4,
+    question: 'A1 Almanca sertifikanız var mı?',
+    hint: 'Alman vatandaşının eşi için kural: A1 düzeyinde Almanca bilgisi gerekmektedir (Goethe-Institut, telc veya TELC sınavıyla belgelenmiş). Ancak bazı istisnalar vardır.',
+    options: [
+      { label: 'Evet, A1 sertifikam var',    desc: '',                            next: 'outcome-alman-es', color: 'green'  },
+      { label: 'Hayır ama istisna kapsamındayım', desc: 'Engel, imkânsızlık vb.', next: 'outcome-alman-es', color: 'yellow' },
+      { label: 'Hayır, henüz almadım',        desc: '',                            next: 'outcome-a1-gerekli', color: 'red'   },
+    ],
+  },
+
+  // ── Adım 20: Çalışma Vizesi / Mavi Kart ──────────────────────────────────
+  20: {
+    id: 2, total: 4,
+    question: 'Almanya\'daki kişi Mavi Kart (EU Blue Card) sahibi mi?',
+    hint: 'Mavi Kart sahipleri standart çalışma vizesine göre çok daha avantajlıdır. Eşleri Almanca bilgisi olmadan bile gelebilir.',
+    options: [
+      { label: 'Evet, Mavi Kart sahibi',     desc: 'EU Blue Card',         next: 'outcome-maviKart-es', color: 'green'  },
+      { label: 'Hayır, standart çalışma vizesi', desc: 'Fachkraft vb.',    next: 21, color: 'yellow' },
+    ],
+  },
+
+  21: {
+    id: 3, total: 4,
+    question: 'Almanya\'daki kişinin aylık net geliri yeterli mi?',
+    hint: 'Standart çalışma vizesinde sponsor, aile üyelerini geçindirmeye yetecek gelir kanıtlamak zorundadır. Kural olarak aylık net gelir, Bürgergeld sınırının üzerinde olmalıdır (2024: çift için yaklaşık 1.500 €+).',
+    options: [
+      { label: 'Evet, gelir yeterli',  desc: 'Maaş bordrosu mevcut', next: 22, color: 'green'  },
+      { label: 'Belirsiz / Bilmiyorum', desc: '',                     next: 22, color: 'yellow' },
+    ],
+  },
+
+  22: {
+    id: 4, total: 4,
+    question: 'A1 Almanca sertifikanız var mı?',
+    hint: 'Standart çalışma vizesi sahiplerinin eşleri için A1 Almanca sertifikası zorunludur. İstisna: Türk vatandaşları bazı durumlarda Ankara Anlaşması kapsamında muaf olabilir — bir danışmana sorun.',
+    options: [
+      { label: 'Evet, A1 sertifikam var',          desc: '',                next: 'outcome-calisma-es', color: 'green'  },
+      { label: 'Hayır ama Türk vatandaşıyım',       desc: 'Ankara Anlaşması', next: 'outcome-ankara', color: 'yellow' },
+      { label: 'Hayır, henüz almadım',              desc: '',                next: 'outcome-a1-gerekli', color: 'red'   },
+    ],
+  },
+
+  // ── Adım 30: Standart Oturma İzni ────────────────────────────────────────
+  30: {
+    id: 2, total: 4,
+    question: 'Oturma izninin türü nedir?',
+    hint: 'Niederlassungserlaubnis (süresiz oturma) sahipleri en geniş aile birleşimi hakkına sahiptir. Süresiz değilse koşullar daha kısıtlı olabilir.',
+    options: [
+      { label: 'Niederlassungserlaubnis',  desc: 'Süresiz oturma izni',     next: 21, color: 'green'  },
+      { label: 'Aufenthaltserlaubnis',     desc: 'Süreli oturma izni',      next: 21, color: 'yellow' },
+    ],
+  },
+
+  // ── Adım 40: Mülteci statüsü ──────────────────────────────────────────────
+  40: {
+    id: 2, total: 4,
+    question: 'BAMF\'ın statü kararı ne zaman geldi?',
+    hint: '3 aylık süre kritiktir! Tanınma kararından itibaren 3 ay içinde başvuru yaparsanız, gelir ve konut şartından muaf tutulursunuz. Bu fırsatı kaçırmayın.',
+    options: [
+      { label: '3 ay henüz dolmadı',    desc: 'Tanınmadan itibaren',           next: 'outcome-multeci-3ay', color: 'green'  },
+      { label: '3 ay geçti',            desc: 'Süre dolmuş',                   next: 41, color: 'yellow' },
+      { label: 'Subsidiärer Schutz',    desc: 'Tamamlayıcı koruma statüsü',    next: 'outcome-subsidiär', color: 'yellow' },
+    ],
+  },
+
+  41: {
+    id: 3, total: 4,
+    question: 'Aile birleşimi talep ettiğiniz kişi kimdir?',
+    hint: '3 ay geçtikten sonra standart koşullar devreye girer: yeterli gelir, uygun konut ve bazı durumlarda dil koşulu.',
+    options: [
+      { label: 'Eş',             desc: '',   next: 'outcome-multeci-es-standart', color: 'yellow' },
+      { label: '18 Yaş Altı Çocuk', desc: '', next: 'outcome-multeci-cocuk',      color: 'green'  },
+    ],
+  },
+};
+
+const OUTCOMES = {
+
+  'outcome-alman-es': {
+    type: 'success',
+    icon: 'bi-check-circle-fill text-success',
+    title: 'Başvurabilirsiniz.',
+    body: `
+      <p style="font-size:.88rem">Alman vatandaşının eşi olarak aile birleşimi en avantajlı yoldur.</p>
+      <ul class="checklist">
+        <li>A1 Almanca sertifikası (veya istisna belgesi)</li>
+        <li>Geçerli pasaport</li>
+        <li>Evlilik cüzdanı (Türkçe + Almanca tercümeli, apostilli)</li>
+        <li>Sponsor'ın nüfus tescil belgesi (Meldebescheinigung)</li>
+        <li>Sponsor'ın pasaport fotokopisi</li>
+      </ul>
+      <div class="info-box-ab mt-3">
+        <strong>💡 İpucu:</strong> Gelir veya konut şartı yoktur. Randevuyu iDATA üzerinden alın.
+      </div>`,
+    action: { label: 'iDATA — Randevu Al', href: 'https://idata.com.tr' },
+  },
+
+  'outcome-a1-gerekli': {
+    type: 'warning',
+    icon: 'bi-exclamation-triangle-fill text-warning',
+    title: 'Önce A1 sertifikası almanız gerekiyor.',
+    body: `
+      <p style="font-size:.88rem">Başvuru yapabilmek için Türkiye'deyken A1 düzeyinde Almanca sınavını geçmeniz şarttır.</p>
+      <ul class="checklist">
+        <li>Goethe-Institut Türkiye'de Start Deutsch 1 (A1) sınavına kayıt olun</li>
+        <li>telc veya ÖSD sınavları da geçerlidir</li>
+        <li class="warn">Sınavlar yoğun dönemde 2–4 ay öncesinden dolabilir, erken kayıt yapın</li>
+        <li class="info">Engel, hastalık veya coğrafi erişimsizlik durumunda istisna belgesi için konsoloslukla görüşün</li>
+      </ul>`,
+    action: { label: 'Goethe-Institut Sınav Takvimi', href: 'https://www.goethe.de/ins/tr/tr/sta/ank/prf.html' },
+  },
+
+  'outcome-alman-cocuk': {
+    type: 'success',
+    icon: 'bi-check-circle-fill text-success',
+    title: '18 yaş altı çocuklar için kolaylaştırılmış süreç.',
+    body: `
+      <p style="font-size:.88rem">Alman vatandaşının 18 yaş altı çocuğu için A1 sertifikası gerekmez.</p>
+      <ul class="checklist">
+        <li>Doğum belgesi (apostilli + Almanca tercümeli)</li>
+        <li>Alman vatandaşı ebeveynin pasaportu</li>
+        <li>Velayeti kanıtlar belge (tek ebeveyn ise)</li>
+        <li class="info">Çocuk 16–17 yaşındaysa bağımsız yaşama yeterliliği değerlendirilebilir</li>
+      </ul>`,
+    action: null,
+  },
+
+  'outcome-alman-yetiskin-cocuk': {
+    type: 'warning',
+    icon: 'bi-exclamation-triangle-fill text-warning',
+    title: '18 yaş üstü çocuklar için koşullar daha zorludur.',
+    body: `
+      <p style="font-size:.88rem">Yetişkin çocukların aile birleşimi hakkı sınırlıdır. Aşağıdaki koşullardan en az biri gerekir:</p>
+      <ul class="checklist">
+        <li class="warn">Ağır engellilik veya bakım ihtiyacı</li>
+        <li class="warn">İnsani nedenler (tek başına yaşayamama)</li>
+        <li class="info">Bir avukat veya göçmen danışmanıyla değerlendirin</li>
+      </ul>`,
+    action: { label: 'MBE Danışmanlık Merkezleri', href: 'https://www.bamf.de/DE/Themen/Beratung/MBE/mbe-node.html' },
+  },
+
+  'outcome-maviKart-es': {
+    type: 'success',
+    icon: 'bi-check-circle-fill text-success',
+    title: 'Mavi Kart eşi için A1 sertifikası gerekmez.',
+    body: `
+      <p style="font-size:.88rem">Mavi Kart sahiplerinin eşleri için Almanca dil koşulu muafiyeti vardır. Bu büyük bir avantajdır.</p>
+      <ul class="checklist">
+        <li>Eşin geçerli Mavi Kartı</li>
+        <li>Evlilik cüzdanı (apostilli + Almanca tercümeli)</li>
+        <li>Sponsor'ın son 3 maaş bordrosu</li>
+        <li>Kira sözleşmesi (yeterli metrekare kanıtı)</li>
+        <li>Pasaportlar (her iki taraf)</li>
+        <li class="info">Eş Almanya'ya geldikten sonra çalışma iznine doğrudan başvurabilir</li>
+      </ul>
+      <div class="info-box-ab mt-3">
+        <strong>💡 İpucu:</strong> Randevuyu iDATA üzerinden alın. Belgelerinizi Türkçe ve Almanca olarak hazırlayın.
+      </div>`,
+    action: { label: 'iDATA — Randevu Al', href: 'https://idata.com.tr' },
+  },
+
+  'outcome-calisma-es': {
+    type: 'success',
+    icon: 'bi-check-circle-fill text-success',
+    title: 'Başvurabilirsiniz.',
+    body: `
+      <p style="font-size:.88rem">Standart çalışma vizesi sahiplerinin eşleri için gerekli belgeler:</p>
+      <ul class="checklist">
+        <li>A1 Almanca sertifikası</li>
+        <li>Evlilik cüzdanı (apostilli + Almanca tercümeli)</li>
+        <li>Sponsor'ın son 3 maaş bordrosu</li>
+        <li>Sponsor'ın iş sözleşmesi</li>
+        <li>Kira sözleşmesi ve yeterli alan kanıtı</li>
+        <li>Her iki tarafın pasaportları</li>
+        <li class="info">Gelen eş Almanya'da çalışma iznine ayrıca başvurmalıdır</li>
+      </ul>`,
+    action: { label: 'iDATA — Randevu Al', href: 'https://idata.com.tr' },
+  },
+
+  'outcome-ankara': {
+    type: 'warning',
+    icon: 'bi-exclamation-triangle-fill text-warning',
+    title: 'Türk vatandaşları için Ankara Anlaşması istisnası.',
+    body: `
+      <p style="font-size:.88rem">1973 tarihli Ankara Anlaşması kapsamında bazı Türk vatandaşları A1 koşulundan muaf tutulabilir. Ancak bu hak otomatik değil — bireysel değerlendirme gerekir.</p>
+      <ul class="checklist">
+        <li class="warn">Her durum farklıdır — danışman görüşü şiddetle tavsiye edilir</li>
+        <li class="info">Türkiye'deki Alman Konsolosluğu'na danışın</li>
+        <li class="info">MBE göçmen danışmanlık merkezlerinden ücretsiz destek alabilirsiniz</li>
+      </ul>`,
+    action: { label: 'MBE Danışmanlık Merkezleri', href: 'https://www.bamf.de/DE/Themen/Beratung/MBE/mbe-node.html' },
+  },
+
+  'outcome-multeci-3ay': {
+    type: 'success',
+    icon: 'bi-check-circle-fill text-success',
+    title: 'Kritik 3 ay içindesiniz — hemen başvurun!',
+    body: `
+      <p style="font-size:.88rem">BAMF tanınma kararından itibaren 3 ay içinde başvuru yaparsanız gelir ve konut şartından muaf tutulursunuz. Bu büyük bir ayrıcalık — zaman kaybetmeyin.</p>
+      <ul class="checklist">
+        <li>IOM (Uluslararası Göç Örgütü) süreci <strong>ücretsiz</strong> yürütür</li>
+        <li>A1 sertifikası gerekmez</li>
+        <li>Gelir veya konut şartı yoktur</li>
+        <li>Pasaport (veya kimlik belgesi)</li>
+        <li>BAMF tanınma belgesi</li>
+        <li>Aile bağını kanıtlar belgeler (nikah/doğum belgesi)</li>
+      </ul>
+      <div class="info-box-ab mt-3">
+        <strong>⚡ Hemen harekete geçin:</strong> IOM'a başvuru için aşağıdaki butona tıklayın.
+      </div>`,
+    action: { label: 'IOM Türkiye — Başvuru Bilgisi', href: 'https://turkey.iom.int/' },
+  },
+
+  'outcome-multeci-es-standart': {
+    type: 'warning',
+    icon: 'bi-exclamation-triangle-fill text-warning',
+    title: '3 ay geçti — standart koşullar geçerli.',
+    body: `
+      <p style="font-size:.88rem">3 ay muafiyet süresi dolmuş. Artık standart koşullara tabi olursunuz:</p>
+      <ul class="checklist">
+        <li class="warn">Yeterli gelir kanıtı (Bürgergeld sınırı üzerinde)</li>
+        <li class="warn">Yeterli konut (kişi başı yaklaşık 10–12 m²)</li>
+        <li class="warn">A1 Almanca sertifikası (bazı istisnalar geçerli)</li>
+        <li class="info">IOM hâlâ destek sağlayabilir, danışmanlık için başvurun</li>
+      </ul>`,
+    action: { label: 'MBE Danışmanlık Merkezleri', href: 'https://www.bamf.de/DE/Themen/Beratung/MBE/mbe-node.html' },
+  },
+
+  'outcome-multeci-cocuk': {
+    type: 'success',
+    icon: 'bi-check-circle-fill text-success',
+    title: '18 yaş altı çocuklar için aile birleşimi hakkı güçlüdür.',
+    body: `
+      <p style="font-size:.88rem">Mülteci statüsündeki kişinin 18 yaş altı çocukları için aile birleşimi nispeten kolaydır.</p>
+      <ul class="checklist">
+        <li>A1 sertifikası gerekmez</li>
+        <li>Doğum belgesi (apostilli veya noter onaylı)</li>
+        <li>BAMF tanınma belgesi</li>
+        <li class="info">IOM ücretsiz olarak süreci yönetir</li>
+        <li class="warn">Çocuk 18 yaşını geçmeden başvurunun tamamlanması önemlidir</li>
+      </ul>`,
+    action: { label: 'IOM Türkiye — Başvuru Bilgisi', href: 'https://turkey.iom.int/' },
+  },
+
+  'outcome-subsidiär': {
+    type: 'warning',
+    icon: 'bi-exclamation-triangle-fill text-warning',
+    title: 'Subsidiärer Schutz için aile birleşimi kısıtlıdır.',
+    body: `
+      <p style="font-size:.88rem">Tamamlayıcı koruma (subsidiärer Schutz) statüsünde aile birleşimi hakkı daha sınırlıdır ve yasal değişikliklere tabidir.</p>
+      <ul class="checklist">
+        <li class="warn">Yıllık kota uygulanabilir (yasaya bağlı)</li>
+        <li class="warn">İnsani gerekçeler ön planda tutulur</li>
+        <li class="info">Bir göçmen hukuku avukatıyla mutlaka görüşün</li>
+        <li class="info">AWO, Caritas, Diakonie gibi kuruluşlar ücretsiz danışmanlık sunar</li>
+      </ul>`,
+    action: { label: 'MBE Danışmanlık Merkezleri', href: 'https://www.bamf.de/DE/Themen/Beratung/MBE/mbe-node.html' },
+  },
+};
+
+// ── State ──────────────────────────────────────────────────────────────────
+let current = 1;
+let history = [];
+
+// ── Render ─────────────────────────────────────────────────────────────────
+function render() {
+  const isOutcome = typeof current === 'string';
+  const el = document.getElementById('ab-content');
+  el.innerHTML = isOutcome ? renderOutcome(OUTCOMES[current]) : renderStep(STEPS[current]);
+  attachListeners();
+}
+
+function renderProgress(id, total) {
+  const pct = Math.round((id / total) * 100);
+  return `
+    <div class="d-flex justify-content-between text-muted mb-1" style="font-size:0.78rem">
+      <span>Adım ${id} / ${total}</span><span>${pct}%</span>
+    </div>
+    <div class="progress mb-4">
+      <div class="progress-bar bg-primary" style="width:${pct}%" role="progressbar"></div>
+    </div>`;
+}
+
+function renderStep(step) {
+  const opts = step.options.map(o => `
+    <button class="ab-option opt-${o.color} mb-2" data-next="${o.next}">
+      <div>
+        <span class="badge-label">${escHtml(o.label)}</span>
+        <span class="option-desc">${escHtml(o.desc)}</span>
+      </div>
+      <i class="bi bi-chevron-right text-muted"></i>
+    </button>`).join('');
+
+  const backBtn = history.length > 0
+    ? `<button class="back-btn" id="btn-back"><i class="bi bi-arrow-left me-1"></i>Geri</button>`
+    : '';
+
+  return `
+    ${renderProgress(step.id, step.total)}
+    <h6 class="fw-semibold mb-3">${escHtml(step.question)}</h6>
+    <div class="info-box-ab">
+      <i class="bi bi-info-circle text-primary me-1"></i>${step.hint}
+    </div>
+    <div class="d-flex flex-column mb-3">${opts}</div>
+    <div class="d-flex justify-content-between border-top pt-3">
+      ${backBtn}
+      <button class="back-btn ms-auto" id="btn-reset">
+        <i class="bi bi-arrow-counterclockwise me-1"></i>Başa Dön
+      </button>
+    </div>`;
+}
+
+function renderOutcome(outcome) {
+  const typeMap = { success: 'accent', warning: 'warning', danger: 'danger' };
+  const actionBtn = outcome.action
+    ? `<a href="${outcome.action.href}" target="_blank" rel="noopener"
+          class="btn btn-${typeMap[outcome.type] || outcome.type} w-100 mb-2">
+         ${escHtml(outcome.action.label)} <i class="bi bi-box-arrow-up-right ms-1"></i>
+       </a>`
+    : '';
+
+  return `
+    <div class="alert alert-${outcome.type} d-flex align-items-start gap-3 mb-3">
+      <i class="bi ${outcome.icon} outcome-icon flex-shrink-0"></i>
+      <div>
+        <div class="fw-bold mb-1">${escHtml(outcome.title)}</div>
+      </div>
+    </div>
+    <div class="mb-3">${outcome.body}</div>
+    ${actionBtn}
+    <button class="back-btn w-100 text-center mt-2" id="btn-reset">
+      <i class="bi bi-arrow-counterclockwise me-1"></i>Başa Dön
+    </button>`;
+}
+
+function attachListeners() {
+  document.querySelectorAll('.ab-option').forEach(btn => {
+    btn.addEventListener('click', () => navigate(btn.dataset.next));
+  });
+  document.getElementById('btn-back')?.addEventListener('click', goBack);
+  document.getElementById('btn-reset')?.addEventListener('click', reset);
+}
+
+function navigate(next) {
+  transition(() => {
+    history.push(current);
+    current = isNaN(next) ? next : Number(next);
+  });
+}
+function goBack() {
+  if (!history.length) return;
+  transition(() => { current = history.pop(); });
+}
+function reset() {
+  transition(() => { current = 1; history = []; });
+}
+function transition(fn) {
+  const card = document.getElementById('ab-card');
+  card.classList.add('fading');
+  setTimeout(() => { fn(); render(); card.classList.remove('fading'); }, 180);
+}
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+render();
+</script>
+{% endblock %}
