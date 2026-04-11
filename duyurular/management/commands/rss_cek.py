@@ -27,30 +27,32 @@ RSS_KAYNAKLAR = [
         'ssl_verify':  False,
     },
     {
-        'url':         'https://www.mfa.gov.tr/rss.tr.mfa',
-        'kategori':    'genel',
-        'kaynak_tipi': 'konsolosluk',
-        'kaynak':      'T.C. Dışişleri Bakanlığı',
+        'url':            'https://www.mfa.gov.tr/rss.tr.mfa',
+        'kategori':       'genel',
+        'kaynak_tipi':    'konsolosluk',
+        'kaynak':         'T.C. Dışişleri Bakanlığı',
+        'scope_override': 'genel',
     },
 ]
 
 SCRAPE_KAYNAKLAR = [
     {
-        'url':         'https://mainz-bk.mfa.gov.tr/Mission/Announcements',
-        'kategori':    'genel',
-        'kaynak_tipi': 'konsolosluk',
-        'kaynak':      'T.C. Mainz Başkonsolosluğu',
-        'link_base':   'https://mainz-bk.mfa.gov.tr',
-        'link_match':  '/Mission/ShowAnnouncement/',
+        'url':            'https://mainz-bk.mfa.gov.tr/Mission/Announcements',
+        'kategori':       'genel',
+        'kaynak_tipi':    'konsolosluk',
+        'kaynak':         'T.C. Mainz Başkonsolosluğu',
+        'link_base':      'https://mainz-bk.mfa.gov.tr',
+        'link_match':     '/Mission/ShowAnnouncement/',
+        'scope_override': 'genel',
     },
     {
-        'url':         'https://essen-bk.mfa.gov.tr/Mission/Announcements',
-        'kategori':    'genel',
-        'kaynak_tipi': 'konsolosluk',
-        'kaynak':      'T.C. Essen Başkonsolosluğu',
-        'link_base':   'https://essen-bk.mfa.gov.tr',
-        'link_match':  '/Mission/ShowAnnouncement/',
-        'stadt_slug':  'wiesbaden',
+        'url':            'https://essen-bk.mfa.gov.tr/Mission/Announcements',
+        'kategori':       'genel',
+        'kaynak_tipi':    'konsolosluk',
+        'kaynak':         'T.C. Essen Başkonsolosluğu',
+        'link_base':      'https://essen-bk.mfa.gov.tr',
+        'link_match':     '/Mission/ShowAnnouncement/',
+        'scope_override': 'genel',
     },
 ]
 
@@ -196,7 +198,8 @@ class Command(BaseCommand):
                         'kaynak_url':  link,
                         'yayinda':     True,
                         'stadt':       stadt,
-                        'scope':       scope,
+                        'eyalet':      kaynak.get('eyalet_obj'),
+                        'scope':       kaynak.get('scope_override', scope),
                     }
                 )
                 if created:
@@ -268,7 +271,8 @@ class Command(BaseCommand):
                         'kaynak_url':  href,
                         'yayinda':     True,
                         'stadt':       stadt,
-                        'scope':       scope,
+                        'eyalet':      kaynak.get('eyalet_obj'),
+                        'scope':       kaynak.get('scope_override', scope),
                     }
                 )
                 if created:

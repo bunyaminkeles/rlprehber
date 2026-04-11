@@ -26,7 +26,10 @@ def liste(request, eyalet_slug='rlp', stadt_slug=None):
     stadt = get_object_or_404(Stadt, slug=stadt_slug, aktiv=True) if stadt_slug else None
 
     bugun = timezone.localdate()
-    temel = Duyuru.objects.filter(_kapsam_filtresi(stadt, eyalet_slug), yayinda=True, yayin_bitis__gte=bugun)
+    temel = Duyuru.objects.filter(
+        _kapsam_filtresi(stadt, eyalet_slug),
+        yayinda=True,
+    ).filter(Q(yayin_bitis__isnull=True) | Q(yayin_bitis__gte=bugun))
 
     konsolosluk = temel.filter(kaynak_tipi='konsolosluk').order_by('-olusturulma')[:20]
     belediye    = temel.filter(kaynak_tipi='belediye').order_by('-olusturulma')[:20] if stadt else []
@@ -43,7 +46,9 @@ def liste(request, eyalet_slug='rlp', stadt_slug=None):
 
 def liste_almanya(request):
     bugun = timezone.localdate()
-    temel = Duyuru.objects.filter(yayinda=True, yayin_bitis__gte=bugun)
+    temel = Duyuru.objects.filter(yayinda=True).filter(
+        Q(yayin_bitis__isnull=True) | Q(yayin_bitis__gte=bugun)
+    )
 
     kullanici = temel.filter(kaynak_tipi='kullanici').order_by('-olusturulma')[:20]
 
