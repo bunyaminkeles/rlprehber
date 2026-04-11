@@ -8,9 +8,10 @@ from accounts.utils import email_dogrulandi_mi, dogrulama_maili_gonder
 
 
 def _kapsam_filtresi(stadt, eyalet_slug):
+    almanya_geneli = Q(scope='genel')
     if stadt:
-        return Q(stadt=stadt, scope='stadt') | Q(scope='eyalet', eyalet__slug=eyalet_slug)
-    return Q(scope='eyalet', eyalet__slug=eyalet_slug)
+        return Q(stadt=stadt, scope='stadt') | Q(scope='eyalet', eyalet__slug=eyalet_slug) | almanya_geneli
+    return Q(scope='eyalet', eyalet__slug=eyalet_slug) | almanya_geneli
 
 
 def liste(request, eyalet_slug='rlp', stadt_slug=None):
