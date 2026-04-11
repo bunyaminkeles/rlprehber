@@ -14,6 +14,13 @@ def _kapsam_filtresi(stadt, eyalet_slug):
     return Q(scope='eyalet', eyalet__slug=eyalet_slug) | almanya_geneli
 
 
+def _form_context():
+    from stadt.models import Eyalet, Stadt
+    eyaletler = Eyalet.objects.filter(aktif=True).order_by('ad')
+    sehirler  = Stadt.objects.filter(aktiv=True).select_related('eyalet').order_by('name')
+    return eyaletler, sehirler
+
+
 def liste(request, eyalet_slug='rlp', stadt_slug=None):
     from stadt.models import Stadt
     stadt = get_object_or_404(Stadt, slug=stadt_slug, aktiv=True) if stadt_slug else None
@@ -34,50 +41,126 @@ def liste(request, eyalet_slug='rlp', stadt_slug=None):
     })
 
 
+def liste_almanya(request):
+    bugun = timezone.localdate()
+    temel = Duyuru.objects.filter(yayinda=True, yayin_bitis__gte=bugun)
+
+    konsolosluk = temel.filter(kaynak_tipi='konsolosluk').order_by('-olusturulma')[:20]
+    kullanici   = temel.filter(kaynak_tipi='kullanici').order_by('-olusturulma')[:20]
+
+    return render(request, 'duyurular/liste.html', {
+        'konsolosluk': konsolosluk,
+        'belediye':    [],
+        'kullanici':   kullanici,
+        'stadt':       None,
+        'eyalet_slug': None,
+        'almanya_geneli': True,
+    })
+
+
+def _duyuru_ekle_post(request, geri_url, varsayilan_eyalet_slug=None, varsayilan_stadt=None):
+    from stadt.models import Eyalet, Stadt
+    baslik      = request.POST.get('baslik', '').strip()
+    icerik      = request.POST.get('icerik', '').strip()
+    yayin_bitis = request.POST.get('yayin_bitis', '').strip()
+    scope       = request.POST.get('scope', 'genel')
+
+    if scope not in ('genel', 'eyalet', 'stadt'):
+        scope = 'genel'
+
+    if not baslik or not icerik:
+        messages.error(request, 'Başlık ve içerik zorunludur.')
+        return False
+    if not yayin_bitis:
+        messages.error(request, 'Yayın bitiş tarihi zorunludur.')
+        return False
+    if scope == 'stadt' and not request.POST.get('stadt_id'):
+        messages.error(request, 'Şehre özel duyuru için şehir seçiniz.')
+        return False
+    if scope == 'eyalet' and not request.POST.get('eyalet_id'):
+        messages.error(request, 'Eyalet geneli duyuru için eyalet seçiniz.')
+        return False
+
+    eyalet = None
+    stadt  = None
+    if scope == 'stadt':
+        stadt  = Stadt.objects.filter(pk=request.POST.get('stadt_id'), aktiv=True).first()
+        eyalet = stadt.eyalet if stadt else None
+    elif scope == 'eyalet':
+        eyalet = Eyalet.objects.filter(pk=request.POST.get('eyalet_id'), aktif=True).first()
+
+    Duyuru.objects.create(
+        yazar=request.user,
+        kaynak_tipi='kullanici',
+        baslik=baslik,
+        icerik=icerik,
+        resim=request.FILES.get('resim'),
+        kategori='genel',
+        scope=scope,
+        eyalet=eyalet,
+        stadt=stadt,
+        yayinda=False,
+        yayin_bitis=yayin_bitis,
+    )
+    messages.success(request, 'Duyurunuz alındı, inceleme sonrası yayınlanacaktır.')
+    return True
+
+
 @login_required
 def duyuru_ekle(request, eyalet_slug='rlp', stadt_slug=None):
     from stadt.models import Stadt
-    stadt = get_object_or_404(Stadt, slug=stadt_slug, aktiv=True) if stadt_slug else None
+    stadt_ctx = get_object_or_404(Stadt, slug=stadt_slug, aktiv=True) if stadt_slug else None
 
     if not email_dogrulandi_mi(request.user):
         dogrulama_maili_gonder(request, request.user)
         messages.error(request, 'Duyuru eklemek için e-posta adresinizi doğrulamanız gerekiyor. Doğrulama bağlantısı e-postanıza gönderildi.')
         return redirect('account_email')
 
+    if stadt_slug:
+        geri_url = f'/{eyalet_slug}/{stadt_slug}/duyurular/'
+    else:
+        geri_url = f'/{eyalet_slug}/duyurular/'
+
     if request.method == 'POST':
+        if _duyuru_ekle_post(request, geri_url):
+            return redirect(geri_url)
 
-        baslik = request.POST.get('baslik', '').strip()
-        icerik = request.POST.get('icerik', '').strip()
-        yayin_bitis = request.POST.get('yayin_bitis', '').strip()
-        if not baslik or not icerik:
-            messages.error(request, 'Başlık ve içerik zorunludur.')
-        elif not yayin_bitis:
-            messages.error(request, 'Yayın bitiş tarihi zorunludur.')
-        else:
-            from stadt.models import Eyalet
-            eyalet = Eyalet.objects.filter(slug=eyalet_slug).first()
-            Duyuru.objects.create(
-                yazar=request.user,
-                kaynak_tipi='kullanici',
-                baslik=baslik,
-                icerik=icerik,
-                resim=request.FILES.get('resim'),
-                kategori='genel',
-                stadt=stadt,
-                eyalet=eyalet,
-                scope='stadt' if stadt else 'eyalet',
-                yayinda=False,
-                yayin_bitis=yayin_bitis,
-            )
-            messages.success(request, 'Duyurunuz alındı, inceleme sonrası yayınlanacaktır.')
-
-        if stadt_slug:
-            return redirect(f'/{eyalet_slug}/{stadt_slug}/duyurular/')
-        return redirect(f'/{eyalet_slug}/duyurular/')
-
+    eyaletler, sehirler = _form_context()
     return render(request, 'duyurular/duyuru_ekle.html', {
-        'stadt':       stadt,
-        'eyalet_slug': eyalet_slug,
+        'stadt':               stadt_ctx,
+        'eyalet_slug':         eyalet_slug,
+        'geri_url':            geri_url,
+        'eyaletler':           eyaletler,
+        'sehirler':            sehirler,
+        'varsayilan_scope':    'stadt' if stadt_slug else 'eyalet' if eyalet_slug else 'genel',
+        'varsayilan_eyalet_id': stadt_ctx.eyalet_id if stadt_ctx else None,
+        'varsayilan_stadt_id':  stadt_ctx.pk if stadt_ctx else None,
+    })
+
+
+@login_required
+def duyuru_ekle_almanya(request):
+    if not email_dogrulandi_mi(request.user):
+        dogrulama_maili_gonder(request, request.user)
+        messages.error(request, 'Duyuru eklemek için e-posta adresinizi doğrulamanız gerekiyor. Doğrulama bağlantısı e-postanıza gönderildi.')
+        return redirect('account_email')
+
+    geri_url = '/almanya/duyurular/'
+    if request.method == 'POST':
+        if _duyuru_ekle_post(request, geri_url):
+            return redirect(geri_url)
+
+    eyaletler, sehirler = _form_context()
+    return render(request, 'duyurular/duyuru_ekle.html', {
+        'stadt':              None,
+        'eyalet_slug':        None,
+        'geri_url':           geri_url,
+        'eyaletler':          eyaletler,
+        'sehirler':           sehirler,
+        'varsayilan_scope':   'genel',
+        'varsayilan_eyalet_id': None,
+        'varsayilan_stadt_id':  None,
+        'almanya_geneli':     True,
     })
 
 

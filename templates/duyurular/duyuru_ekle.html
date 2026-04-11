@@ -2,8 +2,7 @@
 {% block title %}Duyuru Ekle{% endblock %}
 {% block content %}
 <div class="container mt-4" style="max-width:600px">
-  <a href="{% if stadt %}/{{ eyalet_slug }}/{{ stadt.slug }}/duyurular/{% else %}/{{ eyalet_slug }}/duyurular/{% endif %}"
-     class="btn btn-sm btn-outline-secondary mb-3">
+  <a href="{{ geri_url }}" class="btn btn-sm btn-outline-secondary mb-3">
     <i class="bi bi-arrow-left me-1"></i>Geri
   </a>
   <div class="card shadow-sm border-0">
@@ -14,26 +13,105 @@
       <p class="text-muted small mb-3">Duyurunuz incelendikten sonra yayınlanacaktır.</p>
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
+
+        <!-- Kapsam -->
         <div class="mb-3">
-          <label class="form-label fw-semibold">Başlık</label>
+          <label class="form-label fw-semibold">Kapsam <span class="text-danger">*</span></label>
+          <select name="scope" id="id_scope" class="form-select" required>
+            <option value="genel"  {% if varsayilan_scope == 'genel'  %}selected{% endif %}>Almanya Geneli</option>
+            <option value="eyalet" {% if varsayilan_scope == 'eyalet' %}selected{% endif %}>Eyalet Geneli</option>
+            <option value="stadt"  {% if varsayilan_scope == 'stadt'  %}selected{% endif %}>Şehre Özel</option>
+          </select>
+        </div>
+
+        <!-- Eyalet (Eyalet Geneli veya Şehre Özel seçilince görünür) -->
+        <div class="mb-3" id="row_eyalet" style="display:none;">
+          <label class="form-label fw-semibold">Eyalet <span class="text-danger">*</span></label>
+          <select name="eyalet_id" id="id_eyalet" class="form-select">
+            <option value="">— Seçiniz —</option>
+            {% for e in eyaletler %}
+            <option value="{{ e.id }}" {% if varsayilan_eyalet_id == e.id %}selected{% endif %}>{{ e.ad }} ({{ e.kod }})</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <!-- Şehir (Şehre Özel seçilince görünür) -->
+        <div class="mb-3" id="row_stadt" style="display:none;">
+          <label class="form-label fw-semibold">Şehir <span class="text-danger">*</span></label>
+          <select name="stadt_id" id="id_stadt" class="form-select">
+            <option value="">— Önce eyalet seçin —</option>
+            {% for s in sehirler %}
+            <option value="{{ s.id }}" data-eyalet="{{ s.eyalet_id }}" {% if varsayilan_stadt_id == s.id %}selected{% endif %}>{{ s.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <!-- Başlık -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Başlık <span class="text-danger">*</span></label>
           <input type="text" name="baslik" class="form-control" maxlength="300" required>
         </div>
+
+        <!-- İçerik -->
         <div class="mb-3">
-          <label class="form-label fw-semibold">İçerik</label>
+          <label class="form-label fw-semibold">İçerik <span class="text-danger">*</span></label>
           <textarea name="icerik" class="form-control" rows="5" required></textarea>
         </div>
+
+        <!-- Resim -->
         <div class="mb-3">
           <label class="form-label fw-semibold">Resim <span class="text-muted fw-normal">— opsiyonel</span></label>
           <input type="file" name="resim" class="form-control" accept="image/*">
         </div>
-        <div class="mb-3">
-          <label class="form-label fw-semibold">Yayın Bitiş Tarihi</label>
+
+        <!-- Yayın Bitiş -->
+        <div class="mb-4">
+          <label class="form-label fw-semibold">Yayın Bitiş Tarihi <span class="text-danger">*</span></label>
           <input type="date" name="yayin_bitis" class="form-control" required>
           <div class="form-text">Duyurunuz bu tarihten sonra yayından kalkacaktır.</div>
         </div>
+
         <button type="submit" class="btn btn-success w-100">Gönder</button>
       </form>
     </div>
   </div>
 </div>
+
+<script>
+(function () {
+  const scope   = document.getElementById('id_scope');
+  const rowEy   = document.getElementById('row_eyalet');
+  const rowSt   = document.getElementById('row_stadt');
+  const selEy   = document.getElementById('id_eyalet');
+  const selSt   = document.getElementById('id_stadt');
+  const allOpts = Array.from(selSt.options);
+
+  function syncScope() {
+    const v = scope.value;
+    rowEy.style.display = (v === 'eyalet' || v === 'stadt') ? '' : 'none';
+    rowSt.style.display = (v === 'stadt') ? '' : 'none';
+    if (v !== 'eyalet' && v !== 'stadt') selEy.value = '';
+    if (v !== 'stadt') selSt.value = '';
+    filterStadt();
+  }
+
+  function filterStadt() {
+    const eid = selEy.value;
+    selSt.innerHTML = '';
+    const placeholder = document.createElement('option');
+    placeholder.value = '';
+    placeholder.textContent = eid ? '— Seçiniz —' : '— Önce eyalet seçin —';
+    selSt.appendChild(placeholder);
+    allOpts.forEach(function(o) {
+      if (o.value && o.dataset.eyalet === eid) {
+        selSt.appendChild(o.cloneNode(true));
+      }
+    });
+  }
+
+  scope.addEventListener('change', syncScope);
+  selEy.addEventListener('change', filterStadt);
+  syncScope();
+})();
+</script>
 {% endblock %}

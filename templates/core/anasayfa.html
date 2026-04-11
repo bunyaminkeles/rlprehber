@@ -420,7 +420,7 @@
                     </h5>
                     <div class="vstack gap-0 flex-grow-1">
                         {% for d in son_duyurular|slice:":4" %}
-                        <a href="/{% if d.stadt %}{{ d.stadt.eyalet.slug|default:'rlp' }}/{{ d.stadt.slug }}/{% else %}rlp/mainz/{% endif %}duyurular/{{ d.pk }}/"
+                        <a href="/{% if d.stadt %}{{ d.stadt.eyalet.slug|default:'rlp' }}/{{ d.stadt.slug }}/{% elif d.eyalet %}{{ d.eyalet.slug }}/{% else %}rlp/{% endif %}duyurular/{{ d.pk }}/"
                            class="d-flex align-items-start py-3 text-decoration-none"
                            style="border-bottom: 1px solid #f3f4f6;">
                             <div>
@@ -436,7 +436,7 @@
                         {% endfor %}
                     </div>
                     <div class="mt-3">
-                        <a href="/rlp/mainz/duyurular/" class="text-decoration-none fw-semibold" style="font-size: 0.8125rem; color: #032A4A;">Tümünü gör <i class="bi bi-arrow-right ms-1"></i></a>
+                        <a href="/almanya/duyurular/" class="text-decoration-none fw-semibold" style="font-size: 0.8125rem; color: #032A4A;">Tümünü gör <i class="bi bi-arrow-right ms-1"></i></a>
                     </div>
                 </div>
 

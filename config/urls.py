@@ -8,6 +8,7 @@ from django.contrib.sitemaps.views import sitemap
 from core.sitemaps import SITEMAPS
 from config.converters import EyaletConverter
 from blog.views import detay_root as blog_detay_root
+from duyurular import views as duyurular_views
 
 register_converter(EyaletConverter, 'eyalet')
 
@@ -30,7 +31,7 @@ def legacy_stadt_redirect(request, old_slug, subpath=''):
 # Eski kök URL'lerden doğrudan yeni URL'lere 301 redirect
 OLD_MAINZ_REDIRECTS = [
     path('rehber/',    RedirectView.as_view(url='/rlp/mainz/rehber/',    permanent=True)),
-    path('duyurular/', RedirectView.as_view(url='/rlp/mainz/duyurular/', permanent=True)),
+    path('duyurular/', RedirectView.as_view(url='/almanya/duyurular/', permanent=True)),
     path('blog/',      RedirectView.as_view(url='/rlp/mainz/blog/',      permanent=True)),
     path('ilan/',      RedirectView.as_view(url='/rlp/mainz/ilan/',      permanent=True)),
     path('takvim/',    RedirectView.as_view(url='/rlp/mainz/takvim/',    permanent=True)),
@@ -62,6 +63,10 @@ urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + [
 
     # Blog yazısı kök URL'i (canonical, şehirden bağımsız)
     path('blog/<slug:slug>/', blog_detay_root, name='blog_detay_root'),
+
+    # Almanya geneli duyurular
+    path('almanya/duyurular/', duyurular_views.liste_almanya, name='almanya_duyurular'),
+    path('almanya/duyurular/ekle/', duyurular_views.duyuru_ekle_almanya, name='almanya_duyuru_ekle'),
 
     # Eski kök URL'lere 301 redirect (SEO koruması)
     *OLD_MAINZ_REDIRECTS,

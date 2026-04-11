@@ -6,7 +6,7 @@
   <div class="d-flex align-items-center justify-content-between mb-3">
     <h4 class="mb-0"><i class="bi bi-megaphone me-2 text-primary"></i>Duyurular</h4>
     {% if user.is_authenticated %}
-    <a href="{% if stadt %}/{{ eyalet_slug }}/{{ stadt.slug }}/duyurular/ekle/{% else %}/{{ eyalet_slug }}/duyurular/ekle/{% endif %}"
+    <a href="{% if stadt %}/{{ eyalet_slug }}/{{ stadt.slug }}/duyurular/ekle/{% elif eyalet_slug %}/{{ eyalet_slug }}/duyurular/ekle/{% else %}/almanya/duyurular/ekle/{% endif %}"
        class="btn btn-sm btn-primary">
       <i class="bi bi-plus-lg me-1"></i>Duyuru Ekle
     </a>
