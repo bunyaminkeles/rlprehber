@@ -171,6 +171,19 @@
     {{ yazi.icerik|safe }}
   </div>
 
+  <!-- Vergi Sınıfı Karar Aracı CTA -->
+  <div class="mt-5 p-4 rounded-3 d-flex align-items-start gap-3" style="background:#f0fdf4; border:1.5px solid #bbf7d0;">
+    <i class="bi bi-receipt-cutoff text-success flex-shrink-0" style="font-size:1.75rem;"></i>
+    <div>
+      <div class="fw-bold mb-1" style="color:#065f46;">Hangi Vergi Sınıfındasın?</div>
+      <p class="mb-2 small text-muted">Medeni durumuna ve çalışma koşullarına göre Steuerklasse'nı 30 saniyede bul — ücretsiz, kayıt gerekmez.</p>
+      <a href="{% if stadt %}/{{ eyalet_slug }}/{{ stadt.slug }}/#karar-araclari{% else %}/{{ eyalet_slug }}/#karar-araclari{% endif %}"
+         class="btn btn-sm fw-semibold" style="background:#065f46; color:#fff; border:none;">
+        Karar Aracını Kullan <i class="bi bi-arrow-right ms-1"></i>
+      </a>
+    </div>
+  </div>
+
   {% if yazi.etiket_listesi %}
   <div class="blog-tags">
     {% for etiket in yazi.etiket_listesi %}

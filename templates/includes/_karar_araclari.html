@@ -1,0 +1,461 @@
+<!-- Hızlı Karar Araçları — collapsed=True parametresiyle ana sayfada kullanılır -->
+<section id="karar-araclari" class="py-5" style="background:#f0f4f8; border-top:1px solid #e2e8f0;">
+  <div class="container">
+
+    <div class="text-center mb-4">
+      <h3 class="fw-bold" style="letter-spacing:-0.02em;">Hızlı Karar Araçları</h3>
+      <p class="text-muted mb-0">Adım adım soruları cevaplayın, doğru yolu öğrenin.</p>
+    </div>
+
+    {% if not collapsed %}
+    <!-- Mobile tab navigation — sadece normal modda -->
+    <ul class="nav nav-pills justify-content-center gap-1 mb-4 d-md-none flex-nowrap overflow-auto pb-1" id="karar-tabs-nav" style="scrollbar-width:none;">
+      <li class="nav-item"><button class="nav-link active text-nowrap" onclick="karar_showTab('anabin')"><i class="bi bi-diagram-3 me-1"></i>Anabin</button></li>
+      <li class="nav-item"><button class="nav-link text-nowrap" onclick="karar_showTab('aile')"><i class="bi bi-house-heart me-1"></i>Aile Birleşimi</button></li>
+      <li class="nav-item"><button class="nav-link text-nowrap" onclick="karar_showTab('vergi')"><i class="bi bi-receipt me-1"></i>Vergi Sınıfı</button></li>
+    </ul>
+    {% endif %}
+
+    <div class="row g-4">
+
+      <!-- ── 1) ANABİN KARAR ARACI ──────────────────────────── -->
+      <div class="{% if collapsed %}col-md-4{% else %}col-md-4 karar-col{% endif %}" id="karar-col-anabin">
+        <div class="card shadow-sm border-0 rounded-3 overflow-hidden {% if not collapsed %}h-100 d-flex flex-column{% endif %}">
+
+          {% if collapsed %}
+          <button class="text-white text-center p-4 pb-3 w-100 border-0 d-flex flex-column align-items-center"
+                  style="background:#4f46e5; cursor:pointer;"
+                  data-bs-toggle="collapse" data-bs-target="#anabin-collapse"
+                  aria-expanded="false" aria-controls="anabin-collapse">
+            <i class="bi bi-mortarboard-fill fs-4 mb-1"></i>
+            <span class="fw-bold fs-6 mb-0">Anabin Karar Aracı</span>
+            <span class="small opacity-75 mb-1">ZAB başvurusu gerekli mi?</span>
+            <i class="bi bi-chevron-down karar-chevron" style="font-size:0.8rem;"></i>
+          </button>
+          <div class="collapse" id="anabin-collapse">
+          {% else %}
+          <div class="text-white text-center p-4 pb-3" style="background:#4f46e5;">
+            <i class="bi bi-mortarboard-fill fs-4 d-block mb-1"></i>
+            <h5 class="fw-bold mb-0">Anabin Karar Aracı</h5>
+            <p class="mb-0 small opacity-75">ZAB başvurusu gerekli mi?</p>
+          </div>
+          {% endif %}
+
+            <div class="card-body p-4 {% if not collapsed %}flex-grow-1 {% endif %}d-flex flex-column" id="anabin-area"></div>
+            <div class="card-footer bg-white border-top py-2 text-center" style="font-size:0.72rem;color:#9ca3af;">
+              Bu araç bilgi amaçlıdır. Nihai karar için yetkili danışman görüşü alın.
+            </div>
+
+          {% if collapsed %}</div>{% endif %}
+        </div>
+      </div>
+
+      <!-- ── 2) AİLE BİRLEŞİMİ REHBERİ ─────────────────────── -->
+      <div class="{% if collapsed %}col-md-4{% else %}col-md-4 karar-col d-none d-md-flex flex-column{% endif %}" id="karar-col-aile">
+        <div class="card shadow-sm border-0 rounded-3 overflow-hidden {% if not collapsed %}h-100 d-flex flex-column{% endif %}">
+
+          {% if collapsed %}
+          <button class="text-white text-center p-4 pb-3 w-100 border-0 d-flex flex-column align-items-center"
+                  style="background:#0369a1; cursor:pointer;"
+                  data-bs-toggle="collapse" data-bs-target="#aile-collapse"
+                  aria-expanded="false" aria-controls="aile-collapse">
+            <i class="bi bi-house-heart-fill fs-4 mb-1"></i>
+            <span class="fw-bold fs-6 mb-0">Aile Birleşimi Rehberi</span>
+            <span class="small opacity-75 mb-1">Hangi şartlar sizin için geçerli?</span>
+            <i class="bi bi-chevron-down karar-chevron" style="font-size:0.8rem;"></i>
+          </button>
+          <div class="collapse" id="aile-collapse">
+          {% else %}
+          <div class="text-white text-center p-4 pb-3" style="background:#0369a1;">
+            <i class="bi bi-house-heart-fill fs-4 d-block mb-1"></i>
+            <h5 class="fw-bold mb-0">Aile Birleşimi Rehberi</h5>
+            <p class="mb-0 small opacity-75">Hangi şartlar sizin için geçerli?</p>
+          </div>
+          {% endif %}
+
+            <div class="card-body p-4 {% if not collapsed %}flex-grow-1 {% endif %}d-flex flex-column" id="aile-area"></div>
+            <div class="card-footer bg-white border-top py-2 text-center" style="font-size:0.72rem;color:#9ca3af;">
+              Genel bilgi amaçlıdır. Kesin bilgi için ABH veya göçmen danışmanlık hizmetine başvurun.
+            </div>
+
+          {% if collapsed %}</div>{% endif %}
+        </div>
+      </div>
+
+      <!-- ── 3) VERGİ SINIFI BULUCU ─────────────────────────── -->
+      <div class="{% if collapsed %}col-md-4{% else %}col-md-4 karar-col d-none d-md-flex flex-column{% endif %}" id="karar-col-vergi">
+        <div class="card shadow-sm border-0 rounded-3 overflow-hidden {% if not collapsed %}h-100 d-flex flex-column{% endif %}">
+
+          {% if collapsed %}
+          <button class="text-white text-center p-4 pb-3 w-100 border-0 d-flex flex-column align-items-center"
+                  style="background:#065f46; cursor:pointer;"
+                  data-bs-toggle="collapse" data-bs-target="#vergi-collapse"
+                  aria-expanded="false" aria-controls="vergi-collapse">
+            <i class="bi bi-receipt-cutoff fs-4 mb-1"></i>
+            <span class="fw-bold fs-6 mb-0">Vergi Sınıfı Bulucu</span>
+            <span class="small opacity-75 mb-1">Hangi Steuerklasse'dasın?</span>
+            <i class="bi bi-chevron-down karar-chevron" style="font-size:0.8rem;"></i>
+          </button>
+          <div class="collapse" id="vergi-collapse">
+          {% else %}
+          <div class="text-white text-center p-4 pb-3" style="background:#065f46;">
+            <i class="bi bi-receipt-cutoff fs-4 d-block mb-1"></i>
+            <h5 class="fw-bold mb-0">Vergi Sınıfı Bulucu</h5>
+            <p class="mb-0 small opacity-75">Hangi Steuerklasse'dasın?</p>
+          </div>
+          {% endif %}
+
+            <div class="card-body p-4 {% if not collapsed %}flex-grow-1 {% endif %}d-flex flex-column" id="vergi-area"></div>
+            <div class="card-footer bg-white border-top py-2 text-center" style="font-size:0.72rem;color:#9ca3af;">
+              Genel bilgi amaçlıdır. Bireysel vergi durumun için Finanzamt'a veya Steuerberater'e danış.
+            </div>
+
+          {% if collapsed %}</div>{% endif %}
+        </div>
+      </div>
+
+    </div><!-- /row -->
+  </div>
+</section>
+
+<style>
+  .karar-btn {
+    display:block; width:100%; text-align:left;
+    background:#fff; border:2px solid #e5e7eb;
+    border-radius:0.75rem; padding:0.9rem 1rem;
+    font-size:0.875rem; font-weight:500; color:#374151;
+    cursor:pointer; transition:border-color .15s, background .15s, transform .15s;
+    margin-bottom:0.6rem;
+  }
+  .karar-btn:hover { border-color:#6366f1; background:#eef2ff; transform:translateY(-2px); }
+  .karar-btn.karar-btn-blue:hover { border-color:#0284c7; background:#e0f2fe; transform:translateY(-2px); }
+  .karar-btn.karar-btn-green:hover { border-color:#059669; background:#d1fae5; transform:translateY(-2px); }
+  .karar-btn-label { font-weight:700; }
+  .karar-btn-desc { font-size:0.78rem; color:#6b7280; margin-left:0.4rem; }
+  .karar-progress { height:4px; background:#e5e7eb; border-radius:9999px; margin-bottom:1rem; overflow:hidden; }
+  .karar-progress-bar { height:100%; border-radius:9999px; transition:width .4s ease; }
+  .karar-hint {
+    font-size:0.78rem; padding:0.6rem 0.8rem; border-radius:0.5rem;
+    border-left:3px solid; margin-bottom:1rem;
+  }
+  .karar-q { font-weight:600; font-size:0.9rem; color:#1f2937; margin-bottom:0.75rem; line-height:1.4; }
+  .karar-nav { display:flex; gap:0.5rem; padding-top:0.75rem; border-top:1px solid #f3f4f6; margin-top:auto; }
+  .karar-nav-btn { flex:1; background:none; border:none; font-size:0.8rem; color:#9ca3af; padding:0.5rem; cursor:pointer; }
+  .karar-nav-btn:hover { color:#4b5563; }
+  .karar-result-box { border-radius:0.75rem; border:1.5px solid; padding:1rem 1rem 0.875rem; margin-bottom:1rem; }
+  .karar-result-title { font-weight:700; font-size:0.95rem; margin-bottom:0.35rem; }
+  .karar-result-text { font-size:0.82rem; line-height:1.55; color:#374151; }
+  .karar-result-link { display:inline-flex; align-items:center; gap:0.35rem; font-size:0.8rem; font-weight:600; text-decoration:none; margin-top:0.6rem; padding:0.4rem 0.9rem; border-radius:0.5rem; color:#fff; }
+  .karar-fade { animation: karar_fade 0.25s ease-in-out; }
+  @keyframes karar_fade { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+  /* Collapsed mod chevron animasyonu */
+  .karar-chevron { transition: transform 0.3s ease; }
+  [aria-expanded="true"] .karar-chevron { transform: rotate(180deg); }
+</style>
+
+<script>
+/* ======================================================
+   MOBILE TAB SWITCHER (sadece normal mod)
+====================================================== */
+function karar_showTab(tool) {
+  const cols = document.querySelectorAll('.karar-col');
+  cols.forEach(c => {
+    c.classList.add('d-none');
+    c.classList.remove('d-md-flex','d-flex');
+  });
+  const active = document.getElementById('karar-col-' + tool);
+  if (active) { active.classList.remove('d-none'); active.classList.add('d-flex','flex-column'); }
+  document.querySelectorAll('#karar-tabs-nav .nav-link').forEach(btn => btn.classList.remove('active'));
+  event && event.target && event.target.classList.add('active');
+}
+
+/* ======================================================
+   1) ANABİN KARAR ARACI
+====================================================== */
+(function() {
+  const STEPS = {
+    1: {
+      id: 1, total: 3,
+      question: 'Anabin veritabanında üniversitenizi buldunuz mu? Kurum statüsü nedir?',
+      hint: 'anabin.kmk.org adresinden üniversitenizin adını aratın ve kurum kartında statüyü kontrol edin.',
+      options: [
+        { label: 'H+',        desc: 'Kurum tanınıyor',   next: 2,           color: 'green'  },
+        { label: 'H-',        desc: 'Kurum tanınmıyor',  next: 'outcome-1', color: 'red'    },
+        { label: 'H+/-',      desc: 'Kısmi tanınma',     next: 'outcome-2', color: 'yellow' },
+        { label: 'Bulamadım', desc: 'Listede yok',       next: 'outcome-2', color: 'yellow' },
+      ]
+    },
+    2: {
+      id: 2, total: 3,
+      question: 'Okulunuz tanınıyor! Peki bölümünüz (Abschluss) Anabin\'de birebir listelenmiş mi?',
+      hint: '"Abschlüsse" sekmesine tıklayın ve lisans/lisansüstü bölümünüzü arayın.',
+      options: [
+        { label: 'Evet, listelenmiş',   desc: 'Bölümüm var',         next: 3,           color: 'green'  },
+        { label: 'Hayır / İsim farklı', desc: 'Eşleşme bulunamadı',  next: 'outcome-3', color: 'yellow' },
+      ]
+    },
+    3: {
+      id: 3, total: 3,
+      question: 'Bölümünüzün "Klasse" veya "Äquivalenzklasse" durumu nedir?',
+      hint: 'Bölümünüzün detay satırında "Klasse" sütununu inceleyin.',
+      options: [
+        { label: 'Entspricht / Gleichwertig',    desc: 'Tam denklik',         next: 'outcome-4', color: 'green'  },
+        { label: 'Bedingt vergleichbar / Diğer', desc: 'Kısmi veya belirsiz', next: 'outcome-3', color: 'yellow' },
+      ]
+    }
+  };
+  const OUTCOMES = {
+    'outcome-1': { scheme:'danger',  icon:'bi-x-circle-fill',              title:'Üzgünüz, diplomanız tanınmıyor.',   text:'Kurumunuz H- statüsünde. Bu diploma ile Mavi Kart veya nitelikli çalışan vizesi alamazsınız. ZAB başvurusu da bu durumu değiştirmez.', link:null },
+    'outcome-2': { scheme:'warning', icon:'bi-exclamation-triangle-fill',  title:'ZAB Başvurusu Zorunlu!',            text:'Okulunuzun durumu net değil veya sistemde yok. Diplomanızın geçerliliğini kanıtlamak için mutlaka ZAB\'a (Zeugnisbewertung) bireysel başvuru yapmalısınız.', link:'https://zab.kmk.org/de/zeugnisbewertung/antrag', linkText:'ZAB Başvurusu →' },
+    'outcome-3': { scheme:'warning', icon:'bi-exclamation-triangle-fill',  title:'ZAB Başvurusu Zorunlu!',            text:'Okulunuz tanınsa da bölümünüz birebir eşleşmiyor. Vize sürecinde sorun yaşamamak için ZAB\'a başvurmalısınız.', link:'https://zab.kmk.org/de/zeugnisbewertung/antrag', linkText:'ZAB Başvurusu →' },
+    'outcome-4': { scheme:'success', icon:'bi-check-circle-fill',          title:'Tebrikler! ZAB\'a gerek yok.',      text:'Okulunuz (H+) ve bölümünüz tam tanınıyor. Anabin\'den ekran çıktısı (PDF) alarak doğrudan vize / Mavi Kart başvurunuza ekleyebilirsiniz.', link:'https://anabin.kmk.org', linkText:'Anabin\'e Git →' },
+  };
+  const SCHEME = {
+    success: { border:'#10b981', bg:'#ecfdf5', icon:'#10b981', btn:'#059669' },
+    warning: { border:'#f59e0b', bg:'#fffbeb', icon:'#d97706', btn:'#b45309' },
+    danger:  { border:'#ef4444', bg:'#fef2f2', icon:'#ef4444', btn:'#dc2626' },
+  };
+  let current = 1, history = [];
+  const area = document.getElementById('anabin-area');
+
+  function render(id) {
+    area.innerHTML = '';
+    setTimeout(() => { area.innerHTML = typeof id === 'string' ? buildOutcome(id) : buildStep(id); }, 0);
+  }
+  function buildStep(id) {
+    const s = STEPS[id];
+    const pct = Math.round((s.id / s.total) * 100);
+    const opts = s.options.map(o =>
+      `<button class="karar-btn" onclick="anabin_answer('${o.next}')">
+        <span class="karar-btn-label">${o.label}</span>
+        ${o.desc ? `<span class="karar-btn-desc">— ${o.desc}</span>` : ''}
+      </button>`
+    ).join('');
+    return `<div class="karar-fade" style="display:flex;flex-direction:column;height:100%;">
+      <div class="karar-progress mb-1"><div class="karar-progress-bar" style="width:${pct}%;background:#4f46e5;"></div></div>
+      <div style="font-size:0.72rem;color:#9ca3af;text-align:right;margin-bottom:0.75rem;">Adım ${s.id} / ${s.total}</div>
+      <p class="karar-q">${s.question}</p>
+      ${s.hint ? `<div class="karar-hint" style="background:#eff6ff;border-color:#93c5fd;color:#1d4ed8;">${s.hint}</div>` : ''}
+      <div style="flex:1;">${opts}</div>
+      <div class="karar-nav">
+        ${history.length > 0 ? `<button class="karar-nav-btn" onclick="anabin_back()">← Geri</button>` : ''}
+        <button class="karar-nav-btn" onclick="anabin_reset()">↺ Başa Dön</button>
+      </div>
+    </div>`;
+  }
+  function buildOutcome(id) {
+    const o = OUTCOMES[id]; const sc = SCHEME[o.scheme];
+    return `<div class="karar-fade" style="display:flex;flex-direction:column;height:100%;">
+      <div class="karar-result-box" style="border-color:${sc.border};background:${sc.bg};">
+        <div style="display:flex;align-items:flex-start;gap:0.6rem;">
+          <i class="bi ${o.icon}" style="color:${sc.icon};font-size:1.25rem;flex-shrink:0;margin-top:1px;"></i>
+          <div>
+            <div class="karar-result-title">${o.title}</div>
+            <div class="karar-result-text">${o.text}</div>
+            ${o.link ? `<a href="${o.link}" target="_blank" rel="noopener" class="karar-result-link" style="background:${sc.btn};">${o.linkText} <i class="bi bi-box-arrow-up-right"></i></a>` : ''}
+          </div>
+        </div>
+      </div>
+      <div class="karar-nav mt-auto" style="padding-top:0.5rem;border-top:1px solid #f3f4f6;">
+        <button class="karar-nav-btn" onclick="anabin_reset()">↺ Başa Dön</button>
+      </div>
+    </div>`;
+  }
+  window.anabin_answer = n => { history.push(current); current = n; render(current); };
+  window.anabin_back   = () => { current = history.pop(); render(current); };
+  window.anabin_reset  = () => { current = 1; history = []; render(current); };
+  render(1);
+})();
+
+/* ======================================================
+   2) AİLE BİRLEŞİMİ REHBERİ
+====================================================== */
+(function() {
+  const TREE = {
+    start: {
+      question: 'Almanya\'daki oturma izniniz nedir?',
+      answers: [
+        { text: 'AB Mavi Kart (EU Blue Card)',             next: 'mavi_kim' },
+        { text: 'Niederlassungserlaubnis (Süresiz İkamet)', next: 'nied_kim' },
+        { text: 'Aufenthaltserlaubnis — Çalışma bazlı',    next: 'auf_is_kim' },
+        { text: 'Aufenthaltserlaubnis — Öğrenci / Eğitim', next: 'result_ogrenci' },
+        { text: 'Mülteci / Geçici Koruma (§24)',           next: 'result_multeci' },
+      ]
+    },
+    mavi_kim: {
+      question: 'Yanınıza kimi getirmek istiyorsunuz?',
+      answers: [
+        { text: 'Eşim',                             next: 'result_mavi_es' },
+        { text: '18 Yaşından Küçük Çocuğum',        next: 'result_cocuk' },
+        { text: '18 Yaş Üstü Çocuğum / Ebeveynim', next: 'result_diger_akraba' },
+      ]
+    },
+    nied_kim: {
+      question: 'Yanınıza kimi getirmek istiyorsunuz?',
+      answers: [
+        { text: 'Eşim',                             next: 'result_nied_es' },
+        { text: '18 Yaşından Küçük Çocuğum',        next: 'result_cocuk' },
+        { text: '18 Yaş Üstü Çocuğum / Ebeveynim', next: 'result_diger_akraba' },
+      ]
+    },
+    auf_is_kim: {
+      question: 'Yanınıza kimi getirmek istiyorsunuz?',
+      answers: [
+        { text: 'Eşim',                      next: 'result_auf_es' },
+        { text: '18 Yaşından Küçük Çocuğum', next: 'result_cocuk' },
+      ]
+    },
+  };
+  const RESULTS = {
+    result_mavi_es:      { scheme:'success', icon:'bi-check-circle-fill',             title:'Mavi Kart — Eş Vizesi',            text:'Mavi Kart sahiplerinin eşleri için <strong>çoğu ülkeden Almanca dil sınavı zorunlu değildir</strong>. Temel belgeler: evlilik cüzdanı (apostilli), pasaport, biometrik fotoğraf, sağlık sigortası ve yeterli konut belgesi.' },
+    result_nied_es:      { scheme:'warning', icon:'bi-exclamation-triangle-fill',     title:'Süresiz İkamet — Eş Vizesi',       text:'Eşinizin genellikle <strong>A1 seviyesinde Almanca bilgisi</strong> kanıtlaması gerekir. Eşiniz yükseköğrenim mezunuysa muafiyet uygulanabilir. Başvuru öncesinde büyükelçilikle koşulları netleştirin.' },
+    result_auf_es:       { scheme:'warning', icon:'bi-exclamation-triangle-fill',     title:'Çalışma İzni — Eş Vizesi',         text:'A1 Almanca koşulu bulunabilir; ancak bazı ülkeler için muafiyet mevcuttur. Finansal yeterlilik kanıtı ve konut belgesi şarttır. Ausländerbehörde veya büyükelçilikle önceden iletişime geçin.' },
+    result_cocuk:        { scheme:'success', icon:'bi-check-circle-fill',             title:'18 Yaş Altı Çocuk',                text:'18 yaş altı çocuklar için genellikle <strong>dil sınavı şartı yoktur</strong>. Gerekenler: doğum belgesi (apostilli), ebeveyn ikamet izni fotokopisi, pasaport ve biometrik fotoğraf.' },
+    result_ogrenci:      { scheme:'warning', icon:'bi-exclamation-triangle-fill',     title:'Öğrenci Vizesi — Kısıtlı Hak',    text:'Öğrenci statüsündeyken eş vizesi almak oldukça kısıtlıdır. Finansal yeterlilik kanıtı (kişi başı yaklaşık <strong>934€/ay</strong>) ve yeterli konut şartı kritik önem taşır. Bireysel danışmanlık alın.' },
+    result_multeci:      { scheme:'info',    icon:'bi-info-circle-fill',              title:'Mülteci / Geçici Koruma',          text:'Tam statü mülteciler (§25 Abs.1-2) için genellikle dil şartı aranmaz. Geçici koruma (§24) sahiplerinin aile birleşimi hakkı kısıtlıdır. <strong>PRO ASYL</strong> veya yerel Migrationsberatung ile görüşün.' },
+    result_diger_akraba: { scheme:'info',    icon:'bi-info-circle-fill',              title:'Diğer Aile Fertleri',              text:'18 yaş üzeri çocuklar veya ebeveynler için aile birleşimi hakkı çok daha kısıtlıdır. Genellikle yalnızca insani veya bakım gerektiren istisnai durumlarda mümkündür. Göçmen hukuku avukatına danışın.' },
+  };
+  const SCHEME = {
+    success: { border:'#10b981', bg:'#ecfdf5', icon:'#10b981' },
+    warning: { border:'#f59e0b', bg:'#fffbeb', icon:'#d97706' },
+    info:    { border:'#0ea5e9', bg:'#f0f9ff', icon:'#0284c7' },
+  };
+  let current = 'start', history = [];
+  const area = document.getElementById('aile-area');
+
+  function render(id) {
+    area.innerHTML = '';
+    setTimeout(() => { area.innerHTML = RESULTS[id] ? buildResult(id) : buildQuestion(id); }, 0);
+  }
+  function buildQuestion(id) {
+    const node = TREE[id];
+    const opts = node.answers.map(a =>
+      `<button class="karar-btn karar-btn-blue" onclick="aile_answer('${a.next}')">${a.text}</button>`
+    ).join('');
+    return `<div class="karar-fade" style="display:flex;flex-direction:column;height:100%;">
+      <p class="karar-q">${node.question}</p>
+      <div style="flex:1;">${opts}</div>
+      <div class="karar-nav">
+        ${history.length > 0 ? `<button class="karar-nav-btn" onclick="aile_back()">← Geri</button>` : ''}
+        <button class="karar-nav-btn" onclick="aile_reset()">↺ Başa Dön</button>
+      </div>
+    </div>`;
+  }
+  function buildResult(id) {
+    const r = RESULTS[id]; const sc = SCHEME[r.scheme];
+    return `<div class="karar-fade" style="display:flex;flex-direction:column;height:100%;">
+      <div class="karar-result-box" style="border-color:${sc.border};background:${sc.bg};">
+        <div style="display:flex;align-items:flex-start;gap:0.6rem;">
+          <i class="bi ${r.icon}" style="color:${sc.icon};font-size:1.25rem;flex-shrink:0;margin-top:1px;"></i>
+          <div>
+            <div class="karar-result-title">${r.title}</div>
+            <div class="karar-result-text">${r.text}</div>
+          </div>
+        </div>
+      </div>
+      <div class="karar-nav mt-auto" style="padding-top:0.5rem;border-top:1px solid #f3f4f6;">
+        <button class="karar-nav-btn" onclick="aile_back()">← Geri</button>
+        <button class="karar-nav-btn" onclick="aile_reset()">↺ Başa Dön</button>
+      </div>
+    </div>`;
+  }
+  window.aile_answer = n => { history.push(current); current = n; render(current); };
+  window.aile_back   = () => { if (history.length) { current = history.pop(); render(current); } };
+  window.aile_reset  = () => { current = 'start'; history = []; render(current); };
+  render('start');
+})();
+
+/* ======================================================
+   3) VERGİ SINIFI BULUCU
+====================================================== */
+(function() {
+  const TREE = {
+    start: {
+      question: 'Bu sorgulamayı ana işin için mi yapıyorsun, yoksa ikinci ek işin için mi?',
+      note: 'Not: 538 Euro\'luk (Minijob) vergiden muaf işler bu hesaba dahil değildir.',
+      answers: [
+        { text: 'Ana İşim (Tek işim veya asıl gelir kaynağım)', next: 'medeni' },
+        { text: '2. Vergiye Tabi Ek İşim (Nebenjob)',           next: 'result_6' },
+      ]
+    },
+    medeni: {
+      question: 'Medeni durumun nedir?',
+      answers: [
+        { text: 'Bekar, Boşanmış, Ayrı Yaşayan veya Dul', next: 'cocuk' },
+        { text: 'Evli (ve eşimle aynı evde yaşıyoruz)',   next: 'maas_dengesi' },
+      ]
+    },
+    cocuk: {
+      question: 'Evde seninle yaşayan ve bakımını tek başına üstlendiğin bir çocuğun var mı?',
+      note: 'Evde çocukla ilgilenen başka bir yetişkin varsa "Hayır" seçmelisin.',
+      answers: [
+        { text: 'Evet, tek ebeveynim (Alleinerziehend)',         next: 'result_2' },
+        { text: 'Hayır (veya evde başka bir yetişkin daha var)', next: 'result_1' },
+      ]
+    },
+    maas_dengesi: {
+      question: 'Eşinle aranızdaki maaş dengesi nasıl?',
+      answers: [
+        { text: 'İkimiz de çalışıyoruz ve maaşlarımız birbirine çok yakın',                  next: 'result_4' },
+        { text: 'Maaşlarımız arasında çok ciddi bir fark var (veya birimiz çalışmıyor)', next: 'kimin_maasi' },
+      ]
+    },
+    kimin_maasi: {
+      question: 'Hanginiz daha yüksek maaş alıyor?',
+      answers: [
+        { text: 'Ben daha yüksek maaş alıyorum (veya eşim çalışmıyor)', next: 'result_3' },
+        { text: 'Eşim benden daha yüksek maaş alıyor',                  next: 'result_5' },
+      ]
+    },
+  };
+  const RESULTS = {
+    result_1: { num:'1', badge:'bg-secondary', title:'Standart Vergi Sınıfı', subtitle:'Steuerklasse I',   text:'Bekarlar, boşanmışlar veya eşinden ayrı yaşayanlar bu sınıfta yer alır. Standart vergi kesintileri uygulanır. Yıl sonunda masraflarını (Werbungskosten) göstererek vergi iadesi almayı unutma!' },
+    result_2: { num:'2', badge:'bg-success',   title:'Tek Ebeveynler',        subtitle:'Steuerklasse II',  text:'Devlet çocuk yetiştirdiğin için sana ekstra vergi indirimi (Entlastungsbetrag für Alleinerziehende) sağlıyor. Net maaşın Sınıf I\'e göre daha yüksek olacaktır.' },
+    result_3: { num:'3', badge:'bg-success',   title:'Avantajlı Sınıf',       subtitle:'Steuerklasse III', text:'Evli çiftlerden yüksek maaş alanın tercih ettiği sınıftasın. Vergi kesintin en düşük seviyede olacak. <strong>Önemli:</strong> Eşinin otomatik olarak Sınıf V\'te olması gerekir.' },
+    result_4: { num:'4', badge:'bg-primary',   title:'Adil Dağılım',          subtitle:'Steuerklasse IV',  text:'Evlenen çiftlerin otomatik atandığı standart sınıftasın. <strong>Taktik:</strong> Yıl sonu sürpriz borç ödememek için 4/4 Faktör (Faktorverfahren) yöntemine geçmeyi değerlendirin.' },
+    result_5: { num:'5', badge:'bg-warning text-dark', title:'Yüksek Kesinti', subtitle:'Steuerklasse V',  text:'Evli çiftlerden düşük maaş alan eşin girdiği sınıftasın. Kesinti oranın yüksektir; ancak eşin Sınıf III\'te az vergi ödediği için ailenin toplam net geliri artar. Yıl sonu beyannamesi şarttır!' },
+    result_6: { num:'6', badge:'bg-danger',    title:'İkinci İş',             subtitle:'Steuerklasse VI',  text:'En yüksek kesintin yapıldığı sınıftasın. Devlet, Grundfreibetrag hakkını ana işinde zaten kullandığını varsayar. 2. işindeki ilk Euro\'dan itibaren en yüksek tarifeden vergi kesilir.' },
+  };
+  let current = 'start', history = [];
+  const area = document.getElementById('vergi-area');
+
+  function render(id) {
+    area.innerHTML = '';
+    setTimeout(() => { area.innerHTML = RESULTS[id] ? buildResult(id) : buildQuestion(id); }, 0);
+  }
+  function buildQuestion(id) {
+    const node = TREE[id];
+    const opts = node.answers.map(a =>
+      `<button class="karar-btn karar-btn-green" onclick="vergi_answer('${a.next}')">${a.text}</button>`
+    ).join('');
+    return `<div class="karar-fade" style="display:flex;flex-direction:column;height:100%;">
+      <p class="karar-q">${node.question}</p>
+      ${node.note ? `<div class="karar-hint" style="background:#f0fdf4;border-color:#86efac;color:#166534;">${node.note}</div>` : ''}
+      <div style="flex:1;">${opts}</div>
+      <div class="karar-nav">
+        ${history.length > 0 ? `<button class="karar-nav-btn" onclick="vergi_back()">← Geri</button>` : ''}
+        <button class="karar-nav-btn" onclick="vergi_reset()">↺ Başa Dön</button>
+      </div>
+    </div>`;
+  }
+  function buildResult(id) {
+    const r = RESULTS[id];
+    return `<div class="karar-fade" style="display:flex;flex-direction:column;height:100%;">
+      <div class="text-center mb-3">
+        <span class="badge ${r.badge} rounded-pill px-3 py-2" style="font-size:2rem;font-weight:800;">${r.num}</span>
+        <div class="fw-bold fs-6 mt-2" style="color:#111;">${r.title}</div>
+        <div class="text-muted small">${r.subtitle}</div>
+      </div>
+      <div class="karar-result-text p-3 rounded-3" style="background:#f0fdf4;border:1.5px solid #bbf7d0;flex:1;">${r.text}</div>
+      <div class="karar-nav mt-auto" style="padding-top:0.5rem;border-top:1px solid #f3f4f6;">
+        <button class="karar-nav-btn" onclick="vergi_back()">← Geri</button>
+        <button class="karar-nav-btn" onclick="vergi_reset()">↺ Başa Dön</button>
+      </div>
+    </div>`;
+  }
+  window.vergi_answer = n => { history.push(current); current = n; render(current); };
+  window.vergi_back   = () => { if (history.length) { current = history.pop(); render(current); } };
+  window.vergi_reset  = () => { current = 'start'; history = []; render(current); };
+  render('start');
+})();
+</script>
