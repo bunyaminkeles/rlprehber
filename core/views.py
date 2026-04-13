@@ -194,11 +194,18 @@ def arama(request):
             return qs.filter(DQ(stadt=bulunan_sehir) | DQ(stadt__isnull=True))
         return qs
 
+    # Şehir adı sorguda varsa içerik araması için çıkar ("Bad Kreuznach KDU" → "KDU")
+    q_icerik = q
+    if bulunan_sehir:
+        q_icerik = q_lower.replace(bulunan_sehir.name.lower(), '').replace(bulunan_sehir.slug.lower(), '').strip()
+        if not q_icerik:
+            q_icerik = q
+
     sonuclar = []
 
     # Resmi Belgeler
     for obj in _filtre(
-        Belge.objects.filter(DQ(baslik__icontains=q) | DQ(ozet__icontains=q), yayinda=True)
+        Belge.objects.filter(DQ(baslik__icontains=q_icerik) | DQ(ozet__icontains=q_icerik), yayinda=True)
     ).select_related('stadt__eyalet')[:10]:
         if obj.stadt:
             es = obj.stadt.eyalet.slug if obj.stadt.eyalet else 'rlp'
@@ -212,7 +219,7 @@ def arama(request):
 
     # Kaynaklar
     for obj in _filtre(
-        Kaynak.objects.filter(DQ(baslik__icontains=q) | DQ(ozet__icontains=q), yayinda=True)
+        Kaynak.objects.filter(DQ(baslik__icontains=q_icerik) | DQ(ozet__icontains=q_icerik), yayinda=True)
     ).select_related('stadt__eyalet')[:10]:
         es = _es(obj)
         prefix = f'/{es}/{obj.stadt.slug}' if obj.scope == 'stadt' and obj.stadt else f'/{es}'
@@ -224,7 +231,7 @@ def arama(request):
     # Blog yazıları
     for obj in BlogYazisi.objects.filter(
         yayinda=True
-    ).filter(DQ(baslik__icontains=q) | DQ(ozet__icontains=q) | DQ(icerik__icontains=q)
+    ).filter(DQ(baslik__icontains=q_icerik) | DQ(ozet__icontains=q_icerik) | DQ(icerik__icontains=q_icerik)
     ).select_related('stadt__eyalet')[:5]:
         es = _es(obj)
         prefix = f'/{es}/{obj.stadt.slug}' if obj.scope == 'stadt' and obj.stadt else f'/{es}'
@@ -234,7 +241,7 @@ def arama(request):
                          'stadt': obj.stadt.name if obj.stadt else 'Tüm Almanya'})
 
     # Forum konuları
-    for obj in Konu.objects.filter(baslik__icontains=q).select_related('stadt__eyalet')[:5]:
+    for obj in Konu.objects.filter(baslik__icontains=q_icerik).select_related('stadt__eyalet')[:5]:
         es = _es(obj)
         prefix = f'/{es}/{obj.stadt.slug}' if obj.scope == 'stadt' and obj.stadt else f'/{es}'
         sonuclar.append({'tip': 'Forum', 'icon': 'bi-chat-dots',
@@ -243,7 +250,7 @@ def arama(request):
                          'stadt': obj.stadt.name if obj.stadt else 'Tüm Almanya'})
 
     # Duyurular
-    for obj in Duyuru.objects.filter(yayinda=True, baslik__icontains=q).select_related('stadt__eyalet')[:5]:
+    for obj in Duyuru.objects.filter(yayinda=True, baslik__icontains=q_icerik).select_related('stadt__eyalet')[:5]:
         es = _es(obj)
         prefix = f'/{es}/{obj.stadt.slug}' if obj.scope == 'stadt' and obj.stadt else f'/{es}'
         sonuclar.append({'tip': 'Duyuru', 'icon': 'bi-megaphone',
@@ -252,7 +259,7 @@ def arama(request):
                          'stadt': obj.stadt.name if obj.stadt else 'Tüm Almanya'})
 
     # Önemli yerler
-    for obj in Yer.objects.filter(ad__icontains=q).select_related('stadt__eyalet')[:5]:
+    for obj in Yer.objects.filter(ad__icontains=q_icerik).select_related('stadt__eyalet')[:5]:
         es = obj.stadt.eyalet.slug if obj.stadt and obj.stadt.eyalet else 'rlp'
         prefix = f'/{es}/{obj.stadt.slug}' if obj.stadt else f'/{es}'
         sonuclar.append({'tip': 'Yer', 'icon': 'bi-geo-alt',
