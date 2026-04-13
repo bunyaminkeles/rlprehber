@@ -24,12 +24,24 @@ class Command(BaseCommand):
             action='store_true',
             help='E-posta göndermeden kaç kişiye gönderileceğini gösterir',
         )
+        parser.add_argument(
+            '--email',
+            type=str,
+            default=None,
+            help='Sadece bu e-posta adresine gönderir (test amaçlı)',
+        )
 
     def handle(self, *args, **options):
         konu = options['konu']
         duyuru_url = options['duyuru_url']
         template_adi = options['template']
         dry_run = options['dry_run']
+        tek_email = options['email']
+
+        if tek_email:
+            # Tek adrese test gönderimi - DB'de kullanıcı olmasa da gönderir
+            self._tek_email_gonder(konu, duyuru_url, template_adi, tek_email, dry_run)
+            return
 
         kullanicilar = User.objects.filter(is_active=True).exclude(email='')
         toplam = kullanicilar.count()
@@ -70,3 +82,26 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.ERROR(f'  HATA [{kullanici.email}]: {e}'))
 
         self.stdout.write(self.style.SUCCESS(f'\nToplam {gonderilen}/{toplam} e-posta başarıyla gönderildi.'))
+
+    def _tek_email_gonder(self, konu, duyuru_url, template_adi, email, dry_run):
+        if dry_run:
+            self.stdout.write(self.style.WARNING(f'[DRY RUN] Şu adrese gönderilecek: {email}'))
+            return
+        kullanici_adi = User.objects.filter(email=email).values_list('first_name', flat=True).first() or ''
+        try:
+            html_icerik = render_to_string(template_adi, {
+                'konu': konu,
+                'kullanici_adi': kullanici_adi,
+                'duyuru_url': duyuru_url,
+            })
+            send_mail(
+                subject=konu,
+                message=f'Merhaba,\n\nDuyuruya buradan ulaşabilirsiniz: {duyuru_url}\n\nAlmanyalı Rehber\ninfo@analizus.com',
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[email],
+                html_message=html_icerik,
+                fail_silently=False,
+            )
+            self.stdout.write(self.style.SUCCESS(f'Test e-postası gönderildi -> {email}'))
+        except Exception as e:
+            self.stdout.write(self.style.ERROR(f'HATA [{email}]: {e}'))
