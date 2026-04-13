@@ -22,6 +22,7 @@
                     <p class="mb-0" style="font-size: 0.8rem; color: #9ca3af;">Federal düzeyde düzenlenen staj haftası etkinlikleri. Onlarca meslek alanında işletmelerle doğrudan buluşma imkânı sunar.</p>
                 </a>
             </div>
+            {% if not eyalet_slug or eyalet_slug == 'nrw' or eyalet_slug == 'nw' %}
             <div class="col">
                 <a href="https://suche.ausbildung.nrw/" target="_blank" rel="noopener" class="d-block h-100 text-decoration-none card-hover rounded-3 p-4" style="border: 1px solid #e5e7eb; background: #fff;">
                     <div class="d-flex align-items-center gap-3 mb-2">
@@ -31,6 +32,7 @@
                     <p class="mb-0" style="font-size: 0.8rem; color: #9ca3af;">Kuzey Ren-Westfalya eyaletinde çıraklık ve meslek eğitimi (Ausbildung) ilanlarını arayabileceğiniz resmi platform.</p>
                 </a>
             </div>
+            {% endif %}
             <div class="col">
                 <a href="https://www.ihk.de/rheinhessen/bim-rheinhessen" target="_blank" rel="noopener" class="d-block h-100 text-decoration-none card-hover rounded-3 p-4" style="border: 1px solid #e5e7eb; background: #fff;">
                     <div class="d-flex align-items-center gap-3 mb-2">
