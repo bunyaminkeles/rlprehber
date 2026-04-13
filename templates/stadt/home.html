@@ -263,11 +263,11 @@
         {% if grup.rehber_alt %}
 
           {% if grup.yerler %}
-          <div class="row g-3 mb-3">
+          <div class="row g-3 mb-3 align-items-start">
             {% for yer in grup.yerler %}
             {% with detay_url=eyalet_slug|add:"/"|add:stadt.slug|add:"/yerler/"|add:yer.pk|stringformat:"d"|add:"/" %}
             <div class="col-md-4 col-sm-6">
-              <div class="card h-100 yer-kart" style="cursor:pointer;"
+              <div class="card yer-kart" style="cursor:pointer;"
                    onclick="location.href='/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/'">
                 {% if yer.kapak_resmi %}
                 <img src="{{ yer.kapak_resmi }}" alt="{{ yer.ad }}"
@@ -331,10 +331,10 @@
 
         {% else %}
 
-          <div class="row g-3 mb-3">
+          <div class="row g-3 mb-3 align-items-start">
             {% for yer in grup.yerler %}
             <div class="col-md-4 col-sm-6">
-              <div class="card h-100 yer-kart" style="cursor:pointer;"
+              <div class="card yer-kart" style="cursor:pointer;"
                    onclick="location.href='/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/'">
                 {% if yer.kapak_resmi %}
                 <img src="{{ yer.kapak_resmi }}" alt="{{ yer.ad }}"
