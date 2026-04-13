@@ -27,8 +27,8 @@ class YerFotoInline(TabularInline):
 class YerAdmin(ModelAdmin):
     compressed_fields = True
     warn_unsaved_changes = True
-    list_display  = ['ad', 'tur', 'kategori_adi', 'eyalet', 'stadt', 'aktif_flag', 'paket', 'paket_bitis']
-    list_display_links = ['ad']
+    list_display  = ['yer_adi', 'tur', 'kategori_adi', 'eyalet', 'stadt', 'aktif_flag', 'paket', 'paket_bitis']
+    list_display_links = ['yer_adi']
     list_filter   = ['tur', 'paket', 'aktif', 'kategori', 'eyalet', 'stadt', 'scope']
     list_editable = []
     search_fields = ['ad', 'adres']
@@ -50,6 +50,10 @@ class YerAdmin(ModelAdmin):
             'classes': ('collapse',),
         }),
     )
+
+    @admin.display(description='Yer Adı', ordering='ad')
+    def yer_adi(self, obj):
+        return obj.ad
 
     @admin.display(description='Kategori', ordering='kategori')
     def kategori_adi(self, obj):
