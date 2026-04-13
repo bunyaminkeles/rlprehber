@@ -220,8 +220,7 @@
             </thead>
             <tbody>
                 {% for yer in item.yerler %}
-                {% with gorunur=yer.aktif and yer.scope == 'stadt' %}
-                <tr{% if not gorunur %} style="opacity:.65;"{% endif %}>
+                <tr{% if not yer.aktif or yer.scope != 'stadt' %} style="opacity:.65;"{% endif %}>
                     <td style="font-weight:500;">
                         <a href="/admin/yerler/yer/{{ yer.pk }}/change/" style="color:#e2e8f0; text-decoration:none;">
                             {{ yer.ad }}
@@ -276,7 +275,6 @@
                         </div>
                     </td>
                 </tr>
-                {% endwith %}
                 {% endfor %}
             </tbody>
         </table>
