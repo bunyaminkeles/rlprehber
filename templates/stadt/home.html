@@ -268,11 +268,20 @@
             <div class="col-md-4 col-sm-6">
               <div class="card h-100 yer-kart" style="cursor:pointer;"
                    {% if yer.website or yer.maps_url %}onclick="window.open('{{ yer.website|default:yer.maps_url }}','_blank','noopener')"{% endif %}>
+                {% if yer.kapak_resmi %}
+                <img src="{{ yer.kapak_resmi }}" alt="{{ yer.ad }}"
+                     class="card-img-top" style="height:160px;object-fit:cover;"
+                     loading="lazy" referrerpolicy="no-referrer">
+                {% endif %}
                 <div class="card-body d-flex flex-column">
                   <h6 class="card-title mb-1">
                     <span class="text-dark">{{ yer.ad }}</span>
                   </h6>
+                  {% if yer.aciklama %}
+                  <p class="small text-muted mb-2 flex-grow-1" style="display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">{{ yer.aciklama }}</p>
+                  {% else %}
                   <p class="small text-muted mb-2 flex-grow-1"><i class="bi bi-geo-alt me-1"></i>{{ yer.adres }}</p>
+                  {% endif %}
                   {% if yer.maps_url or yer.website %}
                   <div class="d-flex gap-2 mt-auto flex-wrap">
                     {% if yer.maps_url %}<a href="{{ yer.maps_url }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary" onclick="event.stopPropagation()"><i class="bi bi-map me-1"></i>Harita</a>{% endif %}
@@ -324,11 +333,20 @@
             <div class="col-md-4 col-sm-6">
               <div class="card h-100 yer-kart" style="cursor:pointer;"
                    {% if yer.website or yer.maps_url %}onclick="window.open('{{ yer.website|default:yer.maps_url }}','_blank','noopener')"{% endif %}>
+                {% if yer.kapak_resmi %}
+                <img src="{{ yer.kapak_resmi }}" alt="{{ yer.ad }}"
+                     class="card-img-top" style="height:160px;object-fit:cover;"
+                     loading="lazy" referrerpolicy="no-referrer">
+                {% endif %}
                 <div class="card-body d-flex flex-column">
                   <h6 class="card-title mb-1">
                     <span class="text-dark">{{ yer.ad }}</span>
                   </h6>
+                  {% if yer.aciklama %}
+                  <p class="small text-muted mb-2 flex-grow-1" style="display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">{{ yer.aciklama }}</p>
+                  {% else %}
                   <p class="small text-muted mb-2 flex-grow-1"><i class="bi bi-geo-alt me-1"></i>{{ yer.adres }}</p>
+                  {% endif %}
                   {% if yer.maps_url or yer.website %}
                   <div class="d-flex gap-2 mt-auto flex-wrap">
                     {% if yer.maps_url %}<a href="{{ yer.maps_url }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary" onclick="event.stopPropagation()"><i class="bi bi-map me-1"></i>Harita</a>{% endif %}
