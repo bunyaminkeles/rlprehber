@@ -220,7 +220,7 @@ def arama(request):
     # Kaynaklar
     for obj in _filtre(
         Kaynak.objects.filter(DQ(baslik__icontains=q_icerik) | DQ(ozet__icontains=q_icerik), yayinda=True)
-    ).select_related('stadt__eyalet')[:10]:
+    ).select_related('stadt__eyalet')[:30]:
         es = _es(obj)
         prefix = f'/{es}/{obj.stadt.slug}' if obj.scope == 'stadt' and obj.stadt else f'/{es}'
         url = obj.url if obj.tip == 'link' else f'{prefix}/rehber/{obj.slug}/'
