@@ -50,13 +50,13 @@ class BlogSitemap(Sitemap):
     priority = 0.7
 
     def items(self):
-        return BlogYazisi.objects.filter(yayinda=True, scope='eyalet')
+        return BlogYazisi.objects.filter(yayinda=True, scope='eyalet').select_related('eyalet')
 
     def lastmod(self, obj):
         return obj.olusturulma
 
     def location(self, obj):
-        return '/rlp/blog/{}/'.format(obj.slug)
+        return obj.canonical_url
 
 
 class StadtBlogSitemap(Sitemap):
@@ -70,10 +70,7 @@ class StadtBlogSitemap(Sitemap):
         return obj.olusturulma
 
     def location(self, obj):
-        if obj.stadt:
-            eyalet_slug = obj.stadt.eyalet.slug if obj.stadt.eyalet else 'rlp'
-            return f'/{eyalet_slug}/{obj.stadt.slug}/blog/{obj.slug}/'
-        return '/rlp/blog/{}/'.format(obj.slug)
+        return obj.canonical_url
 
 
 class RehberSitemap(Sitemap):

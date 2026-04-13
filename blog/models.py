@@ -31,6 +31,13 @@ class BlogYazisi(models.Model):
         verbose_name_plural = 'Blog Yazıları'
 
     @property
+    def canonical_url(self):
+        if self.scope == 'stadt' and self.stadt and self.stadt.eyalet:
+            return f'/{self.stadt.eyalet.slug}/{self.stadt.slug}/blog/{self.slug}/'
+        eyalet_slug = self.eyalet.slug if self.eyalet else 'rlp'
+        return f'/{eyalet_slug}/blog/{self.slug}/'
+
+    @property
     def kapak_url(self):
         if self.kapak_resmi_dosya:
             return self.kapak_resmi_dosya.url

@@ -10,7 +10,7 @@
   <meta name="msvalidate.01" content="ADBE180D182697D8DE663913B5C16744">
   <title>{% block title %}{% if stadt %}{{ stadt.name }} — Almanyalı Rehber{% else %}Almanyalı Rehber{% endif %}{% endblock %}</title>
   <meta name="description" content="{% block meta_description %}Almanya'da yeni başlayanlar için Türkçe kaynak platformu.{% endblock %}">
-  <link rel="canonical" href="https://almanyalirehber.com{{ request.path }}">
+  {% block canonical %}<link rel="canonical" href="https://almanyalirehber.com{{ request.path }}">{% endblock %}
   <!-- Open Graph -->
   <meta property="og:site_name" content="Almanyalı Rehber">
   <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">

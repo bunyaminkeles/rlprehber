@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block canonical %}<link rel="canonical" href="https://almanyalirehber.com{{ yazi.canonical_url }}">{% endblock %}
 {% block title %}{% if yazi.seo_baslik %}{{ yazi.seo_baslik }}{% else %}{{ yazi.baslik }}{% endif %} — Blog{% endblock %}
 {% block meta_description %}{% if yazi.ozet %}{{ yazi.ozet }}{% else %}{{ yazi.baslik }} — Almanyalı Rehber Blog{% endif %}{% endblock %}
 {% block og_title %}{% if yazi.seo_baslik %}{{ yazi.seo_baslik }}{% else %}{{ yazi.baslik }}{% endif %}{% endblock %}
@@ -25,7 +26,7 @@
     "name": "Almanyalı Rehber",
     "url": "https://almanyalirehber.com"
   },
-  "url": "https://almanyalirehber.com{{ request.path }}"{% if yazi.kapak_url %},
+  "url": "https://almanyalirehber.com{{ yazi.canonical_url }}"{% if yazi.kapak_url %},
   "image": "{{ yazi.kapak_url }}"{% endif %}{% if yazi.odak_kelime or yazi.etiketler %},
   "keywords": "{% if yazi.odak_kelime %}{{ yazi.odak_kelime|escapejs }}{% if yazi.etiketler %}, {% endif %}{% endif %}{% if yazi.etiketler %}{{ yazi.etiketler|escapejs }}{% endif %}"{% endif %}
 }
