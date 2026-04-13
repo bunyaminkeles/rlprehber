@@ -64,7 +64,7 @@ class StadtBlogSitemap(Sitemap):
     priority = 0.6
 
     def items(self):
-        return BlogYazisi.objects.filter(yayinda=True, scope='stadt').select_related('stadt__eyalet')
+        return BlogYazisi.objects.filter(yayinda=True, scope='stadt').select_related('stadt__eyalet', 'eyalet')
 
     def lastmod(self, obj):
         return obj.olusturulma

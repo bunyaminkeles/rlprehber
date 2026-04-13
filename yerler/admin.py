@@ -57,8 +57,9 @@ class YerAdmin(ModelAdmin):
 
     @admin.display(description='Kategori', ordering='kategori')
     def kategori_adi(self, obj):
-        kat = YerKategori.objects.filter(slug=obj.kategori).first()
-        return kat.ad if kat else obj.kategori
+        if not hasattr(self, '_kat_cache'):
+            self._kat_cache = {k.slug: k.ad for k in YerKategori.objects.all()}
+        return self._kat_cache.get(obj.kategori, obj.kategori)
 
     @admin.display(description='Aktif', boolean=True, ordering='aktif')
     def aktif_flag(self, obj):

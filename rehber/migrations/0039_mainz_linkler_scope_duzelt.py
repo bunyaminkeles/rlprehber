@@ -27,12 +27,11 @@ def duzelt(apps, schema_editor):
         return
 
     # URL'ye göre eşleş, scope yanlışsa düzelt
-    for url in MAINZ_LINKLER:
-        Kaynak.objects.filter(
-            url=url,
-        ).exclude(
-            scope='stadt', stadt=mainz,
-        ).update(scope='stadt', stadt=mainz, eyalet=mainz.eyalet)
+    Kaynak.objects.filter(
+        url__in=MAINZ_LINKLER,
+    ).exclude(
+        scope='stadt', stadt=mainz,
+    ).update(scope='stadt', stadt=mainz, eyalet=mainz.eyalet)
 
     # Başlığa göre de yakala (URL farklı olabilir)
     MAINZ_BASLIKLAR = [
