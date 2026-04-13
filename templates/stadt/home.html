@@ -271,7 +271,7 @@
                    onclick="location.href='/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/'">
                 {% if yer.kapak_resmi %}
                 <img src="{{ yer.kapak_resmi }}" alt="{{ yer.ad }}"
-                     class="card-img-top" style="height:160px;object-fit:cover;"
+                     class="card-img-top" style="height:160px;object-fit:cover;" onerror="this.style.display='none'"
                      loading="lazy" referrerpolicy="no-referrer">
                 {% endif %}
                 <div class="card-body d-flex flex-column">
@@ -338,7 +338,7 @@
                    onclick="location.href='/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/'">
                 {% if yer.kapak_resmi %}
                 <img src="{{ yer.kapak_resmi }}" alt="{{ yer.ad }}"
-                     class="card-img-top" style="height:160px;object-fit:cover;"
+                     class="card-img-top" style="height:160px;object-fit:cover;" onerror="this.style.display='none'"
                      loading="lazy" referrerpolicy="no-referrer">
                 {% endif %}
                 <div class="card-body d-flex flex-column">
