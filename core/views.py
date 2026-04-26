@@ -275,6 +275,86 @@ def arama(request):
     })
 
 
+def llms_txt(request):
+    """AI ajanları için makine-okunabilir site haritası — llms.txt standardı."""
+    cached = cache.get('llms_txt_content')
+    if cached:
+        from django.http import HttpResponse
+        return HttpResponse(cached, content_type='text/plain; charset=utf-8')
+
+    from django.http import HttpResponse
+    from blog.models import BlogYazisi
+    from rehber.models import Kaynak
+
+    lines = [
+        "# Almanyalı Rehber",
+        "> Almanya'ya yeni gelmiş Türkçe konuşan göçmenler ve expat'lar için şehir bazlı rehber platformu.",
+        "> Bürokratik süreçler, konut, iş, eğitim, sağlık ve günlük yaşam konularında Türkçe, güvenilir bilgi.",
+        "",
+        "## Site Bilgisi",
+        "- Alan adı: https://almanyalirehber.com",
+        "- Dil: Türkçe",
+        "- Kapsam: Almanya'daki tüm büyük şehirler (Mainz, Frankfurt, Köln, Berlin ve daha fazlası)",
+        "- Hedef kitle: Almanya'ya yeni gelmiş Türkçe konuşanlar",
+        "- İçerik: Bürokrasi rehberi, önemli yerler, forum, ilanlar, etkinlikler, Almanca öğrenme",
+        "",
+        "## Aktif Şehirler",
+    ]
+
+    staedte = Stadt.objects.filter(aktiv=True).select_related('eyalet').order_by('name')
+    for s in staedte:
+        eyalet_slug = s.eyalet.slug if s.eyalet else 'rlp'
+        eyalet_ad = s.eyalet.ad if s.eyalet else ''
+        nufus = f"{s.population:,}".replace(',', '.') if s.population else ''
+        satir = f"- [{s.name}](https://almanyalirehber.com/{eyalet_slug}/{s.slug}/)"
+        if eyalet_ad or nufus:
+            satir += f" — {eyalet_ad}"
+            if nufus:
+                satir += f", nüfus {nufus}"
+        lines.append(satir)
+
+    lines += [
+        "",
+        "## Öne Çıkan Kaynaklar",
+        "> Almanya'da yaşam için temel resmi bilgiler ve kılavuzlar.",
+    ]
+    kaynaklar = (
+        Kaynak.objects
+        .filter(yayinda=True, scope='almanya')
+        .order_by('sira')[:15]
+    )
+    for k in kaynaklar:
+        if k.tip == 'sayfa':
+            url = f"https://almanyalirehber.com/rehber/{k.slug}/"
+        else:
+            url = k.url or ''
+        ozet = f": {k.ozet}" if k.ozet else ''
+        lines.append(f"- [{k.baslik}]({url}){ozet}")
+
+    lines += [
+        "",
+        "## Son Blog Yazıları",
+    ]
+    blog_yazilari = BlogYazisi.objects.filter(yayinda=True).order_by('-olusturulma')[:15]
+    for yazi in blog_yazilari:
+        url = f"https://almanyalirehber.com{yazi.canonical_url}"
+        ozet = f" — {yazi.ozet}" if yazi.ozet else ''
+        lines.append(f"- [{yazi.baslik}]({url}){ozet}")
+
+    lines += [
+        "",
+        "## Önemli URL'ler",
+        "- [Sitemap](https://almanyalirehber.com/sitemap.xml)",
+        "- [Arama](https://almanyalirehber.com/arama/)",
+        "- [Forum](https://almanyalirehber.com/forum/)",
+        "- [Duyurular](https://almanyalirehber.com/almanya/duyurular/)",
+    ]
+
+    content = "\n".join(lines)
+    cache.set('llms_txt_content', content, 1800)
+    return HttpResponse(content, content_type='text/plain; charset=utf-8')
+
+
 def iletisim(request):
     gonderildi = False
     if request.method == 'POST':

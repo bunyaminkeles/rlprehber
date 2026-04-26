@@ -9,6 +9,7 @@ from core.sitemaps import SITEMAPS
 from config.converters import EyaletConverter
 from blog.views import detay_root as blog_detay_root
 from duyurular import views as duyurular_views
+from core.views import llms_txt
 
 register_converter(EyaletConverter, 'eyalet')
 
@@ -42,6 +43,7 @@ OLD_MAINZ_REDIRECTS = [
 
 urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + [
     path('robots.txt',  TemplateView.as_view(template_name='robots.txt',  content_type='text/plain')),
+    path('llms.txt',    llms_txt),
     path('favicon.ico', RedirectView.as_view(url='/static/img/favicon.svg', permanent=True)),
     path('sitemap.xml', sitemap, {'sitemaps': SITEMAPS}, name='django.contrib.sitemaps.views.sitemap'),
     path('googlef882ed2d634aa7da.html',          TemplateView.as_view(template_name='googlef882ed2d634aa7da.html',          content_type='text/html')),

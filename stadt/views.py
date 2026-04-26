@@ -183,6 +183,16 @@ def home(request, eyalet_slug='rlp', stadt_slug=None):
         .order_by('category__name', 'name')
     )
 
+    # Schema.org ItemList için ilk 10 yer (nested dict'ten flat liste)
+    schema_yerler = []
+    for kat_data in kategoriler.values():
+        for yer in kat_data.get('yerler', Yer.objects.none()):
+            schema_yerler.append(yer)
+            if len(schema_yerler) >= 10:
+                break
+        if len(schema_yerler) >= 10:
+            break
+
     return render(request, 'stadt/home.html', {
         'stadt':               stadt,
         'eyalet_slug':         eyalet_slug,
@@ -193,4 +203,5 @@ def home(request, eyalet_slug='rlp', stadt_slug=None):
         'tum_kategoriler':     [(k.slug, k.ad) for k in yer_kategorileri],
         'son_blog_yazilari':   son_blog_yazilari,
         'yerel_isletmeler':    yerel_isletmeler,
+        'schema_yerler':       schema_yerler,
     })

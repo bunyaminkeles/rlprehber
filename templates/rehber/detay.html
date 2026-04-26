@@ -5,6 +5,30 @@
 {% block og_description %}{% if sayfa.ozet %}{{ sayfa.ozet }}{% else %}{{ sayfa.baslik }} — Almanyalı Rehber{% endif %}{% endblock %}
 {% block twitter_title %}{{ sayfa.baslik }}{% endblock %}
 {% block twitter_description %}{% if sayfa.ozet %}{{ sayfa.ozet }}{% else %}{{ sayfa.baslik }} — Almanyalı Rehber{% endif %}{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ sayfa.baslik|escapejs }}",
+  "description": "{% if sayfa.ozet %}{{ sayfa.ozet|escapejs }}{% else %}{{ sayfa.baslik|escapejs }} — Almanyalı Rehber{% endif %}",
+  "dateModified": "{{ sayfa.guncelleme|date:'c' }}",
+  "inLanguage": "tr",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Almanyalı Rehber",
+    "url": "https://almanyalirehber.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://almanyalirehber.com/static/img/favicon.svg"
+    }
+  },
+  "url": "https://almanyalirehber.com{% if stadt %}/{{ eyalet_slug }}/{{ stadt.slug }}/rehber/{{ sayfa.slug }}/{% else %}/{{ eyalet_slug }}/rehber/{{ sayfa.slug }}/{% endif %}"
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <div class="container mt-4" style="max-width:760px">
   <a href="{% if stadt %}/{{ eyalet_slug }}/{{ stadt.slug }}/rehber/{% else %}/{{ eyalet_slug }}/rehber/{% endif %}" class="btn btn-sm btn-outline-secondary mb-3">

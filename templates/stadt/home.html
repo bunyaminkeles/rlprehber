@@ -1,8 +1,62 @@
 {% extends 'base.html' %}
 {% block title %}{{ stadt.name }} — Almanyalı Rehber{% endblock %}
 {% block og_title %}{{ stadt.name }} — Almanyalı Rehber{% endblock %}
+{% block meta_description %}{{ stadt.name }} rehberi — bürokrasi, önemli yerler, forum ve güncel duyurular. Almanyalı Rehber'de Türkçe şehir kılavuzu.{% endblock %}
 {% block breadcrumb %}{% endblock %}
 {% block breadcrumb_nav %}{% endblock %}
+
+{% block schema %}
+{% load l10n %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "City",
+      "name": "{{ stadt.name|escapejs }}"
+      {% if stadt.beschreibung %},"description": "{{ stadt.beschreibung|truncatechars:300|escapejs }}"{% endif %}
+      ,"url": "https://almanyalirehber.com/{{ eyalet_slug }}/{{ stadt.slug }}/"
+      {% if stadt.eyalet %},"containedInPlace": {"@type": "AdministrativeArea", "name": "{{ stadt.eyalet.ad|escapejs }}"}{% endif %}
+      {% if stadt.lat and stadt.lng %},"geo": {"@type": "GeoCoordinates", "latitude": {{ stadt.lat|unlocalize }}, "longitude": {{ stadt.lng|unlocalize }}}{% endif %}
+      {% if stadt.population %},"population": {{ stadt.population }}{% endif %}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Almanyalı Rehber", "item": "https://almanyalirehber.com/"},
+        {% if stadt.eyalet %}{"@type": "ListItem", "position": 2, "name": "{{ stadt.eyalet.ad|escapejs }}", "item": "https://almanyalirehber.com/{{ eyalet_slug }}/"},
+        {"@type": "ListItem", "position": 3, "name": "{{ stadt.name|escapejs }}", "item": "https://almanyalirehber.com/{{ eyalet_slug }}/{{ stadt.slug }}/"}
+        {% else %}
+        {"@type": "ListItem", "position": 2, "name": "{{ stadt.name|escapejs }}", "item": "https://almanyalirehber.com/{{ eyalet_slug }}/{{ stadt.slug }}/"}
+        {% endif %}
+      ]
+    }
+    {% if schema_yerler %}
+    ,{
+      "@type": "ItemList",
+      "name": "{{ stadt.name|escapejs }} — Önemli Yerler",
+      "url": "https://almanyalirehber.com/{{ eyalet_slug }}/{{ stadt.slug }}/#onemli-yerler",
+      "numberOfItems": {{ schema_yerler|length }},
+      "itemListElement": [
+        {% for yer in schema_yerler %}
+        {
+          "@type": "ListItem",
+          "position": {{ forloop.counter }},
+          "item": {
+            "@type": "{% if yer.tur == 'isletme' %}LocalBusiness{% else %}TouristAttraction{% endif %}",
+            "name": "{{ yer.ad|escapejs }}"
+            {% if yer.adres %},"address": {"@type": "PostalAddress", "streetAddress": "{{ yer.adres|escapejs }}", "addressLocality": "{{ stadt.name|escapejs }}", "addressCountry": "DE"}{% endif %}
+            ,"url": "https://almanyalirehber.com/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/"
+          }
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }
+    {% endif %}
+  ]
+}
+</script>
+{% endblock %}
 
 {% block content %}
 <style>

@@ -5,6 +5,29 @@
 {% block og_description %}{% if yer.aciklama %}{{ yer.aciklama|truncatechars:155 }}{% endif %}{% endblock %}
 {% block og_image %}{% if yer.kapak_resmi %}<meta property="og:image" content="{{ yer.kapak_resmi }}">{% endif %}{% endblock %}
 {% block canonical %}<link rel="canonical" href="https://almanyalirehber.com/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/">{% endblock %}
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{% if yer.tur == 'isletme' %}LocalBusiness{% else %}TouristAttraction{% endif %}",
+  "name": "{{ yer.ad|escapejs }}",
+  {% if yer.aciklama %}"description": "{{ yer.aciklama|truncatechars:300|escapejs }}",{% endif %}
+  "url": "https://almanyalirehber.com/{{ eyalet_slug }}/{{ stadt.slug }}/yerler/{{ yer.pk }}/",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ yer.adres|escapejs }}",
+    "addressLocality": "{{ stadt.name|escapejs }}",
+    "addressCountry": "DE"
+  }
+  {% if yer.telefon %},"telephone": "{{ yer.telefon|escapejs }}"{% endif %}
+  {% if yer.website %},"sameAs": "{{ yer.website|escapejs }}"{% endif %}
+  {% if yer.maps_url %},"hasMap": "{{ yer.maps_url|escapejs }}"{% endif %}
+  {% if yer.kapak_resmi %},"image": "{{ yer.kapak_resmi|escapejs }}"{% elif yer.kapak_foto %},"image": "{{ yer.kapak_foto.url }}"{% endif %}
+  ,"inLanguage": "tr"
+}
+</script>
+{% endblock %}
+
 {% block breadcrumb %}
   {% if stadt %}<li class="breadcrumb-item"><a href="/{{ eyalet_slug }}/{{ stadt.slug }}/">{{ stadt.name }}</a></li>{% endif %}
   <li class="breadcrumb-item active">{{ yer.ad }}</li>
