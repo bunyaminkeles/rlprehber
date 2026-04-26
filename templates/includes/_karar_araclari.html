@@ -24,7 +24,7 @@
 
           {% if collapsed %}
           <button class="text-white text-center p-4 pb-3 w-100 border-0 d-flex flex-column align-items-center"
-                  style="background:#4f46e5; cursor:pointer;"
+                  style="background:#2C5F8A; cursor:pointer;"
                   data-bs-toggle="collapse" data-bs-target="#anabin-collapse"
                   aria-expanded="false" aria-controls="anabin-collapse">
             <i class="bi bi-mortarboard-fill fs-4 mb-1"></i>
@@ -34,7 +34,7 @@
           </button>
           <div class="collapse" id="anabin-collapse">
           {% else %}
-          <div class="text-white text-center p-4 pb-3" style="background:#4f46e5;">
+          <div class="text-white text-center p-4 pb-3" style="background:#2C5F8A;">
             <i class="bi bi-mortarboard-fill fs-4 d-block mb-1"></i>
             <h5 class="fw-bold mb-0">Anabin Karar Aracı</h5>
             <p class="mb-0 small opacity-75">ZAB başvurusu gerekli mi?</p>
@@ -56,7 +56,7 @@
 
           {% if collapsed %}
           <button class="text-white text-center p-4 pb-3 w-100 border-0 d-flex flex-column align-items-center"
-                  style="background:#0369a1; cursor:pointer;"
+                  style="background:#1e4d72; cursor:pointer;"
                   data-bs-toggle="collapse" data-bs-target="#aile-collapse"
                   aria-expanded="false" aria-controls="aile-collapse">
             <i class="bi bi-house-heart-fill fs-4 mb-1"></i>
@@ -66,7 +66,7 @@
           </button>
           <div class="collapse" id="aile-collapse">
           {% else %}
-          <div class="text-white text-center p-4 pb-3" style="background:#0369a1;">
+          <div class="text-white text-center p-4 pb-3" style="background:#1e4d72;">
             <i class="bi bi-house-heart-fill fs-4 d-block mb-1"></i>
             <h5 class="fw-bold mb-0">Aile Birleşimi Rehberi</h5>
             <p class="mb-0 small opacity-75">Hangi şartlar sizin için geçerli?</p>
@@ -88,7 +88,7 @@
 
           {% if collapsed %}
           <button class="text-white text-center p-4 pb-3 w-100 border-0 d-flex flex-column align-items-center"
-                  style="background:#065f46; cursor:pointer;"
+                  style="background:#4A9E8F; cursor:pointer;"
                   data-bs-toggle="collapse" data-bs-target="#vergi-collapse"
                   aria-expanded="false" aria-controls="vergi-collapse">
             <i class="bi bi-receipt-cutoff fs-4 mb-1"></i>
@@ -98,7 +98,7 @@
           </button>
           <div class="collapse" id="vergi-collapse">
           {% else %}
-          <div class="text-white text-center p-4 pb-3" style="background:#065f46;">
+          <div class="text-white text-center p-4 pb-3" style="background:#4A9E8F;">
             <i class="bi bi-receipt-cutoff fs-4 d-block mb-1"></i>
             <h5 class="fw-bold mb-0">Vergi Sınıfı Bulucu</h5>
             <p class="mb-0 small opacity-75">Hangi Steuerklasse'dasın?</p>
@@ -127,9 +127,9 @@
     cursor:pointer; transition:border-color .15s, background .15s, transform .15s;
     margin-bottom:0.6rem;
   }
-  .karar-btn:hover { border-color:#6366f1; background:#eef2ff; transform:translateY(-2px); }
-  .karar-btn.karar-btn-blue:hover { border-color:#0284c7; background:#e0f2fe; transform:translateY(-2px); }
-  .karar-btn.karar-btn-green:hover { border-color:#059669; background:#d1fae5; transform:translateY(-2px); }
+  .karar-btn:hover { border-color:#2C5F8A; background:#e8f0f7; transform:translateY(-2px); }
+  .karar-btn.karar-btn-blue:hover { border-color:#1e4d72; background:#dde8f2; transform:translateY(-2px); }
+  .karar-btn.karar-btn-green:hover { border-color:#4A9E8F; background:#e0f2f0; transform:translateY(-2px); }
   .karar-btn-label { font-weight:700; }
   .karar-btn-desc { font-size:0.78rem; color:#6b7280; margin-left:0.4rem; }
   .karar-progress { height:4px; background:#e5e7eb; border-radius:9999px; margin-bottom:1rem; overflow:hidden; }
@@ -232,7 +232,7 @@ function karar_showTab(tool) {
       </button>`
     ).join('');
     return `<div class="karar-fade" style="display:flex;flex-direction:column;height:100%;">
-      <div class="karar-progress mb-1"><div class="karar-progress-bar" style="width:${pct}%;background:#4f46e5;"></div></div>
+      <div class="karar-progress mb-1"><div class="karar-progress-bar" style="width:${pct}%;background:#2C5F8A;"></div></div>
       <div style="font-size:0.72rem;color:#9ca3af;text-align:right;margin-bottom:0.75rem;">Adım ${s.id} / ${s.total}</div>
       <p class="karar-q">${s.question}</p>
       ${s.hint ? `<div class="karar-hint" style="background:#eff6ff;border-color:#93c5fd;color:#1d4ed8;">${s.hint}</div>` : ''}
