@@ -76,6 +76,14 @@ class LocalBusinessAdmin(ModelAdmin):
         }),
     )
 
+    def delete_model(self, request, obj):
+        obj.analytics.all().delete()
+        obj.delete()
+
+    def delete_queryset(self, request, queryset):
+        BusinessAnalytics.objects.filter(business__in=queryset).delete()
+        queryset.delete()
+
     @admin.display(description='Durum', ordering='end_date')
     def active_status_icon(self, obj):
         if obj.is_currently_active:
