@@ -110,7 +110,11 @@
         {% endif %}
         {% if is_business_module_active %}
           <li class="nav-item">
+            {% if stadt %}
+            <a class="nav-link fw-semibold" href="/{{ eyalet_slug }}/{{ stadt.slug }}/lokal-uzmanlar/">
+            {% else %}
             <a class="nav-link fw-semibold" href="{% url 'businesses:list' %}">
+            {% endif %}
               <i class="bi bi-patch-check me-1"></i>Lokal Uzmanlar
             </a>
           </li>

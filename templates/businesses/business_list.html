@@ -1,16 +1,32 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Lokal Uzmanlar — Almanyalı Rehber{% endblock %}
-{% block meta_description %}Almanya'daki onaylı Türkçe hizmet veren yerel uzmanlar ve çözüm ortakları.{% endblock %}
+{% block title %}{% if stadt %}{{ stadt.name }} {% endif %}Lokal Uzmanlar — Almanyalı Rehber{% endblock %}
+{% block meta_description %}{% if stadt %}{{ stadt.name }}'daki{% else %}Almanya'daki{% endif %} onaylı Türkçe hizmet veren yerel uzmanlar ve çözüm ortakları.{% endblock %}
+
+{% block breadcrumb_nav %}
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb small mb-0">
+      <li class="breadcrumb-item"><a href="/">Ana Sayfa</a></li>
+      {% if stadt %}
+      <li class="breadcrumb-item"><a href="/{{ eyalet_slug }}/{{ stadt.slug }}/">{{ stadt.name }}</a></li>
+      {% endif %}
+      <li class="breadcrumb-item active">Lokal Uzmanlar</li>
+    </ol>
+  </nav>
+</div>
+{% endblock %}
 
 {% block content %}
 <div class="container py-5">
 
   <!-- Hero başlık -->
   <div class="text-center mb-5">
-    <p class="text-uppercase fw-semibold small mb-2" style="color:#2563EB;letter-spacing:.12em;">Güvenilir Ağ</p>
-    <h1 class="display-6 fw-bold mb-2">Şehrinizdeki Onaylı Çözüm Ortakları</h1>
+    <p class="text-uppercase fw-semibold small mb-2" style="color:var(--primary);letter-spacing:.12em;">Güvenilir Ağ</p>
+    <h1 class="display-6 fw-bold mb-2">
+      {% if stadt %}{{ stadt.name }}'daki{% else %}Şehrinizdeki{% endif %} Onaylı Çözüm Ortakları
+    </h1>
     <p class="text-muted mx-auto" style="max-width:520px;">
       Aşağıdaki işletmeler tarafımızca incelenmiş, <span class="fw-semibold text-dark">onaylı</span> çözüm ortaklarıdır.
     </p>
@@ -42,7 +58,7 @@
         {% endif %}
         <div class="flex-grow-1 border-bottom" style="border-color:#E2E8F0!important;"></div>
         {% if grup.kategori %}
-        <a href="{% url 'businesses:category_list' kategori_slug=grup.kategori.slug %}"
+        <a href="{% if stadt %}/{{ eyalet_slug }}/{{ stadt.slug }}/lokal-uzmanlar/{{ grup.kategori.slug }}/{% else %}{% url 'businesses:category_list' kategori_slug=grup.kategori.slug %}{% endif %}"
            class="small text-decoration-none" style="color:var(--primary);white-space:nowrap;">
           Tümünü gör <i class="bi bi-arrow-right"></i>
         </a>

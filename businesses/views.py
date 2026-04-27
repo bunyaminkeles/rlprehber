@@ -5,6 +5,7 @@ from django.db.models import F
 from django.utils import timezone
 from django.views.decorators.http import require_POST
 from .models import LocalBusiness, BusinessAnalytics, BusinessCategory
+from stadt.models import Stadt
 
 
 def business_list(request):
@@ -110,5 +111,94 @@ def category_list(request, kategori_slug):
         'kategori': kategori,
         'isletmeler': isletmeler,
         'tum_kategoriler': tum_kategoriler,
+        'schema_json': json.dumps(schema, ensure_ascii=False),
+    })
+
+
+def stadt_business_list(request, eyalet_slug, stadt_slug):
+    stadt = get_object_or_404(Stadt, slug=stadt_slug, aktiv=True)
+    today = timezone.localdate()
+
+    aktif_isletmeler = (
+        LocalBusiness.objects
+        .filter(city=stadt, is_published=True, end_date__gte=today)
+        .select_related('city', 'category', 'subscription_plan')
+        .order_by('category__name', 'name')
+    )
+
+    kategoriler = []
+    seen = {}
+    for isletme in aktif_isletmeler:
+        cat = isletme.category
+        cat_id = cat.id if cat else 0
+        if cat_id not in seen:
+            seen[cat_id] = {'kategori': cat, 'isletmeler': []}
+            kategoriler.append(seen[cat_id])
+        seen[cat_id]['isletmeler'].append(isletme)
+
+    return render(request, 'businesses/business_list.html', {
+        'kategoriler': kategoriler,
+        'toplam': aktif_isletmeler.count(),
+        'stadt': stadt,
+        'eyalet_slug': eyalet_slug,
+    })
+
+
+def stadt_category_list(request, eyalet_slug, stadt_slug, kategori_slug):
+    stadt = get_object_or_404(Stadt, slug=stadt_slug, aktiv=True)
+    kategori = get_object_or_404(BusinessCategory, slug=kategori_slug)
+    today = timezone.localdate()
+
+    isletmeler = list(
+        LocalBusiness.objects
+        .filter(city=stadt, category=kategori, is_published=True, end_date__gte=today)
+        .select_related('city', 'category', 'subscription_plan')
+        .order_by('name')
+    )
+
+    tum_kategoriler = BusinessCategory.objects.filter(
+        businesses__city=stadt,
+        businesses__is_published=True,
+        businesses__end_date__gte=today,
+    ).distinct().order_by('name')
+
+    liste_elemanlari = []
+    for idx, isletme in enumerate(isletmeler, 1):
+        item = {
+            "@type": "ListItem",
+            "position": idx,
+            "item": {
+                "@type": "LocalBusiness",
+                "name": isletme.name,
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": stadt.name,
+                    "addressCountry": "DE",
+                },
+            },
+        }
+        if isletme.description or isletme.slogan:
+            item["item"]["description"] = isletme.description or isletme.slogan
+        if isletme.whatsapp_number:
+            item["item"]["telephone"] = isletme.whatsapp_number
+        if isletme.website_url:
+            item["item"]["url"] = isletme.website_url
+        liste_elemanlari.append(item)
+
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": f"{stadt.name} {kategori.name} — Lokal Uzmanlar",
+        "description": f"{stadt.name}'da Türkçe hizmet veren {kategori.name.lower()} uzmanları",
+        "numberOfItems": len(liste_elemanlari),
+        "itemListElement": liste_elemanlari,
+    }
+
+    return render(request, 'businesses/category_list.html', {
+        'kategori': kategori,
+        'isletmeler': isletmeler,
+        'tum_kategoriler': tum_kategoriler,
+        'stadt': stadt,
+        'eyalet_slug': eyalet_slug,
         'schema_json': json.dumps(schema, ensure_ascii=False),
     })

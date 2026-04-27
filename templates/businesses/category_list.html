@@ -1,26 +1,35 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}{{ kategori.name }} Uzmanları — Lokal Uzmanlar | Almanyalı Rehber{% endblock %}
-{% block meta_description %}Almanya'da Türkçe hizmet veren {{ kategori.name|lower }} uzmanları. Onaylı çözüm ortakları, WhatsApp ile doğrudan iletişim.{% endblock %}
-
-{% block canonical %}<link rel="canonical" href="https://almanyalirehber.com/lokal-uzmanlar/{{ kategori.slug }}/">{% endblock %}
-
-{% block og_title %}{{ kategori.name }} Uzmanları — Almanyalı Rehber{% endblock %}
-{% block og_description %}Almanya'da Türkçe hizmet veren {{ kategori.name|lower }} uzmanları.{% endblock %}
+{% block title %}{% if stadt %}{{ stadt.name }} — {% endif %}{{ kategori.name }} Uzmanları — Almanyalı Rehber{% endblock %}
+{% block meta_description %}{% if stadt %}{{ stadt.name }}'da{% else %}Almanya'da{% endif %} Türkçe hizmet veren {{ kategori.name|lower }} uzmanları.{% endblock %}
+{% block canonical %}<link rel="canonical" href="https://almanyalirehber.com/{% if stadt %}{{ eyalet_slug }}/{{ stadt.slug }}/lokal-uzmanlar/{% else %}lokal-uzmanlar/{% endif %}{{ kategori.slug }}/">{% endblock %}
+{% block og_title %}{% if stadt %}{{ stadt.name }} — {% endif %}{{ kategori.name }} Uzmanları — Almanyalı Rehber{% endblock %}
+{% block og_description %}{% if stadt %}{{ stadt.name }}'da{% else %}Almanya'da{% endif %} Türkçe hizmet veren {{ kategori.name|lower }} uzmanları.{% endblock %}
 
 {% block schema %}
 <script type="application/ld+json">{{ schema_json }}</script>
 {% endblock %}
 
+{% block breadcrumb_nav %}
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb small mb-0">
+      <li class="breadcrumb-item"><a href="/">Ana Sayfa</a></li>
+      {% if stadt %}
+      <li class="breadcrumb-item"><a href="/{{ eyalet_slug }}/{{ stadt.slug }}/">{{ stadt.name }}</a></li>
+      <li class="breadcrumb-item"><a href="/{{ eyalet_slug }}/{{ stadt.slug }}/lokal-uzmanlar/">Lokal Uzmanlar</a></li>
+      {% else %}
+      <li class="breadcrumb-item"><a href="{% url 'businesses:list' %}">Lokal Uzmanlar</a></li>
+      {% endif %}
+      <li class="breadcrumb-item active">{{ kategori.name }}</li>
+    </ol>
+  </nav>
+</div>
+{% endblock %}
+
 {% block content %}
 <div class="container py-4">
-
-  <!-- Breadcrumb -->
-  {% block breadcrumb %}
-  <li class="breadcrumb-item"><a href="{% url 'businesses:list' %}">Lokal Uzmanlar</a></li>
-  <li class="breadcrumb-item active">{{ kategori.name }}</li>
-  {% endblock %}
 
   <!-- Hero -->
   <div class="d-flex align-items-center gap-3 mb-4 pb-3" style="border-bottom:1px solid var(--border);">
@@ -33,15 +42,24 @@
       {% endif %}
     </div>
     <div>
-      <h1 class="h4 fw-bold mb-0">{{ kategori.name }} Uzmanları</h1>
+      <h1 class="h4 fw-bold mb-0">
+        {% if stadt %}{{ stadt.name }} — {% endif %}{{ kategori.name }} Uzmanları
+      </h1>
       <p class="text-muted small mb-0">
-        Almanya'da Türkçe hizmet veren {{ kategori.name|lower }} uzmanları
+        {% if stadt %}{{ stadt.name }}'da{% else %}Almanya'da{% endif %}
+        Türkçe hizmet veren {{ kategori.name|lower }} uzmanları
         {% if isletmeler %}— <span class="fw-semibold">{{ isletmeler|length }} aktif uzman</span>{% endif %}
       </p>
     </div>
+    {% if stadt %}
+    <a href="/{{ eyalet_slug }}/{{ stadt.slug }}/lokal-uzmanlar/" class="btn btn-outline-secondary btn-sm ms-auto">
+      <i class="bi bi-arrow-left me-1"></i>Tüm Uzmanlar
+    </a>
+    {% else %}
     <a href="{% url 'businesses:list' %}" class="btn btn-outline-secondary btn-sm ms-auto">
       <i class="bi bi-arrow-left me-1"></i>Tüm Uzmanlar
     </a>
+    {% endif %}
   </div>
 
   <div class="row g-4">
@@ -72,16 +90,12 @@
         <ul class="list-unstyled mb-0 d-flex flex-column gap-1">
           {% for kat in tum_kategoriler %}
           <li>
-            <a href="{% url 'businesses:category_list' kategori_slug=kat.slug %}"
+            <a href="{% if stadt %}/{{ eyalet_slug }}/{{ stadt.slug }}/lokal-uzmanlar/{{ kat.slug }}/{% else %}{% url 'businesses:category_list' kategori_slug=kat.slug %}{% endif %}"
                class="d-flex align-items-center gap-2 px-2 py-2 rounded-3 text-decoration-none small
                       {% if kat.slug == kategori.slug %}fw-semibold{% endif %}"
                style="color:{% if kat.slug == kategori.slug %}var(--primary){% else %}var(--text){% endif %};
                       background:{% if kat.slug == kategori.slug %}#EFF6FF{% else %}transparent{% endif %};">
-              {% if kat.icon %}
-                <i class="bi bi-{{ kat.icon }}" style="color:var(--primary);width:16px;"></i>
-              {% else %}
-                <i class="bi bi-circle" style="color:var(--border);width:16px;"></i>
-              {% endif %}
+              <i class="bi bi-{{ kat.icon|default:'circle' }}" style="color:var(--primary);width:16px;"></i>
               {{ kat.name }}
             </a>
           </li>
