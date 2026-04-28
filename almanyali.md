@@ -11,6 +11,7 @@
 **Hedef kitle:** Almanya'ya yeni gelmiş Türkçe konuşan göçmenler/expat'lar.
 **Temel değer önerisi:** Bürokratik süreçler, konut, iş, eğitim, sağlık ve günlük yaşam konularında Türkçe, şehir bazlı, güvenilir bir rehber platform.
 **Tasarım felsefesi:** Apple/Stripe sadeliğinde "Şehir Kokpiti" — bilişsel yükü sıfır, karar felcine izin yok, tek primary action prensibi.
+**Mobil öncelik:** Hedef kitlenin büyük çoğunluğu mobil kullanıcı. Her UI kararında önce mobil deneyim düşünülmeli; desktop ikincil. Yatay scroll, sticky bar yüksekliği, dokunma alanı boyutları mobil baz alınarak tasarlanmalı.
 
 ---
 

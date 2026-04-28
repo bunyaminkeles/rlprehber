@@ -89,41 +89,84 @@
   .hero-photo-col:hover .hero-photo-img {
     transform: scale(1.05);
   }
+  /* Mobil: dikey tam genişlik liste */
   .wizard-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-  @media (min-width: 992px) {
-    .wizard-grid { grid-template-columns: repeat(5, 1fr); }
-  }
-  .wizard-kart {
     display: flex;
     flex-direction: column;
+    gap: .5rem;
+  }
+  /* Desktop: 5 sütunlu grid */
+  @media (min-width: 992px) {
+    .wizard-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+    }
+  }
+  /* Kart — mobil: yatay satır */
+  .wizard-kart {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .85rem;
     background: var(--card);
     border: 1.5px solid var(--border);
-    border-radius: 14px;
-    padding: 1.25rem 1.25rem 1rem;
+    border-radius: 12px;
+    padding: .9rem 1rem;
     text-decoration: none;
     color: var(--text);
-    transition: box-shadow .2s, transform .2s, border-color .2s;
+    transition: background .15s, border-color .15s;
   }
-  .wizard-kart:hover {
-    box-shadow: 0 8px 24px rgba(44,95,138,0.13);
-    transform: translateY(-3px);
-    border-color: var(--primary);
-    color: var(--text);
+  .wizard-kart::after {
+    content: "›";
+    margin-left: auto;
+    font-size: 1.3rem;
+    color: var(--border);
+    line-height: 1;
+  }
+  /* Desktop: dikey kart */
+  @media (min-width: 992px) {
+    .wizard-kart {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.25rem 1.25rem 1rem;
+      border-radius: 14px;
+      transition: box-shadow .2s, transform .2s, border-color .2s;
+    }
+    .wizard-kart::after { display: none; }
+    .wizard-kart:hover {
+      box-shadow: 0 8px 24px rgba(44,95,138,0.13);
+      transform: translateY(-3px);
+      border-color: var(--primary);
+      color: var(--text);
+    }
   }
   .wizard-kart.active {
     border-color: var(--primary);
     background: #EFF6FF;
-    box-shadow: 0 4px 16px rgba(44,95,138,0.15);
     color: var(--primary);
   }
+  @media (min-width: 992px) {
+    .wizard-kart.active {
+      box-shadow: 0 4px 16px rgba(44,95,138,0.15);
+    }
+  }
   .wizard-kart .wiz-icon {
-    font-size: 1.75rem;
-    margin-bottom: .6rem;
+    font-size: 1.6rem;
+    flex-shrink: 0;
     display: block;
+  }
+  @media (min-width: 992px) {
+    .wizard-kart .wiz-icon {
+      font-size: 1.75rem;
+      margin-bottom: .6rem;
+    }
+  }
+  .wizard-kart-text {
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
+    min-width: 0;
   }
 </style>
 
@@ -400,60 +443,69 @@
 </div>
 
 <!-- Niyet Seçici / Wizard -->
-<section id="wizard-bolum" style="background:#f0f7ff; border-top:1px solid #dbeafe; border-bottom:1px solid #dbeafe; padding:2.5rem 0; margin-top:1rem; position:sticky; top:0; z-index:100;">
+<section id="wizard-bolum" style="background:#f0f7ff; border-top:1px solid #dbeafe; border-bottom:1px solid #dbeafe; padding:1.25rem 0; margin-top:1rem;">
+  <style>
+    @media (min-width: 992px) {
+      #wizard-bolum { padding: 2.5rem 0 !important; position: sticky; top: 0; z-index: 100; }
+    }
+  </style>
   <div class="container">
-    <p class="text-center fw-semibold mb-1" style="color:var(--primary); font-size:.75rem; letter-spacing:.1em; text-transform:uppercase;">{{ stadt.name }}'da Rehberiniz</p>
-    <h2 class="text-center fw-bold mb-4" style="font-size:1.35rem;">Nereye yönlendirelim?</h2>
+    <p class="text-center fw-semibold mb-1 d-none d-lg-block" style="color:var(--primary); font-size:.75rem; letter-spacing:.1em; text-transform:uppercase;">{{ stadt.name }}'da Rehberiniz</p>
+    <h2 class="text-center fw-bold mb-3" style="font-size:1.2rem;">Nereye yönlendirelim?</h2>
     <div class="wizard-grid">
       <a href="#kategori-resmi_kurum" class="wizard-kart">
         <span class="wiz-icon">🏛️</span>
-        <span class="fw-bold mb-1" style="font-size:.95rem;">Bürokrasi & İlk Adımlar</span>
-        <span class="text-muted" style="font-size:.82rem;">Anmeldung, oturum izni, vergi numarası...</span>
+        <span class="wizard-kart-text">
+          <span class="fw-bold" style="font-size:.95rem;">Bürokrasi & İlk Adımlar</span>
+          <span class="text-muted" style="font-size:.82rem;">Anmeldung, oturum izni, vergi numarası...</span>
+        </span>
       </a>
       <a href="#kategori-saglik" class="wizard-kart">
         <span class="wiz-icon">🏥</span>
-        <span class="fw-bold mb-1" style="font-size:.95rem;">Sağlık</span>
-        <span class="text-muted" style="font-size:.82rem;">Doktor, hastane, eczane bulma...</span>
+        <span class="wizard-kart-text">
+          <span class="fw-bold" style="font-size:.95rem;">Sağlık</span>
+          <span class="text-muted" style="font-size:.82rem;">Doktor, hastane, eczane bulma...</span>
+        </span>
       </a>
       <a href="#kategori-egitim" class="wizard-kart">
         <span class="wiz-icon">🎓</span>
-        <span class="fw-bold mb-1" style="font-size:.95rem;">Eğitim</span>
-        <span class="text-muted" style="font-size:.82rem;">Okul, kreş, dil kursu, üniversite...</span>
+        <span class="wizard-kart-text">
+          <span class="fw-bold" style="font-size:.95rem;">Eğitim</span>
+          <span class="text-muted" style="font-size:.82rem;">Okul, kreş, dil kursu, üniversite...</span>
+        </span>
       </a>
       <a href="#kategori-gezi" class="wizard-kart">
         <span class="wiz-icon">🗺️</span>
-        <span class="fw-bold mb-1" style="font-size:.95rem;">Gezi & Kültür</span>
-        <span class="text-muted" style="font-size:.82rem;">Müze, park, tarihi mekanlar...</span>
+        <span class="wizard-kart-text">
+          <span class="fw-bold" style="font-size:.95rem;">Gezi & Kültür</span>
+          <span class="text-muted" style="font-size:.82rem;">Müze, park, tarihi mekanlar...</span>
+        </span>
       </a>
       <a href="#kategori-ibadet" class="wizard-kart">
         <span class="wiz-icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 48" width="36" height="28" fill="currentColor" style="color:var(--primary);">
-            <!-- Sol minare -->
             <rect x="4" y="14" width="5" height="28" rx="1"/>
             <ellipse cx="6.5" cy="13" rx="3" ry="4"/>
             <rect x="5" y="8" width="3" height="3" rx="1"/>
             <rect x="5.5" y="5" width="2" height="4" rx="1"/>
-            <!-- Sağ minare -->
             <rect x="55" y="14" width="5" height="28" rx="1"/>
             <ellipse cx="57.5" cy="13" rx="3" ry="4"/>
             <rect x="56" y="8" width="3" height="3" rx="1"/>
             <rect x="56.5" y="5" width="2" height="4" rx="1"/>
-            <!-- Ana kubbe -->
             <ellipse cx="32" cy="18" rx="13" ry="11"/>
             <rect x="19" y="18" width="26" height="24" rx="1"/>
-            <!-- Yan kubbeler -->
             <ellipse cx="16" cy="26" rx="7" ry="6"/>
             <rect x="9" y="26" width="14" height="16" rx="1"/>
             <ellipse cx="48" cy="26" rx="7" ry="6"/>
             <rect x="41" y="26" width="14" height="16" rx="1"/>
-            <!-- Kapı -->
             <rect x="28" y="34" width="8" height="8" rx="3"/>
-            <!-- Zemin -->
             <rect x="0" y="42" width="64" height="3" rx="1.5"/>
           </svg>
         </span>
-        <span class="fw-bold mb-1" style="font-size:.95rem;">Cami & İbadet</span>
-        <span class="text-muted" style="font-size:.82rem;">Cami, İslam merkezi, Kur'an kursu...</span>
+        <span class="wizard-kart-text">
+          <span class="fw-bold" style="font-size:.95rem;">Cami & İbadet</span>
+          <span class="text-muted" style="font-size:.82rem;">Cami, İslam merkezi, Kur'an kursu...</span>
+        </span>
       </a>
     </div>
   </div>
@@ -805,8 +857,9 @@
         sections.forEach(s => { if (s.dataset.kat === kat) { s.style.display = ''; hedef = s; } });
         kart.classList.add('active');
         if (hedef) {
-          const wizardY = document.getElementById('wizard-bolum').offsetHeight;
-          const top = hedef.getBoundingClientRect().top + window.scrollY - wizardY;
+          const isDesktop = window.innerWidth >= 992;
+          const offset = isDesktop ? document.getElementById('wizard-bolum').offsetHeight : 16;
+          const top = hedef.getBoundingClientRect().top + window.scrollY - offset;
           window.scrollTo({ top, behavior: 'smooth' });
         }
       }
