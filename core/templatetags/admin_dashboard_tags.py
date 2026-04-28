@@ -1,17 +1,20 @@
 import json
 from datetime import timedelta
+from decimal import Decimal
+
 from django import template
-from django.utils import timezone
 from django.contrib.auth.models import User
-from django.db.models import Count
+from django.db.models import Count, DecimalField, ExpressionWrapper, F, Sum
+from django.utils import timezone
+
+from blog.models import BlogYazisi
+from businesses.models import LocalBusiness
+from duyurular.models import Duyuru
 from forum.models import Konu, Yorum
 from ilan.models import Ilan
-from blog.models import BlogYazisi
-from duyurular.models import Duyuru
+from rehber.models import Kaynak
 from takvim.models import Etkinlik
 from yerler.models import Yer
-from rehber.models import Kaynak
-from businesses.models import LocalBusiness
 
 register = template.Library()
 
@@ -79,11 +82,36 @@ def get_dashboard_stats():
     etkinlik_count = Etkinlik.objects.filter(tarih__gte=now.date()).count()
     yer_count = Yer.objects.filter(aktif=True).count()
     kaynak_count = Kaynak.objects.filter(yayinda=True).count()
+    today = now.date()
     aktif_isletme_count = LocalBusiness.objects.filter(
-        is_published=True, end_date__gte=now.date()
+        is_published=True, end_date__gte=today,
     ).count()
     toplam_isletme_count = LocalBusiness.objects.count()
     verified_isletme_count = LocalBusiness.objects.filter(is_verified=True).count()
+
+    # MRR — plan_fiyat / duration_days * 30, tek aggregate sorgusu
+    mrr_sonuc = (
+        LocalBusiness.objects
+        .filter(is_published=True, end_date__gte=today, subscription_plan__isnull=False)
+        .aggregate(
+            mrr=Sum(
+                ExpressionWrapper(
+                    F('subscription_plan__price') / F('subscription_plan__duration_days') * 30,
+                    output_field=DecimalField(max_digits=10, decimal_places=2),
+                )
+            )
+        )
+    )
+    mrr = mrr_sonuc['mrr'] or Decimal('0')
+
+    # Churn — son 30 günde aboneliği biten ve yenilenmeyen işletmeler
+    thirty_days_ago = today - timedelta(days=30)
+    churned = LocalBusiness.objects.filter(
+        end_date__gte=thirty_days_ago,
+        end_date__lt=today,
+    ).count()
+    churn_base = aktif_isletme_count + churned
+    churn_rate = round(churned / churn_base * 100, 1) if churn_base else 0.0
 
     # ── Platform sağlığı ─────────────────────────────
     score = min(100, int(
@@ -151,6 +179,9 @@ def get_dashboard_stats():
         'aktif_isletme_count': aktif_isletme_count,
         'toplam_isletme_count': toplam_isletme_count,
         'verified_isletme_count': verified_isletme_count,
+        'mrr': mrr,
+        'churn_rate': churn_rate,
+        'churned_count': churned,
 
         # Grafik (7 gün)
         'chart_labels_json': json.dumps(l7),
