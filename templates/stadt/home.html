@@ -168,6 +168,52 @@
     gap: .15rem;
     min-width: 0;
   }
+
+  /* ── Mobil Bottom Sheet ── */
+  #mobil-sheet-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.45);
+    z-index: 1055;
+  }
+  #mobil-sheet {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: #fff;
+    border-radius: 20px 20px 0 0;
+    max-height: 85dvh;
+    overflow-y: auto;
+    padding: 0 1rem 2.5rem;
+    transform: translateY(100%);
+    transition: transform .3s cubic-bezier(.32,.72,0,1);
+    -webkit-overflow-scrolling: touch;
+  }
+  #mobil-sheet.acik { transform: translateY(0); }
+  #mobil-sheet-header {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0 .75rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 1rem;
+    z-index: 1;
+  }
+  #mobil-sheet-header::before {
+    content: '';
+    position: absolute;
+    top: -8px; left: 50%;
+    transform: translateX(-50%);
+    width: 40px; height: 4px;
+    background: #d1d5db;
+    border-radius: 2px;
+  }
+  @media (min-width: 992px) {
+    #mobil-sheet-overlay { display: none !important; }
+  }
 </style>
 
 <!-- BÖLÜM 1: Hero -->
@@ -836,35 +882,78 @@
   if (searchInput) searchInput.value = '';
   window.addEventListener('pageshow', () => { if (searchInput) searchInput.value = ''; });
 
-  // ── Wizard kart tıklama → kategori göster + scroll ───────────
-  const sections = document.querySelectorAll('.mobil-kat-section');
+  // ── Bottom sheet (mobil) ─────────────────────────────────────
+  const overlay = document.getElementById('mobil-sheet-overlay');
+  const sheet   = document.getElementById('mobil-sheet');
+  const sheetBaslik = document.getElementById('mobil-sheet-baslik');
+  const sheetIcerik = document.getElementById('mobil-sheet-icerik');
 
-  function showSection(kat) {
-    sections.forEach(s => s.style.display = s.dataset.kat === kat ? '' : 'none');
+  function sheetAc(baslik, icerikHTML) {
+    sheetBaslik.textContent = baslik;
+    sheetIcerik.innerHTML = icerikHTML;
+    overlay.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => sheet.classList.add('acik'));
   }
 
+  function sheetKapat() {
+    sheet.classList.remove('acik');
+    document.body.style.overflow = '';
+    sheet.addEventListener('transitionend', () => { overlay.style.display = 'none'; }, { once: true });
+  }
+
+  document.getElementById('mobil-sheet-kapat').addEventListener('click', sheetKapat);
+  overlay.addEventListener('click', e => { if (e.target === overlay) sheetKapat(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') sheetKapat(); });
+
+  // ── Wizard kart tıklama ───────────────────────────────────────
+  const sections    = document.querySelectorAll('.mobil-kat-section');
   const wizardKartlar = document.querySelectorAll('.wizard-kart[href]');
 
   wizardKartlar.forEach(kart => {
     kart.addEventListener('click', e => {
       e.preventDefault();
       const isActive = kart.classList.contains('active');
-      sections.forEach(s => s.style.display = 'none');
       wizardKartlar.forEach(k => k.classList.remove('active'));
-      if (!isActive) {
-        const kat = kart.getAttribute('href').replace('#kategori-', '');
-        let hedef = null;
-        sections.forEach(s => { if (s.dataset.kat === kat) { s.style.display = ''; hedef = s; } });
-        kart.classList.add('active');
-        if (hedef) {
-          const isDesktop = window.innerWidth >= 992;
-          const offset = isDesktop ? document.getElementById('wizard-bolum').offsetHeight : 16;
-          const top = hedef.getBoundingClientRect().top + window.scrollY - offset;
+
+      if (isActive) {
+        // desktop'ta toggle kapat
+        if (window.innerWidth >= 992) sections.forEach(s => s.style.display = 'none');
+        return;
+      }
+
+      kart.classList.add('active');
+      const kat = kart.getAttribute('href').replace('#kategori-', '');
+      let hedefSection = null;
+      sections.forEach(s => { if (s.dataset.kat === kat) hedefSection = s; });
+
+      if (window.innerWidth < 992) {
+        // Mobil → bottom sheet
+        const baslik = kart.querySelector('.fw-bold')?.textContent || '';
+        sheetAc(baslik, hedefSection ? hedefSection.innerHTML : '');
+      } else {
+        // Desktop → sayfada göster + scroll
+        sections.forEach(s => s.style.display = 'none');
+        if (hedefSection) {
+          hedefSection.style.display = '';
+          const offset = document.getElementById('wizard-bolum').offsetHeight;
+          const top = hedefSection.getBoundingClientRect().top + window.scrollY - offset;
           window.scrollTo({ top, behavior: 'smooth' });
         }
       }
     });
   });
 </script>
+
+<!-- Mobil Bottom Sheet -->
+<div id="mobil-sheet-overlay">
+  <div id="mobil-sheet">
+    <div id="mobil-sheet-header">
+      <h3 id="mobil-sheet-baslik" style="font-size:1.05rem; font-weight:700; margin:0;"></h3>
+      <button id="mobil-sheet-kapat" style="background:none; border:none; padding:.25rem .5rem; font-size:1.6rem; line-height:1; color:#6b7280;" aria-label="Kapat">&times;</button>
+    </div>
+    <div id="mobil-sheet-icerik"></div>
+  </div>
+</div>
 
 {% endblock %}
