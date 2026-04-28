@@ -18,8 +18,14 @@ def dashboard(request):
     from stadt.models import Stadt
     profil, _ = Profil.objects.get_or_create(kullanici=request.user)
 
-    # Kullanıcının şehrini bul, yoksa ilk aktif şehri kullan
-    stadt = Stadt.objects.select_related('eyalet').filter(aktiv=True).first()
+    # Kullanıcının profil şehriyle eşleştir, bulamazsa Mainz, o da yoksa ilk aktif şehir
+    stadt = None
+    if profil.sehir:
+        stadt = Stadt.objects.select_related('eyalet').filter(name__iexact=profil.sehir, aktiv=True).first()
+    if not stadt:
+        stadt = Stadt.objects.select_related('eyalet').filter(slug='mainz', aktiv=True).first()
+    if not stadt:
+        stadt = Stadt.objects.select_related('eyalet').filter(aktiv=True).first()
 
     bugun = timezone.now().date()
     duyuru_sayisi   = Duyuru.objects.filter(yayinda=True).count()
