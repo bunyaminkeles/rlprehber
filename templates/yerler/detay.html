@@ -29,7 +29,6 @@
 {% endblock %}
 
 {% block breadcrumb %}
-  {% if stadt %}<li class="breadcrumb-item"><a href="/{{ eyalet_slug }}/{{ stadt.slug }}/">{{ stadt.name }}</a></li>{% endif %}
   <li class="breadcrumb-item active">{{ yer.ad }}</li>
 {% endblock %}
 
@@ -37,9 +36,9 @@
 
 {# Kapak resmi — yüklenen fotoğraf önce, yoksa URL #}
 {% if yer.kapak_foto or yer.kapak_resmi %}
-<div class="yer-kapak mb-0" style="height:340px;overflow:hidden;background:#222">
+<div class="yer-kapak mb-0" style="background:#222;max-height:480px;overflow:hidden;display:flex;align-items:center;justify-content:center;">
   <img src="{% if yer.kapak_foto %}{{ yer.kapak_foto.url }}{% else %}{{ yer.kapak_resmi }}{% endif %}"
-       alt="{{ yer.ad }}" style="width:100%;height:100%;object-fit:cover;opacity:.85">
+       alt="{{ yer.ad }}" style="width:100%;height:auto;max-height:480px;object-fit:contain;opacity:.92;display:block;">
 </div>
 {% endif %}
 
