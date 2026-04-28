@@ -11,10 +11,21 @@ class YerAdminForm(forms.ModelForm):
         required=False,
         label='Blog İçeriği (HTML)',
     )
+    kategori = forms.ChoiceField(
+        required=False,
+        label='Kategori',
+    )
 
     class Meta:
         model = Yer
         fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        tur = self.initial.get('tur') or (self.instance.tur if self.instance.pk else None)
+        qs = YerKategori.objects.filter(tur=tur) if tur else YerKategori.objects.all()
+        choices = [('', '---------')] + [(k.slug, k.ad) for k in qs.order_by('sira', 'ad')]
+        self.fields['kategori'].choices = choices
 
 
 # ── Toplu işlem aksiyonları ──────────────────────────────────────────────────
