@@ -9,7 +9,17 @@
         {% csrf_token %}
         <div class="mb-2">
           <label class="form-label fw-semibold">Şehir</label>
-          <input type="text" name="sehir" class="form-control" value="{{ profil.sehir }}">
+          <select name="sehir" id="sehir-select" class="form-select">
+            <option value="">— Seçiniz —</option>
+            {% for s in sehirler %}
+              <option value="{{ s.name }}" {% if profil.sehir == s.name %}selected{% endif %}>{{ s.name }}</option>
+            {% endfor %}
+            <option value="__diger__" {% if profil.sehir and profil.sehir not in sehir_adlari %}selected{% endif %}>Diğer</option>
+          </select>
+          <input type="text" id="sehir-diger" name="sehir_diger" class="form-control mt-2"
+                 placeholder="Şehrinizi yazın..."
+                 value="{% if profil.sehir and profil.sehir not in sehir_adlari %}{{ profil.sehir }}{% endif %}"
+                 style="display:none;">
         </div>
         <div class="mb-3">
           <div class="form-check">
@@ -34,4 +44,20 @@
     </div>
   </div>
 </div>
+<script>
+  const sel = document.getElementById('sehir-select');
+  const diger = document.getElementById('sehir-diger');
+  function toggle() {
+    diger.style.display = sel.value === '__diger__' ? '' : 'none';
+  }
+  sel.addEventListener('change', toggle);
+  toggle();
+
+  sel.closest('form').addEventListener('submit', function() {
+    if (sel.value === '__diger__') {
+      sel.name = '';
+      diger.name = 'sehir';
+    }
+  });
+</script>
 {% endblock %}

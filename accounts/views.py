@@ -56,6 +56,7 @@ def dashboard(request):
 
 @login_required
 def profil(request):
+    from stadt.models import Stadt
     p, _ = Profil.objects.get_or_create(kullanici=request.user)
     if request.method == 'POST':
         p.biyografi       = request.POST.get('biyografi', '')
@@ -64,7 +65,13 @@ def profil(request):
         p.sehir_gizli     = 'sehir_gizli' in request.POST
         p.save()
         return redirect('accounts:dashboard')
-    return render(request, 'accounts/profil.html', {'profil': p})
+    sehirler = Stadt.objects.filter(aktiv=True).order_by('name')
+    sehir_adlari = list(sehirler.values_list('name', flat=True))
+    return render(request, 'accounts/profil.html', {
+        'profil': p,
+        'sehirler': sehirler,
+        'sehir_adlari': sehir_adlari,
+    })
 
 
 def kullanici_listesi(request):
