@@ -49,21 +49,39 @@ class YerAdmin(ModelAdmin):
     search_fields = ['ad', 'adres']
     actions       = [aktif_yap, pasif_yap]
     inlines       = [YerFotoInline]
-    fieldsets = (
+
+    FIELDSETS_YER = (
         ('Temel Bilgiler', {
-            'fields': ('ad', 'tur', 'kategori', 'stadt', 'eyalet', 'scope', 'aktif', 'sira', 'adres', 'kapak_foto', 'kapak_resmi')
+            'fields': ('ad', 'tur', 'kategori', 'stadt', 'eyalet', 'scope', 'aktif', 'sira'),
         }),
-        ('İletişim', {
-            'fields': ('telefon', 'website', 'maps_url', 'instagram_url', 'whatsapp', 'calisma_saati')
-        }),
-        ('Paket (İşletmeler için)', {
-            'fields': ('paket', 'paket_bitis'),
-            'description': 'Sadece işletmeler için. Ödeme gelince paketi güncelleyin, süre bitince "Ücretsiz" yapın.',
+        ('Konum & Görsel', {
+            'fields': ('adres', 'maps_url', 'kapak_foto', 'kapak_resmi'),
         }),
         ('İçerik', {
             'fields': ('aciklama', 'icerik', 'wikipedia_url'),
         }),
     )
+
+    FIELDSETS_ISLETME = (
+        ('Temel Bilgiler', {
+            'fields': ('ad', 'tur', 'kategori', 'stadt', 'eyalet', 'scope', 'aktif', 'sira', 'adres', 'kapak_foto', 'kapak_resmi'),
+        }),
+        ('İletişim', {
+            'fields': ('telefon', 'website', 'maps_url', 'instagram_url', 'whatsapp', 'calisma_saati'),
+        }),
+        ('Paket', {
+            'fields': ('paket', 'paket_bitis'),
+            'description': 'Ödeme gelince paketi güncelleyin, süre bitince "Ücretsiz" yapın.',
+        }),
+        ('İçerik', {
+            'fields': ('aciklama', 'icerik', 'wikipedia_url'),
+        }),
+    )
+
+    def get_fieldsets(self, request, obj=None):
+        if obj and obj.tur == 'isletme':
+            return self.FIELDSETS_ISLETME
+        return self.FIELDSETS_YER
 
     @admin.display(description='Yer Adı', ordering='ad')
     def yer_adi(self, obj):
