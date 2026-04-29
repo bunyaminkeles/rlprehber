@@ -73,6 +73,7 @@ UNFOLD = {
     "SITE_TITLE": "Almanyalı Rehber | Komuta Merkezi",
     "SITE_HEADER": "Almanyalı Rehber",
     "SITE_SYMBOL": "home",
+    "THEME": "light",
     "COLORS": {
         "primary": {
             "50":  "239 246 255",
