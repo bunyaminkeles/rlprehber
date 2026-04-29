@@ -158,7 +158,13 @@ def home(request, eyalet_slug='rlp', stadt_slug=None):
     belediye_haberleri = []
     if stadt.rss_duyuru_url:
         try:
-            feed = feedparser.parse(stadt.rss_duyuru_url)
+            import socket
+            old_timeout = socket.getdefaulttimeout()
+            socket.setdefaulttimeout(5)
+            try:
+                feed = feedparser.parse(stadt.rss_duyuru_url)
+            finally:
+                socket.setdefaulttimeout(old_timeout)
             for entry in feed.entries[:5]:
                 belediye_haberleri.append({
                     'baslik': entry.get('title', ''),
