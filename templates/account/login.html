@@ -412,6 +412,9 @@
     <form method="post" action="{% url 'account_login' %}" class="auth-form">
       {% csrf_token %}
       {{ redirect_field }}
+      <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+        <input type="text" name="website" id="id_website" tabindex="-1" autocomplete="off">
+      </div>
 
       {% for field in form %}
         {% if field.name != 'remember' %}

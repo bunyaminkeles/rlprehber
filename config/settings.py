@@ -285,6 +285,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+    'core.middleware.HoneypotMiddleware',
     'core.middleware.ZiyaretSayaciMiddleware',
 ]
 
@@ -377,6 +378,9 @@ ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
 ACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.CustomSignupForm'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_RATE_LIMITS = {
+    'login_failed': '5/5m',   # 5 başarısız deneme → 5 dakika kilitle
+}
 
 # E-posta — SMTP (mail.analizus.com)
 EMAIL_BACKEND    = 'django.core.mail.backends.smtp.EmailBackend'
