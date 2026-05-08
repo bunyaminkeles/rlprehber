@@ -10,6 +10,12 @@ from yerler.models import Yer
 from stadt.models import Stadt, Eyalet
 
 
+def _to_html(text):
+    if not text or '<' in text:
+        return text
+    return ''.join(f'<p>{p.strip()}</p>' for p in text.split('\n\n') if p.strip())
+
+
 class Command(BaseCommand):
     help = 'JSON dosyasından gezilecek yer verilerini içe aktarır'
 
@@ -64,7 +70,7 @@ class Command(BaseCommand):
                     'kapak_resmi':  v.get('kapak_resmi', ''),
                     'website':      v.get('website', ''),
                     'aciklama':     v.get('aciklama', ''),
-                    'icerik':       v.get('icerik', ''),
+                    'icerik':       _to_html(v.get('icerik', '')),
                     'wikipedia_url':v.get('wikipedia_url', ''),
                     'sira':         int(v.get('sira', 0)),
                     'aktif':        bool(v.get('aktif', True)),
