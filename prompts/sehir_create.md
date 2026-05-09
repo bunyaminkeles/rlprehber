@@ -269,3 +269,66 @@ class Migration(migrations.Migration):
 ## ÇIKTI KURALI
 
 Sadece iki Python dosyasını üret. Açıklama, yorum satırı veya ek bilgi yazma. Doğrulama yaptıktan sonra dosyaları ver.
+
+---
+
+## UYGULAMA ADIMLARI (Gemini çıktısı geldikten sonra)
+
+Gemini iki dosya üretir. Sırayla şunları yap:
+
+### 1. Dosyaları doğru yerlere kaydet
+
+```
+mainzer-binger/stadt/migrations/0044_<slug>_aktiv.py      ← Dosya 1
+mainzer-binger/yerler/migrations/0045_seed_<slug>_yerler.py  ← Dosya 2
+```
+
+### 2. Yerelde test et
+
+```bash
+cd /home/bunyamin/Documents/mainzer-binger
+
+# Önce kuru geçiş kontrolü
+python manage.py migrate --check
+
+# Uygula
+python manage.py migrate
+```
+
+Hata yoksa devam et.
+
+### 3. Commit et
+
+```bash
+git add stadt/migrations/0044_<slug>_aktiv.py
+git add yerler/migrations/0045_seed_<slug>_yerler.py
+git commit -m "feat(<slug>): <şehir> şehri ekosistemi ayağa kaldırıldı"
+```
+
+### 4. Push ve merge et
+
+```bash
+git push origin main
+git checkout dev
+git merge main -m "merge(main→dev): <şehir> ekosistemi"
+git push origin dev
+git checkout main
+```
+
+### 5. Hetzner'e deploy et
+
+```bash
+ssh root@204.168.195.246
+cd /var/www/rlprehber
+git pull
+python manage.py migrate
+systemctl restart gunicorn
+```
+
+### 6. sehir_ayaga_kaldir.txt'i güncelle
+
+Her şehirden sonra `prompts/sehir_ayaga_kaldir.txt` içindeki migration numaralarını güncelle:
+- `Şu an son migrasyon: 0044_<slug>_aktiv — bir sonraki çift: 0045 + 0046`
+- `Şu an son yerler migrasyonu: 0045_seed_<slug>_yerler → bir sonraki: 0046`
+
+Bu dosyayı da commit'e dahil et.
