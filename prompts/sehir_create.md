@@ -101,13 +101,13 @@ XXXX = bir sonraki müsait migration numarası
 
 ⚠️ MIGRATION NUMARASINI PROMPT'TAN ALMA — GERÇEK DOSYALARA BAK!
 Prompt'taki numara eskimiş olabilir. Şehri üretmeden önce şunu çalıştır:
-    ls stadt/migrations/*.py | tail -3
-    ls yerler/migrations/*.py | tail -3
+    ls stadt/migrations/ | tail -3
+    ls yerler/migrations/ | tail -3
 
-Şu an son stad migrasyonu: 0046_merge_0045_erfurt_aktiv_0045_eyalet_nrw_artik_sil
-Şu an son yerler migrasyonu: 0046_merge_20260510_0041
-→ stad için sonraki: 0047
-→ yerler için sonraki: 0047
+Şu an son stad migrasyonu: 0047_dresden_aktiv.py
+Şu an son yerler migrasyonu: 0047_seed_dresden_yerler.py
+→ stad için sonraki: 0048
+→ yerler için sonraki: 0048
 Bu migration tek dosya olduğu için iki ayrı app'e bölünecek (aşağıya bak)
 ```
 
