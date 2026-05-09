@@ -81,7 +81,7 @@ TÜV SÜD veya TÜV NORD istasyonları (bölgeye göre hangisi hakimse). Araç m
 
 En önemli 10 turistik yer. Her biri için:
 - `aciklama`: Türkçe 1–2 cümle
-- `icerik`: Türkçe **3 paragraf** detaylı içerik (paragraflar `\n\n` ile ayrılacak)
+- `icerik`: Türkçe **kesinlikle 3 paragraf** — ne eksik ne fazla. Paragraflar arasında `\n\n` (çift yeni satır). Her paragraf en az 3 cümle, tarihi ve kültürel bilgi ağırlıklı. **UYDURMA YAPMA** — yazmadığın şeyi bilmiyorsan araştır, bilmiyorsan o cümleyi yazma.
 - `wikipedia_url`: Almanca Wikipedia linki
 - `sira`: 1'den 10'a
 
@@ -261,11 +261,11 @@ class Migration(migrations.Migration):
 
 ## DOĞRULAMA KURALLARI
 
-1. **HALLÜSINASYON YAPMA.** Her adres, URL ve website gerçek ve doğrulanabilir olmalı.
+1. **HALLÜSINASYON YAPMA — EN KRİTİK KURAL.** Her adres, URL, website ve icerik içindeki her bilgi gerçek ve doğrulanabilir olmalı. Emin olmadığın bir bilgiyi yazma. Uydurma adres, sahte URL, var olmayan kurum kesinlikle yasak. Bulmak için WebSearch kullan.
 2. **termin_url max 190 karakter** — percent-encode etme, Unicode karakterleri (ü, ö, ä) direkt yaz.
 3. **maps_url formatı:** `https://maps.google.com/?q=Yer+Adı+Şehir` — boşluklar `+` ile.
 4. **aciklama:** Türkçe, 1–2 cümle, özlü.
-5. **icerik (sadece gezi):** Türkçe, 3 paragraf, `\n\n` ile ayrılmış. Tarihi ve kültürel bilgi ağırlıklı.
+5. **icerik (sadece gezi):** Türkçe, **kesinlikle 3 paragraf**, `\n\n` ile ayrılmış. Her paragraf minimum 3 cümle. Tarihi ve kültürel bilgi ağırlıklı. Paragraf sayısı 3'ten az veya fazla olamaz. İçerikteki her bilgi (tarih, isim, rakam) doğrulanmış olmalı — hayal görmek yasak.
 6. **eyalet kodu:** Yukarıdaki tablodan kesinlikle doğru kodu yaz. 'RP', 'NRW' gibi yanlış kodlar sessizce hata verir.
 7. **slug:** Türkçe yazılış, küçük harf, Almanca özel karakter içermez (ü→ue değil, direkt türkçe sade hali veya yaygın kullanım — örn: münchen→munih, köln→koeln değil koeln de olur).
 8. **sira alanı:** Sadece GEZI listesinde kullanılır, 1'den 10'a.
