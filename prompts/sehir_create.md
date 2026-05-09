@@ -98,20 +98,26 @@ Dosya adı: `XXXX_<sehir_slug>_ekosistem.py`
 
 ```
 XXXX = bir sonraki müsait migration numarası
-       Şu an son stad migrasyonu: 0044_eyalet_arma_url_eksikler
-       Şu an son yerler migrasyonu: 0044_seed_hannover_yerler
-       → stad için sonraki: 0045
-       → yerler için sonraki: 0045
-       Bu migration tek dosya olduğu için iki ayrı app'e bölünecek (aşağıya bak)
+
+⚠️ MIGRATION NUMARASINI PROMPT'TAN ALMA — GERÇEK DOSYALARA BAK!
+Prompt'taki numara eskimiş olabilir. Şehri üretmeden önce şunu çalıştır:
+    ls stadt/migrations/*.py | tail -3
+    ls yerler/migrations/*.py | tail -3
+
+Şu an son stad migrasyonu: 0046_merge_0045_erfurt_aktiv_0045_eyalet_nrw_artik_sil
+Şu an son yerler migrasyonu: 0046_merge_20260510_0041
+→ stad için sonraki: 0047
+→ yerler için sonraki: 0047
+Bu migration tek dosya olduğu için iki ayrı app'e bölünecek (aşağıya bak)
 ```
 
 ⚠️ **ÖNEMLİ:** Tek şehir için **iki dosya** üretilecek:
-- `stadt/migrations/0045_<slug>_aktiv.py` — Stadt güncelleme
-- `yerler/migrations/0045_seed_<slug>_yerler.py` — Yer verileri
+- `stadt/migrations/0047_<slug>_aktiv.py` — Stadt güncelleme
+- `yerler/migrations/0047_seed_<slug>_yerler.py` — Yer verileri
 
 ---
 
-### DOSYA 1: `stadt/migrations/0045_<slug>_aktiv.py`
+### DOSYA 1: `stadt/migrations/0047_<slug>_aktiv.py`
 
 ```python
 from django.db import migrations
@@ -145,7 +151,7 @@ def reverse(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('stadt', '0044_eyalet_arma_url_eksikler'),
+        ('stadt', '0046_merge_0045_erfurt_aktiv_0045_eyalet_nrw_artik_sil'),
     ]
     operations = [
         migrations.RunPython(update, reverse),
@@ -154,7 +160,7 @@ class Migration(migrations.Migration):
 
 ---
 
-### DOSYA 2: `yerler/migrations/0045_seed_<slug>_yerler.py`
+### DOSYA 2: `yerler/migrations/0047_seed_<slug>_yerler.py`
 
 ```python
 from django.db import migrations
@@ -245,8 +251,8 @@ def unseed(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('yerler', '0044_seed_hannover_yerler'),
-        ('stadt',  '0045_<slug>_aktiv'),               # Dosya 1'e bağımlı
+        ('yerler', '0046_merge_20260510_0041'),
+        ('stadt',  '0047_<slug>_aktiv'),               # Dosya 1'e bağımlı
     ]
     operations = [migrations.RunPython(seed, unseed)]
 ```
@@ -279,8 +285,8 @@ Gemini iki dosya üretir. Sırayla şunları yap:
 ### 1. Dosyaları doğru yerlere kaydet
 
 ```
-mainzer-binger/stadt/migrations/0044_<slug>_aktiv.py      ← Dosya 1
-mainzer-binger/yerler/migrations/0045_seed_<slug>_yerler.py  ← Dosya 2
+mainzer-binger/stadt/migrations/0047_<slug>_aktiv.py         ← Dosya 1
+mainzer-binger/yerler/migrations/0047_seed_<slug>_yerler.py  ← Dosya 2
 ```
 
 ### 2. Yerelde test et
@@ -300,8 +306,8 @@ Hata yoksa devam et.
 ### 3. Commit et
 
 ```bash
-git add stadt/migrations/0045_<slug>_aktiv.py
-git add yerler/migrations/0045_seed_<slug>_yerler.py
+git add stadt/migrations/0047_<slug>_aktiv.py
+git add yerler/migrations/0047_seed_<slug>_yerler.py
 git commit -m "feat(<slug>): <şehir> şehri ekosistemi ayağa kaldırıldı"
 ```
 
@@ -325,10 +331,16 @@ python manage.py migrate
 systemctl restart gunicorn
 ```
 
-### 6. sehir_ayaga_kaldir.txt'i güncelle
+### 6. Prompt dosyalarını güncelle
 
-Her şehirden sonra `prompts/sehir_ayaga_kaldir.txt` içindeki migration numaralarını güncelle:
-- `Şu an son migrasyon: 0045_<slug>_aktiv — bir sonraki çift: 0046 + 0047`
-- `Şu an son yerler migrasyonu: 0045_seed_<slug>_yerler → bir sonraki: 0046`
+Her şehirden sonra **bu dosyayı** (`sehir_create.md`) ve `sehir_ayaga_kaldir.txt`'i güncelle:
+- `sehir_create.md` içindeki "Şu an son stad migrasyonu" ve "Şu an son yerler migrasyonu" satırlarını yeni numaraya çek
+- `sehir_create.md` içindeki dependencies'leri güncelle (0047_<slug>_aktiv → bir sonraki için)
+- Her iki prompt dosyasını da commit'e dahil et:
 
-Bu dosyayı da commit'e dahil et.
+```bash
+git add prompts/sehir_create.md
+git add prompts/sehir_ayaga_kaldir.txt
+```
+
+⚠️ **NEDEN ÖNEMLİ:** Gemini bu dosyadaki numaraları kullanır. Güncellenmezse bir sonraki şehirde migration çakışması çıkar (aynı numara iki ayrı migration'da).
