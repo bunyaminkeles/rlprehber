@@ -98,20 +98,20 @@ Dosya adı: `XXXX_<sehir_slug>_ekosistem.py`
 
 ```
 XXXX = bir sonraki müsait migration numarası
-       Şu an son stad migrasyonu: 0043_hannover_action_links_aktiv
+       Şu an son stad migrasyonu: 0044_eyalet_arma_url_eksikler
        Şu an son yerler migrasyonu: 0044_seed_hannover_yerler
-       → stad için sonraki: 0044
+       → stad için sonraki: 0045
        → yerler için sonraki: 0045
        Bu migration tek dosya olduğu için iki ayrı app'e bölünecek (aşağıya bak)
 ```
 
 ⚠️ **ÖNEMLİ:** Tek şehir için **iki dosya** üretilecek:
-- `stadt/migrations/0044_<slug>_aktiv.py` — Stadt güncelleme
+- `stadt/migrations/0045_<slug>_aktiv.py` — Stadt güncelleme
 - `yerler/migrations/0045_seed_<slug>_yerler.py` — Yer verileri
 
 ---
 
-### DOSYA 1: `stadt/migrations/0044_<slug>_aktiv.py`
+### DOSYA 1: `stadt/migrations/0045_<slug>_aktiv.py`
 
 ```python
 from django.db import migrations
@@ -145,7 +145,7 @@ def reverse(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('stadt', '0043_hannover_action_links_aktiv'),
+        ('stadt', '0044_eyalet_arma_url_eksikler'),
     ]
     operations = [
         migrations.RunPython(update, reverse),
@@ -246,7 +246,7 @@ def unseed(apps, schema_editor):
 class Migration(migrations.Migration):
     dependencies = [
         ('yerler', '0044_seed_hannover_yerler'),
-        ('stadt',  '0044_<slug>_aktiv'),               # Dosya 1'e bağımlı
+        ('stadt',  '0045_<slug>_aktiv'),               # Dosya 1'e bağımlı
     ]
     operations = [migrations.RunPython(seed, unseed)]
 ```
@@ -300,7 +300,7 @@ Hata yoksa devam et.
 ### 3. Commit et
 
 ```bash
-git add stadt/migrations/0044_<slug>_aktiv.py
+git add stadt/migrations/0045_<slug>_aktiv.py
 git add yerler/migrations/0045_seed_<slug>_yerler.py
 git commit -m "feat(<slug>): <şehir> şehri ekosistemi ayağa kaldırıldı"
 ```
@@ -328,7 +328,7 @@ systemctl restart gunicorn
 ### 6. sehir_ayaga_kaldir.txt'i güncelle
 
 Her şehirden sonra `prompts/sehir_ayaga_kaldir.txt` içindeki migration numaralarını güncelle:
-- `Şu an son migrasyon: 0044_<slug>_aktiv — bir sonraki çift: 0045 + 0046`
+- `Şu an son migrasyon: 0045_<slug>_aktiv — bir sonraki çift: 0046 + 0047`
 - `Şu an son yerler migrasyonu: 0045_seed_<slug>_yerler → bir sonraki: 0046`
 
 Bu dosyayı da commit'e dahil et.
