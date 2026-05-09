@@ -2,7 +2,7 @@
   {
     "ad": "Marienplatz ve Neues Rathaus",
     "kategori": "gezi",
-    "stadt": "muenchen",
+    "stadt": "munih",
     "adres": "Marienplatz, 80331 München",
     "maps_url": "https://maps.google.com/?q=Marienplatz+München",
     "kapak_resmi": "",
@@ -15,7 +15,7 @@
   {
     "ad": "Englischer Garten",
     "kategori": "gezi",
-    "stadt": "muenchen",
+    "stadt": "munih",
     "adres": "Englischer Garten, 80538 München",
     "maps_url": "https://maps.google.com/?q=Englischer+Garten+München",
     "kapak_resmi": "",
@@ -28,7 +28,7 @@
   {
     "ad": "Deutsches Museum",
     "kategori": "gezi",
-    "stadt": "muenchen",
+    "stadt": "munih",
     "adres": "Museumsinsel 1, 80538 München",
     "maps_url": "https://maps.google.com/?q=Deutsches+Museum+München",
     "kapak_resmi": "",
@@ -41,7 +41,7 @@
   {
     "ad": "Schloss Nymphenburg",
     "kategori": "gezi",
-    "stadt": "muenchen",
+    "stadt": "munih",
     "adres": "Schloß Nymphenburg 1, 80638 München",
     "maps_url": "https://maps.google.com/?q=Schloss+Nymphenburg+München",
     "kapak_resmi": "",
@@ -54,7 +54,7 @@
   {
     "ad": "BMW Museum ve BMW Welt",
     "kategori": "gezi",
-    "stadt": "muenchen",
+    "stadt": "munih",
     "adres": "Am Olympiapark 2, 80809 München",
     "maps_url": "https://maps.google.com/?q=BMW+Museum+München",
     "kapak_resmi": "",
@@ -67,7 +67,7 @@
   {
     "ad": "Olympiapark",
     "kategori": "gezi",
-    "stadt": "muenchen",
+    "stadt": "munih",
     "adres": "Spiridon-Louis-Ring 21, 80809 München",
     "maps_url": "https://maps.google.com/?q=Olympiapark+München",
     "kapak_resmi": "",
@@ -80,7 +80,7 @@
   {
     "ad": "Viktualienmarkt",
     "kategori": "gezi",
-    "stadt": "muenchen",
+    "stadt": "munih",
     "adres": "Viktualienmarkt 3, 80331 München",
     "maps_url": "https://maps.google.com/?q=Viktualienmarkt+München",
     "kapak_resmi": "",
@@ -93,7 +93,7 @@
   {
     "ad": "Alte Pinakothek",
     "kategori": "gezi",
-    "stadt": "muenchen",
+    "stadt": "munih",
     "adres": "Barer Str. 27, 80333 München",
     "maps_url": "https://maps.google.com/?q=Alte+Pinakothek+München",
     "kapak_resmi": "",
@@ -106,7 +106,7 @@
   {
     "ad": "Frauenkirche (Münchner Dom)",
     "kategori": "gezi",
-    "stadt": "muenchen",
+    "stadt": "munih",
     "adres": "Frauenplatz 12, 80331 München",
     "maps_url": "https://maps.google.com/?q=Frauenkirche+München",
     "kapak_resmi": "",
@@ -119,7 +119,7 @@
   {
     "ad": "Residenz München",
     "kategori": "gezi",
-    "stadt": "muenchen",
+    "stadt": "munih",
     "adres": "Residenzstraße 1, 80333 München",
     "maps_url": "https://maps.google.com/?q=Residenz+München",
     "kapak_resmi": "",
