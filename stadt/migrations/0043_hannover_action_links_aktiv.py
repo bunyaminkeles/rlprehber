@@ -5,7 +5,7 @@ def update(apps, schema_editor):
     Stadt = apps.get_model('stadt', 'Stadt')
     try:
         s = Stadt.objects.get(slug='hannover')
-        s.termin_url            = 'https://www.hannover.de/Leben-in-der-Region-Hannover/B%C3%BCrger-Service/B%C3%BCrger-Service-in-der-Landeshauptstadt-Hannover/Termine-bei-Beh%C3%B6rden-buchen/Terminvereinbarung-in-den-B%C3%BCrger%C3%A4mtern'
+        s.termin_url            = 'https://www.hannover.de/Leben-in-der-Region-Hannover/Bürger-Service/Bürger-Service-in-der-Landeshauptstadt-Hannover/Termine-bei-Behörden-buchen/Terminvereinbarung-in-den-Bürgerämtern'
         s.auslaenderbehorde_url = 'https://auslaenderbehoerdeonline.hannover-stadt.de/'
         s.rss_duyuru_url        = 'https://e-government.hannover-stadt.de/lhhsimwebre.nsf/RSSUebersicht.xsp'
         s.aktiv                 = True
