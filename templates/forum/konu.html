@@ -1,52 +1,109 @@
 {% extends 'base.html' %}
 {% block title %}{{ konu.baslik }}{% endblock %}
+
+{% block extra_css %}
+<style>
+  #mesaj-kutusu {
+    height: calc(100vh - 320px);
+    min-height: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: .5rem;
+    border: 1px solid #dee2e6;
+  }
+  .baloncuk {
+    max-width: 75%;
+    padding: .5rem .85rem;
+    border-radius: 1rem;
+    font-size: .95rem;
+    word-break: break-word;
+  }
+  .benim  { align-self: flex-end;   background: #0d6efd; color: #fff; border-bottom-right-radius: .25rem; }
+  .karsi  { align-self: flex-start; background: #e9ecef; color: #212529; border-bottom-left-radius: .25rem; }
+  .konu-ilk { align-self: center; background: #fff3cd; border: 1px solid #ffc107; max-width: 88%; border-radius: 1rem; }
+  .zaman  { font-size: .72rem; opacity: .6; margin-top: 2px; }
+  .zaman.sag { text-align: right; }
+  .yazar-link { font-size: .72rem; opacity: .7; margin-bottom: 2px; }
+  .yazar-link.sag { text-align: right; }
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="container mt-4" style="max-width:800px">
-  <a href="{% if stadt %}/{{ eyalet_slug }}/{{ stadt.slug }}/forum/{% else %}/{{ eyalet_slug }}/forum/{% endif %}" class="btn btn-sm btn-outline-secondary mb-3">
-    <i class="bi bi-arrow-left me-1"></i>Forum
-  </a>
-  <div class="card mb-3">
-    <div class="card-body p-4">
-      <h5>{{ konu.baslik }}</h5>
-      <small class="text-muted">{{ konu.yazar.username }} &bull; {{ konu.olusturulma|date:"d.m.Y H:i" }}</small>
-      {% if user.is_authenticated and konu.yazar and konu.yazar != user %}
-        <a href="{% url 'mesajlar:baslat' konu.yazar.username %}" class="btn btn-outline-secondary btn-sm ms-2" style="font-size:.75rem">
-          <i class="bi bi-chat me-1"></i>Mesaj at
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+
+      <div class="d-flex align-items-center gap-2 mb-3">
+        <a href="{% if stadt %}/{{ eyalet_slug }}/{{ stadt.slug }}/forum/{% else %}/{{ eyalet_slug }}/forum/{% endif %}" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-arrow-left"></i>
         </a>
-      {% endif %}
-      <hr>
-      <div>{{ konu.icerik|linebreaks }}</div>
-    </div>
-  </div>
-  {% for y in yorumlar %}
-  <div class="card mb-2">
-    <div class="card-body py-3 px-4">
-      <small class="text-muted fw-semibold">{{ y.yazar.username }} &bull; {{ y.olusturulma|date:"d.m.Y H:i" }}</small>
-      {% if user.is_authenticated and y.yazar and y.yazar != user %}
-        <a href="{% url 'mesajlar:baslat' y.yazar.username %}" class="btn btn-outline-secondary btn-sm ms-2" style="font-size:.72rem">
-          <i class="bi bi-chat me-1"></i>Mesaj at
-        </a>
-      {% endif %}
-      <div class="mt-1">{{ y.icerik|linebreaks }}</div>
-    </div>
-  </div>
-  {% endfor %}
-  {% if user.is_authenticated and not konu.kapali %}
-  <div class="card mt-3">
-    <div class="card-body p-4">
-      <form method="post" action="{% if stadt %}/{{ eyalet_slug }}/{{ stadt.slug }}/forum/konu/{{ konu.pk }}/yorum/{% else %}/{{ eyalet_slug }}/forum/konu/{{ konu.pk }}/yorum/{% endif %}">
+        <h5 class="mb-0">{{ konu.baslik }}</h5>
+        {% if konu.kapali %}<span class="badge bg-secondary ms-2">Kapalı</span>{% endif %}
+      </div>
+
+      <div id="mesaj-kutusu">
+
+        <!-- Ana konu -->
+        <div class="d-flex flex-column align-items-center">
+          <div class="baloncuk konu-ilk text-center">
+            <small class="fw-semibold text-warning-emphasis">{{ konu.yazar.username }}</small>
+            <div class="mt-1">{{ konu.icerik|linebreaksbr }}</div>
+          </div>
+          <div class="zaman">{{ konu.olusturulma|date:"d.m.Y H:i" }}</div>
+        </div>
+
+        <!-- Yorumlar -->
+        {% for y in yorumlar %}
+          {% if user.is_authenticated and y.yazar == user %}
+            <div class="d-flex flex-column align-items-end">
+              <div class="yazar-link sag">{{ y.yazar.username }}</div>
+              <div class="baloncuk benim">{{ y.icerik|linebreaksbr }}</div>
+              <div class="zaman sag">{{ y.olusturulma|date:"d.m.Y H:i" }}</div>
+            </div>
+          {% else %}
+            <div class="d-flex flex-column align-items-start">
+              <div class="yazar-link">
+                {{ y.yazar.username }}
+                {% if user.is_authenticated and y.yazar and y.yazar != user %}
+                  &middot; <a href="{% url 'mesajlar:baslat' y.yazar.username %}" class="text-decoration-none" style="font-size:.72rem"><i class="bi bi-chat"></i> mesaj</a>
+                {% endif %}
+              </div>
+              <div class="baloncuk karsi">{{ y.icerik|linebreaksbr }}</div>
+              <div class="zaman">{{ y.olusturulma|date:"d.m.Y H:i" }}</div>
+            </div>
+          {% endif %}
+        {% empty %}
+          <p class="text-muted text-center my-auto small">Henüz yorum yok. İlk yorumu siz yapın!</p>
+        {% endfor %}
+
+      </div>
+
+      {% if user.is_authenticated and not konu.kapali %}
+      <form method="post" action="{% if stadt %}/{{ eyalet_slug }}/{{ stadt.slug }}/forum/konu/{{ konu.pk }}/yorum/{% else %}/{{ eyalet_slug }}/forum/konu/{{ konu.pk }}/yorum/{% endif %}" class="mt-3 d-flex gap-2" autocomplete="off">
         {% csrf_token %}
-        <textarea name="icerik" class="form-control mb-2" rows="3" placeholder="Yanıtınızı yazın..." required></textarea>
-        <button type="submit" class="btn btn-primary btn-sm">
-          <i class="bi bi-send me-1"></i>Gönder
+        <input type="text" name="icerik" class="form-control" placeholder="Yanıtınızı yazın..." required>
+        <button type="submit" class="btn btn-primary px-3">
+          <i class="bi bi-send-fill"></i>
         </button>
       </form>
+      {% elif not user.is_authenticated %}
+      <div class="alert alert-light mt-3">
+        <a href="{% url 'account_login' %}?next={{ request.path }}">Giriş yapın</a> ve tartışmaya katılın.
+      </div>
+      {% endif %}
+
     </div>
   </div>
-  {% elif not user.is_authenticated %}
-  <div class="alert alert-light mt-3">
-    <a href="{% url 'account_login' %}?next={{ request.path }}">Giriş yapın</a> ve tartışmaya katılın.
-  </div>
-  {% endif %}
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  const kutu = document.getElementById('mesaj-kutusu');
+  kutu.scrollTop = kutu.scrollHeight;
+</script>
 {% endblock %}

@@ -25,6 +25,8 @@
   .karsi    { align-self: flex-start; background: #e9ecef; color: #212529; border-bottom-left-radius: .25rem; }
   .zaman    { font-size: .72rem; opacity: .6; margin-top: 2px; }
   .zaman.sag { text-align: right; }
+  .yazar-etiket { font-size: .72rem; opacity: .7; margin-bottom: 2px; }
+  .yazar-etiket.sag { text-align: right; }
 </style>
 {% endblock %}
 
@@ -44,13 +46,15 @@
         {% for m in mesajlar %}
           {% if m.gonderen == request.user %}
             <div class="d-flex flex-column align-items-end" data-id="{{ m.pk }}">
+              <div class="yazar-etiket sag">{{ m.gonderen.username }}</div>
               <div class="baloncuk benim">{{ m.icerik }}</div>
-              <div class="zaman sag">{{ m.olusturulma|date:"H:i" }}</div>
+              <div class="zaman sag">{{ m.olusturulma|date:"d.m.Y H:i" }}</div>
             </div>
           {% else %}
             <div class="d-flex flex-column" data-id="{{ m.pk }}">
+              <div class="yazar-etiket">{{ m.gonderen.username }}</div>
               <div class="baloncuk karsi">{{ m.icerik }}</div>
-              <div class="zaman">{{ m.olusturulma|date:"H:i" }}</div>
+              <div class="zaman">{{ m.olusturulma|date:"d.m.Y H:i" }}</div>
             </div>
           {% endif %}
         {% empty %}
@@ -95,6 +99,7 @@
     wrap.className = benim ? 'd-flex flex-column align-items-end' : 'd-flex flex-column';
     wrap.dataset.id = m.pk;
     wrap.innerHTML = `
+      <div class="yazar-etiket ${benim ? 'sag' : ''}">${escapeHtml(m.gonderen)}</div>
       <div class="baloncuk ${benim ? 'benim' : 'karsi'}">${escapeHtml(m.icerik)}</div>
       <div class="zaman ${benim ? 'sag' : ''}">${m.zaman}</div>`;
     kutu.appendChild(wrap);

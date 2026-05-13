@@ -104,7 +104,7 @@ def mesajlar_api(request, pk):
             {
                 'pk': m['pk'],
                 'icerik': m['icerik'],
-                'zaman': m['olusturulma'].strftime('%H:%M'),
+                'zaman': m['olusturulma'].strftime('%d.%m.%Y %H:%M'),
                 'gonderen': m['gonderen__username'],
                 'benim': m['gonderen__username'] == request.user.username,
             }
